@@ -24,16 +24,6 @@
 @synthesize latitude;
 @synthesize longitude;
 
-id nullFix(id value) {
-	if((NSNull*)value == [NSNull null])
-		return nil;
-	//if([value isKindOfClass:[NSString class]] && [value length] == 0)
-	//	return nil;
-	else
-		return value;
-
-}
-
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	self.resourceId = nullFix([dictionary objectForKey: @"id"]);
 	self.providerId = nullFix([dictionary objectForKey: @"provider_id"]);

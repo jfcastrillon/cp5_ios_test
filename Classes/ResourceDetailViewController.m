@@ -20,16 +20,16 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel;
+@synthesize nameLabel, tableView;
 
 
 @dynamic displayedResource;
 
-- (CPMResource*) displayedResource {
+- (CPMResourceDetail*) displayedResource {
 	return displayedResource;
 }
 
-- (void) setDisplayedResource:(CPMResource*) newResource{
+- (void) setDisplayedResource:(CPMResourceDetail*) newResource{
 	if(newResource != displayedResource){
 		[displayedResource release];
 		displayedResource = newResource;
@@ -180,7 +180,7 @@
 	static NSString *ResourceLocationCellIdentifier = @"ResourceLocationCell";
 	static NSString *ResourceActionCellIdentifier = @"ResourceActionCell";
 	
-	UITableViewCell *cell;
+	UITableViewCell *cell = nil;
 	if (indexPath.section == LOCATION_SECTION) {
 		
 		
@@ -210,8 +210,8 @@
 					
 					cell.textLabel.text = @"phone";
 					cell.detailTextLabel.text = [displayedResource phone];
-					return cell;
 				}
+				break;
 			case 2:
 				if(displayedResource.url != nil && [displayedResource.url length] > 0) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
@@ -222,9 +222,8 @@
 					cell.textLabel.text = @"Website";
 					cell.textLabel.textAlignment = UITextAlignmentCenter;
 					cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
-					return cell;
 				}
-				 
+				break;
 		}
 	} else if (indexPath.section == DETAILS_SECTION) {
 		
@@ -253,9 +252,9 @@
 				break;
 		}
 	} else { // ACTION SECTION
-		
+        
 	}
-	return cell;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
