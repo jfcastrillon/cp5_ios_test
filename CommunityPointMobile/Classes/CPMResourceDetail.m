@@ -15,7 +15,6 @@
 @synthesize description;
 @synthesize services;
 
-
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	[super initFromJsonDictionary: dictionary];
 	self.description = nullFix([dictionary objectForKey: @"description"]);

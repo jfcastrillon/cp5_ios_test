@@ -59,8 +59,8 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 	NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity: [jsonArray count]];
 	for(NSDictionary* jsonResource in jsonArray) {
 		CPMResource* newResource = [[CPMResource alloc] initFromJsonDictionary:jsonResource];
-		[newResource retain];
 		[results addObject:newResource];
+		[newResource release];
 	}
 	return results;
 }
@@ -131,9 +131,10 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	[responseData release];
 	
-	NSLog("%@", responseString);
+	NSLog(@"%@", responseString);
 	
 	NSDictionary* results = [responseString JSONValue];
+    [responseString release];
 	
 	switch (currentOperation) {
 		case kXServicesSearchResults:
@@ -145,8 +146,8 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 		case kXServicesProviderDetails:
 		{
 			CPMResourceDetail *resource = [[CPMResourceDetail alloc] initFromJsonDictionary:[results objectForKey: @"resource"]];
-			[resource retain]; //TODO: Probably leaks
 			[delegate didReceiveProviderDetails: resource];
+            [resource release];
 			break;
 		}
 		default:
