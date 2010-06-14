@@ -99,17 +99,7 @@
 }
 
 
-- (void) didReceiveProviderCount:(NSDictionary*) results {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Provider Count worked?!?!?" message:@"You cheeky bastard!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
 - (void) didReceiveSearchResults:(NSArray*) results {
-	/*NSString* resultCount = [[[results objectForKey: @"resources"] objectForKey: @"total"] stringValue];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Search worked?!?!?" message:[[NSString alloc] initWithFormat:@"You cheeky bastard!  You found %@ resources", resultCount] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];*/
 	self.searchResults = results;
 	[resultsTableView setHidden: NO];
 	[busyIndicator setHidden:YES];
