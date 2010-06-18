@@ -20,8 +20,8 @@
 		40547D9E11698BE700F608E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40547D9D11698BE700F608E7 /* MapKit.framework */; };
 		4057AC031166A87B004882F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC011166A87B004882F6 /* SearchViewController.m */; };
 		4057AC041166A87B004882F6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4057AC021166A87B004882F6 /* SearchViewController.xib */; };
-		4057AC081166A899004882F6 /* BrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC061166A899004882F6 /* BrowseViewController.m */; };
-		4057AC091166A899004882F6 /* BrowseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4057AC071166A899004882F6 /* BrowseViewController.xib */; };
+		4057AC081166A899004882F6 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC061166A899004882F6 /* FavoritesViewController.m */; };
+		4057AC091166A899004882F6 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4057AC071166A899004882F6 /* FavoritesViewController.xib */; };
 		4057AC6D1166B3DD004882F6 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC621166B3DC004882F6 /* NSObject+SBJSON.m */; };
 		4057AC6E1166B3DD004882F6 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC641166B3DC004882F6 /* NSString+SBJSON.m */; };
 		4057AC6F1166B3DD004882F6 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC661166B3DC004882F6 /* SBJSON.m */; };
@@ -61,9 +61,9 @@
 		4057AC001166A87B004882F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = Classes/SearchViewController.h; sourceTree = "<group>"; };
 		4057AC011166A87B004882F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Classes/SearchViewController.m; sourceTree = "<group>"; };
 		4057AC021166A87B004882F6 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SearchViewController.xib; path = Classes/SearchViewController.xib; sourceTree = "<group>"; };
-		4057AC051166A899004882F6 /* BrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseViewController.h; sourceTree = "<group>"; };
-		4057AC061166A899004882F6 /* BrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseViewController.m; sourceTree = "<group>"; };
-		4057AC071166A899004882F6 /* BrowseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseViewController.xib; sourceTree = "<group>"; };
+		4057AC051166A899004882F6 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		4057AC061166A899004882F6 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		4057AC071166A899004882F6 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		4057AC601166B3DC004882F6 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		4057AC611166B3DC004882F6 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		4057AC621166B3DC004882F6 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4057AC051166A899004882F6 /* BrowseViewController.h */,
-				4057AC061166A899004882F6 /* BrowseViewController.m */,
-				4057AC071166A899004882F6 /* BrowseViewController.xib */,
+				4057AC051166A899004882F6 /* FavoritesViewController.h */,
+				4057AC061166A899004882F6 /* FavoritesViewController.m */,
+				4057AC071166A899004882F6 /* FavoritesViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4057AC041166A87B004882F6 /* SearchViewController.xib in Resources */,
-				4057AC091166A899004882F6 /* BrowseViewController.xib in Resources */,
+				4057AC091166A899004882F6 /* FavoritesViewController.xib in Resources */,
 				40547BBA1169337300F608E7 /* ResourceSearchResultCell.xib in Resources */,
 				40547D6D116984AD00F608E7 /* ResourceDetailViewController.xib in Resources */,
 				40D2897E1172BA570095F032 /* DescriptionTextViewCell.xib in Resources */,
@@ -319,7 +319,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* CommunityPointMobileAppDelegate.m in Sources */,
 				4057AC031166A87B004882F6 /* SearchViewController.m in Sources */,
-				4057AC081166A899004882F6 /* BrowseViewController.m in Sources */,
+				4057AC081166A899004882F6 /* FavoritesViewController.m in Sources */,
 				4057AC6D1166B3DD004882F6 /* NSObject+SBJSON.m in Sources */,
 				4057AC6E1166B3DD004882F6 /* NSString+SBJSON.m in Sources */,
 				4057AC6F1166B3DD004882F6 /* SBJSON.m in Sources */,

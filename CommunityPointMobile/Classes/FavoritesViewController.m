@@ -1,15 +1,15 @@
 //
-//  BrowseViewController.m
+//  FavoritesViewController.m
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 4/2/10.
 //  Copyright 2010 Bowman Systems, LLC. All rights reserved.
 //
 
-#import "BrowseViewController.h"
+#import "FavoritesViewController.h"
 
 
-@implementation BrowseViewController
+@implementation FavoritesViewController
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
