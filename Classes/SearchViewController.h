@@ -15,6 +15,7 @@
 @interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
+	NSOperationQueue *operationQueue;
 	NSArray* searchResults;
 	UITableView* resultsTableView;
 	UIActivityIndicatorView *busyIndicator;
@@ -28,6 +29,5 @@
 @property (nonatomic, retain) NSArray* searchResults;
 
 - (IBAction) backgroundTap:(id)sender;
-- (IBAction) mapButtonPressed:(id)sender;
 
 @end
