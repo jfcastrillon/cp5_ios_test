@@ -1,5 +1,5 @@
 //
-//  BrowseViewController.h
+//  FavoritesViewController.h
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 4/2/10.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BrowseViewController : UIViewController {
+@interface FavoritesViewController : UIViewController {
 
 }
 
