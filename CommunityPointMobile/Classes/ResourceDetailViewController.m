@@ -74,6 +74,27 @@
 	}
 }
 
+- (IBAction) favoriteButtonPressed: (id) sender {
+	// TODO: Implement favorites
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Favorite Performed" message:@"You tried to add a favorite.  Unfortunately this isn't implemented yet." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
+- (IBAction) emailButtonPressed: (id) sender {
+	MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+	mail.modalPresentationStyle = UIModalPresentationPageSheet;
+	mail.mailComposeDelegate = self;
+	
+	[mail setSubject:@"CommunityPoint Mobile Resource Information"];
+	
+	NSString *emailBody = [NSString stringWithFormat:@"<b>%@</b><br /><br /><b>Address:</b> %@<br /><b>Phone:</b><br />", 
+						   [displayedResource name], addressText, [displayedResource phone]];
+    [mail setMessageBody:emailBody isHTML:YES];
+	
+	[self presentModalViewController:mail animated:YES];
+	[mail release];				 
+}
 
 - (void) updateDisplay {
 	nameLabel.text = displayedResource.name;
@@ -124,8 +145,28 @@
 	[tableView release];
     [super dealloc];
 }
-
-
+	 
+// Email resource
+// Dismisses the email composition interface when users tap Cancel or Send.
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{   
+	// Notifies users about errors associated with the interface
+	switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			break;
+		case MFMailComposeResultSaved:
+			break;
+		case MFMailComposeResultSent:
+			break;
+		case MFMailComposeResultFailed:
+			break;
+		default:
+			break;
+	}
+	[self dismissModalViewControllerAnimated:YES];
+}
+	 
 //Table data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
