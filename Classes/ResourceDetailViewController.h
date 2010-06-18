@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 @class CPMResourceDetail;
 
-@interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, MFMailComposeViewControllerDelegate, UITableViewDataSource> {
 	CPMResourceDetail *displayedResource;
 	UILabel *nameLabel;
 	UITableView *tableView;
@@ -19,6 +21,9 @@
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+- (IBAction) emailButtonPressed: (id) sender;
+- (IBAction) favoriteButtonPressed: (id) sender;
 
 - (void) updateDisplay;
 
