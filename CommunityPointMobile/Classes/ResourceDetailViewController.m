@@ -241,7 +241,6 @@
 					cell.detailTextLabel.numberOfLines = 0;
 					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;					
 				}
-				break;
 			case 1:
 				if([addressText length] > 0 && displayedResource.phone != nil && [displayedResource.phone length] > 0) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
@@ -252,7 +251,6 @@
 					cell.textLabel.text = @"phone";
 					cell.detailTextLabel.text = [displayedResource phone];
 				}
-				break;
 			case 2:
 				if(displayedResource.url != nil && [displayedResource.url length] > 0) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];

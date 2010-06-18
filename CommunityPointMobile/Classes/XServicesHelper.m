@@ -7,200 +7,79 @@
 //
 
 #import "XServicesHelper.h"
-#import "JSON/JSON.h"
+#import "XSResourceSearchOperation.h"
+#import "XSResourceDetailsOperation.h"
 #import "CPMResource.h"
+#import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
-
-NSString* encodeStringForURL(NSString* str){
-	return (NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%+#", NULL, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-}
-
-@implementation NSDictionary(urlPostEncoded)
-- (NSString *) urlPostEncoded
-{
-	NSEnumerator *keys = [self keyEnumerator];
-	NSString *currKey;
-	NSString *currObject;
-	NSMutableString *retval = [NSMutableString  stringWithCapacity: 256];
-	BOOL started = NO;
-	while ((currKey = [keys nextObject]) != nil)
-	{
-		//   Chain the key-value pairs, properly escaped, in one string.
-		if (started)
-			[retval appendString: @"&"];
-		else
-			started = YES;
-		
-		currKey = encodeStringForURL(currKey);
-		
-		// modified to handle multi-valued keys as arrays of NSString
-		if ( [[self objectForKey: currKey] isKindOfClass:[NSArray class]] )
-		{
-			NSArray *currList = [self objectForKey: currKey];
-			int i = 0;
-			for ( i = 0 ; i < [currList count] ; i++ )
-			{
-				if (i > 0) [retval appendString:@"&"];
-				currObject = encodeStringForURL([currList objectAtIndex:i]);
-				[retval appendString: [NSString stringWithFormat:@"%@=%@", currKey, currObject]];
-			}
-		}
-		else
-		{
-			currObject = encodeStringForURL([self objectForKey: currKey]);
-			[retval appendString: [NSString stringWithFormat:@"%@=%@", currKey, currObject]];
-		}
-	}
-	return retval;
-}
-@end
-
-NSArray* translateResourceArray(NSArray* jsonArray) {
-	NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity: [jsonArray count]];
-	for(NSDictionary* jsonResource in jsonArray) {
-		CPMResource* newResource = [[CPMResource alloc] initFromJsonDictionary:jsonResource];
-		[results addObject:newResource];
-		[newResource release];
-	}
-	return results;
-}
 
 @implementation XServicesHelper
 
-@synthesize delegate;
-@synthesize privateKey;
-@synthesize publicKey;
-@synthesize baseUrl;
+@synthesize searchResults, currentResource;
 
-- (NSURLConnection*) createConnectionForMethod: (NSString*)method withParameters:(NSMutableDictionary*)parameters {
-	[parameters setValue:method forKey:@"method"];
-	[parameters setValue:@"json" forKey:@"output"];
-	[parameters setValue:@"0.0.0.0" forKey:@"ip"];
-	[parameters setValue:publicKey forKey:@"key"];
+- (id) init {
+	if([super init] == nil) return nil;
+	operationQueue = [[NSOperationQueue alloc] init];
+	if(operationQueue == nil) return nil;
 	
-	return [self createConnectionForUrl:baseUrl withPostData:parameters];
-}
-
-- (NSURLConnection*) createConnectionForUrl: (NSString*)url withPostData: (NSDictionary*)postData {
-	// Only one connection per helper at a time
-	if(currentConnection != nil){
-		NSLog(@"There is a connection in progress...");
-		return nil;
-	}
+	searchResults = [[NSMutableArray alloc] init];
 	
-	responseData = [[NSMutableData data] retain];
-	
-	//Convert the postData to a string
-	NSString* paramString = [postData urlPostEncoded];
-	
-	// Open and return the connection
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	[request setHTTPMethod: @"POST"];
-	[request setHTTPBody: [NSData dataWithBytes: [paramString UTF8String] length:[paramString length]]];
-	
-	currentConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];	
-	return currentConnection;
-}
-
-- (id) initWithBaseUrl:(NSString*) baseUrl andPublicKey:(NSString*) publicKey {
-	self.baseUrl = baseUrl;
-	self.publicKey = publicKey;			
-	currentOperation = kXServicesNoOperation;
 	return self;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength: 0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[responseData appendData:data];
-	
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	// TODO: Handle error
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	// Close the connection
-	[connection release];
-	currentConnection = nil;
-	
-	//Handle the data
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	[responseData release];
-	
-	NSLog(@"%@", responseString);
-	
-	NSDictionary* results = [responseString JSONValue];
-    [responseString release];
-	
-	switch (currentOperation) {
-		case kXServicesSearchResults:
-			[delegate didReceiveSearchResults: translateResourceArray([[results objectForKey: @"resources"] objectForKey: @"results"])];
-			break;
-		case kXServicesProviderCount:
-			[delegate didReceiveProviderCount: results];
-			break;
-		case kXServicesProviderDetails:
-		{
-			CPMResourceDetail *resource = [[CPMResourceDetail alloc] initFromJsonDictionary:[results objectForKey: @"resource"]];
-			[delegate didReceiveProviderDetails: resource];
-            [resource release];
-			break;
-		}
-		default:
-			//[results release];
-			break;
-	}
-	
-	currentOperation = kXServicesNoOperation;
-	
-}
-
-
 // XServices simplified methods
 - (void)searchResourcesWithQuery:(NSString*)query {
-	// May be a bug here with this being set even if a connection is up...
-	currentOperation = kXServicesSearchResults;	
-	
-	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-	[params setValue:@"-1" forKey:@"search_history_id"];
-	[params setValue:@"50" forKey:@"limit"];	
-	[params setValue:query forKey:@"query"];
-	[self createConnectionForMethod:@"resources.search" withParameters:params];
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: 50];
+	op.delegate = self;
+	[operationQueue addOperation: op];
+	[op release];
+}
+
+- (void)loadMoreResults {
+	// TODO assert lastSearchResults != nil
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:50 andOffset:[[lastSearchResultSet offset] intValue] + [[lastSearchResultSet count] intValue] andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	op.delegate = self;
+	[operationQueue addOperation: op];
+	[op release];
 }
 
 - (void)retrieveProviderCount {
-	// May be a bug here with this being set even if a connection is up...
-	currentOperation = kXServicesProviderCount;	
-	
-	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-	
-	[self createConnectionForMethod:@"accounts.get_info" withParameters:params];
+	//[self createConnectionForMethod:@"accounts.get_info" withParameters:params];
 }
 
 - (void) retrieveResourceDetails:(NSDecimalNumber*)resourceId{
-	// May be a bug here with this being set even if a connection is up...
-	currentOperation = kXServicesProviderDetails;	
-	
-	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-
-	[params setValue:@"source" forKey:@"external"];
-	[params setValue:[resourceId stringValue] forKey:@"id"];
-	
-	[self createConnectionForMethod:@"resources.pull" withParameters:params];
+	//[self createConnectionForMethod:@"resources.pull" withParameters:params];
 }
 
-
-- (BOOL) busy {
-	return (currentConnection != nil);
+- (void)loadResourceDetails: (NSDecimalNumber*) resourceId{
+	XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
+	op.delegate = self;
+	[operationQueue addOperation: op];
+	[op release];
 }
 
-- (void) cancel {
-	if(currentConnection != nil)
-		[currentConnection cancel];
+- (void) cancelAllOperations {
+	[operationQueue cancelAllOperations];
+}
+
+- (void) operationDidComplete: (XSResponse*) response {
+	if([[response tag] isEqualToString: @"resources.search"]) {
+		if ([[[response result] offset] intValue] == 0)
+			[searchResults removeAllObjects];
+		[searchResults addObjectsFromArray: [[response result] results]];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
+	} else if([[response tag] isEqualToString: @"resources.pull"]) {
+		currentResource = [response result];
+		[currentResource retain];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
+	}
+}
+
+- (void) dealloc {
+	[operationQueue release], operationQueue = nil;
+	[searchResults release], searchResults = nil;
+	[lastSearchResultSet release], lastSearchResultSet = nil;
+	[super dealloc];
 }
 
 @end

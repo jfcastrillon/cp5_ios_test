@@ -7,41 +7,35 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#define kXServicesNoOperation		0
-#define kXServicesSearchResults		100
-#define kXServicesProviderCount		200
-#define kXServicesProviderDetails	300
+#import "XSResponse.h"
+#import "CPMSearchResultSet.h"
+#import "CPMResourceDetail.h"
 
 @interface XServicesHelper : NSObject {
-	NSString *privateKey;
-	NSString *publicKey;
-	NSString *baseUrl;
-	NSMutableData* responseData;
-	NSURLConnection *currentConnection;
-	IBOutlet id delegate;
-	int currentOperation;
+	NSOperationQueue *operationQueue;
+	
+	NSMutableArray *searchResults;
+	CPMSearchResultSet *lastSearchResultSet;
+	NSString *lastQuery;
+	
+	CPMResourceDetail *currentResource;
 }
 
-@property (nonatomic, retain) NSString *privateKey;
-@property (nonatomic, retain) NSString *publicKey;
-@property (nonatomic, retain) NSString *baseUrl;
-@property (nonatomic, retain) IBOutlet id delegate;
+@property (nonatomic, readonly) NSArray *searchResults;
+@property (nonatomic, readonly) CPMResourceDetail *currentResource;
 
-- (id) initWithBaseUrl:(NSString*) baseUrl andPublicKey:(NSString*) publicKey;
-- (NSURLConnection*) createConnectionForUrl: (NSString*)url withPostData: (NSDictionary*)postData;
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection;
+- (id) init;
 
 // XServices simplified methods
 - (void)searchResourcesWithQuery:(NSString*)query;
-- (void)retrieveProviderCount;
-- (void)retrieveResourceDetails: (NSDecimalNumber*) resourceId;
+- (void)loadMoreResults;
 
-- (BOOL) busy;
-- (void) cancel;
+- (void)retrieveProviderCount;
+
+- (void)loadResourceDetails: (NSDecimalNumber*) resourceId;
+
+- (void) operationDidComplete: (XSResponse*) response;
+
+- (void) cancelAllOperations;
 
 @end

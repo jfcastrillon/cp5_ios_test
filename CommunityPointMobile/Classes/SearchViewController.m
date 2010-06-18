@@ -9,6 +9,10 @@
 #import "SearchViewController.h"
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
+#import "CPMSearchResultSet.h"
+
+//#import "XServicesRequestOperation.h"
+//#import "XSResourceSearchOperation.h"
 #import "XServicesHelper.h"
 #import "ResourceSearchResultCell.h"
 #import "ResourceDetailViewController.h"
@@ -25,21 +29,15 @@
 	[searchBar resignFirstResponder];
 }
 
-- (IBAction) mapButtonPressed:(id)sender {
-	// TODO: Implement mapping
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mapping Performed" message:@"You tried to map results.  Unfortunately this isn't implemented yet." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	if (xsHelper == nil) {
-		xsHelper = [[XServicesHelper alloc] initWithBaseUrl:@"http://syncpoint.bowmansystems.com/xs/1.0/index.php" andPublicKey:@"B47182694EA9167F4A6320B775636039"];
-		[xsHelper setDelegate: self];
+		xsHelper = [[XServicesHelper alloc] init];
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveProviderDetails:) name:@"ResourceDetailsReceived" object: xsHelper];
 	}
-	
+		
 	//[xsHelper retrieveProviderCount];
 	//[xsHelper searchResourcesWithQuery: @"food"];
 	
@@ -68,6 +66,9 @@
 	self.searchBar = nil;
 	self.searchResults = nil;
 	self.resultsTableView = nil;
+	[operationQueue cancelAllOperations];
+	[operationQueue release];
+	operationQueue = nil;
 }
 
 
@@ -99,19 +100,19 @@
 }
 
 
-- (void) didReceiveSearchResults:(NSArray*) results {
-	self.searchResults = results;
+- (void) didReceiveSearchResults: (NSNotification*) notification {
+	self.searchResults = [xsHelper searchResults];
 	[resultsTableView setHidden: NO];
 	[busyIndicator setHidden:YES];
 	[self hideOverlay];
 	[resultsTableView reloadData];
 }
 
-- (void) didReceiveProviderDetails:(CPMResourceDetail*)resource {
+- (void) didReceiveProviderDetails:(NSNotification*) notification {
 	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
 	
 	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController setDisplayedResource: resource];
+	[detailViewController setDisplayedResource: [xsHelper currentResource]];
 	
 	
 	[detailViewController release];
@@ -173,11 +174,12 @@
 
 - (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
-	CPMResource *resource = [searchResults objectAtIndex:row];
+	CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
 	//ResourceDetailViewController *detailViewController = [[NSBundle mainBundle] loadNibNamed:@"ResourceDetailViewController" owner:self options:nil];
 	
 
-	[xsHelper retrieveResourceDetails: [resource resourceId]];
+	// Change to other view before loading this?
+	[xsHelper loadResourceDetails: [resource resourceId]];
 	
 	
 }
