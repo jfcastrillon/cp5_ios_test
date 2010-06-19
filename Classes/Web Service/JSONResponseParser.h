@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ResponseParser.h"
 
+
 @interface JSONResponseParser : NSObject <ResponseParser> {
 
 }
