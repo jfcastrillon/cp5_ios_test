@@ -40,4 +40,6 @@
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary;
 
+- (NSString*) addressString;
+
 @end
