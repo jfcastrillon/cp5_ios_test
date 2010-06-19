@@ -11,8 +11,6 @@
 #import "CPMResourceDetail.h"
 #import "CPMSearchResultSet.h"
 
-//#import "XServicesRequestOperation.h"
-//#import "XSResourceSearchOperation.h"
 #import "XServicesHelper.h"
 #import "ResourceSearchResultCell.h"
 #import "ResourceDetailViewController.h"
@@ -24,23 +22,20 @@
 @synthesize busyIndicator;
 @synthesize dimmingOverlay;
 @synthesize searchResults;
+@synthesize xsHelper;
 
 - (IBAction) backgroundTap:(id)sender {
 	[searchBar resignFirstResponder];
 }
 
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	if (xsHelper == nil) {
-		xsHelper = [[XServicesHelper alloc] init];
-		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
-		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveProviderDetails:) name:@"ResourceDetailsReceived" object: xsHelper];
-	}
-		
-	//[xsHelper retrieveProviderCount];
-	//[xsHelper searchResourcesWithQuery: @"food"];
+	// Get singleton instance of the helper
+	xsHelper = [XServicesHelper sharedInstance];
 	
+	// Observe the notifications for completed search results
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
+		
     [super viewDidLoad];
 }
 
@@ -63,6 +58,7 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	self.searchBar = nil;
 	self.searchResults = nil;
 	self.resultsTableView = nil;
@@ -152,10 +148,14 @@
 - (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
 	CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
-	//ResourceDetailViewController *detailViewController = [[NSBundle mainBundle] loadNibNamed:@"ResourceDetailViewController" owner:self options:nil];
-	
 
 	// Change to other view before loading this?
+	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
+	
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	
+	[detailViewController release];
+	
 	[xsHelper loadResourceDetails: [resource resourceId]];
 	
 	
@@ -181,11 +181,6 @@
 	[sender resignFirstResponder];
 	[self hideOverlay];
 }
-
-/*- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-	[self beginSearchForQuery: searchBar.text];
-	[searchBar resignFirstResponder];
-}*/
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)sender {
 	[self beginSearchForQuery: sender.text];

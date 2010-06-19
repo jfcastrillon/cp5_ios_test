@@ -27,6 +27,7 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView* busyIndicator;
 @property (nonatomic, retain) IBOutlet UIView* dimmingOverlay;
 @property (nonatomic, retain) NSArray* searchResults;
+@property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
 
 - (IBAction) backgroundTap:(id)sender;
 
