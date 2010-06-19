@@ -22,6 +22,6 @@
 @property (nonatomic, copy) NSDecimalNumber *offset;
 @property (nonatomic, copy) NSDecimalNumber *count;
 @property (nonatomic, copy) NSDecimalNumber *totalCount;
-@property (nonatomic, retain) NSArray *results;
+@property (nonatomic, copy) NSArray *results;
 
 @end

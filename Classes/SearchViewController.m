@@ -141,30 +141,7 @@
 	CPMResource* resource = [searchResults objectAtIndex:row];
 	cell.nameLabel.text = [resource name];
 	
-	//Build address line
-	NSMutableString *addressLine = [[NSMutableString alloc] init];
-	NSMutableArray *addressParts = [[NSMutableArray alloc] init];
-
-	if(resource.address1 != nil)
-		[addressParts addObject: [resource address1]];
-	if(resource.city != nil)
-		[addressParts addObject: [resource city]];
-	if(resource.state != nil)
-		[addressParts addObject: [resource state]];
-	
-	for(int i = 0; i < [addressParts count]; i++) {
-		NSString* part = [addressParts objectAtIndex:i];
-		if(part != nil) {
-			part = [part stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-			if([part length] > 0) {
-				[addressLine appendString: part];
-				if(i+1 < [addressParts count])
-					[addressLine appendString: @", "];
-			}
-		}
-	}
-	
-	cell.addressLabel.text = addressLine;
+	cell.addressLabel.text = [resource addressString];
 	return cell;
 }
 

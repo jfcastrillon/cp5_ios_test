@@ -42,4 +42,33 @@
 	return self;
 }
 
+- (NSString*) addressString {
+	NSMutableString *addressLine = [[NSMutableString alloc] init];
+	NSMutableArray *addressParts = [[NSMutableArray alloc] init];
+	
+	if(address1 != nil &&
+	   [address1 length] > 0)
+		[addressLine appendFormat: @"%@\n", address1];
+	if(city != nil)
+		[addressParts addObject: city];
+	if(state != nil)	
+		[addressParts addObject: state];
+	
+	for(int i = 0; i < [addressParts count]; i++) {
+		NSString* part = [addressParts objectAtIndex:i];
+		if(part != nil) {
+			part = [part stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			if([part length] > 0) {
+				[addressLine appendString: part];
+				if(i+1 < [addressParts count])
+					[addressLine appendString: @", "];
+			}
+		}
+	}
+	
+	[addressLine autorelease];
+	[addressParts release];
+	return addressLine;
+}
+
 @end

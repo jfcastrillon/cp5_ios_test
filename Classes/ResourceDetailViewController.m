@@ -34,40 +34,10 @@
 		[displayedResource release];
 		displayedResource = newResource;
 		
-		//Build address line
-		NSMutableString *addressLine = [[NSMutableString alloc] init];
-		NSMutableArray *addressParts = [[NSMutableArray alloc] init];
-		
-		if([displayedResource address1] != nil &&
-		   [[displayedResource address1] length] > 0)
-			[addressLine appendFormat: @"%@\n", [displayedResource address1]];
-		if([displayedResource address2] != nil &&
-		   [[displayedResource address2] length] > 0)
-			[addressLine appendFormat: @"%@\n", [displayedResource address2]];
-		
-		if(displayedResource.city != nil)
-			[addressParts addObject: [displayedResource city]];
-		if(displayedResource.state != nil)	
-			[addressParts addObject: [displayedResource state]];
-		if(displayedResource.zipcode != nil)	
-			[addressParts addObject: [[displayedResource zipcode] stringValue]];
-		
-		for(int i = 0; i < [addressParts count]; i++) {
-			NSString* part = [addressParts objectAtIndex:i];
-			if(part != nil) {
-				part = [part stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-				if([part length] > 0) {
-					[addressLine appendString: part];
-					if(i+1 < [addressParts count])
-						[addressLine appendString: @", "];
-				}
-			}
+		if([displayedResource primaryAddress] != nil) {
+		    addressText = [[displayedResource primaryAddress] multilineStringValue];
+		    [addressText retain];
 		}
-		
-		[addressText release];
-		addressText = addressLine;
-		[addressText retain];
-		[addressParts release];
 		
 		[displayedResource retain];
 		[self updateDisplay];
@@ -239,7 +209,8 @@
 					cell.textLabel.text = @"address";
 					cell.detailTextLabel.text = addressText;
 					cell.detailTextLabel.numberOfLines = 0;
-					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;					
+					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+					return cell;
 				}
 			case 1:
 				if([addressText length] > 0 && displayedResource.phone != nil && [displayedResource.phone length] > 0) {
@@ -250,6 +221,7 @@
 					
 					cell.textLabel.text = @"phone";
 					cell.detailTextLabel.text = [displayedResource phone];
+					return cell;
 				}
 			case 2:
 				if(displayedResource.url != nil && [displayedResource.url length] > 0) {
@@ -261,8 +233,8 @@
 					cell.textLabel.text = @"Website";
 					cell.textLabel.textAlignment = UITextAlignmentCenter;
 					cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
+					return cell;
 				}
-				break;
 		}
 	} else if (indexPath.section == DETAILS_SECTION) {
 		

@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "CPMResource.h"
+#import "CPMProviderAddress.h"
 
 @interface CPMResourceDetail : CPMResource {
 	NSString		*description;
 	NSDictionary	*services;
+	CPMProviderAddress *primaryAddress;
+	NSArray			*addresses;
 }
 
-@property (nonatomic, copy) NSString* description;
-@property (nonatomic, retain) NSDictionary* services;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSDictionary *services;
+@property (nonatomic, retain) CPMProviderAddress *primaryAddress;
+@property (nonatomic, copy) NSArray *addresses;
 
 @end
