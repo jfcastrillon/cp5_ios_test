@@ -20,7 +20,7 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel, tableView;
+@synthesize nameLabel, tableView, buttonContainer, loadingOverlay;
 
 
 @dynamic displayedResource;
@@ -42,6 +42,10 @@
 		[displayedResource retain];
 		[self updateDisplay];
 	}
+}
+
+- (void) didReceiveResourceDetails: (NSNotification*) notification {
+	[self setDisplayedResource: [xsHelper currentResource]];
 }
 
 - (IBAction) favoriteButtonPressed: (id) sender {
@@ -67,7 +71,14 @@
 }
 
 - (void) updateDisplay {
-	nameLabel.text = displayedResource.name;
+	if(displayedResource != nil){
+		nameLabel.text = displayedResource.name;
+
+		[nameLabel setHidden: NO];
+		[buttonContainer setHidden: NO];
+		[tableView reloadData];
+    	[loadingOverlay setHidden: YES];
+	}
 }
 
 /*
@@ -80,12 +91,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	xsHelper = [XServicesHelper sharedInstance];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveResourceDetails:) name:@"ResourceDetailsReceived" object: xsHelper];
     [super viewDidLoad];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -105,6 +118,11 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver: self];
+	
+	self.tableView = nil;
+	self.buttonContainer = nil;
+	self.nameLabel = nil;
 }
 
 
@@ -140,7 +158,11 @@
 //Table data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+	if(displayedResource == nil) {
+		return 0;
+	} else {
+		return 2;
+	}
 }
 
 

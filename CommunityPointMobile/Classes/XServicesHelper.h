@@ -38,4 +38,6 @@
 
 - (void) cancelAllOperations;
 
++ (XServicesHelper*) sharedInstance;
+
 @end

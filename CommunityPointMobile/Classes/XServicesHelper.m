@@ -82,4 +82,47 @@
 	[super dealloc];
 }
 
+// Below implements the singleton pattern for this class (from examples online)
+
+static XServicesHelper* sharedHelperInstance = nil;
+
++ (XServicesHelper*) sharedInstance {
+	@synchronized(self){
+		if (sharedHelperInstance == nil) {
+			sharedHelperInstance = [[self alloc] init];
+		}
+	}
+	return sharedHelperInstance;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    @synchronized(self) {
+        if (sharedHelperInstance == nil) {
+            sharedHelperInstance = [super allocWithZone:zone];
+            return sharedHelperInstance;
+        }
+    }
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
+}
+
+- (id)retain {
+    return self;
+}
+
+- (unsigned)retainCount {
+    return UINT_MAX;  //never let this be released;
+}
+
+- (void)release {
+    //prevent release
+}
+
+- (id)autorelease {
+    return self;
+}
+
 @end
