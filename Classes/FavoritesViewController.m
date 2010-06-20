@@ -7,9 +7,20 @@
 //
 
 #import "FavoritesViewController.h"
+#import "CPMResource.h"
+#import "CPMResourceDetail.h"
+#import "CPMSearchResultSet.h"
+
+//#import "XServicesRequestOperation.h"
+//#import "XSResourceSearchOperation.h"
+#import "XServicesHelper.h"
+#import "ResourceSearchResultCell.h"
+#import "ResourceDetailViewController.h"
 
 
 @implementation FavoritesViewController
+@synthesize favoritesTableView;
+@synthesize favorites;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -21,12 +32,20 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	// Get singleton instance of the helper
+	xsHelper = [XServicesHelper sharedInstance];
+	
+	self.favorites = [xsHelper favorites];
+
     [super viewDidLoad];
 }
-*/
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.favoritesTableView reloadData];
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -46,10 +65,74 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver: self];
+	self.favorites = nil;
+	self.favoritesTableView = nil;
+	[operationQueue cancelAllOperations];
+	[operationQueue release];
+	operationQueue = nil;
 }
 
+- (void) didReceiveProviderDetails:(NSNotification*) notification {
+	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
+	
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController setDisplayedResource: [xsHelper currentResource]];
+	
+	[detailViewController release];
+}
+
+// UITableViewDataSource
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+	if(favorites == nil)
+		return 0;
+	else 
+		return [favorites count];		
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+	static NSString *ResourceSearchResultCellIdentifier = @"ResourceSearchResultCell";
+	
+	ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
+	if(cell == nil){
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
+		for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
+			cell = (ResourceSearchResultCell *)oneObject;
+	}
+	
+	NSUInteger row = [indexPath row];
+
+	CPMResource* resource = [[CPMResource alloc] initFromJsonDictionary:[favorites objectAtIndex:row]];
+	cell.nameLabel.text = [resource name];
+	cell.addressLabel.text = [resource addressString];
+	
+	[resource release];
+	
+	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
+	return kTableViewRowHeight;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	NSUInteger row = [indexPath row];
+	CPMResource* resource = [[CPMResource alloc] initFromJsonDictionary:[favorites objectAtIndex:row]];
+	
+	// Change to other view before loading this?
+	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
+	
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	
+	[detailViewController release];
+	
+	[xsHelper loadResourceDetails: [resource resourceId]];
+	
+	[resource release];
+}
 
 - (void)dealloc {
+	[favorites release];
     [super dealloc];
 }
 

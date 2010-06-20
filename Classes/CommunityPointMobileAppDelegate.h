@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class XServicesHelper;
 @interface CommunityPointMobileAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UITabBarController *tabBarController;
+	XServicesHelper *xsHelper;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
 
 @end
 

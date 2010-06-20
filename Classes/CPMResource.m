@@ -42,6 +42,40 @@
 	return self;
 }
 
+- (NSDictionary*) dictionaryValue {
+	NSMutableDictionary * value;
+	
+	// allocate an NSMutableDictionary to hold our Resource
+    value = [[NSMutableDictionary alloc] init];
+
+	[value setObject:resourceId forKey:@"id"];
+    [value setObject:providerId forKey:@"provider_id"];
+    [value setObject:name forKey:@"name"];
+	
+	if (address1)
+		[value setObject:address1 forKey:@"address1"];
+	if (address2)
+		[value setObject:address2 forKey:@"address2"];
+	if (city)
+		[value setObject:city forKey:@"city"];
+	if (state)
+		[value setObject:state forKey:@"state"];
+	if (zipcode)
+		[value setObject:zipcode forKey:@"zipcode"];
+	if (url)
+		[value setObject:url forKey:@"url"];
+	if (phone)
+		[value setObject:phone forKey:@"phone"];
+	if (latitude)
+		[value setObject:latitude forKey:@"latitude"];
+	if (longitude)
+		[value setObject:longitude forKey:@"longitude"];
+	
+	[value autorelease];
+
+	return value;
+}
+
 - (NSString*) addressString {
 	NSMutableString *addressLine = [[NSMutableString alloc] init];
 	NSMutableArray *addressParts = [[NSMutableArray alloc] init];
