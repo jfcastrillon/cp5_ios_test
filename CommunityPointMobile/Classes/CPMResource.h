@@ -39,6 +39,7 @@
 @property (nonatomic, copy) NSDecimalNumber *longitude;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary;
+- (NSDictionary*) dictionaryValue;
 
 - (NSString*) addressString;
 

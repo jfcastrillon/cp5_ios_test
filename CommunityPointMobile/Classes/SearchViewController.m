@@ -104,16 +104,6 @@
 	[resultsTableView reloadData];
 }
 
-- (void) didReceiveProviderDetails:(NSNotification*) notification {
-	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
-	
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController setDisplayedResource: [xsHelper currentResource]];
-	
-	
-	[detailViewController release];
-}
-
 // UITableViewDataSource
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
 	if(searchResults == nil)
@@ -145,7 +135,7 @@
 	return kTableViewRowHeight;
 }
 
-- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
 	CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
 
@@ -157,8 +147,6 @@
 	[detailViewController release];
 	
 	[xsHelper loadResourceDetails: [resource resourceId]];
-	
-	
 }
 
 - (void) beginSearchForQuery: (NSString*) query {

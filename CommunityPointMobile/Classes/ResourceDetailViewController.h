@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
-#import <MessageUI/MFMailComposeViewController.h>
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, MFMailComposeViewControllerDelegate, UITableViewDataSource> {
+@interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, UIActionSheetDelegate, UITableViewDataSource> {
 	CPMResourceDetail *displayedResource;
 	UILabel *nameLabel;
 	UIView *buttonContainer;
@@ -28,7 +26,7 @@
 @property (nonatomic, retain) IBOutlet UIView *buttonContainer;
 @property (nonatomic, retain) IBOutlet UIView *loadingOverlay;
 
-- (IBAction) emailButtonPressed: (id) sender;
+- (IBAction) shareButtonPressed: (id) sender;
 - (IBAction) favoriteButtonPressed: (id) sender;
 
 - (void) updateDisplay;

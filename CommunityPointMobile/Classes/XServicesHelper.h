@@ -15,6 +15,7 @@
 	NSOperationQueue *operationQueue;
 	
 	NSMutableArray *searchResults;
+	NSMutableArray *favorites;
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
 	
@@ -22,6 +23,7 @@
 }
 
 @property (nonatomic, readonly) NSArray *searchResults;
+@property (nonatomic, readonly) NSMutableArray *favorites;
 @property (nonatomic, readonly) CPMResourceDetail *currentResource;
 
 - (id) init;

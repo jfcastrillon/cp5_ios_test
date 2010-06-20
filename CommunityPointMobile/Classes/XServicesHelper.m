@@ -15,7 +15,7 @@
 
 @implementation XServicesHelper
 
-@synthesize searchResults, currentResource;
+@synthesize searchResults, currentResource, favorites;
 
 - (id) init {
 	if([super init] == nil) return nil;
@@ -23,6 +23,9 @@
 	if(operationQueue == nil) return nil;
 	
 	searchResults = [[NSMutableArray alloc] init];
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
+	NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
+	favorites = tmpArray;
 	
 	return self;
 }
@@ -78,6 +81,7 @@
 - (void) dealloc {
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;
+	[favorites release], favorites = nil;
 	[lastSearchResultSet release], lastSearchResultSet = nil;
 	[super dealloc];
 }

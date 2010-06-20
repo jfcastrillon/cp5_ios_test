@@ -17,6 +17,9 @@
 #define LOCATION_SECTION 0
 #define ACTION_SECTION 2
 
+#define SHARE_EMAIL_BUTTON 0
+#define SHARE_SMS_BUTTON 1
+
 @implementation ResourceDetailViewController
 
 
@@ -49,25 +52,15 @@
 }
 
 - (IBAction) favoriteButtonPressed: (id) sender {
-	// TODO: Implement favorites
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Favorite Performed" message:@"You tried to add a favorite.  Unfortunately this isn't implemented yet." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+	NSDictionary* newFavorite = [displayedResource dictionaryValue];
+	[[xsHelper favorites] addObject:newFavorite];
 }
 
-- (IBAction) emailButtonPressed: (id) sender {
-	MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
-	mail.modalPresentationStyle = UIModalPresentationPageSheet;
-	mail.mailComposeDelegate = self;
-	
-	[mail setSubject:@"CommunityPoint Mobile Resource Information"];
-	
-	NSString *emailBody = [NSString stringWithFormat:@"<b>%@</b><br /><br /><b>Address:</b> %@<br /><b>Phone:</b><br />", 
-						   [displayedResource name], addressText, [displayedResource phone]];
-    [mail setMessageBody:emailBody isHTML:YES];
-	
-	[self presentModalViewController:mail animated:YES];
-	[mail release];				 
+- (IBAction) shareButtonPressed: (id) sender {
+	UIActionSheet *shareTypeSheet = [[UIActionSheet alloc] initWithTitle:@"Share Resource Using:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
+													   otherButtonTitles:@"Email", @"SMS", nil, nil];
+	[shareTypeSheet showInView:self.view];
+	[shareTypeSheet release];
 }
 
 - (void) updateDisplay {
@@ -132,27 +125,6 @@
 	[nameLabel release];
 	[tableView release];
     [super dealloc];
-}
-	 
-// Email resource
-// Dismisses the email composition interface when users tap Cancel or Send.
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
-{   
-	// Notifies users about errors associated with the interface
-	switch (result)
-	{
-		case MFMailComposeResultCancelled:
-			break;
-		case MFMailComposeResultSaved:
-			break;
-		case MFMailComposeResultSent:
-			break;
-		case MFMailComposeResultFailed:
-			break;
-		default:
-			break;
-	}
-	[self dismissModalViewControllerAnimated:YES];
 }
 	 
 //Table data source
@@ -326,5 +298,17 @@
 	}
 }
 
+// Share Resource
+- (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case SHARE_EMAIL_BUTTON:
+			break;
+		case SHARE_SMS_BUTTON:
+			break;
+		default:
+			// They picked cancel
+			return;
+	}
+}
 
 @end
