@@ -23,10 +23,28 @@
 	if(operationQueue == nil) return nil;
 	
 	searchResults = [[NSMutableArray alloc] init];
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
+
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+	NSString *documentsPath = [paths objectAtIndex:0]; 
+	
+	// <Application Home>/Documents/Favorites.plist 
+	NSString *path = [documentsPath stringByAppendingPathComponent:@"Favorites.plist"];
 	NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
-	[favorites release];
-	favorites = tmpArray;
+	
+	// If the tmpArray is nil, that means that this is the first time the
+	// application has launched since install. In that case we need to copy
+	// the template Favorites.plist from the Resources directory into the Documents
+	// directory.
+	if (!tmpArray) {
+		NSString *installpath = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
+		NSMutableArray *installArray = [[NSMutableArray alloc] initWithContentsOfFile:installpath];
+		[favorites release];
+		favorites = installArray;
+		[favorites writeToFile:installpath atomically:YES];
+	} else {
+		[favorites release];
+		favorites = tmpArray;
+	}
 	
 	return self;
 }

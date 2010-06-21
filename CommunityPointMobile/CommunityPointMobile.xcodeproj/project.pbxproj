@@ -48,7 +48,7 @@
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
 		40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289EB1172C97D0095F032 /* CPMapAnnotation.m */; };
-		6DDDA8E911CD82EC00153B75 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DDDA8E811CD82EC00153B75 /* Favorites.plist */; };
+		6D28588C11CF08FE00068EE0 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D28588B11CF08FE00068EE0 /* Favorites.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +124,7 @@
 		40D289E41172C65F0095F032 /* ResourceMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceMapViewController.xib; sourceTree = "<group>"; };
 		40D289EA1172C97D0095F032 /* CPMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMapAnnotation.h; sourceTree = "<group>"; };
 		40D289EB1172C97D0095F032 /* CPMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMapAnnotation.m; sourceTree = "<group>"; };
-		6DDDA8E811CD82EC00153B75 /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
+		6D28588B11CF08FE00068EE0 /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,7 +196,7 @@
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
 				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
-				6DDDA8E811CD82EC00153B75 /* Favorites.plist */,
+				6D28588B11CF08FE00068EE0 /* Favorites.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -339,6 +339,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Bowman Systems, LLC";
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CommunityPointMobile" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
@@ -365,7 +368,7 @@
 				40D289D21172C3840095F032 /* Icon.png in Resources */,
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
-				6DDDA8E911CD82EC00153B75 /* Favorites.plist in Resources */,
+				6D28588C11CF08FE00068EE0 /* Favorites.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
