@@ -44,6 +44,7 @@
 		40A35B8011CC189800B01A49 /* XSResourceDetailsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */; };
 		40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1844F11718E1500D937B1 /* CPMResourceDetail.m */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; };
+		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40D2897A1172BA2E0095F032 /* DescriptionTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */; };
 		40D2897E1172BA570095F032 /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */; };
 		40D289D21172C3840095F032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D289D11172C3840095F032 /* Icon.png */; };
@@ -118,6 +119,8 @@
 		40B1844E11718E1500D937B1 /* CPMResourceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResourceDetail.h; path = Classes/CPMResourceDetail.h; sourceTree = "<group>"; };
 		40B1844F11718E1500D937B1 /* CPMResourceDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMResourceDetail.m; path = Classes/CPMResourceDetail.m; sourceTree = "<group>"; };
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
+		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
 		40D289781172BA2E0095F032 /* DescriptionTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionTextViewCell.h; sourceTree = "<group>"; };
 		40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionTextViewCell.m; sourceTree = "<group>"; };
 		40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				401A13A911CC48A600CBD979 /* CPMProviderAddress.h */,
 				401A13AA11CC48A600CBD979 /* CPMProviderAddress.m */,
 				40F0AC9B11CFBE76009104D7 /* CPMBoolean.h */,
+				40CEBC9711CFCB2D00932D73 /* CPMService.h */,
+				40CEBC9811CFCB2D00932D73 /* CPMService.m */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				40A35A8C11CC084500B01A49 /* XSResponse.m in Sources */,
 				40A35B8011CC189800B01A49 /* XSResourceDetailsOperation.m in Sources */,
 				401A13AB11CC48A600CBD979 /* CPMProviderAddress.m in Sources */,
+				40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

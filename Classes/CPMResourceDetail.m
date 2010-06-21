@@ -8,6 +8,7 @@
 
 #import "CPMResourceDetail.h"
 #import "CPMResource.h"
+#import "CPMService.h"
 #import "Util.h"
 
 @implementation CPMResourceDetail
@@ -53,6 +54,53 @@
 		}
 	}
 	
+	NSMutableDictionary *servicesDict = [[NSMutableDictionary alloc] init];
+	
+	NSMutableArray *primaryArray = [[NSMutableArray alloc] init];
+	NSMutableArray *secondaryArray = [[NSMutableArray alloc] init];
+	NSMutableArray *occasionalArray = [[NSMutableArray alloc] init];
+	
+	[servicesDict setObject:primaryArray forKey:@"primary"];
+	[servicesDict setObject:secondaryArray forKey:@"secondary"];
+	[servicesDict setObject:occasionalArray forKey:@"occasional"];
+	
+	self.services = servicesDict;
+	[servicesDict release], servicesDict = nil;
+	
+	
+	if(nullFix([dictionary objectForKey:@"services"]) != nil) {
+		NSDictionary* primaryServicesJson = nullFix([dictionary valueForKeyPath: @"services.1"]);
+		if (primaryServicesJson != nil) {
+			for (NSDictionary* serviceDict in [primaryServicesJson allValues]) {
+				CPMService* service = [[CPMService alloc] initFromJsonDictionary: serviceDict];
+				[primaryArray addObject: service];
+				[service release];
+			}
+		}
+		
+		NSDictionary* secondaryServicesJson = nullFix([dictionary valueForKeyPath: @"services.2"]);
+		if (secondaryServicesJson != nil) {
+			for (NSDictionary* serviceDict in [secondaryServicesJson allValues]) {
+				CPMService* service = [[CPMService alloc] initFromJsonDictionary: serviceDict];
+				[secondaryArray addObject: service];
+				[service release];
+			}
+		}
+		
+		NSDictionary* occasionalServicesJson = nullFix([dictionary valueForKeyPath: @"services.3"]);
+		if (occasionalServicesJson != nil) {
+			for (NSDictionary* serviceDict in [occasionalServicesJson allValues]) {
+				CPMService* service = [[CPMService alloc] initFromJsonDictionary: serviceDict];
+				[occasionalArray addObject: service];
+				[service release];
+			}
+		}
+	}
+	
+	[primaryArray release], primaryArray = nil;
+	[secondaryArray release], secondaryArray = nil;
+	[occasionalArray release], occasionalArray = nil;
+												
 	self.hours = nullFix([dictionary objectForKey:@"hours"]);
 	self.eligibility = nullFix([dictionary objectForKey:@"eligibility"]);
 	self.programFees = nullFix([dictionary objectForKey:@"programFees"]);

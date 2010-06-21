@@ -38,8 +38,8 @@
 @property (nonatomic, copy) NSString* languages;
 @property (nonatomic, copy) NSString* eligibility;
 @property (nonatomic, copy) NSString* intakeProcedure;
-@property (nonatomic, retain) CPMBoolean* accessibilityFlag;
-@property (nonatomic, retain) CPMBoolean* shelterFlag;
+@property (nonatomic, copy) CPMBoolean* accessibilityFlag;
+@property (nonatomic, copy) CPMBoolean* shelterFlag;
 @property (nonatomic, copy) NSString* shelterRequirements;
 
 @end
