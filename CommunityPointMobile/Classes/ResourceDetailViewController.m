@@ -312,11 +312,13 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == LOCATION_SECTION) {
 		if(indexPath.section == LOCATION_SECTION && indexPath.row == urlCellIndex){
-			NSLog(@"%@", [displayedResource url]);
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: [displayedResource url]]];
+			NSString *url = [displayedResource url];
+			if(![[displayedResource url] hasPrefix: @"http://"]){
+				url = [NSString stringWithFormat:@"http://%@", [displayedResource url]];
+			}
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 		} else if (indexPath.section == LOCATION_SECTION && indexPath.row == phoneCellIndex) {
 			NSString *url = [NSString stringWithFormat:@"tel:%@%@%@", [[displayedResource primaryPhone] areaCode], [[displayedResource primaryPhone] prefix], [[displayedResource primaryPhone] line]];
-			NSLog(@"%@", url);
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];	
 		} else if(indexPath.section == LOCATION_SECTION && indexPath.row == addressCellIndex) {
 			if(displayedResource.latitude != nil) {
@@ -329,6 +331,8 @@
 			}
 		}
 	}
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 // Share Resource
