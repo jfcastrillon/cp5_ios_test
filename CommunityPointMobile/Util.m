@@ -16,6 +16,15 @@ id nullFix(id value) {
 		return value;
 }
 
+NSString* buildSMS(CPMResourceDetail* resource) {
+	NSMutableString* sms = [[NSMutableString alloc] initWithFormat:@"%@\n", [resource name]];
+	
+
+	[sms autorelease];
+	
+	return sms;
+}
+
 NSString* buildEmail(CPMResourceDetail* resource) {
 	NSMutableString* email = [[NSMutableString alloc] initWithString:@"<html><head><title>"];
 	[email appendFormat: @"%@</title></head><body>", [resource name]];

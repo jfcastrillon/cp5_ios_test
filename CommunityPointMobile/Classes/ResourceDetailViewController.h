@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <MessageUI/MFMessageComposeViewController.h>
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
+@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 	CPMResourceDetail *displayedResource;
 	UIButton *favoriteButton;
 	UIButton *shareButton;
@@ -34,8 +35,10 @@
 - (IBAction) favoriteButtonPressed: (id) sender;
 
 - (void) emailResource;
+- (void) smsResource;
 - (void) updateDisplay;
 - (void) displayComposerSheet;
 - (void) launchMailAppOnDevice;
+- (void) displaySmsSheet;
 
 @end

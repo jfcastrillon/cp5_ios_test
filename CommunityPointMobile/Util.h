@@ -12,3 +12,4 @@
 id nullFix(id value);
 
 NSString* buildEmail(CPMResourceDetail* resource);
+NSString* buildSMS(CPMResourceDetail* resource);
