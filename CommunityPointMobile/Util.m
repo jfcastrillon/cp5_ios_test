@@ -121,13 +121,13 @@ NSString* buildEmail(CPMResourceDetail* resource) {
 	// Handicap Accessible?
 	if ([[resource accessibilityFlag] boolValue]) {
 		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Handicap Accessible?</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource accessibilityFlag]];
+		[email appendString:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">Yes</td></tr>"];
 	}
 	
 	// Shelter?
 	if ([[resource shelterFlag] boolValue]) {
 		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter?</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource shelterFlag]];
+		[email appendString:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">Yes</td></tr>"];
 		
 		// Shelter Requirements
 		if ([resource shelterRequirements] != nil && [[resource shelterRequirements] length] > 0) {
