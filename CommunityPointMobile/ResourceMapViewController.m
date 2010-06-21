@@ -33,8 +33,8 @@
 - (void) viewDidAppear:(BOOL)animated {
 	MKCoordinateRegion region;
 	MKCoordinateSpan span;
-	span.latitudeDelta=0.025;
-	span.longitudeDelta=0.025;
+	span.latitudeDelta=DEFAULT_MAP_LATITUDE_DELTA_IN_DEGREES;
+	span.longitudeDelta=DEFAULT_MAP_LONGITUDE_DELTA_IN_DEGREES;
 	
 	CLLocationCoordinate2D location;
 	
