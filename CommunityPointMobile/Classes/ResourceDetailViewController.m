@@ -332,8 +332,33 @@
 
 // Email a Resource
 - (void)emailResource {
-	// TODO: Check if the user has mail accounts set up
-	// before allowing mail to be sent.
+	// This can run on devices running iPhone OS 2.0 or later  
+    // The MFMailComposeViewController class is only available in iPhone OS 3.0 or later. 
+    // So, we must verify the existence of the above class and provide a workaround for devices running 
+    // earlier versions of the iPhone OS. 
+    // We display an email composition interface if MFMailComposeViewController exists and the device can send emails.
+    // We launch the Mail application on the device, otherwise.
+    
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    if (mailClass != nil)
+    {
+        // We must always check whether the current device is configured for sending emails
+        if ([mailClass canSendMail])
+        {
+            [self displayComposerSheet];
+        }
+        else
+        {
+            [self launchMailAppOnDevice];
+        }
+    }
+    else
+    {
+        [self launchMailAppOnDevice];
+    }
+}
+
+- (void)displayComposerSheet {
 	MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
 	mail.modalPresentationStyle = UIModalPresentationPageSheet;
 	mail.mailComposeDelegate = self;
@@ -345,6 +370,17 @@
 	
 	[self presentModalViewController:mail animated:YES];
 	[mail release];	
+}
+
+// Launches the Mail application on the device.
+- (void)launchMailAppOnDevice {
+    NSString *subject = @"mailto:?subject=CommunityPoint Resource Information";
+    NSString *body = buildEmail(displayedResource);
+    
+    NSString *email = [NSString stringWithFormat:@"%@&body=%@", subject, body];
+    email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 // Dismisses the email composition interface when users tap Cancel or Send.
