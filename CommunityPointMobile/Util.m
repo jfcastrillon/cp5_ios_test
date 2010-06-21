@@ -17,8 +17,22 @@ id nullFix(id value) {
 }
 
 NSString* buildSMS(CPMResourceDetail* resource) {
-	NSMutableString* sms = [[NSMutableString alloc] initWithFormat:@"%@\n", [resource name]];
-	
+	NSMutableString* sms = [[NSMutableString alloc] initWithFormat:@"%@\n\n", [resource name]];
+	if ([resource phone] != nil && [[resource phone] length] > 0) {
+		[sms appendFormat:@"%@; ", [resource phone]];
+	}
+	if ([resource address1] != nil && [[resource address1] length] > 0) {
+		[sms appendFormat:@"%@, ", [resource address1]];
+	}
+	if ([resource city] != nil && [[resource city] length] > 0) {
+		[sms appendFormat:@"%@, ", [resource city]];
+	}
+	if ([resource state] != nil && [[resource state] length] > 0) {
+		[sms appendFormat:@"%@ ", [resource state]];
+	}
+	if ([resource zipcode] != nil && [[resource zipcode] length] > 0) {
+		[sms appendFormat:@"%@\n", [resource zipcode]];
+	}
 
 	[sms autorelease];
 	
