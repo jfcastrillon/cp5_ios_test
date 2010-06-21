@@ -101,6 +101,11 @@
 - (void)viewDidLoad {
 	xsHelper = [XServicesHelper sharedInstance];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveResourceDetails:) name:@"ResourceDetailsReceived" object: xsHelper];
+	
+	addressCellIndex = UINT_MAX;
+	phoneCellIndex = UINT_MAX;
+	urlCellIndex = UINT_MAX;
+	
     [super viewDidLoad];
 }
 
@@ -221,8 +226,10 @@
 					cell.detailTextLabel.text = addressText;
 					cell.detailTextLabel.numberOfLines = 0;
 					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+					addressCellIndex = row;
 					return cell;
 				}
+
 			case 1:
 				if([addressText length] > 0 && displayedResource.phone != nil && [displayedResource.phone length] > 0) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
@@ -232,8 +239,9 @@
 					
 					cell.textLabel.text = @"phone";
 					cell.detailTextLabel.text = [displayedResource phone];
+					phoneCellIndex = row;
 					return cell;
-				}
+				} 
 			case 2:
 				if(displayedResource.url != nil && [displayedResource.url length] > 0) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
@@ -244,6 +252,7 @@
 					cell.textLabel.text = @"Website";
 					cell.textLabel.textAlignment = UITextAlignmentCenter;
 					cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
+					urlCellIndex = row;
 					return cell;
 				}
 		}
@@ -301,16 +310,23 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == LOCATION_SECTION && indexPath.row == 2){
-		 [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [displayedResource url]]];
-	} else if(indexPath.section == LOCATION_SECTION && indexPath.row == 0) {
-		if(displayedResource.latitude != nil) {
-			ResourceMapViewController *mapViewController = [[ResourceMapViewController alloc] initWithNibName:@"ResourceMapViewController" bundle:[NSBundle mainBundle]];
+	if (indexPath.section == LOCATION_SECTION) {
+		if(indexPath.section == LOCATION_SECTION && indexPath.row == urlCellIndex){
+			NSLog(@"%@", [displayedResource url]);
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: [displayedResource url]]];
+		} else if (indexPath.section == LOCATION_SECTION && indexPath.row == phoneCellIndex) {
+			NSString *url = [NSString stringWithFormat:@"tel:%@%@%@", [[displayedResource primaryPhone] areaCode], [[displayedResource primaryPhone] prefix], [[displayedResource primaryPhone] line]];
+			NSLog(@"%@", url);
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];	
+		} else if(indexPath.section == LOCATION_SECTION && indexPath.row == addressCellIndex) {
+			if(displayedResource.latitude != nil) {
+				ResourceMapViewController *mapViewController = [[ResourceMapViewController alloc] initWithNibName:@"ResourceMapViewController" bundle:[NSBundle mainBundle]];
 
-			[self.navigationController pushViewController:mapViewController animated:YES];
-			mapViewController.displayedResource = displayedResource;
+				[self.navigationController pushViewController:mapViewController animated:YES];
+				mapViewController.displayedResource = displayedResource;
 		
-			[mapViewController release];
+				[mapViewController release];
+			}
 		}
 	}
 }
