@@ -22,6 +22,10 @@
 	UIView *loadingOverlay;
 	NSString *addressText;
 	XServicesHelper* xsHelper;
+	
+	NSUInteger addressCellIndex;
+	NSUInteger phoneCellIndex;
+	NSUInteger urlCellIndex;
 }
 
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;
