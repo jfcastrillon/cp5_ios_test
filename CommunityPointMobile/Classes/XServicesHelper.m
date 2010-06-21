@@ -98,6 +98,27 @@
 	[dictionary setObject: [resource name] forKey: @"name"];
 	[dictionary setObject: [resource addressString] forKey: @"address"];
 	[favorites addObject: dictionary];
+	[dictionary release];
+}
+
+
+// Updates the cached information about the favorite (i.e., when it is reloaded from the server)
+- (void) updateFavoriteFromResource:(CPMResource*) resource {
+	NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+	[dictionary setObject: [resource resourceId] forKey: @"resourceId"];
+	[dictionary setObject: [resource name] forKey: @"name"];
+	[dictionary setObject: [resource addressString] forKey: @"address"];
+	
+	for(NSUInteger i = 0; i < [favorites count]; i++){
+		NSDictionary* favorite = [favorites objectAtIndex: i];
+		if([[favorite objectForKey:@"resourceId"] isEqual: [resource resourceId]]) {
+			[favorites replaceObjectAtIndex: i withObject:dictionary];
+			break;
+		}
+	}
+	
+	[dictionary release];
+	
 }
 
 - (void) removeResourceFromFavorites:(CPMResource*) resource {
@@ -132,6 +153,11 @@
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
 		currentResource = [response result];
+		
+		// Update the favorite info while we have fresh data
+		if([self isResourceInFavorites: currentResource])
+			[self updateFavoriteFromResource: currentResource];
+		
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
 	}

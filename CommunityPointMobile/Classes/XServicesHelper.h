@@ -42,6 +42,7 @@
 
 - (void) addResourceToFavorites: (CPMResource*) resource;
 - (BOOL) isResourceInFavorites:(CPMResource*) resource;
+- (void) updateFavoriteFromResource:(CPMResource*) resource;
 - (void) removeResourceFromFavorites:(CPMResource*) resource;
 - (void) removeFavoriteAtIndex:(NSUInteger) index;
 - (void) persistFavorites;
