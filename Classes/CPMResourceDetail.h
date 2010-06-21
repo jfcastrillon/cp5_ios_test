@@ -10,6 +10,7 @@
 #import "CPMBoolean.h"
 #import "CPMResource.h"
 #import "CPMProviderAddress.h"
+#import "CPMProviderTelephone.h"
 
 @interface CPMResourceDetail : CPMResource {
 	NSString		*description;
@@ -17,6 +18,8 @@
 	
 	CPMProviderAddress *primaryAddress;
 	NSArray			*addresses;
+	CPMProviderTelephone *primaryPhone;
+	NSArray			*phones;
 	
 	NSString* hours;
 	NSString* programFees;
@@ -30,8 +33,11 @@
 
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSDictionary *services;
+
 @property (nonatomic, retain) CPMProviderAddress *primaryAddress;
 @property (nonatomic, copy) NSArray *addresses;
+@property (nonatomic, copy) NSArray *phones;
+@property (nonatomic, retain) CPMProviderTelephone* primaryPhone;
 
 @property (nonatomic, copy) NSString* hours;
 @property (nonatomic, copy) NSString* programFees;

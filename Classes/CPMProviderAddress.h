@@ -41,6 +41,7 @@ typedef enum CPMProviderAddressType {
 @property (nonatomic, copy) NSString* country;
 @property (nonatomic, copy) NSString* landmarks;
 
+- (id) initFromJsonDictionary: (NSDictionary*) dictionary;
 - (NSString*) multilineStringValue;
 - (NSString*) stringValue;
 
