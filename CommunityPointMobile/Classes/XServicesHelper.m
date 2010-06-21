@@ -84,6 +84,17 @@
 	[operationQueue cancelAllOperations];
 }
 
+
+- (void) persistFavorites {
+	// Save the Favorites
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+	NSString *documentsPath = [paths objectAtIndex:0];
+	
+	// <Application Home>/Documents/Favorites.plist 
+	NSString *path = [documentsPath stringByAppendingPathComponent:@"Favorites.plist"];
+	[favorites writeToFile:path atomically:YES];
+}
+
 - (void) operationDidComplete: (XSResponse*) response {
 	if([[response tag] isEqualToString: @"resources.search"]) {
 		if ([[[response result] offset] intValue] == 0)

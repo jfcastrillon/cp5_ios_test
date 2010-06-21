@@ -36,13 +36,7 @@
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
 
-	// Save the Favorites
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-	NSString *documentsPath = [paths objectAtIndex:0];
-	
-	// <Application Home>/Documents/Favorites.plist 
-	NSString *path = [documentsPath stringByAppendingPathComponent:@"Favorites.plist"];
-	[[xsHelper favorites] writeToFile:path atomically:YES];
+	[xsHelper persistFavorites];
 }
 
 - (void)dealloc {
