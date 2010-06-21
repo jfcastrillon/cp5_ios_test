@@ -52,6 +52,7 @@
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
 		40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289EB1172C97D0095F032 /* CPMapAnnotation.m */; };
+		6DBF843511D00ADB00FC71E4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DBF843411D00ADB00FC71E4 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		40D289EA1172C97D0095F032 /* CPMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMapAnnotation.h; sourceTree = "<group>"; };
 		40D289EB1172C97D0095F032 /* CPMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMapAnnotation.m; sourceTree = "<group>"; };
 		40F0AC9B11CFBE76009104D7 /* CPMBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMBoolean.h; sourceTree = "<group>"; };
+		6DBF843411D00ADB00FC71E4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +209,7 @@
 				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
+				6DBF843411D00ADB00FC71E4 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
+				6DBF843511D00ADB00FC71E4 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
