@@ -25,6 +25,7 @@
 	searchResults = [[NSMutableArray alloc] init];
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
 	NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithContentsOfFile:path];
+	[favorites release];
 	favorites = tmpArray;
 	
 	return self;
