@@ -163,6 +163,10 @@
 	}
 }
 
+- (void) operationDidFailWithError: (NSError*) error {
+	NSLog(@"%@", error);
+}
+
 - (void) dealloc {
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;

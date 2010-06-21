@@ -131,6 +131,8 @@ NSString* encodeStringForURL(NSString* str){
 		executing = YES;
 		_urlConnection = [self createConnectionForAction: _action withParameters: _params];
 		[_urlConnection start];
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
+		
 		[self didChangeValueForKey:@"isExecuting"];
 	} else {
 		// If it's already been cancelled, mark the operation as finished.
@@ -168,12 +170,15 @@ NSString* encodeStringForURL(NSString* str){
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];	
 	self.lastError = error;
-	[delegate performSelectorOnMainThread:@selector(requestDidFail:) withObject:self waitUntilDone:NO];
+	[delegate performSelectorOnMainThread:@selector(requestDidFailWithError:) withObject:error waitUntilDone:NO];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"Retrieved %d bytes", [_responseData length]);
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];	
 	
 	//Parse the data
 	result = [_parser parseData: _responseData];

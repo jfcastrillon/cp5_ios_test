@@ -37,6 +37,7 @@
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId;
 
 - (void) operationDidComplete: (XSResponse*) response;
+- (void) operationDidFailWithError: (NSError*) error;
 
 - (void) cancelAllOperations;
 
