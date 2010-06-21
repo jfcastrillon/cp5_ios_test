@@ -103,7 +103,7 @@
 
 	NSDictionary* favorite = [favorites objectAtIndex:row];
 	cell.nameLabel.text = [favorite objectForKey:@"name"];
-	cell.addressLabel.text = [favorite objectForKey:@"addressString"];
+	cell.addressLabel.text = [favorite objectForKey:@"address"];
 	
 	return cell;
 }

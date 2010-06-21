@@ -18,6 +18,8 @@
 @synthesize primaryAddress;
 @synthesize addresses;
 
+@synthesize phones, primaryPhone;
+
 @synthesize hours, programFees, languages, eligibility, intakeProcedure, accessibilityFlag, shelterRequirements, shelterFlag;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
@@ -25,6 +27,7 @@
 	self.description = nullFix([dictionary objectForKey: @"description"]);
 	self.services = nullFix([dictionary objectForKey: @"services"]);
 	
+	//Extract addresses
 	NSDictionary* addressDict = nullFix([dictionary objectForKey: @"addresses"]);
 	if(addressDict != nil) {
 		NSDictionary* primaryAddressDict = nullFix([addressDict objectForKey:@"primary"]);
@@ -54,6 +57,33 @@
 		}
 	}
 	
+	//Extract phone numbers
+	NSDictionary* phoneDict = nullFix([dictionary objectForKey: @"phones"]);
+	if(phoneDict != nil) {
+		NSDictionary* primaryPhoneDict = nullFix([phoneDict objectForKey:@"primary"]);
+		CPMProviderTelephone *tempPrimaryPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: primaryPhoneDict];
+		self.primaryPhone = tempPrimaryPhone;
+		
+		// Copy these fields over to fill in the super class fields
+		self.phone = [tempPrimaryPhone fullNumber];
+		
+		[tempPrimaryPhone release];
+				
+		if(nullFix([phoneDict objectForKey:@"bin"]) != nil){
+			NSArray *phoneBinArray = [[phoneDict objectForKey:@"bin"] allValues];
+			NSMutableArray *phoneBin = [[NSMutableArray alloc] initWithCapacity: [phoneBinArray count]];
+			for(NSDictionary *phoneDict in phoneBinArray) {
+				CPMProviderTelephone *tempPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: phoneDict];
+				[phoneBin addObject: tempPhone];
+				[tempPhone release];
+			}
+			self.phones = phoneBin;
+			[phoneBin release];
+		}
+	}
+	
+	
+	//Extract services
 	NSMutableDictionary *servicesDict = [[NSMutableDictionary alloc] init];
 	
 	NSMutableArray *primaryArray = [[NSMutableArray alloc] init];
@@ -66,7 +96,6 @@
 	
 	self.services = servicesDict;
 	[servicesDict release], servicesDict = nil;
-	
 	
 	if(nullFix([dictionary objectForKey:@"services"]) != nil) {
 		NSDictionary* primaryServicesJson = nullFix([dictionary valueForKeyPath: @"services.1"]);

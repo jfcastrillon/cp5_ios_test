@@ -45,6 +45,7 @@
 		40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1844F11718E1500D937B1 /* CPMResourceDetail.m */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
+		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
 		40D2897A1172BA2E0095F032 /* DescriptionTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */; };
 		40D2897E1172BA570095F032 /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */; };
 		40D289D21172C3840095F032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D289D11172C3840095F032 /* Icon.png */; };
@@ -121,6 +122,8 @@
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
+		40CEBCFD11CFFC1A00932D73 /* CPMProviderTelephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMProviderTelephone.h; sourceTree = "<group>"; };
+		40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMProviderTelephone.m; sourceTree = "<group>"; };
 		40D289781172BA2E0095F032 /* DescriptionTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionTextViewCell.h; sourceTree = "<group>"; };
 		40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionTextViewCell.m; sourceTree = "<group>"; };
 		40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 				40F0AC9B11CFBE76009104D7 /* CPMBoolean.h */,
 				40CEBC9711CFCB2D00932D73 /* CPMService.h */,
 				40CEBC9811CFCB2D00932D73 /* CPMService.m */,
+				40CEBCFD11CFFC1A00932D73 /* CPMProviderTelephone.h */,
+				40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				40A35B8011CC189800B01A49 /* XSResourceDetailsOperation.m in Sources */,
 				401A13AB11CC48A600CBD979 /* CPMProviderAddress.m in Sources */,
 				40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */,
+				40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
