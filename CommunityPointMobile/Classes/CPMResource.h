@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Util.h"
-
 
 @interface CPMResource : NSObject {
 	NSDecimalNumber	*resourceId;

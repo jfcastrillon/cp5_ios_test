@@ -11,6 +11,7 @@
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
 #import "DescriptionTextViewCell.h"
+#import "Util.h"
 
 
 #define DETAILS_SECTION 1
@@ -319,6 +320,7 @@
 - (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case SHARE_EMAIL_BUTTON:
+			[self emailResource];
 			break;
 		case SHARE_SMS_BUTTON:
 			break;
@@ -326,6 +328,43 @@
 			// They picked cancel
 			return;
 	}
+}
+
+// Email a Resource
+- (void)emailResource {
+	// TODO: Check if the user has mail accounts set up
+	// before allowing mail to be sent.
+	MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+	mail.modalPresentationStyle = UIModalPresentationPageSheet;
+	mail.mailComposeDelegate = self;
+	
+	[mail setSubject:@"CommunityPoint Resource Information"];
+
+	NSString *emailBody = buildEmail(displayedResource);
+    [mail setMessageBody:emailBody isHTML:YES];
+	
+	[self presentModalViewController:mail animated:YES];
+	[mail release];	
+}
+
+// Dismisses the email composition interface when users tap Cancel or Send.
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{   
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            break;
+        case MFMailComposeResultSaved:
+            break;
+        case MFMailComposeResultSent:
+            break;
+        case MFMailComposeResultFailed:
+            break;
+        default:
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

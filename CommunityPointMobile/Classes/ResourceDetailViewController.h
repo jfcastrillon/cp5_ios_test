@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate> {
+@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 	CPMResourceDetail *displayedResource;
 	UIButton *favoriteButton;
 	UIButton *shareButton;
@@ -31,6 +33,7 @@
 - (IBAction) shareButtonPressed: (id) sender;
 - (IBAction) favoriteButtonPressed: (id) sender;
 
+- (void) emailResource;
 - (void) updateDisplay;
 
 @end
