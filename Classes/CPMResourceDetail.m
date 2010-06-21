@@ -8,7 +8,7 @@
 
 #import "CPMResourceDetail.h"
 #import "CPMResource.h"
-
+#import "Util.h"
 
 @implementation CPMResourceDetail
 
