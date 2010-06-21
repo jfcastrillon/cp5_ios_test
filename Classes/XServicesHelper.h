@@ -40,6 +40,8 @@
 
 - (void) cancelAllOperations;
 
+- (void) persistFavorites;
+
 + (XServicesHelper*) sharedInstance;
 
 @end
