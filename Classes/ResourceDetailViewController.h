@@ -35,5 +35,7 @@
 
 - (void) emailResource;
 - (void) updateDisplay;
+- (void) displayComposerSheet;
+- (void) launchMailAppOnDevice;
 
 @end
