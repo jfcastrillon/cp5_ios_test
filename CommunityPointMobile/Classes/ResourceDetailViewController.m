@@ -53,8 +53,7 @@
 }
 
 - (IBAction) favoriteButtonPressed: (id) sender {
-	NSDictionary* newFavorite = [displayedResource dictionaryValue];
-	[[xsHelper favorites] addObject:newFavorite];
+	[xsHelper addResourceToFavorites: displayedResource];
 	[self updateDisplay];
 }
 
@@ -75,7 +74,7 @@
     	[loadingOverlay setHidden: YES];
 		
 		// If the resource is a favorite, hide the "Add to Favorites" button
-		if ([[xsHelper favorites] containsObject:[displayedResource dictionaryValue]]) {
+		if ([xsHelper isResourceInFavorites: displayedResource]) {
 			[favoriteButton setHidden: YES];
 			[shareButton setFrame:CGRectMake(10, 0, 302, 37)];
 		} 

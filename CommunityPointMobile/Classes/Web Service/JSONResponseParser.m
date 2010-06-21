@@ -20,7 +20,9 @@
 	//Handle the data
 	NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
-	return [dataString JSONValue];
+	id result = [dataString JSONValue];
+	
+	return result;
 }
 
 @end

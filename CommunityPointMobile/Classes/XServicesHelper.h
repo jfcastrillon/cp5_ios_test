@@ -40,6 +40,10 @@
 
 - (void) cancelAllOperations;
 
+- (void) addResourceToFavorites: (CPMResource*) resource;
+- (BOOL) isResourceInFavorites:(CPMResource*) resource;
+- (void) removeResourceFromFavorites:(CPMResource*) resource;
+- (void) removeFavoriteAtIndex:(NSUInteger) index;
 - (void) persistFavorites;
 
 + (XServicesHelper*) sharedInstance;

@@ -70,9 +70,6 @@
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	self.favorites = nil;
 	self.favoritesTableView = nil;
-	[operationQueue cancelAllOperations];
-	[operationQueue release];
-	operationQueue = nil;
 }
 
 - (void) didReceiveProviderDetails:(NSNotification*) notification {
@@ -104,11 +101,9 @@
 	
 	NSUInteger row = [indexPath row];
 
-	CPMResource* resource = [[CPMResource alloc] initFromJsonDictionary:[favorites objectAtIndex:row]];
-	cell.nameLabel.text = [resource name];
-	cell.addressLabel.text = [resource addressString];
-	
-	[resource release];
+	NSDictionary* favorite = [favorites objectAtIndex:row];
+	cell.nameLabel.text = [favorite objectForKey:@"name"];
+	cell.addressLabel.text = [favorite objectForKey:@"addressString"];
 	
 	return cell;
 }
@@ -119,7 +114,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
-	CPMResource* resource = [[CPMResource alloc] initFromJsonDictionary:[favorites objectAtIndex:row]];
+	NSDictionary* favorite = [favorites objectAtIndex:row];
 	
 	// Change to other view before loading this?
 	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
@@ -128,16 +123,15 @@
 	
 	[detailViewController release];
 	
-	[xsHelper loadResourceDetails: [resource resourceId]];
-	
-	[resource release];
+	[xsHelper loadResourceDetails: [favorite objectForKey:@"resourceId"]];
+
 }
 
 // Override to support editing the table view.
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		// Delete the row from the data source.
-		[[xsHelper favorites] removeObjectAtIndex:indexPath.row];
+		[xsHelper removeFavoriteAtIndex:indexPath.row];
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	} else if (editingStyle == UITableViewCellEditingStyleInsert) {
 	}

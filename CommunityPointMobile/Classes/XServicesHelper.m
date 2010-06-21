@@ -84,6 +84,35 @@
 	[operationQueue cancelAllOperations];
 }
 
+- (BOOL) isResourceInFavorites:(CPMResource*) resource {
+	for(NSDictionary* favorite in favorites) {
+		if([[favorite objectForKey:@"resourceId"] isEqual: [resource resourceId]])
+			return YES;
+	}
+	return NO;
+}
+
+- (void) addResourceToFavorites:(CPMResource*) resource{
+	NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+	[dictionary setObject: [resource resourceId] forKey: @"resourceId"];
+	[dictionary setObject: [resource name] forKey: @"name"];
+	[dictionary setObject: [resource addressString] forKey: @"address"];
+	[favorites addObject: dictionary];
+}
+
+- (void) removeResourceFromFavorites:(CPMResource*) resource {
+	for(NSUInteger i = 0; i < [favorites count]; i++){
+		NSDictionary* favorite = [favorites objectAtIndex: i];
+		if([[favorite objectForKey:@"resourceId"] isEqual: [resource resourceId]]) {
+			[favorites removeObjectAtIndex: i];
+			return;
+		}
+	}
+}
+
+- (void) removeFavoriteAtIndex: (NSUInteger) index {
+	[favorites removeObjectAtIndex: index];
+}
 
 - (void) persistFavorites {
 	// Save the Favorites
