@@ -34,12 +34,14 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	[super viewDidLoad];
+
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
 	
 	self.favorites = [xsHelper favorites];
-
-    [super viewDidLoad];
+	
+	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -129,6 +131,16 @@
 	[xsHelper loadResourceDetails: [resource resourceId]];
 	
 	[resource release];
+}
+
+// Override to support editing the table view.
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		// Delete the row from the data source.
+		[[xsHelper favorites] removeObjectAtIndex:indexPath.row];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	} else if (editingStyle == UITableViewCellEditingStyleInsert) {
+	}
 }
 
 - (void)dealloc {

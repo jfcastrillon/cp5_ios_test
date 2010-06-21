@@ -12,7 +12,7 @@
 
 @class XServicesHelper;
 @class ResourceDetailViewController;
-@interface FavoritesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface FavoritesViewController : UITableViewController {
 	XServicesHelper *xsHelper;
 	NSOperationQueue *operationQueue;
 	NSMutableArray* favorites;

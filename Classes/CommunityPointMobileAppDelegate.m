@@ -16,7 +16,6 @@
 @synthesize xsHelper;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	
 	[window addSubview: tabBarController.view];
     [window makeKeyAndVisible];
 	
@@ -25,8 +24,8 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+	// Save the Favorites
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
-	
 	[[xsHelper favorites] writeToFile:path atomically:YES];
 }
 
@@ -36,7 +35,5 @@
 	[xsHelper release];
     [super dealloc];
 }
-
-
 
 @end
