@@ -17,7 +17,6 @@
 	UILabel *nameLabel;
 	UIView *buttonContainer;
 	UIView *loadingOverlay;
-	UITableView *tableView;
 	NSString *addressText;
 	XServicesHelper* xsHelper;
 }
@@ -26,7 +25,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, retain) IBOutlet UIButton *shareButton;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIView *buttonContainer;
 @property (nonatomic, retain) IBOutlet UIView *loadingOverlay;
 

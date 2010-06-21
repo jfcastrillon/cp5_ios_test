@@ -23,7 +23,7 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel, tableView, buttonContainer, loadingOverlay, favoriteButton, shareButton;
+@synthesize nameLabel, buttonContainer, loadingOverlay, favoriteButton, shareButton;
 
 
 @dynamic displayedResource;
@@ -70,7 +70,7 @@
 
 		[nameLabel setHidden: NO];
 		[buttonContainer setHidden: NO];
-		[tableView reloadData];
+		[self.tableView reloadData];
     	[loadingOverlay setHidden: YES];
 		
 		// If the resource is a favorite, hide the "Add to Favorites" button
@@ -125,9 +125,12 @@
 	// e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	
-	self.tableView = nil;
-	self.buttonContainer = nil;
 	self.nameLabel = nil;
+	self.buttonContainer = nil;
+	self.favoriteButton = nil;
+	self.shareButton = nil;
+	
+	[super viewDidUnload];
 }
 
 
@@ -135,7 +138,6 @@
 	[displayedResource release];
 	[addressText release];
 	[nameLabel release];
-	[tableView release];
 	[buttonContainer release];
 	[favoriteButton release];
 	[shareButton release];
