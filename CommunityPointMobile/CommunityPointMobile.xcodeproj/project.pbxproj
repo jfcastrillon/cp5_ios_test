@@ -196,7 +196,6 @@
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
 				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
-				40547BB91169337300F608E7 /* ResourceSearchResultCell.xib */,
 				6DDDA8E811CD82EC00153B75 /* Favorites.plist */,
 			);
 			name = Resources;
@@ -301,6 +300,7 @@
 				4057AC021166A87B004882F6 /* SearchViewController.xib */,
 				40547BB61169335200F608E7 /* ResourceSearchResultCell.h */,
 				40547BB71169335200F608E7 /* ResourceSearchResultCell.m */,
+				40547BB91169337300F608E7 /* ResourceSearchResultCell.xib */,
 				40547D69116984AD00F608E7 /* ResourceDetailViewController.h */,
 				40547D6A116984AD00F608E7 /* ResourceDetailViewController.m */,
 				40547D6B116984AD00F608E7 /* ResourceDetailViewController.xib */,
