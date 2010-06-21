@@ -7,6 +7,7 @@
 //
 
 #import "Util.h"
+#import "CPMService.h"
 
 id nullFix(id value) {
 	if((NSNull*)value == [NSNull null])
@@ -31,70 +32,84 @@ NSString* buildEmail(CPMResourceDetail* resource) {
 	}
 	[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.2em; padding: 0; margin: 0;\">%@ %@ %@</p>", [resource city], [resource state], [resource zipcode]];
 	
-	// TODO: Phone
+	// Phone
+	if ([resource phone] != nil) {
+		[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.2em; padding: 0; margin: 0;\">%@</p>", [resource phone]];
+	}
 	
 	[email appendString:@"</div>"];
 	
-	// TODO: Link
+	// Link
+	[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.2em; padding: 0; margin: 0 0 20px 0;\"><a href=\"%@\" style=\"color: #339933;\">%@</a></p>", [resource url], [resource url]];
 	
 	// Description
 	[email appendString:@"<div style=\"padding: 0; margin: 0 0 20px 0;\">"];
-	[email appendString:@"<p style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 1.1em; font-weight: bold; padding: 0; margin: 0 0 5px 0; color: #333;\">Description:</p>"];
-	[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 1.0em; padding: 0; margin: 0; color: #333;\">%@</p></div>", [resource description]];
+	[email appendString:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.1em; font-weight: bold; padding: 0; margin: 0 0 5px 0; color: #333;\">Description:</p>"];
+	[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.0em; padding: 0; margin: 0; color: #333;\">%@</p></div>", [resource description]];
 
-	// TODO: Service Codes
+	// Service Codes
+	[email appendString:@"<div style=\"padding: 0; margin: 0 0 20px 0;\">"];
+	[email appendString:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.1em; font-weight: bold; padding: 0; margin: 0 0 5px 0; color: #333;\">Primary Services Offered:</p>"];
+	[email appendString:@"<div style=\"padding: 0; margin: 0 0 0 20px;\">"];
+	for (CPMService* service in [[resource services] objectForKey:@"primary"]) {
+		// Skip the 'Y' service code tree
+		if (![[service code] hasPrefix:@"Y"]) {
+			[email appendFormat:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333;\">%@</p>", [service name]];
+		}
+	}
+	[email appendString:@"</div></div>"];
 	
 	// General information
 	[email appendString:@"<div style=\"padding: 0; margin: 0 0 20px 0;\">"];
-	[email appendString:@"<p style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 1.1em; font-weight: bold; padding: 0; margin: 0 0 5px 0; color: #333;\">General Information:</p>"];
+	[email appendString:@"<p style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 1.1em; font-weight: bold; padding: 0; margin: 0 0 5px 0; color: #333;\">General Information:</p>"];
 	[email appendString:@"<div style=\"padding: 0; margin: 0 0 0 20px;\">"];
 	[email appendString:@"<table style=\"width: 100%; border-collapse: collapse; border-spacing: 0; padding: 0; margin: 0;\" cellpadding=\"0\" cellspacing=\"0\">"];
 	
 	// Hours
 	if ([resource hours] != nil && [[resource hours] length] > 0) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Hours</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource hours]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Hours</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource hours]];
 	}
 	
 	// Program Fees
 	if ([resource programFees] != nil && [[resource programFees] length] > 0) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Program Fees</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource programFees]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Program Fees</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource programFees]];
 	}
 	
 	// Languages
 	if ([resource languages] != nil && [[resource languages] length] > 0) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Languages</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource languages]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Languages</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource languages]];
 	}
 	
 	// Eligibility
 	if ([resource eligibility] != nil && [[resource eligibility] length] > 0) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Eligibility</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource eligibility]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Eligibility</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource eligibility]];
 	}
 	
 	// Intake Procedure
 	if ([resource intakeProcedure] != nil && [[resource intakeProcedure] length] > 0) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Intake Process</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource intakeProcedure]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Intake Process</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource intakeProcedure]];
 	}
 	
 	// Handicap Accessible?
 	if ([[resource accessibilityFlag] boolValue]) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Handicap Accessible?</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource accessibilityFlag]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Handicap Accessible?</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource accessibilityFlag]];
 	}
 	
 	// Shelter?
 	if ([[resource shelterFlag] boolValue]) {
-		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter?</td>"];
-		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource shelterFlag]];
+		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter?</td>"];
+		[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource shelterFlag]];
 		
 		// Shelter Requirements
 		if ([resource shelterRequirements] != nil && [[resource shelterRequirements] length] > 0) {
-			[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter Requirements</td>"];
-			[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-seriff; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource shelterRequirements]];
+			[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter Requirements</td>"];
+			[email appendFormat:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">%@</td></tr>", [resource shelterRequirements]];
 		}
 	}
 	
