@@ -12,6 +12,8 @@
 
 @interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, UIActionSheetDelegate, UITableViewDataSource> {
 	CPMResourceDetail *displayedResource;
+	UIButton *favoriteButton;
+	UIButton *shareButton;
 	UILabel *nameLabel;
 	UIView *buttonContainer;
 	UIView *loadingOverlay;
@@ -21,6 +23,8 @@
 }
 
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;
+@property (nonatomic, retain) IBOutlet UIButton *favoriteButton;
+@property (nonatomic, retain) IBOutlet UIButton *shareButton;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIView *buttonContainer;
