@@ -25,7 +25,11 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 	// Save the Favorites
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+	NSString *documentsPath = [paths objectAtIndex:0];
+
+	// <Application Home>/Documents/Favorites.plist 
+	NSString *path = [documentsPath stringByAppendingPathComponent:@"Favorites.plist"];
 	[[xsHelper favorites] writeToFile:path atomically:YES];
 }
 
