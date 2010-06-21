@@ -14,7 +14,6 @@
 @class ResourceDetailViewController;
 @interface FavoritesViewController : UITableViewController {
 	XServicesHelper *xsHelper;
-	NSOperationQueue *operationQueue;
 	NSMutableArray* favorites;
 	UITableView* favoritesTableView;
 }
