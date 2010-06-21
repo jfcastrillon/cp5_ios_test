@@ -17,6 +17,8 @@
 @synthesize primaryAddress;
 @synthesize addresses;
 
+@synthesize hours, programFees, languages, eligibility, intakeProcedure, accessibilityFlag, shelterRequirements, shelterFlag;
+
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	[super initFromJsonDictionary: dictionary];
 	self.description = nullFix([dictionary objectForKey: @"description"]);
@@ -33,7 +35,7 @@
 		self.address2 = [tempPrimaryAddress line2];
 		self.city = [tempPrimaryAddress city];
 		self.state = [tempPrimaryAddress province];
-		self.zipcode = [NSDecimalNumber decimalNumberWithString: [tempPrimaryAddress postalcode]];
+		self.zipcode = [tempPrimaryAddress postalcode];
 		
 		[tempPrimaryAddress release];
 		
@@ -50,6 +52,16 @@
 			[addressBin release];
 		}
 	}
+	
+	self.hours = nullFix([dictionary objectForKey:@"hours"]);
+	self.eligibility = nullFix([dictionary objectForKey:@"eligibility"]);
+	self.programFees = nullFix([dictionary objectForKey:@"programFees"]);
+	self.languages = nullFix([dictionary objectForKey:@"languages"]);
+	self.intakeProcedure = nullFix([dictionary objectForKey:@"intake_procedure"]);
+	self.shelterRequirements = nullFix([dictionary objectForKey:@"shelter_requirements"]);
+	
+	self.accessibilityFlag = nullFix([dictionary objectForKey:@"accessibility_flag"]);
+	self.shelterFlag = nullFix([dictionary objectForKey:@"shelter_flag"]);
 	
 	return self;
 }

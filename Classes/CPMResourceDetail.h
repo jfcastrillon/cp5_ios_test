@@ -7,19 +7,39 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CPMBoolean.h"
 #import "CPMResource.h"
 #import "CPMProviderAddress.h"
 
 @interface CPMResourceDetail : CPMResource {
 	NSString		*description;
 	NSDictionary	*services;
+	
 	CPMProviderAddress *primaryAddress;
 	NSArray			*addresses;
+	
+	NSString* hours;
+	NSString* programFees;
+	NSString* languages;
+	NSString* eligibility;
+	NSString* intakeProcedure;
+	CPMBoolean* accessibilityFlag;
+	CPMBoolean* shelterFlag;
+	NSString* shelterRequirements;
 }
 
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSDictionary *services;
 @property (nonatomic, retain) CPMProviderAddress *primaryAddress;
 @property (nonatomic, copy) NSArray *addresses;
+
+@property (nonatomic, copy) NSString* hours;
+@property (nonatomic, copy) NSString* programFees;
+@property (nonatomic, copy) NSString* languages;
+@property (nonatomic, copy) NSString* eligibility;
+@property (nonatomic, copy) NSString* intakeProcedure;
+@property (nonatomic, retain) CPMBoolean* accessibilityFlag;
+@property (nonatomic, retain) CPMBoolean* shelterFlag;
+@property (nonatomic, copy) NSString* shelterRequirements;
 
 @end

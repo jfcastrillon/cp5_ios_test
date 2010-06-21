@@ -33,7 +33,18 @@
 	self.address2 = nullFix([dictionary objectForKey:@"address2"]);
 	self.city = nullFix([dictionary objectForKey:@"city"]);
 	self.state = nullFix([dictionary objectForKey:@"state"]);
-	self.zipcode = nullFix([dictionary objectForKey:@"zipcode"]);
+	
+	// XServices returns ZIP as an integer for some reason
+	NSObject* tmpZip = nullFix([dictionary objectForKey:@"zipcode"]);
+	if(tmpZip != nil) {
+		if([tmpZip isKindOfClass: [NSDecimalNumber class]]) {
+			self.zipcode = [(NSDecimalNumber*)tmpZip stringValue];
+		} else {
+			self.zipcode = (NSString*) tmpZip;
+		}
+	}
+	
+	
 	self.url = nullFix([dictionary objectForKey:@"url"]);
 	self.phone = nullFix([dictionary objectForKey:@"phone"]);
 	self.latitude = nullFix([dictionary objectForKey:@"latitude"]);
