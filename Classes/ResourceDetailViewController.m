@@ -136,6 +136,7 @@
 	[addressText release];
 	[nameLabel release];
 	[tableView release];
+	[buttonContainer release];
 	[favoriteButton release];
 	[shareButton release];
     [super dealloc];

@@ -10,7 +10,7 @@
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UITableViewController <UITableViewDelegate, UIActionSheetDelegate, UITableViewDataSource> {
+@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate> {
 	CPMResourceDetail *displayedResource;
 	UIButton *favoriteButton;
 	UIButton *shareButton;
