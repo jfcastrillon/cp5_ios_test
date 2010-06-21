@@ -23,7 +23,7 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel, tableView, buttonContainer, loadingOverlay;
+@synthesize nameLabel, tableView, buttonContainer, loadingOverlay, favoriteButton, shareButton;
 
 
 @dynamic displayedResource;
@@ -54,6 +54,7 @@
 - (IBAction) favoriteButtonPressed: (id) sender {
 	NSDictionary* newFavorite = [displayedResource dictionaryValue];
 	[[xsHelper favorites] addObject:newFavorite];
+	[self updateDisplay];
 }
 
 - (IBAction) shareButtonPressed: (id) sender {
@@ -71,6 +72,17 @@
 		[buttonContainer setHidden: NO];
 		[tableView reloadData];
     	[loadingOverlay setHidden: YES];
+		
+		// If the resource is a favorite, hide the "Add to Favorites" button
+		if ([[xsHelper favorites] containsObject:[displayedResource dictionaryValue]]) {
+			[favoriteButton setHidden: YES];
+			[shareButton setFrame:CGRectMake(10, 0, 302, 37)];
+		} 
+		// Otherwise, show the "Add to Favorites" button
+		else {
+			[favoriteButton setHidden: NO];
+			[shareButton setFrame:CGRectMake(10, 0, 142, 37)];
+		}
 	}
 }
 
@@ -124,6 +136,8 @@
 	[addressText release];
 	[nameLabel release];
 	[tableView release];
+	[favoriteButton release];
+	[shareButton release];
     [super dealloc];
 }
 	 
