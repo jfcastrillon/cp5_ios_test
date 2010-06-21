@@ -86,6 +86,8 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+	[searchBar setShowsScopeBar:NO];
+	[searchBar sizeToFit];
     [super viewWillAppear:animated];
 }
 
@@ -157,6 +159,8 @@
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)sender {
 	[sender setShowsCancelButton:YES animated:YES];
+	[sender setShowsScopeBar:YES];
+	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = NO;
 	resultsTableView.scrollEnabled = NO;
 	[self showOverlay];
@@ -164,6 +168,8 @@
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)sender {
 	[sender setShowsCancelButton:NO animated:YES];
+	[sender setShowsScopeBar:NO];
+	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
 	[sender resignFirstResponder];
@@ -173,6 +179,8 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar *)sender {
 	[self beginSearchForQuery: sender.text];
 	[sender setShowsCancelButton:NO animated:YES];
+	[sender setShowsScopeBar:NO];
+	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
 	[sender resignFirstResponder];
