@@ -111,7 +111,7 @@
 	if(searchResults == nil)
 		return 0;
 	else 
-		return [searchResults count];		
+		return [searchResults count] + 1;		
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -125,11 +125,18 @@
 	}
 	
 	NSUInteger row = [indexPath row];
-
-	CPMResource* resource = [searchResults objectAtIndex:row];
-	cell.nameLabel.text = [resource name];
 	
-	cell.addressLabel.text = [resource addressString];
+	if (row == [searchResults count]) {
+		int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
+		cell.nameLabel.text = @"Load More Results";
+		cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
+		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
+	} else {
+		CPMResource* resource = [searchResults objectAtIndex:row];
+		cell.nameLabel.text = [resource name];
+		cell.addressLabel.text = [resource addressString];
+		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+	}
 	return cell;
 }
 
@@ -139,16 +146,23 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
-	CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
-
-	// Change to other view before loading this?
-	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
 	
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	
-	[detailViewController release];
-	
-	[xsHelper loadResourceDetails: [resource resourceId]];
+	if (row == [[xsHelper searchResults] count]) {
+		[busyIndicator setHidden:NO];
+		[self showOverlay];
+		[xsHelper loadMoreResults];
+	} else {
+		CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
+		
+		// Change to other view before loading this?
+		ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
+		
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		
+		[detailViewController release];
+		
+		[xsHelper loadResourceDetails: [resource resourceId]];
+	}
 }
 
 - (void) beginSearchForQuery: (NSString*) query {
