@@ -131,7 +131,6 @@ NSString* encodeStringForURL(NSString* str){
 		executing = YES;
 		_urlConnection = [self createConnectionForAction: _action withParameters: _params];
 		[_urlConnection start];
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
 		
 		[self didChangeValueForKey:@"isExecuting"];
 	} else {
@@ -177,8 +176,6 @@ NSString* encodeStringForURL(NSString* str){
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"Retrieved %d bytes", [_responseData length]);
-	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];	
 	
 	//Parse the data
 	result = [_parser parseData: _responseData];
