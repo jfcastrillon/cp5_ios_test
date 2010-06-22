@@ -9,7 +9,7 @@
 #import "XServicesRequestOperation.h"
 
 NSString* encodeStringForURL(NSString* str){
-	return (NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%+#", NULL, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+	return [(NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%+#", NULL, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
 }
 
 @implementation NSDictionary(urlPostEncoded)
