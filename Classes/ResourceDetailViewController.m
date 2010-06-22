@@ -10,13 +10,13 @@
 #import "ResourceMapViewController.h"
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
-#import "DescriptionTextViewCell.h"
+#import "CPMService.h"
 #import "Util.h"
 
 
-#define DETAILS_SECTION 1
 #define LOCATION_SECTION 0
-#define ACTION_SECTION 2
+#define DETAILS_SECTION 1
+#define SERVICES_SECTION 2
 
 #define SHARE_EMAIL_BUTTON 0
 #define SHARE_SMS_BUTTON 1
@@ -90,12 +90,12 @@
 		// If the resource is a favorite, hide the "Add to Favorites" button
 		if ([xsHelper isResourceInFavorites: displayedResource]) { 
 			[favoriteButton setHidden: YES];
-			[shareButton setFrame:CGRectMake(10, -3, 302, 37)];
+			[shareButton setFrame:CGRectMake(10, 8, 302, 37)];
 		} 
 		// Otherwise, show the "Add to Favorites" button
 		else {
 			[favoriteButton setHidden: NO];
-			[shareButton setFrame:CGRectMake(10, -3, 142, 37)];
+			[shareButton setFrame:CGRectMake(10, 8, 142, 37)];
 		}
 	}
 }
@@ -175,7 +175,7 @@
 	if(displayedResource == nil) {
 		return 0;
 	} else {
-		return 2;
+		return 3;
 	}
 }
 
@@ -185,11 +185,13 @@
     // Return a title or nil as appropriate for the section.
     switch (section) {
         case LOCATION_SECTION:
-            //title = @"Location";
             break;
         case DETAILS_SECTION:
             title = @"Description";
             break;
+		case SERVICES_SECTION:
+			title = @"Primary Services Offered";
+			break;
         default:
             break;
     }
@@ -212,8 +214,15 @@
         case DETAILS_SECTION:
             rows = 1;
             break;
-		case ACTION_SECTION:
-			rows = 2;
+		case SERVICES_SECTION:
+			if ([displayedResource services] != nil) {
+				for (CPMService* service in [[displayedResource services] objectForKey:@"primary"]) {
+					// Skip the 'Y' service code tree
+					if (![[service code] hasPrefix:@"Y"]) {
+						rows++;
+					}
+				}
+			}
 			break;
 		default:
             break;
@@ -226,6 +235,7 @@
 	static NSString *ResourceDetailCellIdentifier = @"ResourceDetailCell";
 	static NSString *ResourceLocationCellIdentifier = @"ResourceLocationCell";
 	static NSString *ResourceActionCellIdentifier = @"ResourceActionCell";
+	static NSString *ResourceServiceCellIdentifier = @"ResourceServiceCell";
 	
 	UITableViewCell *cell = nil;
 	if (indexPath.section == LOCATION_SECTION) {
@@ -277,17 +287,11 @@
 				}
 		}
 	} else if (indexPath.section == DETAILS_SECTION) {
-		
 		NSUInteger row = [indexPath row];
 		
 		switch (row) {
 			case 0:
 				{
-					
-					/*DescriptionTextViewCell *tvCell = [DescriptionTextViewCell createFromNib];
-					tvCell.textView.text = [displayedResource description];
-					cell = tvCell;*/
-					
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceDetailCellIdentifier];
 					if(cell == nil){
 						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceDetailCellIdentifier];
@@ -302,8 +306,28 @@
 				}
 				break;
 		}
-	} else { // ACTION SECTION
-        
+	} else if (indexPath.section == SERVICES_SECTION) {
+        NSUInteger row = [indexPath row];
+		
+		int currentIndex = 0;
+		for (CPMService* service in [[displayedResource services] objectForKey:@"primary"]) {
+			// Skip the 'Y' service code tree
+			if (![[service code] hasPrefix:@"Y"]) {
+				if (currentIndex == row) {
+					cell = [tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
+					if(cell == nil){
+						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceServiceCellIdentifier];
+					}
+					
+					cell.textLabel.text = [service name];
+					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+					cell.selectionStyle = UITableViewCellSelectionStyleNone;
+					
+					break;
+				}
+			}
+			currentIndex++;
+		}
 	}
     return cell;
 }

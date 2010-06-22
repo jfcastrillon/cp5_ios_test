@@ -99,7 +99,7 @@
 									<object class="IBUIButton" id="736267494">
 										<reference key="NSNextResponder" ref="1066573400"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{10, -3}, {142, 37}}</string>
+										<string key="NSFrame">{{10, 8}, {142, 37}}</string>
 										<reference key="NSSuperview" ref="1066573400"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -131,7 +131,7 @@
 									<object class="IBUIButton" id="241199169">
 										<reference key="NSNextResponder" ref="1066573400"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{166, -3}, {145, 37}}</string>
+										<string key="NSFrame">{{166, 8}, {145, 37}}</string>
 										<reference key="NSSuperview" ref="1066573400"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -151,7 +151,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="680385466"/>
 									</object>
 								</object>
-								<string key="NSFrame">{{0, 347}, {320, 40}}</string>
+								<string key="NSFrame">{{0, 327}, {320, 60}}</string>
 								<reference key="NSSuperview" ref="873757175"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
