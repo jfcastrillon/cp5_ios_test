@@ -50,6 +50,15 @@
 	[super viewDidAppear:animated];
 }
 
+- (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
+}
+
+- (void) mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
+}
+
+
 - (void)dealloc {
 	[mapView release];
 	[displayedResource release];
