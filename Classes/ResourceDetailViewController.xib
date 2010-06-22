@@ -99,7 +99,7 @@
 									<object class="IBUIButton" id="736267494">
 										<reference key="NSNextResponder" ref="1066573400"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{10, 0}, {142, 37}}</string>
+										<string key="NSFrame">{{10, -3}, {142, 37}}</string>
 										<reference key="NSSuperview" ref="1066573400"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -131,7 +131,7 @@
 									<object class="IBUIButton" id="241199169">
 										<reference key="NSNextResponder" ref="1066573400"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{166, 0}, {145, 37}}</string>
+										<string key="NSFrame">{{166, -3}, {145, 37}}</string>
 										<reference key="NSSuperview" ref="1066573400"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -613,7 +613,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>loadingOverlay</string>
 							<string>nameLabel</string>
 							<string>shareButton</string>
-							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -622,7 +621,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>UIView</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
-							<string>UITableView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -634,7 +632,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>loadingOverlay</string>
 							<string>nameLabel</string>
 							<string>shareButton</string>
-							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -657,10 +654,6 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">shareButton</string>
 								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tableView</string>
-								<string key="candidateClassName">UITableView</string>
 							</object>
 						</object>
 					</object>
