@@ -26,6 +26,16 @@
 	NSUInteger addressCellIndex;
 	NSUInteger phoneCellIndex;
 	NSUInteger urlCellIndex;
+	
+	// General Information
+	NSUInteger hoursCellIndex;
+	NSUInteger programFeesCellIndex;
+	NSUInteger languagesCellIndex;
+	NSUInteger eligibilityCellIndex;
+	NSUInteger intakeProcedureCellIndex;
+	NSUInteger accessibilityCellIndex;
+	NSUInteger shelterCellIndex;
+	NSUInteger shelterRequirementsCellIndex;
 }
 
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;

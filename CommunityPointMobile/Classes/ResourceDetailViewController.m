@@ -17,6 +17,7 @@
 #define LOCATION_SECTION 0
 #define DETAILS_SECTION 1
 #define SERVICES_SECTION 2
+#define GENERAL_SECTION 3
 
 #define SHARE_EMAIL_BUTTON 0
 #define SHARE_SMS_BUTTON 1
@@ -119,6 +120,14 @@
 	addressCellIndex = UINT_MAX;
 	phoneCellIndex = UINT_MAX;
 	urlCellIndex = UINT_MAX;
+	hoursCellIndex = UINT_MAX;
+	programFeesCellIndex = UINT_MAX;
+	languagesCellIndex = UINT_MAX;
+	eligibilityCellIndex = UINT_MAX;
+	intakeProcedureCellIndex = UINT_MAX;
+	accessibilityCellIndex = UINT_MAX;
+	shelterCellIndex = UINT_MAX;
+	shelterRequirementsCellIndex = UINT_MAX;
 	
     [super viewDidLoad];
 }
@@ -175,7 +184,7 @@
 	if(displayedResource == nil) {
 		return 0;
 	} else {
-		return 3;
+		return 4;
 	}
 }
 
@@ -191,6 +200,9 @@
             break;
 		case SERVICES_SECTION:
 			title = @"Primary Services Offered";
+			break;
+		case GENERAL_SECTION:
+			title = @"General Information";
 			break;
         default:
             break;
@@ -224,6 +236,42 @@
 				}
 			}
 			break;
+		case GENERAL_SECTION:
+			if ([displayedResource hours] != nil && [[displayedResource hours] length] > 0) {
+				hoursCellIndex = rows;
+				rows++;
+			}
+			if ([displayedResource programFees] != nil && [[displayedResource programFees] length] > 0) {
+				programFeesCellIndex = rows;
+				rows++;
+			}
+			if ([displayedResource languages] != nil && [[displayedResource languages] length] > 0) {
+				languagesCellIndex = rows;
+				rows++;
+			}
+			if ([displayedResource eligibility] != nil && [[displayedResource eligibility] length] > 0) {
+				eligibilityCellIndex = rows;
+				rows++;
+			}
+			if ([displayedResource intakeProcedure] != nil && [[displayedResource intakeProcedure] length] > 0) {
+				intakeProcedureCellIndex = rows;
+				rows++;
+			}
+			if ([[displayedResource accessibilityFlag] boolValue]) {
+				accessibilityCellIndex = rows;
+				rows++;
+			}
+			if ([[displayedResource shelterFlag] boolValue]) {
+				shelterCellIndex = rows;
+				rows++;
+				
+				if ([displayedResource shelterRequirements] != nil && [[displayedResource shelterRequirements] length] > 0) {
+					shelterRequirementsCellIndex = rows;
+					rows++;
+				}
+			}
+			
+			break;
 		default:
             break;
     }
@@ -236,6 +284,7 @@
 	static NSString *ResourceLocationCellIdentifier = @"ResourceLocationCell";
 	static NSString *ResourceActionCellIdentifier = @"ResourceActionCell";
 	static NSString *ResourceServiceCellIdentifier = @"ResourceServiceCell";
+	static NSString *ResourceGeneralCellIdentifier = @"ResourceGeneralCell";
 	
 	UITableViewCell *cell = nil;
 	if (indexPath.section == LOCATION_SECTION) {
@@ -328,6 +377,45 @@
 			}
 			currentIndex++;
 		}
+	} else if (indexPath.section == GENERAL_SECTION) {
+		NSUInteger row = [indexPath row];
+		
+		cell = [tableView dequeueReusableCellWithIdentifier:ResourceGeneralCellIdentifier];
+		if(cell == nil){
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceGeneralCellIdentifier];
+		}
+		
+		if (row == hoursCellIndex) {
+			cell.textLabel.text = @"hours";
+			cell.detailTextLabel.text = [displayedResource hours];
+		} else if (row == programFeesCellIndex) {
+			cell.textLabel.text = @"program fees";
+			cell.detailTextLabel.text = [displayedResource programFees];
+		} else if (row == languagesCellIndex) {
+			cell.textLabel.text = @"languages";
+			cell.detailTextLabel.text = [displayedResource languages];
+		} else if (row == eligibilityCellIndex) {
+			cell.textLabel.text = @"eligibility";
+			cell.detailTextLabel.text = [displayedResource eligibility];
+		} else if (row == intakeProcedureCellIndex) {
+			cell.textLabel.text = @"intake process";
+			cell.detailTextLabel.text = [displayedResource intakeProcedure];
+		} else if (row == accessibilityCellIndex) {
+			cell.textLabel.text = @"handicap accessible";
+			cell.detailTextLabel.text = @"Yes";
+		} else if (row == shelterCellIndex) {
+			cell.textLabel.text = @"shelter";
+			cell.detailTextLabel.text = @"Yes";
+		} else if (row == shelterRequirementsCellIndex) {
+			cell.textLabel.text = @"shelter requirements";
+			cell.detailTextLabel.text = [displayedResource shelterRequirements];
+		}
+		
+		cell.textLabel.adjustsFontSizeToFitWidth = YES;
+		cell.textLabel.numberOfLines = 0;
+		cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+		cell.detailTextLabel.numberOfLines = 0;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
     return cell;
 }
@@ -348,7 +436,35 @@
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 		
 		return labelSize.height + 20;
-	} else {
+	} else if ([indexPath section] == GENERAL_SECTION) { 
+		NSUInteger row = [indexPath row];
+
+		NSString *cellText;
+		
+		if (row == hoursCellIndex) {
+			cellText = [displayedResource hours];
+		} else if (row == programFeesCellIndex) {
+			cellText = [displayedResource programFees];
+		} else if (row == languagesCellIndex) {
+			cellText = [displayedResource languages];
+		} else if (row == eligibilityCellIndex) {
+			cellText = [displayedResource eligibility];
+		} else if (row == intakeProcedureCellIndex) {
+			cellText = [displayedResource intakeProcedure];
+		} else if (row == accessibilityCellIndex) {
+			cellText = @"Yes";
+		} else if (row == shelterCellIndex) {
+			cellText = @"Yes";
+		} else if (row == shelterRequirementsCellIndex) {
+			cellText = [displayedResource shelterRequirements];
+		}
+
+		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:19.0];
+		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+		
+		return labelSize.height + 20;
+    } else {
 		return 44;
 	}
 }
