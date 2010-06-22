@@ -76,12 +76,12 @@
 		// If the resource is a favorite, hide the "Add to Favorites" button
 		if ([xsHelper isResourceInFavorites: displayedResource]) { 
 			[favoriteButton setHidden: YES];
-			[shareButton setFrame:CGRectMake(10, 0, 302, 37)];
+			[shareButton setFrame:CGRectMake(10, -3, 302, 37)];
 		} 
 		// Otherwise, show the "Add to Favorites" button
 		else {
 			[favoriteButton setHidden: NO];
-			[shareButton setFrame:CGRectMake(10, 0, 142, 37)];
+			[shareButton setFrame:CGRectMake(10, -3, 142, 37)];
 		}
 	}
 }
