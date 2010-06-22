@@ -46,8 +46,6 @@
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
-		40D2897A1172BA2E0095F032 /* DescriptionTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */; };
-		40D2897E1172BA570095F032 /* DescriptionTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */; };
 		40D289D21172C3840095F032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D289D11172C3840095F032 /* Icon.png */; };
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
@@ -125,9 +123,6 @@
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
 		40CEBCFD11CFFC1A00932D73 /* CPMProviderTelephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMProviderTelephone.h; sourceTree = "<group>"; };
 		40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMProviderTelephone.m; sourceTree = "<group>"; };
-		40D289781172BA2E0095F032 /* DescriptionTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionTextViewCell.h; sourceTree = "<group>"; };
-		40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionTextViewCell.m; sourceTree = "<group>"; };
-		40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTextViewCell.xib; sourceTree = "<group>"; };
 		40D289D11172C3840095F032 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		40D289E21172C65F0095F032 /* ResourceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceMapViewController.h; sourceTree = "<group>"; };
 		40D289E31172C65F0095F032 /* ResourceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceMapViewController.m; sourceTree = "<group>"; };
@@ -323,9 +318,6 @@
 				40547D69116984AD00F608E7 /* ResourceDetailViewController.h */,
 				40547D6A116984AD00F608E7 /* ResourceDetailViewController.m */,
 				40547D6B116984AD00F608E7 /* ResourceDetailViewController.xib */,
-				40D289781172BA2E0095F032 /* DescriptionTextViewCell.h */,
-				40D289791172BA2E0095F032 /* DescriptionTextViewCell.m */,
-				40D2897D1172BA570095F032 /* DescriptionTextViewCell.xib */,
 				40D289E21172C65F0095F032 /* ResourceMapViewController.h */,
 				40D289E31172C65F0095F032 /* ResourceMapViewController.m */,
 				40D289E41172C65F0095F032 /* ResourceMapViewController.xib */,
@@ -383,7 +375,6 @@
 				4057AC091166A899004882F6 /* FavoritesViewController.xib in Resources */,
 				40547BBA1169337300F608E7 /* ResourceSearchResultCell.xib in Resources */,
 				40547D6D116984AD00F608E7 /* ResourceDetailViewController.xib in Resources */,
-				40D2897E1172BA570095F032 /* DescriptionTextViewCell.xib in Resources */,
 				40D289D21172C3840095F032 /* Icon.png in Resources */,
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
@@ -414,7 +405,6 @@
 				40547BB81169335200F608E7 /* ResourceSearchResultCell.m in Sources */,
 				40547D6C116984AD00F608E7 /* ResourceDetailViewController.m in Sources */,
 				40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */,
-				40D2897A1172BA2E0095F032 /* DescriptionTextViewCell.m in Sources */,
 				40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */,
 				40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */,
 				4068946511C6BC0E0054C494 /* Util.m in Sources */,
