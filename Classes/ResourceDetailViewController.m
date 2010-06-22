@@ -110,6 +110,12 @@
 }
 
 
+- (void) viewWillDisappear:(BOOL)animated {
+	// Stop listening for the data update
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ResourceDetailsReceived" object:xsHelper];
+	[super viewWillDisappear:animated];
+}
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

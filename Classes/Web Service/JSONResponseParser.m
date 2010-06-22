@@ -22,6 +22,8 @@
 	
 	id result = [dataString JSONValue];
 	
+	[dataString release];
+	
 	return result;
 }
 

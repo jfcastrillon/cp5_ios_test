@@ -151,6 +151,8 @@
 			[searchResults removeAllObjects];
 		[searchResults addObjectsFromArray: [[response result] results]];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
+		
+		[response release];
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
 		currentResource = [response result];
 		
@@ -160,6 +162,7 @@
 		
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
+		[response release];
 	}
 }
 
