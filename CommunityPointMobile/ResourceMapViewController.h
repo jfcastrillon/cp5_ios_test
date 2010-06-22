@@ -13,7 +13,7 @@
 #define DEFAULT_MAP_LONGITUDE_DELTA_IN_DEGREES 0.025
 #define DEFAULT_MAP_LATITUDE_DELTA_IN_DEGREES 0.025
 
-@interface ResourceMapViewController : UIViewController {
+@interface ResourceMapViewController : UIViewController <MKMapViewDelegate> {
 	MKMapView *mapView;
 	CPMResource *displayedResource;
 }
