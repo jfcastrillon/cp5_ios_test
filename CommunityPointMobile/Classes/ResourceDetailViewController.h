@@ -43,6 +43,5 @@
 - (void) updateDisplay;
 - (void) displayComposerSheet;
 - (void) launchMailAppOnDevice;
-- (void) displaySmsSheet;
 
 @end
