@@ -478,8 +478,11 @@
 			}
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 		} else if (indexPath.section == LOCATION_SECTION && indexPath.row == phoneCellIndex) {
-			NSString *url = [NSString stringWithFormat:@"tel:%@%@%@", [[displayedResource primaryPhone] areaCode], [[displayedResource primaryPhone] prefix], [[displayedResource primaryPhone] line]];
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];	
+			NSString *urlString = [NSString stringWithFormat:@"tel:%@%@%@", [[displayedResource primaryPhone] areaCode], [[displayedResource primaryPhone] prefix], [[displayedResource primaryPhone] line]];
+			NSURL *url = [NSURL URLWithString:urlString];
+			if ([[UIApplication sharedApplication] canOpenURL:url]) {
+				[[UIApplication sharedApplication] openURL:url];
+			}
 		} else if(indexPath.section == LOCATION_SECTION && indexPath.row == addressCellIndex) {
 			if(displayedResource.latitude != nil) {
 				ResourceMapViewController *mapViewController = [[ResourceMapViewController alloc] initWithNibName:@"ResourceMapViewController" bundle:[NSBundle mainBundle]];
