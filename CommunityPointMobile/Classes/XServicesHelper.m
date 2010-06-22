@@ -15,7 +15,7 @@
 
 @implementation XServicesHelper
 
-@synthesize searchResults, currentResource, favorites;
+@synthesize searchResults, currentResource, favorites, lastQuery, lastSearchResultSet;
 
 - (id) init {
 	if([super init] == nil) return nil;
@@ -63,7 +63,9 @@
 
 // XServices simplified methods
 - (void)searchResourcesWithQuery:(NSString*)query {
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: 50];
+	lastQuery = query;
+	
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: 10];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
@@ -71,7 +73,7 @@
 
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:50 andOffset:[[lastSearchResultSet offset] intValue] + [[lastSearchResultSet count] intValue] andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:10 andOffset:[[lastSearchResultSet offset] intValue] + 10 andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
@@ -162,6 +164,7 @@
 		if ([[[response result] offset] intValue] == 0)
 			[searchResults removeAllObjects];
 		[searchResults addObjectsFromArray: [[response result] results]];
+		lastSearchResultSet = [response result];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
 		
 		[response release];
@@ -186,6 +189,7 @@
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;
 	[favorites release], favorites = nil;
+	[lastQuery release], lastQuery = nil;
 	[lastSearchResultSet release], lastSearchResultSet = nil;
 	[super dealloc];
 }

@@ -25,6 +25,8 @@
 @property (nonatomic, readonly) NSArray *searchResults;
 @property (nonatomic, readonly) NSMutableArray *favorites;
 @property (nonatomic, readonly) CPMResourceDetail *currentResource;
+@property (nonatomic, copy) NSString *lastQuery;
+@property (nonatomic, retain) CPMSearchResultSet *lastSearchResultSet;
 
 - (id) init;
 

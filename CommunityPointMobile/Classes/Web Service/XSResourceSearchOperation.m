@@ -25,6 +25,7 @@
 	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
 	[params setValue: [[NSDecimalNumber numberWithUnsignedInt: searchHistoryId] stringValue] forKey:@"search_history_id"];
 	[params setValue: [[NSDecimalNumber numberWithUnsignedInt: maxCount] stringValue] forKey:@"limit"];	
+	[params setValue: [[NSDecimalNumber numberWithUnsignedInt: offset == 0 ? 1 : offset/10 + 1] stringValue] forKey:@"page"];
 	[params setValue: query forKey:@"query"];
 	
 	// Parser for the response data
