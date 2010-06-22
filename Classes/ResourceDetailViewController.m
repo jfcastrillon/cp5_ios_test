@@ -58,8 +58,22 @@
 }
 
 - (IBAction) shareButtonPressed: (id) sender {
-	UIActionSheet *shareTypeSheet = [[UIActionSheet alloc] initWithTitle:@"Share Resource Using:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
-													   otherButtonTitles:@"Email", @"SMS", nil, nil];
+	UIActionSheet *shareTypeSheet = [[UIActionSheet alloc] initWithTitle:@"Share Resource Using:" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+													   otherButtonTitles:@"Email", nil];
+	
+	int cancelIndex = 1;
+	
+	// We must always check whether the current device is configured for sending sms
+    Class smsClass = (NSClassFromString(@"MFMessageComposeViewController"));
+    if (smsClass != nil && [smsClass canSendText])
+    {
+        [shareTypeSheet addButtonWithTitle:@"SMS"];
+		cancelIndex++;
+	}
+	
+	[shareTypeSheet addButtonWithTitle:@"Cancel"];
+	[shareTypeSheet setCancelButtonIndex:cancelIndex];
+	
 	[shareTypeSheet showInView:self.view];
 	[shareTypeSheet release];
 }
@@ -348,7 +362,8 @@
 			[self emailResource];
 			break;
 		case SHARE_SMS_BUTTON:
-			[self smsResource];
+			if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"SMS"]) 
+				[self smsResource];
 			break;
 		default:
 			// They picked cancel
@@ -358,37 +373,7 @@
 
 // SMS a Resource
 - (void)smsResource {
-    // The MFMessageComposeViewController class is only available in iPhone OS 4.0 or later. 
-    // So, we must verify the existence of the above class and provide a workaround for devices running 
-    // earlier versions of the iPhone OS. 
-    // We display an sms composition interface if MFMessageComposeViewController exists and the device can send sms.
-    
-    Class smsClass = (NSClassFromString(@"MFMessageComposeViewController"));
-    if (smsClass != nil)
-    {
-        // We must always check whether the current device is configured for sending sms
-        if ([smsClass canSendText])
-        {
-			[self displaySmsSheet];
-		}
-		else 
-		{
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SMS Not Supported" message:@"You tried to SMS a Resource.  Unfortunately this isn't supported on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
-			[alert show]; 
-			[alert release]; 
-		}
-	}
-	else 
-	{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SMS Not Supported" message:@"You tried to SMS a Resource.  Unfortunately this isn't supported on your device." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
-		[alert show]; 
-		[alert release];
-	}
-}
-
-// Launch the SMS Compose Message Controller.
-- (void)displaySmsSheet {
-	MFMessageComposeViewController *message = [[MFMessageComposeViewController alloc] init];
+    MFMessageComposeViewController *message = [[MFMessageComposeViewController alloc] init];
     message.messageComposeDelegate = self;
     message.body = buildSMS(displayedResource);
     [self presentModalViewController:message animated:YES];
