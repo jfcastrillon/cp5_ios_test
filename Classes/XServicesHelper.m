@@ -13,6 +13,7 @@
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
 
+#define RESULT_PAGE_SIZE 10
 
 @implementation XServicesHelper
 
@@ -71,7 +72,7 @@
 - (void)searchResourcesWithQuery:(NSString*)query {
 	lastQuery = query;
 	
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: 10];
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: RESULT_PAGE_SIZE];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
@@ -79,7 +80,7 @@
 
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:10 andOffset:[[lastSearchResultSet offset] intValue] + 10 andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
