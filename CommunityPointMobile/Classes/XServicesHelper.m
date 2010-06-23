@@ -78,6 +78,15 @@
 	[op release];
 }
 
+- (void)searchResourcesWithQuery:(NSString*)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude {
+	lastQuery = query;
+	
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initLocationBasedRequestWithQuery:query forLatitude:latitude andLongitude:longitude andMaxCount:RESULT_PAGE_SIZE];
+	op.delegate = self;
+	[operationQueue addOperation: op];
+	[op release];
+}
+
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
 	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];

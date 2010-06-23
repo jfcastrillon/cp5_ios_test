@@ -186,7 +186,7 @@ NSString* encodeStringForURL(NSString* str){
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Retrieved %d bytes", [_responseData length]);
+    //NSLog(@"Retrieved %d bytes", [_responseData length]);
 	
 	//Parse the data
 	result = [_parser parseData: _responseData];

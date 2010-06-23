@@ -23,6 +23,7 @@
 @synthesize phone;
 @synthesize latitude;
 @synthesize longitude;
+@synthesize distanceToRef;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	if([super init] == nil) return nil;
@@ -49,6 +50,7 @@
 	self.phone = nullFix([dictionary objectForKey:@"phone"]);
 	self.latitude = nullFix([dictionary objectForKey:@"latitude"]);
 	self.longitude = nullFix([dictionary objectForKey:@"longitude"]);
+	self.distanceToRef = nullFix([dictionary objectForKey:@"distance"]);
 	
 	return self;
 }

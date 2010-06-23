@@ -20,6 +20,9 @@
 	//Handle the data
 	NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
+	// keep this here.  it lets you monitor the response data
+	//NSLog(@"%@", dataString);
+	
 	id result = [dataString JSONValue];
 	
 	[dataString release];

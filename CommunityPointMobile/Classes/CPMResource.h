@@ -20,7 +20,8 @@
 	NSString		*url;
 	NSString		*phone;
 	NSDecimalNumber	*latitude;
-	NSDecimalNumber	*longitude;	
+	NSDecimalNumber	*longitude;
+	NSNumber		*distanceToRef;
 }
 
 @property (nonatomic, copy) NSDecimalNumber *resourceId;
@@ -35,6 +36,7 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSDecimalNumber *latitude;
 @property (nonatomic, copy) NSDecimalNumber *longitude;
+@property (nonatomic, copy) NSNumber *distanceToRef;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary;
 - (NSDictionary*) dictionaryValue;

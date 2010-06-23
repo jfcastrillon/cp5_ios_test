@@ -12,9 +12,11 @@
 @interface ResourceSearchResultCell : UITableViewCell {
 	UILabel	*nameLabel;
 	UILabel *addressLabel;
+	UILabel *distanceLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel* addressLabel;
+@property (nonatomic, retain) IBOutlet UILabel* distanceLabel;
 
 @end
