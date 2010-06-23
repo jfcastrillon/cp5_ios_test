@@ -53,6 +53,19 @@
 	[self setDisplayedResource: [xsHelper currentResource]];
 }
 
+- (void) resourceRequestFailed: (NSNotification*) notification {
+	UIAlertView *alert;
+	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//Trigger app lockdown?
+	} else {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to retrieve resource details.  It appears the service is down." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	}
+	
+	[alert show];
+	[alert release];
+}
+
 - (IBAction) favoriteButtonPressed: (id) sender {
 	[xsHelper addResourceToFavorites: displayedResource]; 
 	[self updateDisplay];
@@ -116,6 +129,7 @@
 - (void)viewDidLoad {
 	xsHelper = [XServicesHelper sharedInstance];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveResourceDetails:) name:@"ResourceDetailsReceived" object: xsHelper];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(resourceRequestFailed:) name:@"ResourceRequestFailed" object: xsHelper];
 	
 	addressCellIndex = UINT_MAX;
 	phoneCellIndex = UINT_MAX;
@@ -136,6 +150,7 @@
 - (void) viewWillDisappear:(BOOL)animated {
 	// Stop listening for the data update
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ResourceDetailsReceived" object:xsHelper];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ResourceRequestFailed" object:xsHelper];
 	[super viewWillDisappear:animated];
 }
 

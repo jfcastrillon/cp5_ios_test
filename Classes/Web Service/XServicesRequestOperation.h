@@ -39,8 +39,6 @@ NSString* encodeStringForURL(NSString* str);
 	id delegate;						// What object to notify when an error occurs or the request completes
 	id result;							// The result of the operation
 	
-	NSError *lastError;			// The last error that occured (should be used if the delegate receives a failure)
-	
 	BOOL finished;				
 	BOOL executing;
 	
@@ -49,7 +47,6 @@ NSString* encodeStringForURL(NSString* str);
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, readonly) id result;
-@property (nonatomic, retain) NSError *lastError;
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser: (id <ResponseParser>) parser;
 
