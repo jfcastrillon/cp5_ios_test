@@ -92,18 +92,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-	UIAlertView *alert;
-	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
-		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		//Trigger app lockdown?
-	}
-	
-	[alert show];
-	[alert release];
-	
-	[super viewDidAppear:animated];
-}
 
 - (void) viewWillDisappear:(BOOL)animated
 {
