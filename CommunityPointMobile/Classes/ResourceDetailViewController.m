@@ -143,6 +143,11 @@
 	shelterCellIndex = UINT_MAX;
 	shelterRequirementsCellIndex = UINT_MAX;
 	
+	locationSectionIndex = UINT_MAX;
+	detailsSectionIndex = UINT_MAX;
+	servicesSectionIndex = UINT_MAX;
+	generalInfoSectionIndex = UINT_MAX;
+	
     [super viewDidLoad];
 }
 
@@ -199,45 +204,62 @@
 	if(displayedResource == nil) {
 		return 0;
 	} else {
-		return 4;
+		NSUInteger count = 0;
+		if([self numberOfRowsInSection:LOCATION_SECTION] > 0)
+			locationSectionIndex = count++;
+		if([self numberOfRowsInSection:DETAILS_SECTION] > 0)
+			detailsSectionIndex = count++;
+		if([self numberOfRowsInSection:SERVICES_SECTION] > 0)
+			servicesSectionIndex = count++;
+		if([self numberOfRowsInSection:GENERAL_SECTION] > 0)
+			generalInfoSectionIndex = count++;
+		return count;
+
 	}
 }
-
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
     // Return a title or nil as appropriate for the section.
-    switch (section) {
-        case LOCATION_SECTION:
-            break;
-        case DETAILS_SECTION:
-            title = @"Description";
-            break;
-		case SERVICES_SECTION:
-			title = @"Primary Services Offered";
-			break;
-		case GENERAL_SECTION:
-			title = @"General Information";
-			break;
-        default:
-            break;
-    }
+    if(section == locationSectionIndex) {
+		// blank
+    } else if (section == detailsSectionIndex) {
+		title = @"Description";
+	} else if (section == servicesSectionIndex) {
+		title = @"Primary Services Offered";
+	} else if (section == generalInfoSectionIndex) {
+		title = @"General Information";
+	}
     return title;;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	if (section == locationSectionIndex) 
+		return [self numberOfRowsInSection:LOCATION_SECTION];
+	else if (section == detailsSectionIndex)
+		return [self numberOfRowsInSection:DETAILS_SECTION];
+	else if (section == servicesSectionIndex)
+		return [self numberOfRowsInSection:SERVICES_SECTION];
+	else if (section == generalInfoSectionIndex)
+		return [self numberOfRowsInSection:GENERAL_SECTION];
+	else
+		return 0;
+
+	
+}
+			
+- (NSInteger) numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = 0;
-    
+	
     switch (section) {
         case LOCATION_SECTION:
 			if([addressText length] > 0)
-				rows++;
+				addressCellIndex = rows++;
 			if (displayedResource.phone != nil && [displayedResource.phone length] > 0)
-				rows++;
+				phoneCellIndex = rows++;
 			if (displayedResource.url != nil && [displayedResource.url length] > 0)
-				rows++;
-            return rows;
+				urlCellIndex = rows++;
+            break;
         case DETAILS_SECTION:
             rows = 1;
             break;
@@ -302,55 +324,45 @@
 	static NSString *ResourceGeneralCellIdentifier = @"ResourceGeneralCell";
 	
 	UITableViewCell *cell = nil;
-	if (indexPath.section == LOCATION_SECTION) {
+	if (indexPath.section == locationSectionIndex) {
 		
 		
 		NSUInteger row = [indexPath row];
 		
-		switch (row) {
-			case 0:
-				if([addressText length] > 0){
-					cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
-					if(cell == nil){
-						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
-					}
-					
-					
-					cell.textLabel.text = @"address";
-					cell.detailTextLabel.text = addressText;
-					cell.detailTextLabel.numberOfLines = 0;
-					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-					addressCellIndex = row;
-					return cell;
-				}
-
-			case 1:
-				if([addressText length] > 0 && displayedResource.phone != nil && [displayedResource.phone length] > 0) {
-					cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
-					if(cell == nil){
-						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
-					}
-					
-					cell.textLabel.text = @"phone";
-					cell.detailTextLabel.text = [displayedResource phone];
-					phoneCellIndex = row;
-					return cell;
-				} 
-			case 2:
-				if(displayedResource.url != nil && [displayedResource.url length] > 0) {
-					cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
-					if(cell == nil){
-						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier];
-					}
-					
-					cell.textLabel.text = @"Website";
-					cell.textLabel.textAlignment = UITextAlignmentCenter;
-					cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
-					urlCellIndex = row;
-					return cell;
-				}
+		if (row == addressCellIndex){
+			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
+			if(cell == nil){
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
+			}
+			
+			
+			cell.textLabel.text = @"address";
+			cell.detailTextLabel.text = addressText;
+			cell.detailTextLabel.numberOfLines = 0;
+			cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+			return cell;
+		} else if (row == phoneCellIndex) {
+			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
+			if(cell == nil){
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
+			}
+			
+			cell.textLabel.text = @"phone";
+			cell.detailTextLabel.text = [displayedResource phone];
+			return cell;
+		} else if (row == urlCellIndex) {
+			cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
+			if(cell == nil){
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier];
+			}
+			
+			cell.textLabel.text = @"Website";
+			cell.textLabel.textAlignment = UITextAlignmentCenter;
+			cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
+			return cell;
 		}
-	} else if (indexPath.section == DETAILS_SECTION) {
+		
+	} else if (indexPath.section == detailsSectionIndex) {
 		NSUInteger row = [indexPath row];
 		
 		switch (row) {
@@ -370,7 +382,7 @@
 				}
 				break;
 		}
-	} else if (indexPath.section == SERVICES_SECTION) {
+	} else if (indexPath.section == servicesSectionIndex) {
         NSUInteger row = [indexPath row];
 		
 		int currentIndex = 0;
@@ -392,7 +404,7 @@
 			}
 			currentIndex++;
 		}
-	} else if (indexPath.section == GENERAL_SECTION) {
+	} else if (indexPath.section == generalInfoSectionIndex) {
 		NSUInteger row = [indexPath row];
 		
 		cell = [tableView dequeueReusableCellWithIdentifier:ResourceGeneralCellIdentifier];
@@ -437,24 +449,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if([indexPath section] == DETAILS_SECTION && [indexPath row] == 0){
+	if([indexPath section] == detailsSectionIndex && [indexPath row] == 0){
 		NSString *cellText =[displayedResource description];
 		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
 		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 	
 		return labelSize.height + 20;
-	} else if ([indexPath section] == LOCATION_SECTION && [indexPath row] == 0) {
+	} else if ([indexPath section] == locationSectionIndex && [indexPath row] == addressCellIndex) {
 		NSString *cellText = addressText;
 		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:19.0];
 		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 		
 		return labelSize.height + 20;
-	} else if ([indexPath section] == GENERAL_SECTION) { 
+	} else if ([indexPath section] == generalInfoSectionIndex) { 
 		NSUInteger row = [indexPath row];
 
-		NSString *cellText;
+		NSString *cellText = nil;
 		
 		if (row == hoursCellIndex) {
 			cellText = [displayedResource hours];
@@ -485,20 +497,20 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == LOCATION_SECTION) {
-		if(indexPath.section == LOCATION_SECTION && indexPath.row == urlCellIndex){
+	if (indexPath.section == locationSectionIndex) {
+		if(indexPath.section == locationSectionIndex && indexPath.row == urlCellIndex){
 			NSString *url = [displayedResource url];
 			if(![[displayedResource url] hasPrefix: @"http://"]){
 				url = [NSString stringWithFormat:@"http://%@", [displayedResource url]];
 			}
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
-		} else if (indexPath.section == LOCATION_SECTION && indexPath.row == phoneCellIndex) {
+		} else if (indexPath.section == locationSectionIndex && indexPath.row == phoneCellIndex) {
 			NSString *urlString = [NSString stringWithFormat:@"tel:%@%@%@", [[displayedResource primaryPhone] areaCode], [[displayedResource primaryPhone] prefix], [[displayedResource primaryPhone] line]];
 			NSURL *url = [NSURL URLWithString:urlString];
 			if ([[UIApplication sharedApplication] canOpenURL:url]) {
 				[[UIApplication sharedApplication] openURL:url];
 			}
-		} else if(indexPath.section == LOCATION_SECTION && indexPath.row == addressCellIndex) {
+		} else if(indexPath.section == locationSectionIndex && indexPath.row == addressCellIndex) {
 			if(displayedResource.latitude != nil) {
 				ResourceMapViewController *mapViewController = [[ResourceMapViewController alloc] initWithNibName:@"ResourceMapViewController" bundle:[NSBundle mainBundle]];
 
