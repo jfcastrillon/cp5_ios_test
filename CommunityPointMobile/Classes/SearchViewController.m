@@ -186,6 +186,7 @@
 
 - (void) beginSearchForQuery: (NSString*) query {
 	[busyIndicator setHidden:NO];
+	[busyIndicator startAnimating];
 	[self showOverlay];
 	[xsHelper searchResourcesWithQuery: query];
 }
