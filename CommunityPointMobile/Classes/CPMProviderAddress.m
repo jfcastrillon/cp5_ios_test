@@ -39,36 +39,25 @@
 
 - (NSString*) multilineStringValue {
 	NSMutableString *addressLine = [[NSMutableString alloc] init];
-	NSMutableArray *addressParts = [[NSMutableArray alloc] init];
 	
-	if(line1 != nil &&
-	   [line1 length] > 0)
-		[addressLine appendFormat: @"%@\n", line1];
-	if(line2 != nil &&
-	   [line2 length] > 0)
-		[addressLine appendFormat: @"%@\n", line2];
+	if(line1 != nil && [line1 length] > 0)
+		[addressLine appendFormat:@"%@\n", line1];
+	if(line2 != nil && [line2 length] > 0)
+		[addressLine appendFormat:@"%@\n", line2];
 	
-	if(city != nil)
-		[addressParts addObject: city];
-	if(province != nil)	
-		[addressParts addObject: province];
-	if(postalcode != nil)	
-		[addressParts addObject: postalcode];
-	
-	for(int i = 0; i < [addressParts count]; i++) {
-		NSString* part = [addressParts objectAtIndex:i];
-		if(part != nil) {
-			part = [part stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-			if([part length] > 0) {
-				[addressLine appendString: part];
-				if(i+1 < [addressParts count])
-					[addressLine appendString: @", "];
-			}
-		}
+	if(city != nil && province != nil)
+ 		[addressLine appendFormat:@"%@, %@ ", city, province];
+	else {
+		if(city != nil)	
+			[addressLine appendFormat:@"%@ ", city];
+		if(province != nil)
+			[addressLine appendFormat:@"%@ ", province];
 	}
 	
+	if(postalcode != nil)	
+		[addressLine appendString: postalcode];
+		
 	[addressLine autorelease];
-	[addressParts release];
 	return addressLine;
 }
 
