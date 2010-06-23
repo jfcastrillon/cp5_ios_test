@@ -26,10 +26,12 @@
 @synthesize xsHelper;
 
 - (void) showOverlay {
+	// TODO: make this animated
 	[dimmingOverlay setHidden:NO];
 }
 
 - (void) hideOverlay {
+	// TODO: make this animated
 	[dimmingOverlay setHidden:YES];
 }
 
@@ -53,6 +55,7 @@
 	
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveMoreSearchResults:) name:@"SearchResultsAppended" object: xsHelper];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(searchRequestFailed:) name:@"SearchRequestFailed" object: xsHelper];
 		
     [super viewDidLoad];
@@ -111,6 +114,14 @@
 - (void) didReceiveSearchResults: (NSNotification*) notification {
 	self.searchResults = [xsHelper searchResults];
 	[resultsTableView setHidden: NO];
+	[busyIndicator setHidden:YES];
+	[self hideOverlay];
+	[resultsTableView reloadData];
+	[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void) didReceiveMoreSearchResults: (NSNotification*) notification {
+	self.searchResults = [xsHelper searchResults];
 	[busyIndicator setHidden:YES];
 	[self hideOverlay];
 	[resultsTableView reloadData];

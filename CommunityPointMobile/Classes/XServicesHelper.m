@@ -167,11 +167,18 @@
 
 - (void) operationDidComplete: (XSResponse*) response {
 	if([[response tag] isEqualToString: @"resources.search"]) {
-		if ([[[response result] offset] intValue] == 0)
+		BOOL newSearch = [[[response result] offset] intValue] == 0;
+
+		if (newSearch) // New search, clear data
 			[searchResults removeAllObjects];
+		
 		[searchResults addObjectsFromArray: [[response result] results]];
 		lastSearchResultSet = [response result];
-		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
+		
+		if (newSearch)
+			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
+		else 
+			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsAppended" object: self]];
 		
 		[response release];
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
