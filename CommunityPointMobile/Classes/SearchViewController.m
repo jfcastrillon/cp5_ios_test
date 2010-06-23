@@ -14,6 +14,7 @@
 #import "XServicesHelper.h"
 #import "ResourceSearchResultCell.h"
 #import "ResourceDetailViewController.h"
+#import "NetworkManager.h"
 
 
 @implementation SearchViewController
@@ -35,10 +36,10 @@
 	
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(searchRequestFailed:) name:@"SearchRequestFailed" object: xsHelper];
 		
     [super viewDidLoad];
 }
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -91,6 +92,19 @@
     [super viewWillAppear:animated];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	UIAlertView *alert;
+	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//Trigger app lockdown?
+	}
+	
+	[alert show];
+	[alert release];
+	
+	[super viewDidAppear:animated];
+}
+
 - (void) viewWillDisappear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
@@ -104,6 +118,22 @@
 	[busyIndicator setHidden:YES];
 	[self hideOverlay];
 	[resultsTableView reloadData];
+}
+
+- (void) searchRequestFailed: (NSNotification*) notification {
+	UIAlertView *alert;
+	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//Trigger app lockdown?
+	} else {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to retrieve search results.  It appears the service is down." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	}
+
+	[alert show];
+	[alert release];
+	
+	[busyIndicator setHidden: YES];
+	[self hideOverlay];
 }
 
 // UITableViewDataSource
@@ -161,6 +191,7 @@
 		
 		[detailViewController release];
 		
+		[xsHelper cancelAllOperations];
 		[xsHelper loadResourceDetails: [resource resourceId]];
 	}
 }

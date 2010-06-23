@@ -50,6 +50,9 @@
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
 		40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289EB1172C97D0095F032 /* CPMapAnnotation.m */; };
+		40F4B24811D11B48005CAE4E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B24711D11B48005CAE4E /* Reachability.m */; };
+		40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */; };
+		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
 		6DBF843511D00ADB00FC71E4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DBF843411D00ADB00FC71E4 /* Default.png */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +133,11 @@
 		40D289EA1172C97D0095F032 /* CPMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMapAnnotation.h; sourceTree = "<group>"; };
 		40D289EB1172C97D0095F032 /* CPMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMapAnnotation.m; sourceTree = "<group>"; };
 		40F0AC9B11CFBE76009104D7 /* CPMBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMBoolean.h; sourceTree = "<group>"; };
+		40F4B24611D11B48005CAE4E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		40F4B24711D11B48005CAE4E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		40F4B2A211D14A4C005CAE4E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		6DBF843411D00ADB00FC71E4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +152,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				40547D9E11698BE700F608E7 /* MapKit.framework in Frameworks */,
 				40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */,
+				40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +180,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				40F4B24511D11B2E005CAE4E /* Reachability */,
 				40A3594711CBF50500B01A49 /* Web Service */,
 				40B1839E11717DB300D937B1 /* Search Views */,
 				40B1839D11717D9F00D937B1 /* MainWindow */,
@@ -182,6 +192,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -272,6 +283,8 @@
 				4057AC761166D6DE004882F6 /* XServicesHelper.h */,
 				4057AC771166D6DE004882F6 /* XServicesHelper.m */,
 				4057AC5F1166B3DC004882F6 /* JSON */,
+				40F4B2A211D14A4C005CAE4E /* NetworkManager.h */,
+				40F4B2A311D14A4C005CAE4E /* NetworkManager.m */,
 			);
 			name = "Service Code";
 			sourceTree = "<group>";
@@ -323,6 +336,15 @@
 				40D289E41172C65F0095F032 /* ResourceMapViewController.xib */,
 			);
 			name = "Search Views";
+			sourceTree = "<group>";
+		};
+		40F4B24511D11B2E005CAE4E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				40F4B24611D11B48005CAE4E /* Reachability.h */,
+				40F4B24711D11B48005CAE4E /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +441,8 @@
 				401A13AB11CC48A600CBD979 /* CPMProviderAddress.m in Sources */,
 				40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */,
 				40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */,
+				40F4B24811D11B48005CAE4E /* Reachability.m in Sources */,
+				40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +487,7 @@
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};

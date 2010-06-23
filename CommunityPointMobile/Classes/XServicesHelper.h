@@ -10,6 +10,7 @@
 #import "XSResponse.h"
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
+#import "NetworkManager.h"
 
 @interface XServicesHelper : NSObject {
 	NSOperationQueue *operationQueue;
@@ -19,6 +20,8 @@
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
 	
+	NetworkManager *networkManager;
+	
 	CPMResourceDetail *currentResource;
 }
 
@@ -27,6 +30,7 @@
 @property (nonatomic, readonly) CPMResourceDetail *currentResource;
 @property (nonatomic, copy) NSString *lastQuery;
 @property (nonatomic, retain) CPMSearchResultSet *lastSearchResultSet;
+
 
 - (id) init;
 

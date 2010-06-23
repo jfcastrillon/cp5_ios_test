@@ -56,7 +56,6 @@ NSString* encodeStringForURL(NSString* str){
 
 @synthesize delegate;
 @synthesize result;
-@synthesize lastError;
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser:(NSObject <ResponseParser>*) parser{
 	
@@ -91,7 +90,6 @@ NSString* encodeStringForURL(NSString* str){
 	[_parser release];
 	[_responseData release];
 	self.delegate = nil;
-	self.lastError = nil;
     [super dealloc];
 }
 
@@ -153,16 +151,27 @@ NSString* encodeStringForURL(NSString* str){
 	return executing;
 }
 
+- (void) finishForCancel {
+	NSLog(@"Operation cancelled: %@", _action);
+	[_urlConnection	cancel];
+	[self willChangeValueForKey:@"isFinished"];
+	[self willChangeValueForKey:@"isExecuting"];
+	finished = YES;
+	executing = NO;
+	[self didChangeValueForKey:@"isExecuting"];
+	[self didChangeValueForKey:@"isFinished"];
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	if(self.isCancelled)
-		[connection cancel];
+		[self finishForCancel];
 	else
 		[_responseData setLength: 0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	if(self.isCancelled)
-		[connection cancel];
+		[self finishForCancel];
 	else
 		[_responseData appendData:data];
 	
@@ -170,8 +179,10 @@ NSString* encodeStringForURL(NSString* str){
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];	
-	self.lastError = error;
-	[delegate performSelectorOnMainThread:@selector(requestDidFailWithError:) withObject:error waitUntilDone:NO];
+	NSMutableDictionary *errorInfo = [[NSMutableDictionary alloc] init];
+	[errorInfo setObject:error forKey:@"error"];
+	[errorInfo setObject:_action forKey:@"tag"];
+	[delegate performSelectorOnMainThread:@selector(operationDidFailWithError:) withObject:errorInfo waitUntilDone:NO];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

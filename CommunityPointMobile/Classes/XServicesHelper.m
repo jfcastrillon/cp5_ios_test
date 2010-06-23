@@ -13,16 +13,21 @@
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
 
+
 @implementation XServicesHelper
 
 @synthesize searchResults, currentResource, favorites, lastQuery, lastSearchResultSet;
 
 - (id) init {
 	if([super init] == nil) return nil;
+	
+	// Set up operation queue
 	operationQueue = [[NSOperationQueue alloc] init];
 	if(operationQueue == nil) return nil;
 	
 	[operationQueue addObserver:self forKeyPath:@"operationCount" options:0 context:nil];
+	
+	networkManager = [NetworkManager sharedInstance];
 	
 	searchResults = [[NSMutableArray alloc] init];
 
@@ -50,6 +55,7 @@
 	
 	return self;
 }
+
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (object == operationQueue && [keyPath isEqual:@"operationCount"]) {
@@ -181,8 +187,17 @@
 	}
 }
 
-- (void) operationDidFailWithError: (NSError*) error {
+- (void) operationDidFailWithError: (NSDictionary*) errorInfo {
+	NSError* error = [errorInfo objectForKey:@"error"];
+	NSString* tag = [errorInfo objectForKey:@"tag"];
 	NSLog(@"%@", error);
+	
+	if([tag isEqualToString:@"resources.search"]){
+		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"SearchRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
+	} else if ([tag isEqualToString:@"resources.pull"]) {
+		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"ResourceRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
+	}
+	//[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"XServicesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 }
 
 - (void) dealloc {
@@ -191,6 +206,7 @@
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
 	[lastSearchResultSet release], lastSearchResultSet = nil;
+	
 	[super dealloc];
 }
 
@@ -235,6 +251,11 @@ static XServicesHelper* sharedHelperInstance = nil;
 
 - (id)autorelease {
     return self;
+}
+
+// Override to allow manual notifications for the network status properties
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)theKey {
+	return !([theKey isEqualToString:@"internetConnectionAvailable"] || [theKey isEqualToString:@"xServicesReachable"]);
 }
 
 @end
