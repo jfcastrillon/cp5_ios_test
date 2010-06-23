@@ -25,8 +25,25 @@
 @synthesize searchResults;
 @synthesize xsHelper;
 
+- (void) showOverlay {
+	[dimmingOverlay setHidden:NO];
+}
+
+- (void) hideOverlay {
+	[dimmingOverlay setHidden:YES];
+}
+
 - (IBAction) backgroundTap:(id)sender {
-	[searchBar resignFirstResponder];
+	if([searchBar isFirstResponder]) {
+		[searchBar setShowsCancelButton:NO animated:YES];
+		[searchBar setShowsScopeBar:NO];
+		[searchBar sizeToFit];
+		resultsTableView.allowsSelection = YES;
+		resultsTableView.scrollEnabled = YES;
+		[searchBar resignFirstResponder];
+		if([busyIndicator isHidden]) // Don't hide the overlay when a search is in progress
+			[self hideOverlay];
+	}
 }
 
 
@@ -66,15 +83,6 @@
 	[operationQueue cancelAllOperations];
 	[operationQueue release];
 	operationQueue = nil;
-}
-
-
-- (void) showOverlay {
-	[dimmingOverlay setHidden:NO];
-}
-
-- (void) hideOverlay {
-	[dimmingOverlay setHidden:YES];
 }
 
 - (void)dealloc {
