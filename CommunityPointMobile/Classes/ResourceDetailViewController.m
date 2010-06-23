@@ -335,6 +335,11 @@
 				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
 			}
 			
+			if([displayedResource longitude] == nil)
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			else
+				cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
 			
 			cell.textLabel.text = @"address";
 			cell.detailTextLabel.text = addressText;
