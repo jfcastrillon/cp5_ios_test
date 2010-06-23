@@ -17,4 +17,6 @@
 - (id) initWithQuery: (NSString*) query andMaxCount: (NSUInteger) maxCount;
 - (id) initWithQuery: (NSString*) query andMaxCount: (NSUInteger) maxCount andOffset: (NSUInteger) offset andSearchHistoryId: (NSUInteger) searchId;
 
+- (id) initLocationBasedRequestWithQuery:(NSString *)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude andMaxCount:(NSUInteger)maxCount;
+- (id) initLocationBasedRequestWithQuery:(NSString *)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude andMaxCount:(NSUInteger)maxCount andOffset: (NSUInteger) offset andSearchHistoryId: (NSUInteger) searchHistoryId;
 @end

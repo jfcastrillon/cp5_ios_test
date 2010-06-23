@@ -36,6 +36,7 @@
 
 // XServices simplified methods
 - (void)searchResourcesWithQuery:(NSString*)query;
+- (void)searchResourcesWithQuery:(NSString*)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude;
 - (void)loadMoreResults;
 
 - (void)retrieveProviderCount;

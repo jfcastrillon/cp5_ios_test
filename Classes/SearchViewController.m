@@ -168,9 +168,21 @@
 		cell.nameLabel.text = @"Load More Results";
 		cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
 		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
+		cell.distanceLabel.text = @"";
 	} else {
 		CPMResource* resource = [searchResults objectAtIndex:row];
 		cell.nameLabel.text = [resource name];
+		if ([resource distanceToRef] != nil) {
+			if ([[resource distanceToRef] floatValue] >= 10.0f) {
+				cell.distanceLabel.text = [NSString stringWithFormat:@"%d miles", [[resource distanceToRef] intValue]];
+			} else {
+				cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles", [[resource distanceToRef] floatValue]];
+			}
+		} else {
+			cell.distanceLabel.text = @"";
+		}
+
+		
 		cell.addressLabel.text = [resource addressString];
 		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 	}
@@ -207,7 +219,10 @@
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
 	[self showOverlay];
-	[xsHelper searchResourcesWithQuery: query];
+	if ([searchBar selectedScopeButtonIndex] == 0)
+		[xsHelper searchResourcesWithQuery: query];
+	else
+		[xsHelper searchResourcesWithQuery:query forLatitude:[NSNumber numberWithFloat:35.534051] andLongitude:[NSNumber numberWithFloat:-82.517753]];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)sender {
