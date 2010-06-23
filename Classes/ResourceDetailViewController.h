@@ -23,6 +23,13 @@
 	NSString *addressText;
 	XServicesHelper* xsHelper;
 	
+	//Section indexes
+	NSUInteger locationSectionIndex;
+	NSUInteger detailsSectionIndex;
+	NSUInteger servicesSectionIndex;
+	NSUInteger generalInfoSectionIndex;
+	
+	//Location
 	NSUInteger addressCellIndex;
 	NSUInteger phoneCellIndex;
 	NSUInteger urlCellIndex;
@@ -53,5 +60,7 @@
 - (void) updateDisplay;
 - (void) displayComposerSheet;
 - (void) launchMailAppOnDevice;
+
+- (NSInteger) numberOfRowsInSection:(NSInteger)section;
 
 @end
