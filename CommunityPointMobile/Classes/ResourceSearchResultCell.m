@@ -14,6 +14,7 @@
 @synthesize nameLabel;
 @synthesize addressLabel;
 @synthesize distanceLabel;
+@synthesize activityIndicator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -29,6 +30,8 @@
 - (void)dealloc {
 	[nameLabel release];
 	[addressLabel release];
+	[activityIndicator release];
+	[distanceLabel release];
     [super dealloc];
 }
 

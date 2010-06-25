@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ResourceSearchResultCell.h"
 
 #define kTableViewRowHeight	66
 
@@ -20,6 +21,7 @@
 	UITableView* resultsTableView;
 	UIActivityIndicatorView *busyIndicator;
 	UIView *dimmingOverlay;
+	ResourceSearchResultCell *loadMoreCell;
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar* searchBar;
@@ -28,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIView* dimmingOverlay;
 @property (nonatomic, retain) NSArray* searchResults;
 @property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
+@property (nonatomic, retain) ResourceSearchResultCell* loadMoreCell;
 
 - (IBAction) backgroundTap:(id)sender;
 

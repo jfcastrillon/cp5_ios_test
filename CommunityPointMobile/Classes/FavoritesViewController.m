@@ -105,6 +105,7 @@
 	cell.nameLabel.text = [favorite objectForKey:@"name"];
 	cell.addressLabel.text = [favorite objectForKey:@"address"];
 	cell.distanceLabel.text = @"";
+	[cell.activityIndicator setHidden:YES];
 	
 	return cell;
 }

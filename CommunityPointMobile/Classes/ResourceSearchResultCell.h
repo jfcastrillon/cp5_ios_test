@@ -13,10 +13,12 @@
 	UILabel	*nameLabel;
 	UILabel *addressLabel;
 	UILabel *distanceLabel;
+	UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel* addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel* distanceLabel;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
 
 @end
