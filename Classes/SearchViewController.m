@@ -12,7 +12,6 @@
 #import "CPMSearchResultSet.h"
 
 #import "XServicesHelper.h"
-#import "ResourceSearchResultCell.h"
 #import "ResourceDetailViewController.h"
 #import "NetworkManager.h"
 
@@ -24,6 +23,7 @@
 @synthesize dimmingOverlay;
 @synthesize searchResults;
 @synthesize xsHelper;
+@synthesize loadMoreCell;
 
 - (void) showOverlay {
 	// TODO: make this animated
@@ -92,6 +92,7 @@
 	[searchResults release];
 	[searchBar release];
 	[busyIndicator release];
+	[loadMoreCell release];
     [super dealloc];
 }
 
@@ -120,10 +121,11 @@
 	[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
+BOOL isLoadingMore;
 - (void) didReceiveMoreSearchResults: (NSNotification*) notification {
 	self.searchResults = [xsHelper searchResults];
-	[busyIndicator setHidden:YES];
-	[self hideOverlay];
+	isLoadingMore = NO;
+	[loadMoreCell.activityIndicator setHidden:YES];
 	[resultsTableView reloadData];
 }
 
@@ -154,21 +156,30 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 	static NSString *ResourceSearchResultCellIdentifier = @"ResourceSearchResultCell";
 	
+	NSUInteger row = [indexPath row];
 	ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
+
 	if(cell == nil){
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
 		for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
 			cell = (ResourceSearchResultCell *)oneObject;
 	}
-	
-	NSUInteger row = [indexPath row];
-	
+
+	if (isLoadingMore == YES && row == [searchResults count]) {
+		cell.activityIndicator.hidden = NO;
+		[cell.activityIndicator startAnimating];
+	} else {
+		cell.activityIndicator.hidden = YES;
+	}
+
 	if (row == [searchResults count]) {
 		int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
 		cell.nameLabel.text = @"Load More Results";
 		cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
 		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
 		cell.distanceLabel.text = @"";
+		loadMoreCell = cell;
+		[loadMoreCell retain];
 	} else {
 		CPMResource* resource = [searchResults objectAtIndex:row];
 		cell.nameLabel.text = [resource name];
@@ -182,7 +193,6 @@
 			cell.distanceLabel.text = @"";
 		}
 
-		
 		cell.addressLabel.text = [resource addressString];
 		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 	}
@@ -197,8 +207,9 @@
 	NSUInteger row = [indexPath row];
 	
 	if (row == [[xsHelper searchResults] count]) {
-		[busyIndicator setHidden:NO];
-		[self showOverlay];
+		[loadMoreCell.activityIndicator setHidden:NO];
+		[loadMoreCell.activityIndicator startAnimating];
+		isLoadingMore = YES;
 		[xsHelper loadMoreResults];
 	} else {
 		CPMResource *resource = [[xsHelper searchResults] objectAtIndex:row];
