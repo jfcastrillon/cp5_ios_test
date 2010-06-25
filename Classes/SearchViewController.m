@@ -178,6 +178,8 @@ BOOL isLoadingMore;
 		cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
 		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
 		cell.distanceLabel.text = @"";
+		[cell.handicapImage setHidden:YES];
+		[cell.bedImage setHidden:YES];
 		loadMoreCell = cell;
 		[loadMoreCell retain];
 	} else {
@@ -191,6 +193,18 @@ BOOL isLoadingMore;
 			}
 		} else {
 			cell.distanceLabel.text = @"";
+		}
+		
+		if ([resource shelterFlag] != nil && [[resource shelterFlag] boolValue]) {
+			[cell.bedImage setHidden:NO];
+		} else {
+			[cell.bedImage setHidden:YES];
+		}
+		
+		if ([resource accessibilityFlag] != nil && [[resource accessibilityFlag] boolValue]) {
+			[cell.handicapImage setHidden:NO];
+		} else {
+			[cell.handicapImage setHidden:YES];
 		}
 
 		cell.addressLabel.text = [resource addressString];

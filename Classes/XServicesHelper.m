@@ -127,6 +127,8 @@
 	[dictionary setObject: [resource resourceId] forKey: @"resourceId"];
 	[dictionary setObject: [resource name] forKey: @"name"];
 	[dictionary setObject: [resource addressString] forKey: @"address"];
+	[dictionary setObject: [resource accessibilityFlag] forKey: @"accessibilityFlag"];
+	[dictionary setObject: [resource shelterFlag] forKey:@"shelterFlag"];
 	[favorites addObject: dictionary];
 	[dictionary release];
 }
@@ -138,6 +140,8 @@
 	[dictionary setObject: [resource resourceId] forKey: @"resourceId"];
 	[dictionary setObject: [resource name] forKey: @"name"];
 	[dictionary setObject: [resource addressString] forKey: @"address"];
+	[dictionary setObject: [resource accessibilityFlag] forKey: @"accessibilityFlag"];
+	[dictionary setObject: [resource shelterFlag] forKey:@"shelterFlag"];
 	
 	for(NSUInteger i = 0; i < [favorites count]; i++){
 		NSDictionary* favorite = [favorites objectAtIndex: i];

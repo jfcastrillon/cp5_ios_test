@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CPMBoolean.h"
 
 @interface CPMResource : NSObject {
 	NSDecimalNumber	*resourceId;
@@ -22,6 +23,9 @@
 	NSDecimalNumber	*latitude;
 	NSDecimalNumber	*longitude;
 	NSNumber		*distanceToRef;
+	CPMBoolean* accessibilityFlag;
+	CPMBoolean* shelterFlag;
+	CPMBoolean* callCenterFlag;
 }
 
 @property (nonatomic, copy) NSDecimalNumber *resourceId;
@@ -37,6 +41,9 @@
 @property (nonatomic, copy) NSDecimalNumber *latitude;
 @property (nonatomic, copy) NSDecimalNumber *longitude;
 @property (nonatomic, copy) NSNumber *distanceToRef;
+@property (nonatomic, copy) CPMBoolean* accessibilityFlag;
+@property (nonatomic, copy) CPMBoolean* shelterFlag;
+@property (nonatomic, copy) CPMBoolean* callCenterFlag;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary;
 - (NSDictionary*) dictionaryValue;

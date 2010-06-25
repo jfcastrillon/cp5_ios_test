@@ -20,7 +20,7 @@
 
 @synthesize phones, primaryPhone;
 
-@synthesize hours, programFees, languages, eligibility, intakeProcedure, accessibilityFlag, shelterRequirements, shelterFlag;
+@synthesize hours, programFees, languages, eligibility, intakeProcedure, shelterRequirements;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	[super initFromJsonDictionary: dictionary];

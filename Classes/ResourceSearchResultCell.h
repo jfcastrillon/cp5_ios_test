@@ -14,11 +14,15 @@
 	UILabel *addressLabel;
 	UILabel *distanceLabel;
 	UIActivityIndicatorView *activityIndicator;
+	UIImageView *bedImage;
+	UIImageView *handicapImage;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel* addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel* distanceLabel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (nonatomic, retain) IBOutlet UIImageView* bedImage;
+@property (nonatomic, retain) IBOutlet UIImageView* handicapImage;
 
 @end
