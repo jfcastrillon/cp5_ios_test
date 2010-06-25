@@ -24,6 +24,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+	if(isLoading)
+		[[NetworkManager sharedInstance] hideNetworkActivityIndicator];
+	[super viewDidDisappear:animated];
+}
+
 - (void)viewDidUnload {
     mapView = nil;
 	displayedResource = nil;
@@ -51,11 +57,14 @@
 }
 
 - (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
+	[[NetworkManager sharedInstance]showNetworkActivityIndicator];
+	isLoading = YES;
+	
 }
 
 - (void) mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
+	[[NetworkManager sharedInstance]hideNetworkActivityIndicator];
+	isLoading = NO;
 }
 
 

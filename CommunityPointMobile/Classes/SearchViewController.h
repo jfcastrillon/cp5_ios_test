@@ -22,6 +22,7 @@
 	UIActivityIndicatorView *busyIndicator;
 	UIView *dimmingOverlay;
 	ResourceSearchResultCell *loadMoreCell;
+	BOOL isLoadingMore;
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar* searchBar;

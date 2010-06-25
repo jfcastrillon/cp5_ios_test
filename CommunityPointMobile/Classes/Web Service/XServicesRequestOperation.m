@@ -129,6 +129,7 @@ NSString* encodeStringForURL(NSString* str){
 		executing = YES;
 		_urlConnection = [self createConnectionForAction: _action withParameters: _params];
 		[_urlConnection start];
+		[[NetworkManager sharedInstance] showNetworkActivityIndicator];
 		
 		[self didChangeValueForKey:@"isExecuting"];
 	} else {
@@ -154,6 +155,7 @@ NSString* encodeStringForURL(NSString* str){
 - (void) finishForCancel {
 	NSLog(@"Operation cancelled: %@", _action);
 	[_urlConnection	cancel];
+	[[NetworkManager sharedInstance] hideNetworkActivityIndicator];
 	[self willChangeValueForKey:@"isFinished"];
 	[self willChangeValueForKey:@"isExecuting"];
 	finished = YES;
@@ -187,6 +189,8 @@ NSString* encodeStringForURL(NSString* str){
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     //NSLog(@"Retrieved %d bytes", [_responseData length]);
+	
+	[[NetworkManager sharedInstance] hideNetworkActivityIndicator];
 	
 	//Parse the data
 	result = [_parser parseData: _responseData];
