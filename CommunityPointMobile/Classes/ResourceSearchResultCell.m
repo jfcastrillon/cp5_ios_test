@@ -15,6 +15,8 @@
 @synthesize addressLabel;
 @synthesize distanceLabel;
 @synthesize activityIndicator;
+@synthesize handicapImage;
+@synthesize bedImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -32,6 +34,8 @@
 	[addressLabel release];
 	[activityIndicator release];
 	[distanceLabel release];
+	[handicapImage release];
+	[bedImage release];
     [super dealloc];
 }
 

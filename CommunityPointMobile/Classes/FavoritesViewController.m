@@ -105,6 +105,17 @@
 	cell.nameLabel.text = [favorite objectForKey:@"name"];
 	cell.addressLabel.text = [favorite objectForKey:@"address"];
 	cell.distanceLabel.text = @"";
+	if ([favorite objectForKey:@"shelterFlag"] != nil && [[favorite objectForKey:@"shelterFlag"] boolValue]) {
+		[cell.bedImage setHidden:NO];
+	} else {
+		[cell.bedImage setHidden:YES];
+	}
+	
+	if ([favorite objectForKey:@"accessibilityFlag"] != nil && [[favorite objectForKey:@"accessibilityFlag"] boolValue]) {
+		[cell.handicapImage setHidden:NO];
+	} else {
+		[cell.handicapImage setHidden:YES];
+	}
 	[cell.activityIndicator setHidden:YES];
 	
 	return cell;

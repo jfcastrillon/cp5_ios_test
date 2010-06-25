@@ -53,6 +53,8 @@
 		40F4B24811D11B48005CAE4E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B24711D11B48005CAE4E /* Reachability.m */; };
 		40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */; };
 		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
+		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
+		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 		6DBF843511D00ADB00FC71E4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DBF843411D00ADB00FC71E4 /* Default.png */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +140,8 @@
 		40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40F4B2A211D14A4C005CAE4E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
+		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		6DBF843411D00ADB00FC71E4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
+				6D6CB60911D44CDF0050D955 /* handicap.gif */,
+				6D6CB60711D44CDA0050D955 /* bed.gif */,
 				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
@@ -402,6 +408,8 @@
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
 				6DBF843511D00ADB00FC71E4 /* Default.png in Resources */,
+				6D6CB60811D44CDA0050D955 /* bed.gif in Resources */,
+				6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CPMBoolean.h"
 #import "CPMResource.h"
 #import "CPMProviderAddress.h"
 #import "CPMProviderTelephone.h"
@@ -26,8 +25,6 @@
 	NSString* languages;
 	NSString* eligibility;
 	NSString* intakeProcedure;
-	CPMBoolean* accessibilityFlag;
-	CPMBoolean* shelterFlag;
 	NSString* shelterRequirements;
 }
 
@@ -44,8 +41,6 @@
 @property (nonatomic, copy) NSString* languages;
 @property (nonatomic, copy) NSString* eligibility;
 @property (nonatomic, copy) NSString* intakeProcedure;
-@property (nonatomic, copy) CPMBoolean* accessibilityFlag;
-@property (nonatomic, copy) CPMBoolean* shelterFlag;
 @property (nonatomic, copy) NSString* shelterRequirements;
 
 @end
