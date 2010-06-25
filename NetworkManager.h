@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "Reachability.h"
 
 @interface NetworkManager : NSObject {
@@ -17,10 +18,14 @@
 	
 	NetworkStatus lastKnownServiceStatus;
 	NetworkStatus lastKnownConnectionStatus;
+	NSUInteger networkActivityIndicatorCount;
 }
 
 - (BOOL) isServiceReachable;
 - (BOOL) isInternetConnectionAvailable;
+
+- (void) showNetworkActivityIndicator;
+- (void) hideNetworkActivityIndicator;
 
 + (NetworkManager*) sharedInstance;
 

@@ -28,6 +28,8 @@
 	[connectionReachability startNotifier];
 	[serviceReachability startNotifier];
 	
+	networkActivityIndicatorCount = 0;
+	
 	return self;
 }
 
@@ -66,6 +68,18 @@
 
 - (BOOL) isInternetConnectionAvailable {
 	return lastKnownConnectionStatus != NotReachable;
+}
+
+- (void) showNetworkActivityIndicator{
+	if(networkActivityIndicatorCount == 0)
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	networkActivityIndicatorCount++;
+}
+
+- (void) hideNetworkActivityIndicator {
+	networkActivityIndicatorCount--;
+	if(networkActivityIndicatorCount == 0)
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 // Below implements the singleton pattern for this class (from examples online)

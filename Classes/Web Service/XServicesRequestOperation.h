@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 #import "ResponseParser.h"
 #import "XSResponse.h"
+#import "NetworkManager.h"
 
 // Escapes characters in a URL string.
 NSString* encodeStringForURL(NSString* str);

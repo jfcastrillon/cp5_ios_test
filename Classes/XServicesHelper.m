@@ -26,8 +26,6 @@
 	operationQueue = [[NSOperationQueue alloc] init];
 	if(operationQueue == nil) return nil;
 	
-	[operationQueue addObserver:self forKeyPath:@"operationCount" options:0 context:nil];
-	
 	networkManager = [NetworkManager sharedInstance];
 	
 	searchResults = [[NSMutableArray alloc] init];
@@ -56,17 +54,6 @@
 	
 	return self;
 }
-
-
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == operationQueue && [keyPath isEqual:@"operationCount"]) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: ([operationQueue operationCount] != 0)];
-    }
-    else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
-
 
 // XServices simplified methods
 - (void)searchResourcesWithQuery:(NSString*)query {
