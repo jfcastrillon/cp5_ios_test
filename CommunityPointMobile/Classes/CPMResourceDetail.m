@@ -143,5 +143,25 @@
 	return self;
 }
 
+- (void) dealloc {
+	self.description = nil;
+	self.services = nil;
+	self.primaryAddress = nil;
+	self.addresses = nil;
+	
+	self.phones = nil;
+	self.primaryPhone = nil;
+	
+	self.hours = nil;
+	self.programFees = nil;
+	self.languages = nil;
+	self.eligibility = nil;
+	self.intakeProcedure = nil;
+	self.accessibilityFlag = nil;
+	self.shelterRequirements = nil;
+	self.shelterFlag = nil;
+	[super dealloc];
+}
+
 
 @end

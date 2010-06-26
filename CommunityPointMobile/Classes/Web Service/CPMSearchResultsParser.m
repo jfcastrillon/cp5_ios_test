@@ -31,9 +31,9 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 	result.totalCount = [[jsonResult objectForKey: @"resources"] objectForKey: @"total"];
 	result.searchHistoryId = [[jsonResult objectForKey: @"resources"] objectForKey: @"search_history_id"];
 	
-	result.results = translateResourceArray([[jsonResult objectForKey: @"resources"] objectForKey: @"results"]);
-	
-	//[jsonResult release];
+	NSArray* results = translateResourceArray([[jsonResult objectForKey: @"resources"] objectForKey: @"results"]);
+	result.results = results;
+	[results release];
 	
 	return result;
 }

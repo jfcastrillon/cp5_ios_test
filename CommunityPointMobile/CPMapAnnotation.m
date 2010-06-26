@@ -13,25 +13,25 @@
 
 @synthesize coordinate = _coordinate, title, subtitle;
 
-+ (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate {
-	CPMapAnnotation *annotation = [super alloc];
-	annotation.coordinate = coordinate;
-	return annotation;
+- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate {
+	[super init];
+	self.coordinate = coordinate;
+	return self;
 }
 
-+ (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title {
-	CPMapAnnotation *annotation = [super alloc];
-	annotation.coordinate = coordinate;
-	annotation.title = title;
-	return annotation;
+- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title {
+	[super init];
+	self.coordinate = coordinate;
+	self.title = title;
+	return self;
 }
 
-+ (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title andSubtitle:(NSString*) subtitle {
-	CPMapAnnotation *annotation = [super alloc];
-	annotation.coordinate = coordinate;
-	annotation.title = title;
-	annotation.subtitle = subtitle;
-	return annotation;
+- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title andSubtitle:(NSString*) subtitle {
+	[super init];
+	self.coordinate = coordinate;
+	self.title = title;
+	self.subtitle = subtitle;
+	return self;
 }
 
 - (void) dealloc {

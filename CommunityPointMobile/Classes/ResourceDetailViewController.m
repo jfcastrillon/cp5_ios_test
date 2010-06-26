@@ -179,6 +179,7 @@
 	// e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	
+	self.displayedResource = nil;
 	self.nameLabel = nil;
 	self.buttonContainer = nil;
 	self.favoriteButton = nil;
@@ -332,7 +333,7 @@
 		if (row == addressCellIndex){
 			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
 			if(cell == nil){
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier] autorelease];
 			}
 			
 			if([displayedResource longitude] == nil)
@@ -349,7 +350,7 @@
 		} else if (row == phoneCellIndex) {
 			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
 			if(cell == nil){
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier];
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier] autorelease];
 			}
 			
 			cell.textLabel.text = @"phone";
@@ -358,7 +359,7 @@
 		} else if (row == urlCellIndex) {
 			cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
 			if(cell == nil){
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier];
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier] autorelease];
 			}
 			
 			cell.textLabel.text = @"Website";
@@ -375,7 +376,7 @@
 				{
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceDetailCellIdentifier];
 					if(cell == nil){
-						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceDetailCellIdentifier];
+						cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceDetailCellIdentifier] autorelease];
 					}
 					
 					cell.textLabel.text = [displayedResource description];
@@ -397,7 +398,7 @@
 				if (currentIndex == row) {
 					cell = [tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
 					if(cell == nil){
-						cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceServiceCellIdentifier];
+						cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceServiceCellIdentifier] autorelease];
 					}
 					
 					cell.textLabel.text = [service name];
@@ -414,7 +415,7 @@
 		
 		cell = [tableView dequeueReusableCellWithIdentifier:ResourceGeneralCellIdentifier];
 		if(cell == nil){
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceGeneralCellIdentifier];
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceGeneralCellIdentifier] autorelease];
 		}
 		
 		if (row == hoursCellIndex) {
@@ -487,7 +488,7 @@
 			cellText = @"Yes";
 		} else if (row == shelterCellIndex) {
 			cellText = @"Yes";
-		} else if (row == shelterRequirementsCellIndex) {
+		} else { //if (row == shelterRequirementsCellIndex) {
 			cellText = [displayedResource shelterRequirements];
 		}
 

@@ -17,4 +17,13 @@
 @synthesize totalCount;
 @synthesize results;
 
+- (void) dealloc {
+	self.searchHistoryId = nil;
+	self.offset = nil;
+	self.count = nil;
+	self.totalCount = nil;
+	self.results = nil;
+	[super dealloc];
+}
+
 @end

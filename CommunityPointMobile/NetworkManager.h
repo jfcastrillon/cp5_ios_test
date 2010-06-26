@@ -11,7 +11,6 @@
 #import "Reachability.h"
 
 @interface NetworkManager : NSObject {
-	NSOperationQueue* operationQueue;
 	Reachability* serviceReachability;
 	Reachability* connectionReachability;
 	
