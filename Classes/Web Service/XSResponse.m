@@ -13,4 +13,10 @@
 
 @synthesize tag, result;
 
+- (void) dealloc {
+	self.tag = nil;
+	self.result = nil;
+	[super dealloc];
+}
+
 @end

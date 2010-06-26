@@ -81,17 +81,19 @@
 	// e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	self.searchBar = nil;
-	self.searchResults = nil;
 	self.resultsTableView = nil;
-	[operationQueue cancelAllOperations];
-	[operationQueue release];
-	operationQueue = nil;
+	self.busyIndicator = nil;
+	self.dimmingOverlay = nil;
+	self.loadMoreCell = nil;
 }
 
 - (void)dealloc {
 	[searchResults release];
+	[resultsTableView release];
 	[searchBar release];
 	[busyIndicator release];
+	[dimmingOverlay release];
+	[xsHelper release];
 	[loadMoreCell release];
     [super dealloc];
 }

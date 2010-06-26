@@ -33,6 +33,13 @@
 	return self;
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object: nil];
+	[serviceReachability release];
+	[connectionReachability release];
+	[super dealloc];
+}
+
 - (void) reachabilityChanged: (NSNotification*) notification {
 	Reachability *reach = [notification object];
 	NetworkStatus status = [reach currentReachabilityStatus];

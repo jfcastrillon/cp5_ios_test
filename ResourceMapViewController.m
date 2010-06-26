@@ -50,8 +50,9 @@
 	region.center=location;
 	
 	[mapView setRegion:region animated:YES];
-	CPMapAnnotation *annotation = [CPMapAnnotation initWithCoordinate:location andTitle:[displayedResource name]];
+	CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[displayedResource name]];
 	[mapView addAnnotation:annotation];
+	[annotation release];
 	
 	[super viewDidAppear:animated];
 }

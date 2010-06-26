@@ -61,6 +61,21 @@
 	return addressLine;
 }
 
+- (void) dealloc {
+	self.addressId = nil;
+	self.active = nil;
+	self.description = nil;
+	self.line1 = nil;
+	self.line2 = nil;
+	self.city = nil;
+	self.province = nil;
+	self.postalcode = nil;
+	self.county = nil;
+	self.country = nil;
+	self.landmarks = nil;
+	[super dealloc];
+}
+
 - (NSString*) stringValue {
 	
 	NSMutableString *addressLine = [[NSMutableString alloc] init];

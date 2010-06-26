@@ -21,4 +21,10 @@
 	return self;
 }
 
+- (void) dealloc {
+	self.name = nil;
+	self.code = nil;
+	[super dealloc];
+}
+
 @end

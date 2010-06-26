@@ -26,4 +26,15 @@
 	return self;
 }
 
+- (void) dealloc {
+	self.telephoneId = nil;
+	self.name = nil;
+	self.areaCode = nil;
+	self.prefix = nil;
+	self.line = nil;
+	self.extension = nil;
+	self.fullNumber = nil;
+	[super dealloc];
+}
+
 @end

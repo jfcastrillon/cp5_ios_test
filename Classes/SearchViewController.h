@@ -16,7 +16,6 @@
 @interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
-	NSOperationQueue *operationQueue;
 	NSArray* searchResults;
 	UITableView* resultsTableView;
 	UIActivityIndicatorView *busyIndicator;

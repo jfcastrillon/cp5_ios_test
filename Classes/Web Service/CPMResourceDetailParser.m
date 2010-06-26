@@ -17,8 +17,6 @@
 	
 	CPMResourceDetail *result = [[CPMResourceDetail alloc] initFromJsonDictionary:[jsonResult objectForKey: @"resource"]];
 	
-	//[jsonResult release];
-	
 	return result;
 }
 

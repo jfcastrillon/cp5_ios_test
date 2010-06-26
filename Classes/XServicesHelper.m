@@ -174,15 +174,15 @@
 			[searchResults removeAllObjects];
 		
 		[searchResults addObjectsFromArray: [[response result] results]];
-		lastSearchResultSet = [response result];
+		self.lastSearchResultSet = [response result];
 		
 		if (newSearch)
 			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsReceived" object: self]];
 		else 
 			[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"SearchResultsAppended" object: self]];
 		
-		[response release];
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
+		[currentResource release];
 		currentResource = [response result];
 		
 		// Update the favorite info while we have fresh data
@@ -191,8 +191,8 @@
 		
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
-		[response release];
 	}
+	[response release];
 }
 
 - (void) operationDidFailWithError: (NSDictionary*) errorInfo {
@@ -206,11 +206,13 @@
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"ResourceRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	}
 	//[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"XServicesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
+	[errorInfo release];
 }
 
 - (void) dealloc {
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;
+	[currentResource release], currentResource = nil;
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
 	[lastSearchResultSet release], lastSearchResultSet = nil;

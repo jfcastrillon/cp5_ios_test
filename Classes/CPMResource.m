@@ -61,6 +61,23 @@
 	return self;
 }
 
+- (void) dealloc {
+	self.resourceId = nil;
+	self.providerId = nil;
+	self.name = nil;
+	self.address1 = nil;
+	self.address2 = nil;
+	self.city = nil;
+	self.state = nil;
+	self.zipcode = nil;
+	self.url = nil;
+	self.phone = nil;
+	self.latitude = nil;
+	self.longitude = nil;
+	self.distanceToRef = nil;
+	[super dealloc];
+}
+
 - (NSDictionary*) dictionaryValue {
 	NSMutableDictionary * value;
 	

@@ -58,8 +58,8 @@ NSString* encodeStringForURL(NSString* str){
 @synthesize result;
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser:(NSObject <ResponseParser>*) parser{
-	
-	if([super init] == nil) return nil;
+	self = [super init];
+	if(self == nil) return nil;
 	
 	_baseUrl = @"http://syncpoint.bowmansystems.com/xs/1.0/index.php";
 	[_baseUrl retain];
@@ -81,7 +81,6 @@ NSString* encodeStringForURL(NSString* str){
 - (void)dealloc {
 	// Close the connection
 	[_urlConnection release];
-	_urlConnection = nil;
 	
 	[_params release];
 	[_baseUrl release];
@@ -89,7 +88,6 @@ NSString* encodeStringForURL(NSString* str){
 	[_action release];
 	[_parser release];
 	[_responseData release];
-	self.delegate = nil;
     [super dealloc];
 }
 
@@ -207,6 +205,7 @@ NSString* encodeStringForURL(NSString* str){
 		XSResponse *response = [[XSResponse alloc] init];
 		[response setTag: _action];
 		[response setResult: result];
+		[result release];
 	    [delegate performSelectorOnMainThread:@selector(operationDidComplete:) withObject:response waitUntilDone:NO];
 	}
 }
