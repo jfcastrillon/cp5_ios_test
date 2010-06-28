@@ -76,7 +76,11 @@
 
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	XSResourceSearchOperation *op;
+	if([lastSearchResultSet refLatitude] == nil)
+		op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	else
+		op = [[XSResourceSearchOperation alloc] initLocationBasedRequestWithQuery: lastQuery forLatitude:[lastSearchResultSet refLatitude] andLongitude: [lastSearchResultSet refLongitude] andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
