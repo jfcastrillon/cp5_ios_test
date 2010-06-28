@@ -15,6 +15,7 @@
 @synthesize offset;
 @synthesize count;
 @synthesize totalCount;
+@synthesize refLatitude, refLongitude;
 @synthesize results;
 
 - (void) dealloc {
@@ -22,6 +23,8 @@
 	self.offset = nil;
 	self.count = nil;
 	self.totalCount = nil;
+	self.refLongitude = nil;
+	self.refLatitude = nil;
 	self.results = nil;
 	[super dealloc];
 }
