@@ -25,7 +25,7 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel, buttonContainer, loadingOverlay, favoriteButton, shareButton;
+@synthesize nameLabel, buttonContainer, loadingOverlay, favoriteButton, shareButton, tableView;
 
 
 @dynamic displayedResource;
@@ -148,9 +148,22 @@
 	servicesSectionIndex = UINT_MAX;
 	generalInfoSectionIndex = UINT_MAX;
 	
+	if(displayedResource == nil) {
+		[loadingOverlay setHidden: NO];
+	} else {
+		[self updateDisplay];
+	}
+	
     [super viewDidLoad];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+	if(displayedResource != nil) {
+		[tableView reloadData];
+	}
+	
+	[super viewWillAppear:animated];
+}
 
 - (void) viewWillDisappear:(BOOL)animated {
 	// Stop listening for the data update
@@ -184,6 +197,7 @@
 	self.buttonContainer = nil;
 	self.favoriteButton = nil;
 	self.shareButton = nil;
+	self.tableView = nil;
 	
 	[super viewDidUnload];
 }
@@ -196,6 +210,7 @@
 	[buttonContainer release];
 	[favoriteButton release];
 	[shareButton release];
+	[tableView release];
     [super dealloc];
 }
 	 

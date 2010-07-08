@@ -15,6 +15,8 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		401A13AB11CC48A600CBD979 /* CPMProviderAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 401A13AA11CC48A600CBD979 /* CPMProviderAddress.m */; };
 		402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */; };
+		404CE82611D8FDC100AD5D86 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 404CE82511D8FDC100AD5D86 /* LocationManager.m */; };
+		404CE83211D8FDD500AD5D86 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404CE83111D8FDD500AD5D86 /* CoreLocation.framework */; };
 		40547BB81169335200F608E7 /* ResourceSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40547BB71169335200F608E7 /* ResourceSearchResultCell.m */; };
 		40547BBA1169337300F608E7 /* ResourceSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40547BB91169337300F608E7 /* ResourceSearchResultCell.xib */; };
 		40547D6C116984AD00F608E7 /* ResourceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40547D6A116984AD00F608E7 /* ResourceDetailViewController.m */; };
@@ -46,6 +48,8 @@
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
+		40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */; };
+		40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D2762811DE719100FB1487 /* logo_vertical_white.png */; };
 		40D289D21172C3840095F032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D289D11172C3840095F032 /* Icon.png */; };
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
@@ -71,6 +75,9 @@
 		401A13A911CC48A600CBD979 /* CPMProviderAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMProviderAddress.h; path = Classes/CPMProviderAddress.h; sourceTree = "<group>"; };
 		401A13AA11CC48A600CBD979 /* CPMProviderAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMProviderAddress.m; path = Classes/CPMProviderAddress.m; sourceTree = "<group>"; };
 		402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
+		404CE82411D8FDC100AD5D86 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		404CE82511D8FDC100AD5D86 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		404CE83111D8FDD500AD5D86 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		40547BB61169335200F608E7 /* ResourceSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceSearchResultCell.h; path = Classes/ResourceSearchResultCell.h; sourceTree = "<group>"; };
 		40547BB71169335200F608E7 /* ResourceSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourceSearchResultCell.m; path = Classes/ResourceSearchResultCell.m; sourceTree = "<group>"; };
 		40547BB91169337300F608E7 /* ResourceSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceSearchResultCell.xib; sourceTree = "<group>"; };
@@ -128,6 +135,8 @@
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
 		40CEBCFD11CFFC1A00932D73 /* CPMProviderTelephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMProviderTelephone.h; sourceTree = "<group>"; };
 		40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMProviderTelephone.m; sourceTree = "<group>"; };
+		40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbc211-trimmed.png"; sourceTree = "<group>"; };
+		40D2762811DE719100FB1487 /* logo_vertical_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vertical_white.png; sourceTree = "<group>"; };
 		40D289D11172C3840095F032 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		40D289E21172C65F0095F032 /* ResourceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceMapViewController.h; sourceTree = "<group>"; };
 		40D289E31172C65F0095F032 /* ResourceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceMapViewController.m; sourceTree = "<group>"; };
@@ -157,6 +166,7 @@
 				40547D9E11698BE700F608E7 /* MapKit.framework in Frameworks */,
 				40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */,
 				40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */,
+				404CE83211D8FDD500AD5D86 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +207,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */,
+				404CE83111D8FDD500AD5D86 /* CoreLocation.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -215,6 +226,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40D2762811DE719100FB1487 /* logo_vertical_white.png */,
+				40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */,
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
@@ -291,6 +304,8 @@
 				4057AC5F1166B3DC004882F6 /* JSON */,
 				40F4B2A211D14A4C005CAE4E /* NetworkManager.h */,
 				40F4B2A311D14A4C005CAE4E /* NetworkManager.m */,
+				404CE82411D8FDC100AD5D86 /* LocationManager.h */,
+				404CE82511D8FDC100AD5D86 /* LocationManager.m */,
 			);
 			name = "Service Code";
 			sourceTree = "<group>";
@@ -410,6 +425,8 @@
 				6DBF843511D00ADB00FC71E4 /* Default.png in Resources */,
 				6D6CB60811D44CDA0050D955 /* bed.gif in Resources */,
 				6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */,
+				40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */,
+				40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +468,7 @@
 				40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */,
 				40F4B24811D11B48005CAE4E /* Reachability.m in Sources */,
 				40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */,
+				404CE82611D8FDC100AD5D86 /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
