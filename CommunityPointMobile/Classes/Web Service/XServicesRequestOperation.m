@@ -58,13 +58,12 @@ NSString* encodeStringForURL(NSString* str){
 @synthesize result;
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser:(NSObject <ResponseParser>*) parser{
-	self = [super init];
-	if(self == nil) return nil;
+	if([super init] == nil) return nil;
 	
 	_baseUrl = @"http://syncpoint.bowmansystems.com/xs/1.0/index.php";
 	[_baseUrl retain];
 	
-	_publicKey = @"B47182694EA9167F4A6320B775636039";
+	_publicKey = @"5240A93C66BEA766B61DC6B54369A696";
 	[_publicKey retain];
 	
 	_action = action;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationManager.h"
 #import "ResourceSearchResultCell.h"
 
 #define kTableViewRowHeight	66
@@ -16,6 +17,7 @@
 @interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
+	LocationManager *locationManager;
 	NSArray* searchResults;
 	UITableView* resultsTableView;
 	UIActivityIndicatorView *busyIndicator;

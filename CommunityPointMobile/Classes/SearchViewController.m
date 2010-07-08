@@ -52,6 +52,7 @@
 - (void)viewDidLoad {
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
+	locationManager = [LocationManager sharedInstance];
 	
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
@@ -242,18 +243,49 @@
 }
 
 - (void) beginSearchForQuery: (NSString*) query {
+	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
-	[self showOverlay];
 	if ([searchBar selectedScopeButtonIndex] == 0)
 		[xsHelper searchResourcesWithQuery: query];
-	else
-		[xsHelper searchResourcesWithQuery:query forLatitude:[NSNumber numberWithFloat:35.534051] andLongitude:[NSNumber numberWithFloat:-82.517753]];
+	else {
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: locationManager];
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: locationManager];
+		[locationManager startFindingCurrentLocation];
+	}
+}
+
+// Callbacks for loaction notifications
+- (void) didGetLocation: (NSNotification*) notification {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
+	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
+	[xsHelper searchResourcesWithQuery:[searchBar text] forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+}
+
+- (void) didFailToGetLocation: (NSNotification*) notification {
+	// Stop listening for 
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Error" message:@"Could not determine your location.  Using relevancy ranking instead." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+	[xsHelper searchResourcesWithQuery: searchBar.text];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)sender {
+	// Prevent a location search from being triggered if they start editing again
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
+	
 	[sender setShowsCancelButton:YES animated:YES];
-	[sender setShowsScopeBar:YES];
+	if([locationManager isLocationEnabled])
+		[sender setShowsScopeBar:YES];
+	else {
+		[sender setShowsScopeBar: NO];
+		[sender setSelectedScopeButtonIndex: 0]; // Only allow relevancy if the location services are disabled
+	}
+
 	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = NO;
 	resultsTableView.scrollEnabled = NO;

@@ -13,13 +13,14 @@
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UITableViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
+@interface ResourceDetailViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 	CPMResourceDetail *displayedResource;
 	UIButton *favoriteButton;
 	UIButton *shareButton;
 	UILabel *nameLabel;
 	UIView *buttonContainer;
 	UIView *loadingOverlay;
+	UITableView* tableView;
 	NSString *addressText;
 	XServicesHelper* xsHelper;
 	
@@ -51,6 +52,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UIView *buttonContainer;
 @property (nonatomic, retain) IBOutlet UIView *loadingOverlay;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
 
 - (IBAction) shareButtonPressed: (id) sender;
 - (IBAction) favoriteButtonPressed: (id) sender;
