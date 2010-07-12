@@ -20,6 +20,8 @@
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
 	
+	NSCache *detailsCache;
+	
 	NetworkManager *networkManager;
 	
 	CPMResourceDetail *currentResource;
@@ -54,6 +56,8 @@
 - (void) removeResourceFromFavorites:(CPMResource*) resource;
 - (void) removeFavoriteAtIndex:(NSUInteger) index;
 - (void) persistFavorites;
+
+- (void) emptyCaches;
 
 + (XServicesHelper*) sharedInstance;
 

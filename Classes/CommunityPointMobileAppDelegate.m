@@ -41,6 +41,10 @@
 	[xsHelper persistFavorites];
 }
 
+- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
+	[xsHelper emptyCaches];
+}
+
 - (void)dealloc {
 	[tabBarController release];
     [window release];

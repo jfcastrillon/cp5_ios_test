@@ -29,6 +29,9 @@
 	networkManager = [NetworkManager sharedInstance];
 	
 	searchResults = [[NSMutableArray alloc] init];
+	
+	detailsCache = [[NSCache alloc] init];
+	[detailsCache setCountLimit: 5];
 
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
 	NSString *documentsPath = [paths objectAtIndex:0]; 
@@ -95,10 +98,20 @@
 }
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId{
-	XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
-	op.delegate = self;
-	[operationQueue addOperation: op];
-	[op release];
+	CPMResourceDetail* cachedDetail = [detailsCache objectForKey:resourceId];
+	if(cachedDetail == nil) {
+		XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
+		op.delegate = self;
+		[operationQueue addOperation: op];
+		[op release];
+	} else {
+		[currentResource release];
+		currentResource = cachedDetail;
+		[detailsCache setObject:currentResource forKey:[currentResource resourceId]];
+		
+		[currentResource retain];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
+	}
 }
 
 - (void) cancelAllOperations {
@@ -188,6 +201,7 @@
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
 		[currentResource release];
 		currentResource = [response result];
+		[detailsCache setObject:currentResource forKey:[currentResource resourceId]];
 		
 		// Update the favorite info while we have fresh data
 		if([self isResourceInFavorites: currentResource])
@@ -213,12 +227,17 @@
 	[errorInfo release];
 }
 
+- (void) emptyCaches {
+	[detailsCache removeAllObjects];
+}
+
 - (void) dealloc {
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;
 	[currentResource release], currentResource = nil;
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
+	[detailsCache release];
 	[lastSearchResultSet release], lastSearchResultSet = nil;
 	
 	[super dealloc];
