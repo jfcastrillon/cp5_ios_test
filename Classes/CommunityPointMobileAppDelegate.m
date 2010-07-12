@@ -38,6 +38,7 @@
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
 
+	[xsHelper emptyCaches];
 	[xsHelper persistFavorites];
 }
 
