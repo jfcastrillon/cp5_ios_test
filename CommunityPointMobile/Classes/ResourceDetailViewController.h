@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import <MessageUI/MFMailComposeViewController.h>
-#import <MessageUI/MFMessageComposeViewController.h>
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
