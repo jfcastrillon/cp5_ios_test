@@ -45,6 +45,7 @@
 		40A35A8C11CC084500B01A49 /* XSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A35A8B11CC084500B01A49 /* XSResponse.m */; };
 		40A35B8011CC189800B01A49 /* XSResourceDetailsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */; };
 		40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1844F11718E1500D937B1 /* CPMResourceDetail.m */; };
+		40B2C38C11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
@@ -130,6 +131,7 @@
 		40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSResourceDetailsOperation.m; sourceTree = "<group>"; };
 		40B1844E11718E1500D937B1 /* CPMResourceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResourceDetail.h; path = Classes/CPMResourceDetail.h; sourceTree = "<group>"; };
 		40B1844F11718E1500D937B1 /* CPMResourceDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMResourceDetail.m; path = Classes/CPMResourceDetail.m; sourceTree = "<group>"; };
+		40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bowman Logo 525 x 150 pixels.png"; sourceTree = "<group>"; };
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */,
 				40D2762811DE719100FB1487 /* logo_vertical_white.png */,
 				40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */,
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
@@ -427,6 +430,7 @@
 				6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */,
 				40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */,
 				40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */,
+				40B2C38C11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
