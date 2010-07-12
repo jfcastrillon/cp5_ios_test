@@ -11,6 +11,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QHTTPOperation.h"
 #import "ResponseParser.h"
 #import "XSResponse.h"
 #import "NetworkManager.h"
@@ -24,7 +25,7 @@ NSString* encodeStringForURL(NSString* str);
 	- (NSString *) urlPostEncoded;
 @end
 
-@interface XServicesRequestOperation : NSOperation {
+@interface XServicesRequestOperation : QHTTPOperation {
 
 	NSString *_publicKey;	// Key used by XServices to identify and authorize this client
 	NSString *_baseUrl;		// Entry point URL for the XServices service
@@ -32,17 +33,9 @@ NSString* encodeStringForURL(NSString* str);
 	
 	NSMutableDictionary *_params;		// The parameters of the request (i.e., query, resource ID, etc)
 	
-	NSURLConnection *_urlConnection;	// Connection that handles retrieving the data
-	NSMutableData *_responseData;		// Buffer for received data
-	NSURL *_url;						// The URL for the request
-	
 	NSObject <ResponseParser> *_parser;	// The object that will parse the response data
 	id delegate;						// What object to notify when an error occurs or the request completes
 	id result;							// The result of the operation
-	
-	BOOL finished;				
-	BOOL executing;
-	
 	
 }
 
@@ -51,13 +44,6 @@ NSString* encodeStringForURL(NSString* str);
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser: (id <ResponseParser>) parser;
 
-- (void)start;
-- (BOOL)isConcurrent;
-- (BOOL)isFinished;
-- (BOOL)isExecuting;
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 

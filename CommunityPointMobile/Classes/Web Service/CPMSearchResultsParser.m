@@ -40,7 +40,7 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 	result.results = results;
 	[results release];
 	
-	return result;
+	return [result autorelease];
 }
 
 @end
