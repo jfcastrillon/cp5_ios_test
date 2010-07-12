@@ -6,6 +6,7 @@
 //  Copyright 2010 Bowman Systems, LLC. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ResourceDetailViewController.h"
 #import "ResourceMapViewController.h"
 #import "CPMResource.h"
@@ -99,8 +100,15 @@
 		[nameLabel setHidden: NO];
 		[buttonContainer setHidden: NO];
 		[self.tableView reloadData];
-    	[loadingOverlay setHidden: YES];
 		
+		CATransition *animation = [CATransition animation];
+		[animation setType: kCATransitionFade];
+		[animation setDuration: 0.3];
+		[animation setTimingFunction: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		[[loadingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
+		loadingOverlay.hidden = YES;
+		loadingOverlay.alpha  = 0.0f;
+	
 		// If the resource is a favorite, hide the "Add to Favorites" button
 		if ([xsHelper isResourceInFavorites: displayedResource]) { 
 			[favoriteButton setHidden: YES];

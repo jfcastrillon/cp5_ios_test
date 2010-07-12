@@ -5,7 +5,7 @@
 //  Created by John Cannon on 4/2/10.
 //  Copyright 2010 Bowman Systems, LLC. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "SearchViewController.h"
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
@@ -26,13 +26,23 @@
 @synthesize loadMoreCell;
 
 - (void) showOverlay {
-	// TODO: make this animated
-	[dimmingOverlay setHidden:NO];
+	CATransition *animation = [CATransition animation];
+	[animation setType: kCATransitionFade];
+	[animation setDuration: 0.3];
+	[animation setTimingFunction: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+	[[dimmingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
+	dimmingOverlay.hidden = NO;
+	dimmingOverlay.alpha  = 0.7f;
 }
 
 - (void) hideOverlay {
-	// TODO: make this animated
-	[dimmingOverlay setHidden:YES];
+	CATransition *animation = [CATransition animation];
+	[animation setType: kCATransitionFade];
+	[animation setDuration: 0.3];
+	[animation setTimingFunction: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+	[[dimmingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
+	dimmingOverlay.hidden = YES;
+	dimmingOverlay.alpha  = 0.0f;
 }
 
 - (IBAction) backgroundTap:(id)sender {
@@ -307,6 +317,7 @@
 	[sender setShowsCancelButton:NO animated:YES];
 	[sender setShowsScopeBar:NO];
 	[searchBar sizeToFit];
+	
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
 	[sender resignFirstResponder];

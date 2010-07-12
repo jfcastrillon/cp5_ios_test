@@ -33,6 +33,8 @@
 		4057AC711166B3DD004882F6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC6A1166B3DD004882F6 /* SBJsonParser.m */; };
 		4057AC721166B3DD004882F6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC6C1166B3DD004882F6 /* SBJsonWriter.m */; };
 		4057AC781166D6DE004882F6 /* XServicesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC771166D6DE004882F6 /* XServicesHelper.m */; };
+		4059511911EBAEEF009A3D7F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4059511811EBAEEF009A3D7F /* Default.png */; };
+		4059512411EBB3D1009A3D7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4059512311EBB3D1009A3D7F /* QuartzCore.framework */; };
 		4068946511C6BC0E0054C494 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4068946311C6BC0E0054C494 /* Util.m */; };
 		407F8BE81169139700425982 /* CPMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 407F8BE71169139700425982 /* CPMResource.m */; };
 		4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4093F9F611C6B3F300DC543A /* NC211 Logo.png */; };
@@ -62,7 +64,6 @@
 		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
-		6DBF843511D00ADB00FC71E4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DBF843411D00ADB00FC71E4 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,8 @@
 		4057AC6C1166B3DD004882F6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		4057AC761166D6DE004882F6 /* XServicesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XServicesHelper.h; path = Classes/XServicesHelper.h; sourceTree = "<group>"; };
 		4057AC771166D6DE004882F6 /* XServicesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XServicesHelper.m; path = Classes/XServicesHelper.m; sourceTree = "<group>"; };
+		4059511811EBAEEF009A3D7F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4059512311EBB3D1009A3D7F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4068946311C6BC0E0054C494 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		4068946411C6BC0E0054C494 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		407F8BE61169139700425982 /* CPMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResource.h; path = Classes/CPMResource.h; sourceTree = "<group>"; };
@@ -159,7 +162,6 @@
 		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
-		6DBF843411D00ADB00FC71E4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */,
 				40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */,
 				404CE83211D8FDD500AD5D86 /* CoreLocation.framework in Frameworks */,
+				4059512411EBB3D1009A3D7F /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +246,7 @@
 				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
-				6DBF843411D00ADB00FC71E4 /* Default.png */,
+				4059511811EBAEEF009A3D7F /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				40547D9D11698BE700F608E7 /* MapKit.framework */,
 				40CEBC7711CFC66900932D73 /* MessageUI.framework */,
+				4059512311EBB3D1009A3D7F /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -435,12 +439,12 @@
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
-				6DBF843511D00ADB00FC71E4 /* Default.png in Resources */,
 				6D6CB60811D44CDA0050D955 /* bed.gif in Resources */,
 				6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */,
 				40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */,
 				40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */,
 				40B2C38C11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png in Resources */,
+				4059511911EBAEEF009A3D7F /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
