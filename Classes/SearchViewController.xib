@@ -62,12 +62,12 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<float key="IBUIAlpha">0.5845070481300354</float>
-						<int key="IBUIContentMode">4</int>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NC211 Logo.png</string>
+							<string key="NSResourceName">Bowman Logo 525 x 150 pixels.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="753882764">
@@ -325,7 +325,7 @@
 					<string>SearchViewController</string>
 					<string>UIResponder</string>
 					<string>UIControl</string>
-					<string>{{451, 222}, {320, 480}}</string>
+					<string>{{451, 223}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -792,8 +792,8 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../CommunityPointMobile.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">NC211 Logo.png</string>
-			<string key="NS.object.0">{300, 200}</string>
+			<string key="NS.key.0">Bowman Logo 525 x 150 pixels.png</string>
+			<string key="NS.object.0">{525, 150}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>
 	</data>
