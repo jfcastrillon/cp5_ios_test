@@ -46,6 +46,10 @@
 	[xsHelper emptyCaches];
 }
 
+- (void) applicationWillTerminate:(UIApplication *)application {
+	[xsHelper persistFavorites];
+}
+
 - (void)dealloc {
 	[tabBarController release];
     [window release];
