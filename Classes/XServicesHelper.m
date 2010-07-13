@@ -29,9 +29,11 @@
 	networkManager = [NetworkManager sharedInstance];
 	
 	searchResults = [[NSMutableArray alloc] init];
-	
+
+#ifdef ENABLE_CACHE
 	detailsCache = [[NSCache alloc] init];
 	[detailsCache setCountLimit: 5];
+#endif
 
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
 	NSString *documentsPath = [paths objectAtIndex:0]; 
@@ -98,12 +100,16 @@
 }
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId{
+#ifdef ENABLE_CACHE
 	CPMResourceDetail* cachedDetail = [detailsCache objectForKey:resourceId];
+
 	if(cachedDetail == nil) {
+#endif
 		XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
 		op.delegate = self;
 		[operationQueue addOperation: op];
 		[op release];
+#ifdef ENABLE_CACHE
 	} else {
 		[currentResource release];
 		currentResource = cachedDetail;
@@ -112,6 +118,7 @@
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
 	}
+#endif
 }
 
 - (void) cancelAllOperations {
@@ -201,7 +208,10 @@
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
 		[currentResource release];
 		currentResource = [response result];
+		
+#ifdef ENABLE_CACHE
 		[detailsCache setObject:currentResource forKey:[currentResource resourceId]];
+#endif
 		
 		// Update the favorite info while we have fresh data
 		if([self isResourceInFavorites: currentResource])
@@ -210,7 +220,7 @@
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
 	}
-	[response release];
+	//[response release];
 }
 
 - (void) operationDidFailWithError: (NSDictionary*) errorInfo {
@@ -224,11 +234,13 @@
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"ResourceRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	}
 	//[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"XServicesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
-	[errorInfo release];
+	//[errorInfo release];
 }
 
 - (void) emptyCaches {
+#ifdef ENABLE_CACHE
 	[detailsCache removeAllObjects];
+#endif
 }
 
 - (void) dealloc {
@@ -237,7 +249,11 @@
 	[currentResource release], currentResource = nil;
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
+
+#ifdef ENABLE_CACHE
 	[detailsCache release];
+#endif
+
 	[lastSearchResultSet release], lastSearchResultSet = nil;
 	
 	[super dealloc];
