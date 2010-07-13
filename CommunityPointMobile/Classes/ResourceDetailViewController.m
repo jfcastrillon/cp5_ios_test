@@ -89,7 +89,7 @@
 	[shareTypeSheet addButtonWithTitle:@"Cancel"];
 	[shareTypeSheet setCancelButtonIndex:cancelIndex];
 	
-	[shareTypeSheet showInView:self.view];
+	[shareTypeSheet showInView:self.parentViewController.tabBarController.view];
 	[shareTypeSheet release];
 }
 

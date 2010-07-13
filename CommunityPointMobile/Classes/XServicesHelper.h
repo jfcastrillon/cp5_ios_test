@@ -12,6 +12,8 @@
 #import "CPMResourceDetail.h"
 #import "NetworkManager.h"
 
+//#define ENABLE_CACHE
+
 @interface XServicesHelper : NSObject {
 	NSOperationQueue *operationQueue;
 	
@@ -19,8 +21,10 @@
 	NSMutableArray *favorites;
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
-	
+
+#ifdef ENABLE_CACHE
 	NSCache *detailsCache;
+#endif
 	
 	NetworkManager *networkManager;
 	

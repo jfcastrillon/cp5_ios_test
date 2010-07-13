@@ -77,6 +77,11 @@ NSString* encodeStringForURL(NSString* str){
 	[parameters setValue:@"json" forKey:@"output"];
 	[parameters setValue:@"0.0.0.0" forKey:@"ip"];
 	[parameters setValue:_publicKey forKey:@"key"];
+	[parameters setValue:@"cp5_ios" forKey:@"client_app"];
+	[parameters setValue:@"1.0.0" forKey:@"client_version"];
+	
+	NSString *deviceString = [NSString stringWithFormat:@"%@ (%@ %@)", [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]]; 
+	[parameters setValue:deviceString forKey:@"device"];
 	
 	//Convert the postData to a string
 	NSString* paramString = [parameters urlPostEncoded];
@@ -111,7 +116,7 @@ NSString* encodeStringForURL(NSString* str){
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[super connection:connection didFailWithError:error];
 	[[NetworkManager sharedInstance] hideNetworkActivityIndicator];
-	NSMutableDictionary *errorInfo = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary *errorInfo = [[[NSMutableDictionary alloc] init] autorelease];
 	[errorInfo setObject:error forKey:@"error"];
 	[errorInfo setObject:_action forKey:@"tag"];
 	[delegate performSelectorOnMainThread:@selector(operationDidFailWithError:) withObject:errorInfo waitUntilDone:NO];
@@ -128,7 +133,7 @@ NSString* encodeStringForURL(NSString* str){
 	result = [_parser parseData: [self responseBody]];
 	
 	if(!self.isCancelled) {
-		XSResponse *response = [[XSResponse alloc] init];
+		XSResponse *response = [[[XSResponse alloc] init] autorelease];
 		[response setTag: _action];
 		[response setResult: result];
 		//[result release];
