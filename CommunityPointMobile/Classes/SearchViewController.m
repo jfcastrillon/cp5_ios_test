@@ -62,6 +62,7 @@
 - (void)viewDidLoad {
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
+	self.searchResults = [xsHelper searchResults];
 	locationManager = [LocationManager sharedInstance];
 	
 	// Observe the notifications for completed search results
@@ -114,6 +115,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 	[searchBar setShowsScopeBar:NO];
 	[searchBar sizeToFit];
+	[resultsTableView reloadData];
     [super viewWillAppear:animated];
 }
 
