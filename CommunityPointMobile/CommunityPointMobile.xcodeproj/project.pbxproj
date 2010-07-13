@@ -33,7 +33,6 @@
 		4057AC711166B3DD004882F6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC6A1166B3DD004882F6 /* SBJsonParser.m */; };
 		4057AC721166B3DD004882F6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC6C1166B3DD004882F6 /* SBJsonWriter.m */; };
 		4057AC781166D6DE004882F6 /* XServicesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057AC771166D6DE004882F6 /* XServicesHelper.m */; };
-		4059511911EBAEEF009A3D7F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4059511811EBAEEF009A3D7F /* Default.png */; };
 		4059512411EBB3D1009A3D7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4059512311EBB3D1009A3D7F /* QuartzCore.framework */; };
 		4068946511C6BC0E0054C494 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4068946311C6BC0E0054C494 /* Util.m */; };
 		407F8BE81169139700425982 /* CPMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 407F8BE71169139700425982 /* CPMResource.m */; };
@@ -50,12 +49,16 @@
 		40AC219D11EB8C400058EF23 /* QWatchedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AC219B11EB8C400058EF23 /* QWatchedOperationQueue.m */; };
 		40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1844F11718E1500D937B1 /* CPMResourceDetail.m */; };
 		40B2C38C11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */; };
+		40B7530F11ECFA3D002EAF40 /* Icon-old.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7530E11ECFA3D002EAF40 /* Icon-old.png */; };
+		40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 40B7531011ECFA53002EAF40 /* iTunesArtwork */; };
+		40B7532711ECFC9C002EAF40 /* Icon-Small_at_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532511ECFC9C002EAF40 /* Icon-Small_at_2x.png */; };
+		40B7532811ECFC9C002EAF40 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532611ECFC9C002EAF40 /* Icon.png */; };
+		40B7539011ED09B3002EAF40 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7538F11ED09B3002EAF40 /* Default.png */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
 		40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */; };
 		40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D2762811DE719100FB1487 /* logo_vertical_white.png */; };
-		40D289D21172C3840095F032 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D289D11172C3840095F032 /* Icon.png */; };
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
 		40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289EB1172C97D0095F032 /* CPMapAnnotation.m */; };
@@ -111,7 +114,6 @@
 		4057AC6C1166B3DD004882F6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		4057AC761166D6DE004882F6 /* XServicesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XServicesHelper.h; path = Classes/XServicesHelper.h; sourceTree = "<group>"; };
 		4057AC771166D6DE004882F6 /* XServicesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XServicesHelper.m; path = Classes/XServicesHelper.m; sourceTree = "<group>"; };
-		4059511811EBAEEF009A3D7F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4059512311EBB3D1009A3D7F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4068946311C6BC0E0054C494 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		4068946411C6BC0E0054C494 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 		40B1844E11718E1500D937B1 /* CPMResourceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResourceDetail.h; path = Classes/CPMResourceDetail.h; sourceTree = "<group>"; };
 		40B1844F11718E1500D937B1 /* CPMResourceDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMResourceDetail.m; path = Classes/CPMResourceDetail.m; sourceTree = "<group>"; };
 		40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bowman Logo 525 x 150 pixels.png"; sourceTree = "<group>"; };
+		40B752FA11ECFA26002EAF40 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		40B752FB11ECFA26002EAF40 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		40B752FC11ECFA26002EAF40 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		40B7530E11ECFA3D002EAF40 /* Icon-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-old.png"; sourceTree = "<group>"; };
+		40B7531011ECFA53002EAF40 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		40B7532511ECFC9C002EAF40 /* Icon-Small_at_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small_at_2x.png"; sourceTree = "<group>"; };
+		40B7532611ECFC9C002EAF40 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		40B7538F11ED09B3002EAF40 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
@@ -149,7 +159,6 @@
 		40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMProviderTelephone.m; sourceTree = "<group>"; };
 		40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbc211-trimmed.png"; sourceTree = "<group>"; };
 		40D2762811DE719100FB1487 /* logo_vertical_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vertical_white.png; sourceTree = "<group>"; };
-		40D289D11172C3840095F032 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		40D289E21172C65F0095F032 /* ResourceMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceMapViewController.h; sourceTree = "<group>"; };
 		40D289E31172C65F0095F032 /* ResourceMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceMapViewController.m; sourceTree = "<group>"; };
 		40D289E41172C65F0095F032 /* ResourceMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceMapViewController.xib; sourceTree = "<group>"; };
@@ -239,16 +248,22 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40B7532511ECFC9C002EAF40 /* Icon-Small_at_2x.png */,
+				40B7532611ECFC9C002EAF40 /* Icon.png */,
+				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
+				40B7530E11ECFA3D002EAF40 /* Icon-old.png */,
+				40B752FA11ECFA26002EAF40 /* Icon-72.png */,
+				40B752FB11ECFA26002EAF40 /* Icon-Small-50.png */,
+				40B752FC11ECFA26002EAF40 /* Icon-Small.png */,
 				40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */,
 				40D2762811DE719100FB1487 /* logo_vertical_white.png */,
 				40D2761711DE6F3900FB1487 /* tbc211-trimmed.png */,
 				4093F9F611C6B3F300DC543A /* NC211 Logo.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
-				40D289D11172C3840095F032 /* Icon.png */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
-				4059511811EBAEEF009A3D7F /* Default.png */,
+				40B7538F11ED09B3002EAF40 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -437,7 +452,6 @@
 				4057AC091166A899004882F6 /* FavoritesViewController.xib in Resources */,
 				40547BBA1169337300F608E7 /* ResourceSearchResultCell.xib in Resources */,
 				40547D6D116984AD00F608E7 /* ResourceDetailViewController.xib in Resources */,
-				40D289D21172C3840095F032 /* Icon.png in Resources */,
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				4093F9F711C6B3F300DC543A /* NC211 Logo.png in Resources */,
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
@@ -446,7 +460,11 @@
 				40D2761811DE6F3900FB1487 /* tbc211-trimmed.png in Resources */,
 				40D2762911DE719100FB1487 /* logo_vertical_white.png in Resources */,
 				40B2C38C11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png in Resources */,
-				4059511911EBAEEF009A3D7F /* Default.png in Resources */,
+				40B7530F11ECFA3D002EAF40 /* Icon-old.png in Resources */,
+				40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */,
+				40B7532711ECFC9C002EAF40 /* Icon-Small_at_2x.png in Resources */,
+				40B7532811ECFC9C002EAF40 /* Icon.png in Resources */,
+				40B7539011ED09B3002EAF40 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
