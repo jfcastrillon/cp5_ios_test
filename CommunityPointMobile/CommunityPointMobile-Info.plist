@@ -5,11 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>CP5</string>
+	<string>Bowman 211</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

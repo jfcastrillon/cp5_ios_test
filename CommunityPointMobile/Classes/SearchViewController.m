@@ -163,8 +163,10 @@
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
 	if(searchResults == nil)
 		return 0;
-	else 
-		return [searchResults count] + 1;		
+	else {
+		int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
+		return (remaining > 0) ? [searchResults count] + 1 : [searchResults count];		
+	}
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
