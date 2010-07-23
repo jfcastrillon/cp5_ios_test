@@ -24,6 +24,7 @@
 @synthesize searchResults;
 @synthesize xsHelper;
 @synthesize loadMoreCell;
+@synthesize noResultsView;
 
 - (void) showOverlay {
 	CATransition *animation = [CATransition animation];
@@ -129,11 +130,18 @@
 
 - (void) didReceiveSearchResults: (NSNotification*) notification {
 	self.searchResults = [xsHelper searchResults];
-	[resultsTableView setHidden: NO];
+	
 	[busyIndicator setHidden:YES];
 	[self hideOverlay];
-	[resultsTableView reloadData];
-	[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+	if ([[[xsHelper lastSearchResultSet] totalCount] intValue] == 0){
+		[resultsTableView setHidden: YES];
+		[noResultsView setHidden: NO];
+	} else {
+		[noResultsView setHidden: YES];
+		[resultsTableView setHidden: NO];
+		[resultsTableView reloadData];
+		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+	}
 }
 
 - (void) didReceiveMoreSearchResults: (NSNotification*) notification {
@@ -257,6 +265,7 @@
 }
 
 - (void) beginSearchForQuery: (NSString*) query {
+	[noResultsLabel setHidden: YES];
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
