@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LocationManager.h"
 #import "ResourceSearchResultCell.h"
+#import "AboutViewController.h"
 
 #define kTableViewRowHeight	66
 
 @class XServicesHelper;
 @class ResourceDetailViewController;
+
 @interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
@@ -25,6 +27,8 @@
 	ResourceSearchResultCell *loadMoreCell;
 	UILabel *noResultsLabel;
 	BOOL isLoadingMore;
+	
+	AboutViewController *aboutViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar* searchBar;
@@ -35,7 +39,9 @@
 @property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
 @property (nonatomic, retain) ResourceSearchResultCell* loadMoreCell;
 @property (nonatomic, retain) IBOutlet UIView* noResultsView;
+@property (nonatomic, retain) IBOutlet AboutViewController* aboutViewController;
 
 - (IBAction) backgroundTap:(id)sender;
+- (IBAction) showAboutView;
 
 @end

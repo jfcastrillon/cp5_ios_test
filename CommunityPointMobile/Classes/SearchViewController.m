@@ -25,6 +25,7 @@
 @synthesize xsHelper;
 @synthesize loadMoreCell;
 @synthesize noResultsView;
+@synthesize aboutViewController;
 
 - (void) showOverlay {
 	CATransition *animation = [CATransition animation];
@@ -98,6 +99,7 @@
 	self.busyIndicator = nil;
 	self.dimmingOverlay = nil;
 	self.loadMoreCell = nil;
+	[super viewDidUnload];
 }
 
 - (void)dealloc {
@@ -334,6 +336,16 @@
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
 	[sender resignFirstResponder];
+}
+
+- (void) showAboutView {
+	aboutViewController.delegate = self;
+	aboutViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+	[self presentModalViewController: aboutViewController animated:YES];
+}
+
+- (void) aboutViewShouldDismiss {
+	[self dismissModalViewControllerAnimated: YES];
 }
 
 @end
