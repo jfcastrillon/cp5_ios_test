@@ -40,6 +40,7 @@
 		4059512411EBB3D1009A3D7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4059512311EBB3D1009A3D7F /* QuartzCore.framework */; };
 		4068946511C6BC0E0054C494 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4068946311C6BC0E0054C494 /* Util.m */; };
 		407F8BE81169139700425982 /* CPMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 407F8BE71169139700425982 /* CPMResource.m */; };
+		409603D712035D4A005AC406 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 409603D612035D4A005AC406 /* Default.png */; };
 		40A3595311CBF50500B01A49 /* CPMResourceDetailParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3594911CBF50500B01A49 /* CPMResourceDetailParser.m */; };
 		40A3595411CBF50500B01A49 /* CPMSearchResultsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3594B11CBF50500B01A49 /* CPMSearchResultsParser.m */; };
 		40A3595511CBF50500B01A49 /* JSONResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3594D11CBF50500B01A49 /* JSONResponseParser.m */; };
@@ -56,7 +57,6 @@
 		40B7532711ECFC9C002EAF40 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */; };
 		40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532611ECFC9C002EAF40 /* Icon@2x.png */; };
 		40C899041201E52A006978FB /* 211Connects-App.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C899031201E52A006978FB /* 211Connects-App.png */; };
-		40C899431201E84F006978FB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 40C899421201E84F006978FB /* Default.png */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
@@ -126,6 +126,7 @@
 		4068946411C6BC0E0054C494 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		407F8BE61169139700425982 /* CPMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResource.h; path = Classes/CPMResource.h; sourceTree = "<group>"; };
 		407F8BE71169139700425982 /* CPMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMResource.m; path = Classes/CPMResource.m; sourceTree = "<group>"; };
+		409603D612035D4A005AC406 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		40A3594811CBF50500B01A49 /* CPMResourceDetailParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMResourceDetailParser.h; path = "Classes/Web Service/CPMResourceDetailParser.h"; sourceTree = "<group>"; };
 		40A3594911CBF50500B01A49 /* CPMResourceDetailParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMResourceDetailParser.m; path = "Classes/Web Service/CPMResourceDetailParser.m"; sourceTree = "<group>"; };
 		40A3594A11CBF50500B01A49 /* CPMSearchResultsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMSearchResultsParser.h; path = "Classes/Web Service/CPMSearchResultsParser.h"; sourceTree = "<group>"; };
@@ -157,7 +158,6 @@
 		40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		40B7532611ECFC9C002EAF40 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		40C899031201E52A006978FB /* 211Connects-App.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App.png"; sourceTree = "<group>"; };
-		40C899421201E84F006978FB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
@@ -240,12 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				4017814112025CE3007DA0F3 /* About HTML */,
-				40C899421201E84F006978FB /* Default.png */,
 				40F2EF0011F10E62000DF9A8 /* Default@2x.png */,
 				4017814012025C96007DA0F3 /* Images */,
 				4017813F12025C83007DA0F3 /* App Icons */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
+				409603D612035D4A005AC406 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -510,10 +510,10 @@
 				40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */,
 				40F2EF0111F10E62000DF9A8 /* Default@2x.png in Resources */,
 				40C899041201E52A006978FB /* 211Connects-App.png in Resources */,
-				40C899431201E84F006978FB /* Default.png in Resources */,
 				4005217112022671004CFC74 /* AboutViewController.xib in Resources */,
 				4017810A12024C73007DA0F3 /* about.html in Resources */,
 				4017813612025851007DA0F3 /* json-framework.html in Resources */,
+				409603D712035D4A005AC406 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
