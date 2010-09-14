@@ -232,8 +232,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */,
-				404CE83111D8FDD500AD5D86 /* CoreLocation.framework */,
 				402EEB5811ECE46300527401 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
@@ -279,6 +277,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				404CE83111D8FDD500AD5D86 /* CoreLocation.framework */,
+				40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -440,7 +440,14 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CommunityPointMobile" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -564,7 +571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98ADBA3D-6BFB-4BBD-8513-98885CE974B2";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (In House)";
 		};
@@ -593,7 +600,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (Tampa)";
 		};
@@ -623,7 +630,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5DBC783B-AD9A-42CF-9348-0CF099405AD2";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (AppStore)";
 		};
@@ -653,7 +660,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -668,7 +675,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
