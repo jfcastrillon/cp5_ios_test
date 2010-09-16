@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CPMResourceDetail.h"
 #import "NetworkManager.h"
+#import "LocationManager.h"
 
 #define DEFAULT_MAP_LONGITUDE_DELTA_IN_DEGREES 0.025
 #define DEFAULT_MAP_LATITUDE_DELTA_IN_DEGREES 0.025
@@ -18,9 +19,12 @@
 	MKMapView *mapView;
 	CPMResource *displayedResource;
 	BOOL isLoading;
+	LocationManager *locationManager;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) CPMResource *displayedResource;
+
+- (IBAction) directions:(id)sender;
 
 @end

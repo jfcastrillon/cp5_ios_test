@@ -15,8 +15,12 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	locationManager = [LocationManager sharedInstance];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Get Directions" 
+							style:UIBarButtonItemStylePlain target:self action:@selector(directions:)];
     [super viewDidLoad];
 }
+
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -68,12 +72,39 @@
 	isLoading = NO;
 }
 
+- (IBAction) directions:(id)sender {
+	if([locationManager isLocationEnabled]) {
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: locationManager];
+		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: locationManager];
+		[locationManager startFindingCurrentLocation];
+	} else {
+		NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%f,%f", [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
+	}
+}
+
+// Callbacks for loaction notifications
+- (void) didGetLocation: (NSNotification*) notification {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
+	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
+	
+	NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f", location.coordinate.latitude, location.coordinate.longitude, [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
+}
+
+- (void) didFailToGetLocation: (NSNotification*) notification {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
+	
+	NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%f,%f", [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
+}
 
 - (void)dealloc {
 	[mapView release];
 	[displayedResource release];
     [super dealloc];
 }
-
 
 @end
