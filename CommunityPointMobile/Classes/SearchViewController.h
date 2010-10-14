@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "LocationManager.h"
 #import "ResourceSearchResultCell.h"
+#import "CPMapAnnotation.h"
 
 #define kTableViewRowHeight	66
 
@@ -25,6 +27,7 @@
 	ResourceSearchResultCell *loadMoreCell;
 	UILabel *noResultsLabel;
 	BOOL isLoadingMore;
+	MKMapView *mapView;
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar* searchBar;
@@ -34,6 +37,7 @@
 @property (nonatomic, retain) NSArray* searchResults;
 @property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
 @property (nonatomic, retain) ResourceSearchResultCell* loadMoreCell;
+@property (nonatomic, retain) MKMapView* mapView;
 @property (nonatomic, retain) IBOutlet UIView* noResultsView;
 
 - (IBAction) backgroundTap:(id)sender;

@@ -11,7 +11,7 @@
 #import "XServicesHelper.h"
 #import "CPMResourceDetail.h"
 
-@interface ResourceDetailViewController : UIViewController <UITableViewDataSource, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
+@interface ResourceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
 	CPMResourceDetail *displayedResource;
 	UIButton *favoriteButton;
 	UIButton *shareButton;
