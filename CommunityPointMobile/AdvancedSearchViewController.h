@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "XServicesHelper.h"
 
 @interface AdvancedSearchViewController : UITableViewController {
 	UITableView* tableView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
+
+- (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
 
 @end

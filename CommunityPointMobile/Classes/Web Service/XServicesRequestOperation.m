@@ -41,6 +41,11 @@ NSString* encodeStringForURL(NSString* str){
 				currObject = encodeStringForURL([currList objectAtIndex:i]);
 				[retval appendString: [NSString stringWithFormat:@"%@=%@", currKey, currObject]];
 			}
+		} 
+		// Handle NSNumber by converting to string
+		else if ([[self objectForKey: currKey] isKindOfClass:[NSNumber class]]) {
+			currObject = encodeStringForURL([[self objectForKey: currKey] stringValue]);
+			[retval appendString: [NSString stringWithFormat:@"%@=%@", currKey, currObject]];
 		}
 		else
 		{

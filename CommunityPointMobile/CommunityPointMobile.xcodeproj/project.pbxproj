@@ -45,6 +45,7 @@
 		40A3596711CBF54300B01A49 /* CPMSearchResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A3596611CBF54300B01A49 /* CPMSearchResultSet.m */; };
 		40A35A8C11CC084500B01A49 /* XSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A35A8B11CC084500B01A49 /* XSResponse.m */; };
 		40A35B8011CC189800B01A49 /* XSResourceDetailsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */; };
+		40A798171267B66000F486B4 /* XSQueryParamKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A798161267B66000F486B4 /* XSQueryParamKeys.m */; };
 		40AC219C11EB8C400058EF23 /* QHTTPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AC219911EB8C400058EF23 /* QHTTPOperation.m */; };
 		40AC219D11EB8C400058EF23 /* QWatchedOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AC219B11EB8C400058EF23 /* QWatchedOperationQueue.m */; };
 		40B1845011718E1500D937B1 /* CPMResourceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B1844F11718E1500D937B1 /* CPMResourceDetail.m */; };
@@ -143,6 +144,8 @@
 		40A35A8B11CC084500B01A49 /* XSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSResponse.m; sourceTree = "<group>"; };
 		40A35B7E11CC189800B01A49 /* XSResourceDetailsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSResourceDetailsOperation.h; sourceTree = "<group>"; };
 		40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSResourceDetailsOperation.m; sourceTree = "<group>"; };
+		40A7975212678AC600F486B4 /* XSQueryParamKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSQueryParamKeys.h; sourceTree = "<group>"; };
+		40A798161267B66000F486B4 /* XSQueryParamKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSQueryParamKeys.m; sourceTree = "<group>"; };
 		40AC219811EB8C400058EF23 /* QHTTPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHTTPOperation.h; sourceTree = "<group>"; };
 		40AC219911EB8C400058EF23 /* QHTTPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHTTPOperation.m; sourceTree = "<group>"; };
 		40AC219A11EB8C400058EF23 /* QWatchedOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWatchedOperationQueue.h; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				402EEB5811ECE46300527401 /* Entitlements.plist */,
+				40A798161267B66000F486B4 /* XSQueryParamKeys.m */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -361,6 +365,7 @@
 				40F4B2A311D14A4C005CAE4E /* NetworkManager.m */,
 				404CE82411D8FDC100AD5D86 /* LocationManager.h */,
 				404CE82511D8FDC100AD5D86 /* LocationManager.m */,
+				40A7975212678AC600F486B4 /* XSQueryParamKeys.h */,
 			);
 			name = "Service Code";
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */,
 				4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */,
 				4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */,
+				40A798171267B66000F486B4 /* XSQueryParamKeys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "~/svn/cp5_ios/trunk/CommunityPointMobile/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -584,13 +590,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Cannon (47C6R5J8XC)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98ADBA3D-6BFB-4BBD-8513-98885CE974B2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8634D80C-537A-4652-BE0A-71EA6E1F7EF2";
 				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (In House)";
