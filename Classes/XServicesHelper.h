@@ -11,6 +11,7 @@
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
 #import "NetworkManager.h"
+#import "XSQueryParamKeys.h"
 
 //#define ENABLE_CACHE
 
@@ -21,6 +22,7 @@
 	NSMutableArray *favorites;
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
+	NSDictionary* lastQueryParams;
 
 #ifdef ENABLE_CACHE
 	NSCache *detailsCache;
@@ -35,12 +37,14 @@
 @property (nonatomic, readonly) NSMutableArray *favorites;
 @property (nonatomic, readonly) CPMResourceDetail *currentResource;
 @property (nonatomic, copy) NSString *lastQuery;
+@property (nonatomic, copy) NSDictionary *lastQueryParams;
 @property (nonatomic, retain) CPMSearchResultSet *lastSearchResultSet;
 
 
 - (id) init;
 
 // XServices simplified methods
+- (void)searchResourcesWithQueryParams: (NSDictionary*) params;
 - (void)searchResourcesWithQuery:(NSString*)query;
 - (void)searchResourcesWithQuery:(NSString*)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude;
 - (void)loadMoreResults;

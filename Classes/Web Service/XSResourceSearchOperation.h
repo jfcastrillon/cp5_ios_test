@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XSQueryParamKeys.h"
 #import "XServicesRequestOperation.h"
 
 @interface XSResourceSearchOperation : XServicesRequestOperation {
 	NSString *_query;
 	
 }
+
+- (id) initWithQueryParams:(NSDictionary *)params;
 
 - (id) initWithQuery: (NSString*) query andMaxCount: (NSUInteger) maxCount;
 - (id) initWithQuery: (NSString*) query andMaxCount: (NSUInteger) maxCount andOffset: (NSUInteger) offset andSearchHistoryId: (NSUInteger) searchId;

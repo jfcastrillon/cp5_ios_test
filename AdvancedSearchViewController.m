@@ -59,7 +59,23 @@
 - (void) viewWillAppear:(BOOL)animated {
 	[tableView reloadData];
 
+	NSMutableDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
+	if(previousParameters != nil){
+		[self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
+		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
+		[self textFieldForSection:0 row:2].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
+	}
+	
 	[super viewWillAppear:animated];
+}
+
+- (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row {
+	UITableViewCell* cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+	if(!cell) return nil;
+	for (UIView* view in [cell subviews]) {
+		if([view isKindOfClass:[UITextField class]])
+			return (UITextField*) view;
+	}
 }
 
 - (IBAction) cancel:(id)sender {
@@ -67,6 +83,26 @@
 }
 
 - (IBAction) search:(id)sender {
+	
+	NSString* all = [[self textFieldForSection:0 row:0] text];
+	NSString* any = [[self textFieldForSection:0 row:1] text];
+	NSString* none = [[self textFieldForSection:0 row:2] text];
+	
+	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+	//Required parameters
+	[params setObject:[NSDecimalNumber numberWithInt:10] forKey:kXSQueryMaxCount];
+	[params setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
+	[params setObject:[NSDecimalNumber numberWithInt:-1] forKey:kXSQuerySearchHistoryId];
+	
+	if(all)
+		[params setObject:all forKey:kXSQueryKeywordsAll];
+	if(any)
+		[params setObject:any forKey:kXSQueryKeywordsAny];
+	if(none)
+		[params setObject:none forKey:kXSQueryKeywordsNone];
+	
+	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
+	
 	[self dismissModalViewControllerAnimated:YES];
 }
 

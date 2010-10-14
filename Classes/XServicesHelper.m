@@ -17,7 +17,7 @@
 
 @implementation XServicesHelper
 
-@synthesize searchResults, currentResource, favorites, lastQuery, lastSearchResultSet;
+@synthesize searchResults, currentResource, favorites, lastQuery, lastQueryParams, lastSearchResultSet;
 
 - (id) init {
 	if([super init] == nil) return nil;
@@ -60,32 +60,51 @@
 	return self;
 }
 
-// XServices simplified methods
-- (void)searchResourcesWithQuery:(NSString*)query {
-	lastQuery = query;
+- (void) searchResourcesWithQueryParams: (NSDictionary*) params{
 	
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQuery: query andMaxCount: RESULT_PAGE_SIZE];
+	NSMutableDictionary* mutableParams = [params mutableCopy];
+	[mutableParams setObject:[NSDecimalNumber numberWithInt:RESULT_PAGE_SIZE] forKey:kXSQueryMaxCount];
+	[mutableParams setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
+	[mutableParams setObject:[NSDecimalNumber numberWithInt:-1] forKey:kXSQuerySearchHistoryId];
+	
+	self.lastQueryParams = mutableParams;
+	
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQueryParams:params];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
+	[mutableParams release];
+}
+
+// XServices simplified methods
+- (void)searchResourcesWithQuery:(NSString*)query {
+	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+	[params setObject:query forKey:kXSQueryNatural];
+	[self searchResourcesWithQueryParams: params];
+	[params release];
 }
 
 - (void)searchResourcesWithQuery:(NSString*)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude {
-	lastQuery = query;
-	
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initLocationBasedRequestWithQuery:query forLatitude:latitude andLongitude:longitude andMaxCount:RESULT_PAGE_SIZE];
-	op.delegate = self;
-	[operationQueue addOperation: op];
-	[op release];
+	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+	[params setObject:query forKey:kXSQueryNatural];
+	[params setObject:latitude forKey:kXSQueryReferenceLatitude];
+	[params setObject:longitude forKey:kXSQueryReferenceLongitude];
+	[params setValue: @"true" forKey:kXSSortByDistance];
+	[self searchResourcesWithQueryParams:params];
+	[params release];
 }
 
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
-	XSResourceSearchOperation *op;
-	if([lastSearchResultSet refLatitude] == nil)
-		op = [[XSResourceSearchOperation alloc] initWithQuery: lastQuery andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
-	else
-		op = [[XSResourceSearchOperation alloc] initLocationBasedRequestWithQuery: lastQuery forLatitude:[lastSearchResultSet refLatitude] andLongitude: [lastSearchResultSet refLongitude] andMaxCount:RESULT_PAGE_SIZE andOffset:[[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE andSearchHistoryId:[[lastSearchResultSet searchHistoryId] intValue]];
+	
+	NSMutableDictionary* params = [lastQueryParams mutableCopy];
+	NSUInteger count = RESULT_PAGE_SIZE;
+	NSUInteger offset = [[lastSearchResultSet offset] intValue] + RESULT_PAGE_SIZE;
+	[params setObject:[NSDecimalNumber numberWithUnsignedInt:count] forKey:kXSQueryMaxCount];
+	[params setObject:[NSDecimalNumber numberWithUnsignedInt:offset] forKey:kXSQueryOffset];
+	[params setObject:[lastSearchResultSet searchHistoryId] forKey:kXSQuerySearchHistoryId];
+	
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQueryParams:params];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
