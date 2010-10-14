@@ -13,6 +13,7 @@
 
 #import "XServicesHelper.h"
 #import "ResourceDetailViewController.h"
+#import "AdvancedSearchViewController.h"
 #import "NetworkManager.h"
 
 
@@ -24,6 +25,7 @@
 @synthesize searchResults;
 @synthesize xsHelper;
 @synthesize loadMoreCell;
+@synthesize mapView;
 @synthesize noResultsView;
 
 - (void) showOverlay {
@@ -48,6 +50,7 @@
 
 - (IBAction) backgroundTap:(id)sender {
 	if([searchBar isFirstResponder]) {
+		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		[searchBar setShowsCancelButton:NO animated:YES];
 		[searchBar setShowsScopeBar:NO];
 		[searchBar sizeToFit];
@@ -65,7 +68,15 @@
 	xsHelper = [XServicesHelper sharedInstance];
 	self.searchResults = [xsHelper searchResults];
 	locationManager = [LocationManager sharedInstance];
+
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced" 
+																			  style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
 	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
+																			  style:UIBarButtonItemStylePlain target:self action:@selector(map:)];
+
+	mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveMoreSearchResults:) name:@"SearchResultsAppended" object: xsHelper];
@@ -98,6 +109,7 @@
 	self.busyIndicator = nil;
 	self.dimmingOverlay = nil;
 	self.loadMoreCell = nil;
+	self.mapView = nil;
 }
 
 - (void)dealloc {
@@ -108,12 +120,13 @@
 	[dimmingOverlay release];
 	[xsHelper release];
 	[loadMoreCell release];
+	[mapView release];
     [super dealloc];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    //[self.navigationController setNavigationBarHidden:YES animated:animated];
 	[searchBar setShowsScopeBar:NO];
 	[searchBar sizeToFit];
 	[resultsTableView reloadData];
@@ -123,10 +136,57 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    //[self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
 
+- (void) reloadMapView {
+	[mapView removeAnnotations:mapView.annotations];
+	for (int i = 0; i < [searchResults count]; i++) {
+		CPMResource* resource = [searchResults objectAtIndex:i];
+		if ([resource longitude] != nil) {
+			CLLocationCoordinate2D location;
+			
+			location.latitude=[resource.latitude doubleValue];
+			location.longitude=[resource.longitude doubleValue];
+			
+			CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[resource name]];
+			[mapView addAnnotation:annotation];
+			[annotation release];
+		}
+	}
+	[self zoomToFitMapAnnotations];
+}
+
+- (void) zoomToFitMapAnnotations {
+    if([mapView.annotations count] == 0)
+        return;
+	
+    CLLocationCoordinate2D topLeftCoord;
+    topLeftCoord.latitude = -90;
+    topLeftCoord.longitude = 180;
+	
+    CLLocationCoordinate2D bottomRightCoord;
+    bottomRightCoord.latitude = 90;
+    bottomRightCoord.longitude = -180;
+	
+    for (CPMapAnnotation* annotation in mapView.annotations) {
+        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
+        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
+		
+        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
+        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
+	}
+
+    MKCoordinateRegion region;
+    region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
+    region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
+    region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1; // Add a little extra space on the sides
+    region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1; // Add a little extra space on the sides
+	
+    region = [mapView regionThatFits:region];
+    [mapView setRegion:region animated:YES];
+}
 
 - (void) didReceiveSearchResults: (NSNotification*) notification {
 	self.searchResults = [xsHelper searchResults];
@@ -136,11 +196,14 @@
 	if ([[[xsHelper lastSearchResultSet] totalCount] intValue] == 0){
 		[resultsTableView setHidden: YES];
 		[noResultsView setHidden: NO];
+		[self reloadMapView];
 	} else {
 		[noResultsView setHidden: YES];
 		[resultsTableView setHidden: NO];
+
 		[resultsTableView reloadData];
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+		[self reloadMapView];
 	}
 }
 
@@ -148,7 +211,9 @@
 	self.searchResults = [xsHelper searchResults];
 	isLoadingMore = NO;
 	[loadMoreCell.activityIndicator setHidden:YES];
+
 	[resultsTableView reloadData];
+	[self reloadMapView];
 }
 
 - (void) searchRequestFailed: (NSNotification*) notification {
@@ -301,6 +366,9 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	
+	[resultsTableView scrollRectToVisible:[[resultsTableView tableHeaderView] bounds] animated:NO];
+	resultsTableView.scrollEnabled = NO;
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[sender setShowsCancelButton:YES animated:YES];
 	if([locationManager isLocationEnabled])
 		[sender setShowsScopeBar:YES];
@@ -311,11 +379,11 @@
 
 	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = NO;
-	resultsTableView.scrollEnabled = NO;
 	[self showOverlay];
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)sender {
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
 	[sender setShowsScopeBar:NO];
 	[searchBar sizeToFit];
@@ -327,6 +395,7 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)sender {
 	[self beginSearchForQuery: sender.text];
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
 	[sender setShowsScopeBar:NO];
 	[searchBar sizeToFit];
@@ -334,6 +403,63 @@
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
 	[sender resignFirstResponder];
+}
+
+- (IBAction) advanced:(id)sender {
+	AdvancedSearchViewController *advancedSearch = [[AdvancedSearchViewController alloc] initWithNibName:@"AdvancedSearchViewController" bundle:nil];
+	UINavigationController *t = [[UINavigationController alloc] initWithRootViewController:advancedSearch];
+	[self presentModalViewController:t animated:YES];
+	[advancedSearch release];
+	[t release];
+}
+
+- (IBAction) mapLoadMore:(id)sender {
+	[loadMoreCell.activityIndicator setHidden:NO];
+	[loadMoreCell.activityIndicator startAnimating];
+	isLoadingMore = YES;
+	[xsHelper loadMoreResults];
+}
+
+- (IBAction) map:(id)sender {
+	UIView *map = mapView;
+	
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.3];
+    [UIView setAnimationBeginsFromCurrentState:NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:resultsTableView.superview cache:YES];
+	
+    UIView *parent = resultsTableView.superview;
+    [resultsTableView removeFromSuperview];
+	
+    [parent addSubview:map];
+	
+    [UIView commitAnimations];	
+	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" 
+																			  style:UIBarButtonItemStylePlain target:self action:@selector(list:)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Load More" 
+																			 style:UIBarButtonItemStylePlain target:self action:@selector(mapLoadMore:)];
+}
+
+- (IBAction) list:(id)sender {
+	UIView *table = resultsTableView;
+	
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.3];
+    [UIView setAnimationBeginsFromCurrentState:NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:mapView.superview cache:YES];
+	
+    UIView *parent = mapView.superview;
+    [mapView removeFromSuperview];
+	
+    [parent addSubview:table];
+	
+    [UIView commitAnimations];	
+	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
+																			  style:UIBarButtonItemStylePlain target:self action:@selector(map:)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced" 
+																			 style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
 }
 
 @end

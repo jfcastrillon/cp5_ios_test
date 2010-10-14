@@ -254,7 +254,7 @@
 	} else if (section == generalInfoSectionIndex) {
 		title = @"General Information";
 	}
-    return title;;
+    return title;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -359,11 +359,13 @@
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier] autorelease];
 			}
 			
-			if([displayedResource longitude] == nil)
+			if([displayedResource longitude] == nil) {
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			else
+				cell.accessoryType = UITableViewCellAccessoryNone;
+			} else {
 				cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
 			
 			cell.textLabel.text = @"address";
 			cell.detailTextLabel.text = addressText;
@@ -385,7 +387,7 @@
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier] autorelease];
 			}
 			
-			cell.textLabel.text = @"Website";
+			cell.textLabel.text = @"View Website";
 			cell.textLabel.textAlignment = UITextAlignmentCenter;
 			cell.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
 			return cell;

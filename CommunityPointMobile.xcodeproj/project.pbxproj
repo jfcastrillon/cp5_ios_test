@@ -53,7 +53,6 @@
 		40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 40B7531011ECFA53002EAF40 /* iTunesArtwork */; };
 		40B7532711ECFC9C002EAF40 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */; };
 		40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7532611ECFC9C002EAF40 /* Icon@2x.png */; };
-		40B7539011ED09B3002EAF40 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B7538F11ED09B3002EAF40 /* Default.png */; };
 		40CEBC7811CFC66900932D73 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CEBC7711CFC66900932D73 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40CEBC9911CFCB2D00932D73 /* CPMService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBC9811CFCB2D00932D73 /* CPMService.m */; };
 		40CEBCFF11CFFC1A00932D73 /* CPMProviderTelephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */; };
@@ -62,11 +61,16 @@
 		40D289E51172C65F0095F032 /* ResourceMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289E31172C65F0095F032 /* ResourceMapViewController.m */; };
 		40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40D289E41172C65F0095F032 /* ResourceMapViewController.xib */; };
 		40D289EC1172C97D0095F032 /* CPMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D289EB1172C97D0095F032 /* CPMapAnnotation.m */; };
-		40F2EF0111F10E62000DF9A8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F2EF0011F10E62000DF9A8 /* Default@2x.png */; };
 		40F4B24811D11B48005CAE4E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B24711D11B48005CAE4E /* Reachability.m */; };
 		40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */; };
 		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
+		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
+		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
+		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
 		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
+		4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8D12539E37006288DE /* HomeViewController.m */; };
+		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
+		4BEB2DD81253B3EC006288DE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2DD71253B3EC006288DE /* Default@2x.png */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 /* End PBXBuildFile section */
@@ -153,7 +157,6 @@
 		40B7531011ECFA53002EAF40 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		40B7532611ECFC9C002EAF40 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		40B7538F11ED09B3002EAF40 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		40CEBC7711CFC66900932D73 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		40CEBC9711CFCB2D00932D73 /* CPMService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMService.h; sourceTree = "<group>"; };
 		40CEBC9811CFCB2D00932D73 /* CPMService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMService.m; sourceTree = "<group>"; };
@@ -167,14 +170,21 @@
 		40D289EA1172C97D0095F032 /* CPMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMapAnnotation.h; sourceTree = "<group>"; };
 		40D289EB1172C97D0095F032 /* CPMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMapAnnotation.m; sourceTree = "<group>"; };
 		40F0AC9B11CFBE76009104D7 /* CPMBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMBoolean.h; sourceTree = "<group>"; };
-		40F2EF0011F10E62000DF9A8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		40F4B24611D11B48005CAE4E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		40F4B24711D11B48005CAE4E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40F4B2A211D14A4C005CAE4E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		4B161E58125E363600BFBC95 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
+		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
+		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
 		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
+		4BEB2D8C12539E37006288DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		4BEB2D8D12539E37006288DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		4BEB2D8E12539E37006288DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		4BEB2DD71253B3EC006288DE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -205,6 +215,9 @@
 				4057AC051166A899004882F6 /* FavoritesViewController.h */,
 				4057AC061166A899004882F6 /* FavoritesViewController.m */,
 				4057AC071166A899004882F6 /* FavoritesViewController.xib */,
+				4BEB2D8C12539E37006288DE /* HomeViewController.h */,
+				4BEB2D8D12539E37006288DE /* HomeViewController.m */,
+				4BEB2D8E12539E37006288DE /* HomeViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -253,7 +266,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				40F2EF0011F10E62000DF9A8 /* Default@2x.png */,
+				4B161E58125E363600BFBC95 /* 53-house.png */,
 				40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */,
 				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
 				40B7530E11ECFA3D002EAF40 /* Icon.png */,
@@ -269,7 +282,7 @@
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
-				40B7538F11ED09B3002EAF40 /* Default.png */,
+				4BEB2DD71253B3EC006288DE /* Default@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -397,6 +410,9 @@
 				40D289E21172C65F0095F032 /* ResourceMapViewController.h */,
 				40D289E31172C65F0095F032 /* ResourceMapViewController.m */,
 				40D289E41172C65F0095F032 /* ResourceMapViewController.xib */,
+				4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */,
+				4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */,
+				4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */,
 			);
 			name = "Search Views";
 			sourceTree = "<group>";
@@ -479,8 +495,10 @@
 				40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */,
 				40B7532711ECFC9C002EAF40 /* Icon-Small@2x.png in Resources */,
 				40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */,
-				40B7539011ED09B3002EAF40 /* Default.png in Resources */,
-				40F2EF0111F10E62000DF9A8 /* Default@2x.png in Resources */,
+				4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */,
+				4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */,
+				4BEB2DD81253B3EC006288DE /* Default@2x.png in Resources */,
+				4B161E59125E363600BFBC95 /* 53-house.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +544,8 @@
 				40AC219C11EB8C400058EF23 /* QHTTPOperation.m in Sources */,
 				40AC219D11EB8C400058EF23 /* QWatchedOperationQueue.m in Sources */,
 				4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */,
+				4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */,
+				4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
