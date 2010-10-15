@@ -27,6 +27,7 @@
 	ResourceSearchResultCell *loadMoreCell;
 	UILabel *noResultsLabel;
 	BOOL isLoadingMore;
+	BOOL noResultsFound;
 	MKMapView *mapView;
 }
 
@@ -38,7 +39,6 @@
 @property (nonatomic, retain) IBOutlet XServicesHelper* xsHelper;
 @property (nonatomic, retain) ResourceSearchResultCell* loadMoreCell;
 @property (nonatomic, retain) MKMapView* mapView;
-@property (nonatomic, retain) IBOutlet UIView* noResultsView;
 
 - (IBAction) backgroundTap:(id)sender;
 

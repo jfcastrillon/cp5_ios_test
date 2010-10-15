@@ -26,7 +26,12 @@
 @synthesize xsHelper;
 @synthesize loadMoreCell;
 @synthesize mapView;
-@synthesize noResultsView;
+
+- (void) awakeFromNib {
+	[super awakeFromNib];
+	
+	noResultsFound = NO;
+}
 
 - (void) showOverlay {
 	CATransition *animation = [CATransition animation];
@@ -204,10 +209,12 @@
 	[busyIndicator setHidden:YES];
 	[self hideOverlay];
 	if ([[[xsHelper lastSearchResultSet] totalCount] intValue] == 0){
-		[resultsTableView setHidden: YES];
-		[noResultsView setHidden: NO];
+		noResultsFound = YES;
+		[resultsTableView reloadData];
+		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 		[self reloadMapView];
 	} else {
+		noResultsFound = NO;
 		[noResultsView setHidden: YES];
 		[resultsTableView setHidden: NO];
 
@@ -244,9 +251,11 @@
 
 // UITableViewDataSource
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-	if(searchResults == nil)
+	if (searchResults == nil) {
 		return 0;
-	else {
+	} else if (noResultsFound) {
+		return 3;
+	} else {
 		int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
 		return (remaining > 0) ? [searchResults count] + 1 : [searchResults count];		
 	}
@@ -256,60 +265,79 @@
 	static NSString *ResourceSearchResultCellIdentifier = @"ResourceSearchResultCell";
 	
 	NSUInteger row = [indexPath row];
-	ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
+	
 
-	if(cell == nil){
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
-		for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
-			cell = (ResourceSearchResultCell *)oneObject;
-	}
-
-	if (isLoadingMore == YES && row == [searchResults count]) {
-		cell.activityIndicator.hidden = NO;
-		[cell.activityIndicator startAnimating];
+	if (noResultsFound) {
+		UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+		switch (row) {
+			case 0:
+			case 2:
+				return cell;
+				break;
+			default:
+				cell.textLabel.text = @"No results";
+				cell.textLabel.textAlignment = UITextAlignmentCenter;
+				cell.textLabel.textColor = [UIColor grayColor];
+				return cell;
+				break;
+		}
 	} else {
-		cell.activityIndicator.hidden = YES;
-	}
-
-	if (row == [searchResults count]) {
-		int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
-		cell.nameLabel.text = @"Load More Results";
-		cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
-		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
-		cell.distanceLabel.text = @"";
-		[cell.handicapImage setHidden:YES];
-		[cell.bedImage setHidden:YES];
-		loadMoreCell = cell;
-		[loadMoreCell retain];
-	} else {
-		CPMResource* resource = [searchResults objectAtIndex:row];
-		cell.nameLabel.text = [resource name];
-		if ([resource distanceToRef] != nil) {
-			if ([[resource distanceToRef] floatValue] >= 10.0f) {
-				cell.distanceLabel.text = [NSString stringWithFormat:@"%d miles", [[resource distanceToRef] intValue]];
-			} else {
-				cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles", [[resource distanceToRef] floatValue]];
-			}
+	
+		ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
+	
+		if(cell == nil){
+			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
+			for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
+				cell = (ResourceSearchResultCell *)oneObject;
+		}
+		
+		if (isLoadingMore == YES && row == [searchResults count]) {
+			cell.activityIndicator.hidden = NO;
+			[cell.activityIndicator startAnimating];
 		} else {
+			cell.activityIndicator.hidden = YES;
+		}
+		
+		if (row == [searchResults count]) {
+			int remaining = [[[xsHelper lastSearchResultSet] totalCount] intValue] - [[[xsHelper lastSearchResultSet] count] intValue];
+			cell.nameLabel.text = @"Load More Results";
+			cell.addressLabel.text = [NSString stringWithFormat:@"%d Results Remaining", remaining];
+			cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.25098 blue:0.501961 alpha:1.0];
 			cell.distanceLabel.text = @"";
-		}
-		
-		if ([resource shelterFlag] != nil && [[resource shelterFlag] boolValue]) {
-			[cell.bedImage setHidden:NO];
-		} else {
-			[cell.bedImage setHidden:YES];
-		}
-		
-		if ([resource accessibilityFlag] != nil && [[resource accessibilityFlag] boolValue]) {
-			[cell.handicapImage setHidden:NO];
-		} else {
 			[cell.handicapImage setHidden:YES];
+			[cell.bedImage setHidden:YES];
+			loadMoreCell = cell;
+			[loadMoreCell retain];
+		} else {
+			CPMResource* resource = [searchResults objectAtIndex:row];
+			cell.nameLabel.text = [resource name];
+			if ([resource distanceToRef] != nil) {
+				if ([[resource distanceToRef] floatValue] >= 10.0f) {
+					cell.distanceLabel.text = [NSString stringWithFormat:@"%d miles", [[resource distanceToRef] intValue]];
+				} else {
+					cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles", [[resource distanceToRef] floatValue]];
+				}
+			} else {
+				cell.distanceLabel.text = @"";
+			}
+			
+			if ([resource shelterFlag] != nil && [[resource shelterFlag] boolValue]) {
+				[cell.bedImage setHidden:NO];
+			} else {
+				[cell.bedImage setHidden:YES];
+			}
+			
+			if ([resource accessibilityFlag] != nil && [[resource accessibilityFlag] boolValue]) {
+				[cell.handicapImage setHidden:NO];
+			} else {
+				[cell.handicapImage setHidden:YES];
+			}
+			
+			cell.addressLabel.text = [resource addressString];
+			cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 		}
-
-		cell.addressLabel.text = [resource addressString];
-		cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+		return cell;
 	}
-	return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
