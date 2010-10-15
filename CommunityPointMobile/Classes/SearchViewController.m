@@ -39,6 +39,15 @@
 }
 
 - (void) hideOverlay {
+	CGRect overlayFrame = dimmingOverlay.frame;
+	overlayFrame.origin.y = 44;
+	
+	[CATransaction begin];
+	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[dimmingOverlay setFrame: overlayFrame];
+	[CATransaction commit];
+	[CATransaction flush];
+	
 	CATransition *animation = [CATransition animation];
 	[animation setType: kCATransitionFade];
 	[animation setDuration: 0.3];
@@ -46,6 +55,7 @@
 	[[dimmingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
 	dimmingOverlay.hidden = YES;
 	dimmingOverlay.alpha  = 0.0f;
+	
 }
 
 - (IBAction) backgroundTap:(id)sender {
@@ -248,6 +258,10 @@
 	NSUInteger row = [indexPath row];
 	ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
 
+	if ([searchResults count] == 0) {
+		
+	}
+	
 	if(cell == nil){
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
 		for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
@@ -331,6 +345,10 @@
 
 - (void) beginSearchForQuery: (NSString*) query {
 	[noResultsLabel setHidden: YES];
+	CGRect overlayFrame = dimmingOverlay.frame;
+	overlayFrame.origin.y = 44;
+	
+	dimmingOverlay.frame = overlayFrame;	
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
@@ -379,6 +397,11 @@
 
 	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = NO;
+	
+	CGRect overlayFrame = dimmingOverlay.frame;
+	overlayFrame.origin.y = 87;
+	
+	dimmingOverlay.frame = overlayFrame;
 	[self showOverlay];
 }
 
