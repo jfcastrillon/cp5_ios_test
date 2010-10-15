@@ -12,6 +12,7 @@
 @implementation CPMapAnnotation
 
 @synthesize coordinate = _coordinate, title, subtitle;
+@synthesize resourceId;
 
 - (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate {
 	[super init];
@@ -34,9 +35,18 @@
 	return self;
 }
 
+- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title andResourceId:(NSDecimalNumber *)resourceId {
+	[super init];
+	self.coordinate = coordinate;
+	self.title = title;
+	self.resourceId = resourceId;
+	return self;
+}
+
 - (void) dealloc {
 	[title release];
 	[subtitle release];
+	[resourceId release];
 	[super dealloc];
 }
 

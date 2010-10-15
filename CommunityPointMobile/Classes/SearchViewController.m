@@ -91,6 +91,7 @@
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(map:)];
 
 	mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+	mapView.delegate = self;
 
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
@@ -135,6 +136,7 @@
 	[dimmingOverlay release];
 	[xsHelper release];
 	[loadMoreCell release];
+	mapView.delegate = nil;
 	[mapView release];
     [super dealloc];
 }
@@ -153,24 +155,6 @@
 {
     //[self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
-}
-
-- (void) reloadMapView {
-	[mapView removeAnnotations:mapView.annotations];
-	for (int i = 0; i < [searchResults count]; i++) {
-		CPMResource* resource = [searchResults objectAtIndex:i];
-		if ([resource longitude] != nil) {
-			CLLocationCoordinate2D location;
-			
-			location.latitude=[resource.latitude doubleValue];
-			location.longitude=[resource.longitude doubleValue];
-			
-			CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[resource name]];
-			[mapView addAnnotation:annotation];
-			[annotation release];
-		}
-	}
-	[self zoomToFitMapAnnotations];
 }
 
 - (void) zoomToFitMapAnnotations {
@@ -192,7 +176,7 @@
         bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
         bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
 	}
-
+	
     MKCoordinateRegion region;
     region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
     region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
@@ -201,6 +185,50 @@
 	
     region = [mapView regionThatFits:region];
     [mapView setRegion:region animated:YES];
+}
+
+- (void) reloadMapView {
+	[mapView removeAnnotations:mapView.annotations];
+	for (int i = 0; i < [searchResults count]; i++) {
+		CPMResource* resource = [searchResults objectAtIndex:i];
+		if ([resource longitude] != nil) {
+			CLLocationCoordinate2D location;
+			
+			location.latitude=[resource.latitude doubleValue];
+			location.longitude=[resource.longitude doubleValue];
+			
+			CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[resource name] andResourceId:[resource resourceId]];
+			[mapView addAnnotation:annotation];
+			[annotation release];
+		}
+	}
+	[self zoomToFitMapAnnotations];
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation {
+    MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentResource"];
+    annView.pinColor = MKPinAnnotationColorGreen;
+
+    UIButton *advertButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    annView.rightCalloutAccessoryView = advertButton;
+
+    annView.canShowCallout = YES;
+    annView.calloutOffset = CGPointMake(-5, 5);
+
+    return annView;
+}
+
+- (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	// Change to other view before loading this?
+	ResourceDetailViewController *detailViewController = [[ResourceDetailViewController alloc] initWithNibName:@"ResourceDetailViewController" bundle:[NSBundle mainBundle]];
+	
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	
+	[detailViewController release];
+	
+	[xsHelper cancelAllOperations];
+	[xsHelper loadResourceDetails: [view.annotation resourceId]];
 }
 
 - (void) didReceiveSearchResults: (NSNotification*) notification {
