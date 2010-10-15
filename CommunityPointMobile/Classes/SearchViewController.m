@@ -258,10 +258,6 @@
 	NSUInteger row = [indexPath row];
 	ResourceSearchResultCell *cell = (ResourceSearchResultCell*) [tableView dequeueReusableCellWithIdentifier:ResourceSearchResultCellIdentifier];
 
-	if ([searchResults count] == 0) {
-		
-	}
-	
 	if(cell == nil){
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ResourceSearchResultCell" owner:self options:nil];
 		for (id oneObject in nib) if ([oneObject isKindOfClass:[ResourceSearchResultCell class]])
