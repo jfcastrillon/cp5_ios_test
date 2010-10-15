@@ -25,7 +25,6 @@
 	UIActivityIndicatorView *busyIndicator;
 	UIView *dimmingOverlay;
 	ResourceSearchResultCell *loadMoreCell;
-	UILabel *noResultsLabel;
 	BOOL isLoadingMore;
 	BOOL noResultsFound;
 	MKMapView *mapView;

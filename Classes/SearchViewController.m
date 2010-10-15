@@ -374,6 +374,10 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	NSUInteger row = [indexPath row];
 	
+	if (noResultsFound) {
+		return;
+	}
+	
 	if (row == [[xsHelper searchResults] count]) {
 		[loadMoreCell.activityIndicator setHidden:NO];
 		[loadMoreCell.activityIndicator startAnimating];
@@ -395,11 +399,16 @@
 }
 
 - (void) beginSearchForQuery: (NSString*) query {
-	[noResultsLabel setHidden: YES];
+	
+	[CATransaction begin];
+	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
 	CGRect overlayFrame = dimmingOverlay.frame;
 	overlayFrame.origin.y = 44;
 	
 	dimmingOverlay.frame = overlayFrame;	
+	[CATransaction commit];
+	[CATransaction flush];
+	
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
