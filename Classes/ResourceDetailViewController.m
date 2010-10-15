@@ -406,7 +406,7 @@
 					
 					cell.textLabel.text = [displayedResource description];
 					cell.textLabel.numberOfLines = 0;
-					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
 					cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 					cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -427,7 +427,7 @@
 					}
 					
 					cell.textLabel.text = [service name];
-					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
 					cell.selectionStyle = UITableViewCellSelectionStyleNone;
 					
 					break;
@@ -482,7 +482,7 @@
 {
 	if([indexPath section] == detailsSectionIndex && [indexPath row] == 0){
 		NSString *cellText =[displayedResource description];
-		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
+		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:15.0];
 		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 	

@@ -68,10 +68,11 @@
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
+		4BC7986B1268E89200504F76 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC7986A1268E89200504F76 /* Default.png */; };
+		4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC7987A1268E8E000504F76 /* Default@2x.png */; };
 		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
 		4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8D12539E37006288DE /* HomeViewController.m */; };
 		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
-		4BEB2DD81253B3EC006288DE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2DD71253B3EC006288DE /* Default@2x.png */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 /* End PBXBuildFile section */
@@ -182,12 +183,13 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
+		4BC7986A1268E89200504F76 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4BC7987A1268E8E000504F76 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		4BEB2D8C12539E37006288DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		4BEB2D8D12539E37006288DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		4BEB2D8E12539E37006288DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		4BEB2DD71253B3EC006288DE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4BC7987A1268E8E000504F76 /* Default@2x.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */,
 				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
@@ -286,7 +289,7 @@
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
-				4BEB2DD71253B3EC006288DE /* Default@2x.png */,
+				4BC7986A1268E89200504F76 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -502,8 +505,9 @@
 				40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */,
 				4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */,
 				4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */,
-				4BEB2DD81253B3EC006288DE /* Default@2x.png in Resources */,
 				4B161E59125E363600BFBC95 /* 53-house.png in Resources */,
+				4BC7986B1268E89200504F76 /* Default.png in Resources */,
+				4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +566,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/svn/cp5_ios/trunk/CommunityPointMobile/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -570,6 +575,7 @@
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 			};
 			name = Debug;
 		};
@@ -577,12 +583,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/svn/cp5_ios/trunk/CommunityPointMobile/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 			};
 			name = Release;
 		};
@@ -590,13 +598,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John Cannon (47C6R5J8XC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8634D80C-537A-4652-BE0A-71EA6E1F7EF2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (In House)";
@@ -605,14 +613,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/svn/cp5_ios/trunk/CommunityPointMobile/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "88BD14F3-6ACF-4027-AE83-07411842325A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 			};
 			name = "Distribution (In House)";
 		};
@@ -620,12 +628,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (Tampa)";
@@ -634,14 +643,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/svn/cp5_ios/trunk/CommunityPointMobile/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "59B23736-5FE1-47B6-9BC1-B8367E8CFABE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 			};
 			name = "Distribution (Tampa)";
 		};
@@ -649,13 +658,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5DBC783B-AD9A-42CF-9348-0CF099405AD2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 				SDKROOT = iphoneos4.1;
 			};
 			name = "Distribution (AppStore)";
@@ -664,14 +673,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				CODE_SIGN_ENTITLEMENTS = /Users/mbaker/Dev/Apps/CommunityPointMobile/Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5DBC783B-AD9A-42CF-9348-0CF099405AD2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 			};
 			name = "Distribution (AppStore)";
 		};
@@ -679,13 +688,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 				SDKROOT = iphoneos4.1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -695,12 +704,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
 				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
