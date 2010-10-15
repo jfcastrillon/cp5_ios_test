@@ -11,6 +11,8 @@
 
 @implementation AdvancedSearchViewController
 
+@synthesize delegate;
+
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -63,6 +65,20 @@
 		[self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
 		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
 		[self textFieldForSection:0 row:2].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
+		
+		[self textFieldForSection:1 row:0].text = [previousParameters objectForKey:kXSQueryPhysicalLocationZIP];
+		[self textFieldForSection:1 row:1].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCity];
+		[self textFieldForSection:1 row:2].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCounty];
+
+		[self textFieldForSection:2 row:0].text = [previousParameters objectForKey:kXSQueryGeoServedZIP];
+		[self textFieldForSection:2 row:1].text = [previousParameters objectForKey:kXSQueryGeoServedCity];
+		[self textFieldForSection:2 row:2].text = [previousParameters objectForKey:kXSQueryGeoServedCounty];
+		
+		[self textFieldForSection:3 row:0].text = [previousParameters objectForKey:kXSQueryVolunteerKeywords];
+	
+		[self textFieldForSection:4 row:0].text = [previousParameters objectForKey:kXSQueryWishlistKeywords];
+
+		
 	}
 	
 	[super viewWillAppear:animated];
@@ -90,6 +106,17 @@
 	NSString* any = [[self textFieldForSection:0 row:1] text];
 	NSString* none = [[self textFieldForSection:0 row:2] text];
 	
+	NSString* physicalZip = [[self textFieldForSection:1 row:0] text];
+	NSString* physicalCity = [[self textFieldForSection:1 row:1] text];
+	NSString* physicalCounty = [[self textFieldForSection:1 row:2] text];
+
+	NSString* geoZip = [[self textFieldForSection:2 row:0] text];
+	NSString* geoCity = [[self textFieldForSection:2 row:1] text];
+	NSString* geoCounty = [[self textFieldForSection:2 row:2] text];
+	
+	NSString* volunteer = [[self textFieldForSection:3 row:0] text];
+	NSString* wishlist = [[self textFieldForSection:4 row:0] text];
+	
 	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
 	//Required parameters
 	[params setObject:[NSDecimalNumber numberWithInt:10] forKey:kXSQueryMaxCount];
@@ -103,12 +130,32 @@
 	if(none)
 		[params setObject:none forKey:kXSQueryKeywordsNone];
 	
-	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
+	if(physicalZip)
+		[params setObject:physicalZip forKey:kXSQueryPhysicalLocationZIP];
+	if(physicalCity)
+		[params setObject:physicalCity forKey:kXSQueryPhysicalLocationCity];
+	if(physicalCounty)
+		[params setObject:physicalCounty forKey:kXSQueryPhysicalLocationCounty];
 	
+	if(geoZip)
+		[params setObject:geoZip forKey:kXSQueryGeoServedZIP];
+	if(geoCity)
+		[params setObject:geoCity forKey:kXSQueryGeoServedCity];
+	if(geoCounty)
+		[params setObject:geoCounty forKey:kXSQueryGeoServedCounty];
+	
+	if(volunteer)
+		[params setObject:volunteer forKey:kXSQueryVolunteerKeywords];
+	if(wishlist)
+		[params setObject:wishlist forKey:kXSQueryWishlistKeywords];
+	
+	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
+	//[self.delegate showOverlay];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)dealloc {
+	[delegate release];
     [super dealloc];
 }
 

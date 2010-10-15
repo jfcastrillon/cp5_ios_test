@@ -18,10 +18,10 @@ static NSString* kXSQueryPhysicalLocationZIP = @"zipcode";
 static NSString* kXSQueryPhysicalLocationState = @"state";
 static NSString* kXSQueryPhysicalLocationRangeFromZIP = @"range";
 
-static NSString* kXSQueryGeoServedCity = @"city";
-static NSString* kXSQueryGeoServedCounty = @"county";
-static NSString* kXSQueryGeoServedZIP = @"zipcode";
-static NSString* kXSQueryGeoServedState = @"state";
+static NSString* kXSQueryGeoServedCity = @"geo_city";
+static NSString* kXSQueryGeoServedCounty = @"geo_county";
+static NSString* kXSQueryGeoServedZIP = @"geo_zipcode";
+static NSString* kXSQueryGeoServedState = @"geo_state";
 
 static NSString* kXSQueryVolunteerKeywords = @"volunteer_query";
 static NSString* kXSQueryWishlistKeywords = @"wishlist_query";

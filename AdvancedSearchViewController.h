@@ -14,4 +14,6 @@
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
 
+@property (nonatomic, retain) id delegate;
+
 @end
