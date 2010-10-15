@@ -223,6 +223,7 @@
 				UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, 280, 31)];
 				txtField.delegate = self;
 				[txtField setReturnKeyType:UIReturnKeyDone];
+				[txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 				txtField.placeholder = @"All of these words";
 				txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
 				[cell addSubview:txtField];
@@ -238,6 +239,7 @@
 				UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, 280, 31)];
 				txtField.delegate = self;
 				[txtField setReturnKeyType:UIReturnKeyDone];
+				[txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 				txtField.placeholder = @"Any of these words";
 				txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
 				[cell addSubview:txtField];
@@ -253,6 +255,7 @@
 				UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, 280, 31)];
 				txtField.delegate = self;
 				[txtField setReturnKeyType:UIReturnKeyDone];
+				[txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 				txtField.placeholder = @"None of these words";
 				txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
 				[cell addSubview:txtField];
@@ -370,6 +373,7 @@
 				UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, 280, 31)];
 				txtField.delegate = self;
 				[txtField setReturnKeyType:UIReturnKeyDone];
+				[txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 				txtField.placeholder = @"";
 				txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
 				[cell addSubview:txtField];
@@ -389,6 +393,7 @@
 				UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, 280, 31)];
 				txtField.delegate = self;
 				[txtField setReturnKeyType:UIReturnKeyDone];
+				[txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 				txtField.placeholder = @"";
 				txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
 				[cell addSubview:txtField];
