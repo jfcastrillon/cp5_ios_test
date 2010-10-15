@@ -215,7 +215,6 @@
 		[self reloadMapView];
 	} else {
 		noResultsFound = NO;
-		[noResultsView setHidden: YES];
 		[resultsTableView setHidden: NO];
 
 		[resultsTableView reloadData];
