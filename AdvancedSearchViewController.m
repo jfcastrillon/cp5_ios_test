@@ -10,7 +10,6 @@
 
 
 @implementation AdvancedSearchViewController
-@synthesize tableView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -57,9 +56,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[tableView reloadData];
+	[self.tableView reloadData];
 
-	NSMutableDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
+	NSDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
 	if(previousParameters != nil){
 		[self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
 		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
@@ -70,12 +69,15 @@
 }
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row {
-	UITableViewCell* cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 	if(!cell) return nil;
 	for (UIView* view in [cell subviews]) {
 		if([view isKindOfClass:[UITextField class]])
 			return (UITextField*) view;
 	}
+	
+	// Should never happen...
+	return nil;
 }
 
 - (IBAction) cancel:(id)sender {
@@ -107,8 +109,6 @@
 }
 
 - (void)dealloc {
-	[tableView release];
-
     [super dealloc];
 }
 
@@ -209,11 +209,12 @@
 	static NSString *VolunteerCellIdentifier = @"VolunteerCellIdentifier";
 	static NSString *WishListCellIdentifier = @"WishListCellIdentifier";
 
+	UITableViewCell *cell = nil;
 	if (indexPath.section == 0) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KeywordsAllCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:KeywordsAllCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAllCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"All";
@@ -227,10 +228,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 1){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KeywordsAnyCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:KeywordsAnyCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAnyCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"Any";
@@ -244,10 +243,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 2){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KeywordsNoneCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:KeywordsNoneCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsNoneCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"None";
@@ -261,14 +258,12 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		}
 	} else if (indexPath.section == 1) {
 		NSUInteger row = [indexPath row];
 
 		if (row == 0){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LocationZipCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:LocationZipCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationZipCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"ZIP";
@@ -282,10 +277,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 1){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LocationCityCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:LocationCityCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCityCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"City";
@@ -299,10 +292,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 2){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LocationCountyCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:LocationCountyCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCountyCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"County";
@@ -316,14 +307,12 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		}
 	} else if (indexPath.section == 2) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServedZipCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:ServedZipCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedZipCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"ZIP";
@@ -337,10 +326,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 1){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServedCityCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:ServedCityCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCityCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"City";
@@ -354,10 +341,8 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		} else if (row == 2){
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServedCountyCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:ServedCountyCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCountyCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"County";
@@ -371,14 +356,12 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		}
 	} else if (indexPath.section == 3) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0) {
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VolunteerCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:VolunteerCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:VolunteerCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"Keywords";
@@ -392,14 +375,12 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		}
 	} else if (indexPath.section == 4) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0) {
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WishListCellIdentifier];
+			cell = [tableView dequeueReusableCellWithIdentifier:WishListCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:WishListCellIdentifier] autorelease];
 				cell.detailTextLabel.text = @"Keywords";
@@ -413,10 +394,10 @@
 				[cell addSubview:txtField];
 				[txtField release];
 			}
-			
-			return cell;
 		}
 	}
+	
+	return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

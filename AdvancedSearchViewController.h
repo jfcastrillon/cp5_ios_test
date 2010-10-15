@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "XServicesHelper.h"
 
-@interface AdvancedSearchViewController : UITableViewController {
-	UITableView* tableView;
+@interface AdvancedSearchViewController : UITableViewController <UITextFieldDelegate> {
 }
-
-@property (nonatomic, retain) IBOutlet UITableView* tableView;
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
 
