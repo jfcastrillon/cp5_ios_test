@@ -492,6 +492,7 @@
 	AdvancedSearchViewController *advancedSearch = [[AdvancedSearchViewController alloc] initWithNibName:@"AdvancedSearchViewController" bundle:nil];
 	UINavigationController *t = [[UINavigationController alloc] initWithRootViewController:advancedSearch];
 	[self presentModalViewController:t animated:YES];
+	advancedSearch.delegate = self;
 	[advancedSearch release];
 	[t release];
 }
