@@ -69,7 +69,7 @@
 	
 	self.lastQueryParams = mutableParams;
 	
-	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQueryParams:params];
+	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQueryParams:mutableParams];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
