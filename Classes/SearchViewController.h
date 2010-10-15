@@ -16,7 +16,7 @@
 
 @class XServicesHelper;
 @class ResourceDetailViewController;
-@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
+@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
 	LocationManager *locationManager;
