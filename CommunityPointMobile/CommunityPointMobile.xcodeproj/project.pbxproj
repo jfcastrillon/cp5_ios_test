@@ -228,7 +228,7 @@
 				40F4B24511D11B2E005CAE4E /* Reachability */,
 				40A3594711CBF50500B01A49 /* Web Service */,
 				40B1839B11717D5800D937B1 /* Service Code */,
-				40B1839E11717DB300D937B1 /* Views */,
+				40B1839E11717DB300D937B1 /* User Interface */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -241,10 +241,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* CommunityPointMobile_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-				40D289EA1172C97D0095F032 /* CPMapAnnotation.h */,
-				40D289EB1172C97D0095F032 /* CPMapAnnotation.m */,
 				4BE600E812282FE50080FFCD /* TVOutManager.h */,
 				4BE600E912282FE50080FFCD /* TVOutManager.m */,
 				4BF05D1E126E00CC002463CE /* SettingsHelper.h */,
@@ -384,11 +380,13 @@
 				1D3623240D0F684500981E51 /* CommunityPointMobileAppDelegate.h */,
 				1D3623250D0F684500981E51 /* CommunityPointMobileAppDelegate.m */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				32CA4F630368D1EE00C91783 /* CommunityPointMobile_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
 		};
-		40B1839E11717DB300D937B1 /* Views */ = {
+		40B1839E11717DB300D937B1 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
 				4057AC001166A87B004882F6 /* SearchViewController.h */,
@@ -412,8 +410,10 @@
 				4BEB2D8C12539E37006288DE /* HomeViewController.h */,
 				4BEB2D8D12539E37006288DE /* HomeViewController.m */,
 				4BEB2D8E12539E37006288DE /* HomeViewController.xib */,
+				40D289EA1172C97D0095F032 /* CPMapAnnotation.h */,
+				40D289EB1172C97D0095F032 /* CPMapAnnotation.m */,
 			);
-			name = Views;
+			name = "User Interface";
 			sourceTree = "<group>";
 		};
 		40F4B24511D11B2E005CAE4E /* Reachability */ = {
