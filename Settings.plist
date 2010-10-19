@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>helpVideo</key>
+	<string>http://www.youtube.com/watch?v=JnuDC5A-OgM</string>
+	<key>website</key>
+	<string>http://cp5beta.bowmansystems.com/index.php?option=com_cpx</string>
+	<key>publicKey</key>
+	<string>5240A93C66BEA766B61DC6B54369A696</string>
+	<key>clientVersion</key>
+	<string>1.0.0</string>
+	<key>baseUrl</key>
+	<string>http://syncpoint.bowmansystems.com/xs/1.0/index.php</string>
+</dict>
+</plist>

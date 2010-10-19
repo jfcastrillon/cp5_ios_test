@@ -51,7 +51,7 @@
 		NSMutableArray *installArray = [[NSMutableArray alloc] initWithContentsOfFile:installpath];
 		[favorites release];
 		favorites = installArray;
-		[favorites writeToFile:installpath atomically:YES];
+		[favorites writeToFile:path atomically:YES];
 	} else {
 		[favorites release];
 		favorites = tmpArray;

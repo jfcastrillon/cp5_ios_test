@@ -7,6 +7,7 @@
 //
 
 #import "XServicesRequestOperation.h"
+#import "SettingsHelper.h"
 
 NSString* encodeStringForURL(NSString* str){
 	return [(NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%+#", NULL, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
@@ -64,10 +65,10 @@ NSString* encodeStringForURL(NSString* str){
 
 - (id) initWithAction:(NSString*) action andParameters:(NSDictionary*) parameters andParser:(NSObject <ResponseParser>*) parser{
 	
-	_baseUrl = @"http://syncpoint.bowmansystems.com/xs/1.0/index.php";
+	_baseUrl = [[[SettingsHelper sharedInstance] settings] objectForKey:@"baseUrl"];
 	[_baseUrl retain];
 	
-	_publicKey = @"5240A93C66BEA766B61DC6B54369A696";
+	_publicKey = [[[SettingsHelper sharedInstance] settings] objectForKey:@"publicKey"];
 	[_publicKey retain];
 	
 	_action = action;
@@ -83,7 +84,7 @@ NSString* encodeStringForURL(NSString* str){
 	[parameters setValue:@"0.0.0.0" forKey:@"ip"];
 	[parameters setValue:_publicKey forKey:@"key"];
 	[parameters setValue:@"cp5_ios" forKey:@"client_app"];
-	[parameters setValue:@"1.0.0" forKey:@"client_version"];
+	[parameters setValue:[[[SettingsHelper sharedInstance] settings] objectForKey:@"clientVersion"] forKey:@"client_version"];
 	
 	NSString *deviceString = [NSString stringWithFormat:@"%@ (%@ %@)", [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]]; 
 	[parameters setValue:deviceString forKey:@"device"];

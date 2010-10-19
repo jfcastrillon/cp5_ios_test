@@ -7,11 +7,11 @@
 //
 
 #import "HomeViewController.h"
-
+#import "SettingsHelper.h"
 
 @implementation HomeViewController
 
-@synthesize tableView;
+@synthesize tableView, website, helpVideo;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -63,8 +63,20 @@
 
 - (void)dealloc {
 	[tableView release];
+	[website release];
+	[helpVideo release];
 	
     [super dealloc];
+}
+
+- (IBAction) videoButtonPressed: (id) sender {
+	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
+}
+
+- (IBAction) websiteButtonPressed: (id) sender {
+	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"website"];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
