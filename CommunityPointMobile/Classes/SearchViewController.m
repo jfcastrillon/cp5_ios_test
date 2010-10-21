@@ -544,6 +544,11 @@
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(list:)];
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Load More" 
 																			 style:UIBarButtonItemStylePlain target:self action:@selector(mapLoadMore:)];
+	
+	// Disable the Load More button if no search has yet been performed
+	if ([xsHelper searchResults] == nil || [[xsHelper searchResults] count] == 0) {
+		self.navigationItem.leftBarButtonItem.enabled = NO;
+	}
 }
 
 - (IBAction) list:(id)sender {
