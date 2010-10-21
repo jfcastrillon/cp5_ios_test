@@ -26,6 +26,7 @@
 	UIView *dimmingOverlay;
 	ResourceSearchResultCell *loadMoreCell;
 	BOOL isLoadingMore;
+	BOOL isLoading;
 	BOOL noResultsFound;
 	MKMapView *mapView;
 }
