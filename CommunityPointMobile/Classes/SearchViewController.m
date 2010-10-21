@@ -141,19 +141,20 @@
     [super dealloc];
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    //[self.navigationController setNavigationBarHidden:YES animated:animated];
+- (void) viewWillAppear:(BOOL)animated {
 	[searchBar setShowsScopeBar:NO];
 	[searchBar sizeToFit];
 	[resultsTableView reloadData];
     [super viewWillAppear:animated];
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+	if(isLoading)
+		[[NetworkManager sharedInstance] hideNetworkActivityIndicator];
+	[super viewDidDisappear:animated];
+}
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-    //[self.navigationController setNavigationBarHidden:NO animated:animated];
+- (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
 
@@ -249,6 +250,17 @@
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 		[self reloadMapView];
 	}
+}
+
+- (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
+	[[NetworkManager sharedInstance]showNetworkActivityIndicator];
+	isLoading = YES;
+	
+}
+
+- (void) mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+	[[NetworkManager sharedInstance]hideNetworkActivityIndicator];
+	isLoading = NO;
 }
 
 - (void) didReceiveMoreSearchResults: (NSNotification*) notification {
