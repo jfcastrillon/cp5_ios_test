@@ -308,6 +308,7 @@
 
 	if (noResultsFound) {
 		UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		switch (row) {
 			case 0:
 			case 2:
