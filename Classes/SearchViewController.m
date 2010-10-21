@@ -548,7 +548,7 @@
     UIView *parent = mapView.superview;
     [mapView removeFromSuperview];
 	
-    [parent addSubview:table];
+    [parent insertSubview:table belowSubview:dimmingOverlay];
 	
     [UIView commitAnimations];	
 	
