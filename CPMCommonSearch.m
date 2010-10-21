@@ -17,7 +17,7 @@
 	if([super init] == nil) return nil;
 	self.name = nullFix([dictionary objectForKey: @"name"]);
 	self.query = nullFix([dictionary objectForKey: @"query"]);
-	self.sort = [dictionary objectForKey: @"sort"];
+	self.sort = nullFix([dictionary objectForKey: @"sort"]);
 	
 	return self;
 }
