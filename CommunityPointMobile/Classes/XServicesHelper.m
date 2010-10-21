@@ -9,6 +9,7 @@
 #import "XServicesHelper.h"
 #import "XSResourceSearchOperation.h"
 #import "XSResourceDetailsOperation.h"
+#import "XSCommonSearchListOperation.h"
 #import "CPMResource.h"
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
@@ -140,6 +141,13 @@
 #endif
 }
 
+- (void) loadCommonSearches {
+	XSCommonSearchListOperation *op  = [[XSCommonSearchListOperation alloc] init];
+	op.delegate = self;
+	[operationQueue addOperation:op];
+	[op release];
+}
+
 - (void) cancelAllOperations {
 	[operationQueue cancelAllOperations];
 }
@@ -238,6 +246,9 @@
 		
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
+	} else if ([[response tag] isEqualToString:@"common.get_list"]) {
+		commonSearches = [response result];
+		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"CommonSearchesReceived" object: self]];
 	}
 	//[response release];
 }
@@ -251,6 +262,8 @@
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"SearchRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	} else if ([tag isEqualToString:@"resources.pull"]) {
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"ResourceRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
+	} else if ([tag isEqualToString:@"common.get_list"]) {
+		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"CommonSearchesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	}
 	//[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"XServicesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	//[errorInfo release];

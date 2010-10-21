@@ -20,6 +20,7 @@
 	
 	NSMutableArray *searchResults;
 	NSMutableArray *favorites;
+	NSArray *commonSearches;
 	CPMSearchResultSet *lastSearchResultSet;
 	NSString *lastQuery;
 	NSDictionary* lastQueryParams;
@@ -34,6 +35,7 @@
 }
 
 @property (nonatomic, readonly) NSArray *searchResults;
+@property (nonatomic, readonly) NSArray *commonSearches;
 @property (nonatomic, readonly) NSMutableArray *favorites;
 @property (nonatomic, readonly) CPMResourceDetail *currentResource;
 @property (nonatomic, copy) NSString *lastQuery;
@@ -49,6 +51,7 @@
 - (void)searchResourcesWithQuery:(NSString*)query forLatitude:(NSNumber*)latitude andLongitude:(NSNumber*)longitude;
 - (void)loadMoreResults;
 
+- (void)loadCommonSearches;
 - (void)retrieveProviderCount;
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId;
