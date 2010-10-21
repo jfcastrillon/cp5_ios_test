@@ -43,9 +43,11 @@
 	dimmingOverlay.alpha  = 0.7f;
 }
 
-- (void) hideOverlay {
+
+- (void) hideOverlayWithSearchBarVisible:(BOOL) searchBarVisible {
+
 	CGRect overlayFrame = dimmingOverlay.frame;
-	overlayFrame.origin.y = 44;
+	overlayFrame.origin.y = searchBarVisible ? 44 : 0;
 	
 	[CATransaction begin];
 	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
@@ -61,6 +63,11 @@
 	dimmingOverlay.hidden = YES;
 	dimmingOverlay.alpha  = 0.0f;
 	
+}
+
+
+- (void) hideOverlay {
+	[self hideOverlayWithSearchBarVisible:YES];
 }
 
 - (IBAction) backgroundTap:(id)sender {
@@ -236,11 +243,11 @@
 	self.searchResults = [xsHelper searchResults];
 	
 	[busyIndicator setHidden:YES];
-	[self hideOverlay];
 	if ([[[xsHelper lastSearchResultSet] totalCount] intValue] == 0){
 		noResultsFound = YES;
 		[resultsTableView reloadData];
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+		[self hideOverlayWithSearchBarVisible:NO];
 		[self reloadMapView];
 	} else {
 		noResultsFound = NO;
@@ -248,6 +255,7 @@
 
 		[resultsTableView reloadData];
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+		[self hideOverlayWithSearchBarVisible:NO];
 		[self reloadMapView];
 	}
 }
