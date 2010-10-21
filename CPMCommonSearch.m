@@ -7,7 +7,7 @@
 //
 
 #import "CPMCommonSearch.h"
-
+#import "Util.h"
 
 @implementation CPMCommonSearch
 
