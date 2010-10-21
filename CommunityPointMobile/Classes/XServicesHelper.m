@@ -247,6 +247,7 @@
 		[currentResource retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
 	} else if ([[response tag] isEqualToString:@"common.get_list"]) {
+		if(commonSearches) [commonSearches release];
 		commonSearches = [response result];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"CommonSearchesReceived" object: self]];
 	}
