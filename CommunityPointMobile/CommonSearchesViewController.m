@@ -12,6 +12,26 @@
 @implementation CommonSearchesViewController
 @synthesize commonSearches;
 
+- (void) didReceiveCommonSearches: (NSNotification*) notification {
+	self.commonSearches = [xsHelper commonSearches];
+	
+	[self.tableView reloadData];
+	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void) commonSearchesRequestFailed: (NSNotification*) notification {
+	UIAlertView *alert;
+	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//Trigger app lockdown?
+	} else {
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to retrieve common searches.  It appears the service is down." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	}
+	
+	[alert show];
+	[alert release];
+}
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -27,6 +47,9 @@
 
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
+	
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveCommonSearches:) name:@"CommonSearchesReceived" object: xsHelper];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(commonSearchesRequestFailed:) name:@"CommonSearchesRequestFailed" object: xsHelper];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,11 +62,14 @@
     [super viewDidAppear:animated];
 }
 */
-/*
+
 - (void)viewWillDisappear:(BOOL)animated {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"CommonSearchesReceived" object:xsHelper];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"CommonSearchesRequestFailed" object:xsHelper];
+
     [super viewWillDisappear:animated];
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
@@ -62,22 +88,26 @@
 #pragma mark Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+    if (commonSearches == nil) {
+		return 0;
+	} else {
+		return [commonSearches count];		
+	}
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSUInteger row = [indexPath row];
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
+
+	CPMCommonSearch* cs = [commonSearches objectAtIndex:row];
+	cell.textLabel.text = [cs name];
     
     return cell;
 }
@@ -87,14 +117,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 
@@ -109,8 +132,11 @@
 }
 
 - (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver: self];
+
+	[super viewDidUnload];
 }
 
 

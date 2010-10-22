@@ -18,7 +18,7 @@
 
 @implementation XServicesHelper
 
-@synthesize searchResults, currentResource, favorites, lastQuery, lastQueryParams, lastSearchResultSet;
+@synthesize searchResults, currentResource, favorites, lastQuery, lastQueryParams, lastSearchResultSet, commonSearches;
 
 - (id) init {
 	if([super init] == nil) return nil;

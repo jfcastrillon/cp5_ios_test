@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPMCommonSearch.h"
 
 @class XServicesHelper;
 @interface CommonSearchesViewController : UITableViewController {
