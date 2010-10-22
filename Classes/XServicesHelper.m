@@ -249,6 +249,7 @@
 	} else if ([[response tag] isEqualToString:@"common.get_list"]) {
 		if(commonSearches) [commonSearches release];
 		commonSearches = [response result];
+		[commonSearches retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"CommonSearchesReceived" object: self]];
 	}
 	//[response release];

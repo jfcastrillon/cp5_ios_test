@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SettingsHelper.h"
+#import "CommonSearchesViewController.h"
 
 @implementation HomeViewController
 
@@ -23,12 +24,14 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	// Get singleton instance of the helper
+	xsHelper = [XServicesHelper sharedInstance];
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
+
     [super viewDidLoad];
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -56,7 +59,7 @@
 - (void) viewWillAppear:(BOOL)animated {
 	[tableView reloadData];
 	tableView.backgroundColor = [UIColor clearColor];
-	self.navigationController.navigationBarHidden = YES;
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
 	[super viewWillAppear:animated];
 }
@@ -103,7 +106,14 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	CommonSearchesViewController *commonViewController = [[CommonSearchesViewController alloc] initWithNibName:@"CommonSearchesViewController" bundle:[NSBundle mainBundle]];
+	
+	[self.navigationController pushViewController:commonViewController animated:YES];
+	
+	[commonViewController release];
+	
+	[xsHelper cancelAllOperations];
+	[xsHelper loadCommonSearches];
 }
 
 @end

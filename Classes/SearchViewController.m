@@ -23,7 +23,6 @@
 @synthesize busyIndicator;
 @synthesize dimmingOverlay;
 @synthesize searchResults;
-@synthesize xsHelper;
 @synthesize loadMoreCell;
 @synthesize mapView;
 
@@ -141,7 +140,6 @@
 	[searchBar release];
 	[busyIndicator release];
 	[dimmingOverlay release];
-	[xsHelper release];
 	[loadMoreCell release];
 	mapView.delegate = nil;
 	[mapView release];
