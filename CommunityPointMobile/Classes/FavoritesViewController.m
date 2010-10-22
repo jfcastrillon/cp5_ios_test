@@ -10,16 +10,12 @@
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
 #import "CPMSearchResultSet.h"
-
-//#import "XServicesRequestOperation.h"
-//#import "XSResourceSearchOperation.h"
 #import "XServicesHelper.h"
 #import "ResourceSearchResultCell.h"
 #import "ResourceDetailViewController.h"
 
 
 @implementation FavoritesViewController
-@synthesize favoritesTableView;
 @synthesize favorites;
 
 /*
@@ -46,7 +42,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self.favoritesTableView reloadData];
+	[self.tableView reloadData];
 }
 
 /*
@@ -69,7 +65,6 @@
 	// e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	self.favorites = nil;
-	self.favoritesTableView = nil;
 }
 
 - (void) didReceiveProviderDetails:(NSNotification*) notification {
