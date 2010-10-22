@@ -75,6 +75,8 @@
 		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
 		4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF05D1C126DFD1D002463CE /* Settings.plist */; };
 		4BF05D20126E00CC002463CE /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF05D1F126E00CC002463CE /* SettingsHelper.m */; };
+		4BF10F2C12722AD7001BE003 /* CommonSearchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF10F2A12722AD7001BE003 /* CommonSearchesViewController.m */; };
+		4BF10F2D12722AD7001BE003 /* CommonSearchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF10F2B12722AD7001BE003 /* CommonSearchesViewController.xib */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 /* End PBXBuildFile section */
@@ -198,6 +200,9 @@
 		4BF05D1C126DFD1D002463CE /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		4BF05D1E126E00CC002463CE /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
 		4BF05D1F126E00CC002463CE /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
+		4BF10F2912722AD7001BE003 /* CommonSearchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSearchesViewController.h; sourceTree = "<group>"; };
+		4BF10F2A12722AD7001BE003 /* CommonSearchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSearchesViewController.m; sourceTree = "<group>"; };
+		4BF10F2B12722AD7001BE003 /* CommonSearchesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonSearchesViewController.xib; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -427,6 +432,9 @@
 				4BEB2D8E12539E37006288DE /* HomeViewController.xib */,
 				40D289EA1172C97D0095F032 /* CPMapAnnotation.h */,
 				40D289EB1172C97D0095F032 /* CPMapAnnotation.m */,
+				4BF10F2912722AD7001BE003 /* CommonSearchesViewController.h */,
+				4BF10F2A12722AD7001BE003 /* CommonSearchesViewController.m */,
+				4BF10F2B12722AD7001BE003 /* CommonSearchesViewController.xib */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -512,6 +520,7 @@
 				4BC7986B1268E89200504F76 /* Default.png in Resources */,
 				4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */,
 				4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */,
+				4BF10F2D12722AD7001BE003 /* CommonSearchesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +573,7 @@
 				40150E441270DD0C00C3A780 /* CPMCommonSearch.m in Sources */,
 				40150E491270DD2300C3A780 /* CPMCommonSearchParser.m in Sources */,
 				40150E4A1270DD2300C3A780 /* XSCommonSearchListOperation.m in Sources */,
+				4BF10F2C12722AD7001BE003 /* CommonSearchesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

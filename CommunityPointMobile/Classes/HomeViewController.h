@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class XServicesHelper;
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	UITableView* tableView;
 	UIButton* helpVideo;
 	UIButton* website;
+	XServicesHelper *xsHelper;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
