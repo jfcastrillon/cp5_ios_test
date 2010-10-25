@@ -46,7 +46,12 @@
 - (void) hideOverlayWithSearchBarVisible:(BOOL) searchBarVisible {
 
 	CGRect overlayFrame = dimmingOverlay.frame;
-	overlayFrame.origin.y = searchBarVisible ? 44 : 0;
+	//overlayFrame.origin.y = searchBarVisible ? 44 : 0;
+	if ([self tableHeaderVisible:resultsTableView]) {
+		overlayFrame.origin.y = 44;
+	} else {
+		overlayFrame.origin.y = 0;
+	}
 	
 	[CATransaction begin];
 	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
@@ -146,10 +151,39 @@
     [super dealloc];
 }
 
+-(BOOL)tableHeaderVisible:(UITableView *)tableView { 
+	CGRect headerRect = tableView.tableHeaderView.frame; 
+	CGRect visibleRect; 
+	visibleRect.origin = tableView.contentOffset; 
+	visibleRect.size = tableView.contentSize; 
+	if(visibleRect.origin.x >= (headerRect.origin.x + headerRect.size.width)) { return NO; } 
+	if(visibleRect.origin.y >= (headerRect.origin.y + headerRect.size.height)) { return NO; } 
+	if(headerRect.origin.x >= (visibleRect.origin.x + visibleRect.size.width)) { return NO; } 
+	if(headerRect.origin.y >= (visibleRect.origin.y + visibleRect.size.height)) { return NO; } return YES; 
+}
+
 - (void) viewWillAppear:(BOOL)animated {
 	[searchBar setShowsScopeBar:NO];
 	[searchBar sizeToFit];
 	[resultsTableView reloadData];
+	if ([xsHelper isSearching]) {
+		[CATransaction begin];
+		[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+		CGRect overlayFrame = dimmingOverlay.frame;
+		if ([self tableHeaderVisible:resultsTableView]) {
+			overlayFrame.origin.y = 44;
+		} else {
+			overlayFrame.origin.y = 0;
+		}
+		
+		dimmingOverlay.frame = overlayFrame;	
+		[CATransaction commit];
+		[CATransaction flush];
+		
+		[self showOverlay];
+		[busyIndicator setHidden:NO];
+		[busyIndicator startAnimating];
+	}
     [super viewWillAppear:animated];
 }
 
