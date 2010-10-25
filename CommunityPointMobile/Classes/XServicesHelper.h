@@ -32,6 +32,7 @@
 	NetworkManager *networkManager;
 	
 	CPMResourceDetail *currentResource;
+	BOOL isSearching;
 }
 
 @property (nonatomic, readonly) NSArray *searchResults;
@@ -44,6 +45,7 @@
 
 
 - (id) init;
+- (BOOL) isSearching;
 
 // XServices simplified methods
 - (void)searchResourcesWithQueryParams: (NSDictionary*) params;

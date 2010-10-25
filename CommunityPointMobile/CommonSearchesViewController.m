@@ -118,6 +118,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+	
+	NSUInteger row = [indexPath row];
+	CPMCommonSearch* cs = [commonSearches objectAtIndex:row];
+	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:[cs queryParameters]];
+
+	[self.tabBarController setSelectedIndex:1];
 }
 
 

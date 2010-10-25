@@ -61,8 +61,12 @@
 	return self;
 }
 
+- (BOOL) isSearching {
+	return isSearching;	
+}
+
 - (void) searchResourcesWithQueryParams: (NSDictionary*) params{
-	
+	isSearching = YES;
 	NSMutableDictionary* mutableParams = [params mutableCopy];
 	[mutableParams setObject:[NSDecimalNumber numberWithInt:RESULT_PAGE_SIZE] forKey:kXSQueryMaxCount];
 	[mutableParams setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
@@ -97,6 +101,7 @@
 
 - (void)loadMoreResults {
 	// TODO assert lastSearchResults != nil
+	isSearching = YES;
 	
 	NSMutableDictionary* params = [lastQueryParams mutableCopy];
 	NSUInteger count = RESULT_PAGE_SIZE;
@@ -149,6 +154,7 @@
 }
 
 - (void) cancelAllOperations {
+	isSearching = NO;
 	[operationQueue cancelAllOperations];
 }
 
@@ -219,6 +225,7 @@
 
 - (void) operationDidComplete: (XSResponse*) response {
 	if([[response tag] isEqualToString: @"resources.search"]) {
+		isSearching = NO;
 		BOOL newSearch = [[[response result] offset] intValue] == 0;
 
 		if (newSearch) // New search, clear data
@@ -252,7 +259,6 @@
 		[commonSearches retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"CommonSearchesReceived" object: self]];
 	}
-	//[response release];
 }
 
 - (void) operationDidFailWithError: (NSDictionary*) errorInfo {
@@ -261,14 +267,13 @@
 	NSLog(@"%@", error);
 	
 	if([tag isEqualToString:@"resources.search"]){
+		isSearching = NO;
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"SearchRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	} else if ([tag isEqualToString:@"resources.pull"]) {
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"ResourceRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	} else if ([tag isEqualToString:@"common.get_list"]) {
 		[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"CommonSearchesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
 	}
-	//[[NSNotificationCenter defaultCenter] postNotification: [NSNotification notificationWithName:@"XServicesRequestFailed" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey: @"error"]]];
-	//[errorInfo release];
 }
 
 - (void) emptyCaches {
