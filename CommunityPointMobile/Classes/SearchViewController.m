@@ -397,8 +397,10 @@
 				} else {
 					cell.distanceLabel.text = [NSString stringWithFormat:@"%.2f miles", [[resource distanceToRef] floatValue]];
 				}
+				cell.nameLabel.frame = CGRectMake(13, 7, 233, 22);
 			} else {
 				cell.distanceLabel.text = @"";
+				cell.nameLabel.frame = CGRectMake(13, 7, 285, 22);
 			}
 			
 			if ([resource shelterFlag] != nil && [[resource shelterFlag] boolValue]) {

@@ -100,6 +100,7 @@
 	cell.nameLabel.text = [favorite objectForKey:@"name"];
 	cell.addressLabel.text = [favorite objectForKey:@"address"];
 	cell.distanceLabel.text = @"";
+	cell.nameLabel.frame = CGRectMake(13, 7, 285, 22);
 	if ([favorite objectForKey:@"shelterFlag"] != nil && [[favorite objectForKey:@"shelterFlag"] boolValue]) {
 		[cell.bedImage setHidden:NO];
 	} else {

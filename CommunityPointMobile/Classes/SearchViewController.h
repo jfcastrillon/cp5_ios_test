@@ -40,5 +40,6 @@
 @property (nonatomic, retain) MKMapView* mapView;
 
 - (IBAction) backgroundTap:(id)sender;
+-(BOOL)tableHeaderVisible:(UITableView *)tableView;
 
 @end
