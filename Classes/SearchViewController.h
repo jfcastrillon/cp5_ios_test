@@ -40,6 +40,7 @@
 @property (nonatomic, retain) MKMapView* mapView;
 
 - (IBAction) backgroundTap:(id)sender;
--(BOOL)tableHeaderVisible:(UITableView *)tableView;
+- (BOOL)tableHeaderVisible:(UITableView *)tableView;
+- (void)setAdvancedSearch;
 
 @end

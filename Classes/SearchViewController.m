@@ -422,6 +422,10 @@
 	}
 }
 
+- (void) setAdvancedSearch {
+	searchBar.text = @"(Advanced Search)";
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
 	return kTableViewRowHeight;
 }
