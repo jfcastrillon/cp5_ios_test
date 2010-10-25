@@ -41,6 +41,6 @@
 
 - (IBAction) backgroundTap:(id)sender;
 - (BOOL)tableHeaderVisible:(UITableView *)tableView;
-- (void)setAdvancedSearch;
+- (void)setSearchBarText:(NSString *)text;
 
 @end

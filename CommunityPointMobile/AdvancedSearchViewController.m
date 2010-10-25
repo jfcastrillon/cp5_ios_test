@@ -150,7 +150,7 @@
 		[params setObject:wishlist forKey:kXSQueryWishlistKeywords];
 	
 	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
-	[self.delegate setAdvancedSearch];
+	[self.delegate setSearchBarText:@"(Advanced Search)"];
 	[self dismissModalViewControllerAnimated:YES];
 }
 

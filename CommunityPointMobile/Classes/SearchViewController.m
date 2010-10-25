@@ -422,8 +422,8 @@
 	}
 }
 
-- (void) setAdvancedSearch {
-	searchBar.text = @"(Advanced Search)";
+- (void) setSearchBarText:(NSString *)text {
+	searchBar.text = text;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath { 
