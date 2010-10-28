@@ -68,9 +68,9 @@
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
-		4BC7986B1268E89200504F76 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC7986A1268E89200504F76 /* Default.png */; };
 		4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC7987A1268E8E000504F76 /* Default@2x.png */; };
 		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
+		4BEAD7701279D49F004D6D19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD76F1279D49F004D6D19 /* Default.png */; };
 		4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8D12539E37006288DE /* HomeViewController.m */; };
 		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
 		4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF05D1C126DFD1D002463CE /* Settings.plist */; };
@@ -190,10 +190,10 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
-		4BC7986A1268E89200504F76 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4BC7987A1268E8E000504F76 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
+		4BEAD76F1279D49F004D6D19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4BEB2D8C12539E37006288DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/HomeViewController.h; sourceTree = "<group>"; };
 		4BEB2D8D12539E37006288DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
 		4BEB2D8E12539E37006288DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Classes/HomeViewController.xib; sourceTree = "<group>"; };
@@ -269,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
-				4BC7986A1268E89200504F76 /* Default.png */,
 				4BC7987A1268E8E000504F76 /* Default@2x.png */,
 				40B7530E11ECFA3D002EAF40 /* Icon.png */,
 				40B7532611ECFC9C002EAF40 /* Icon@2x.png */,
@@ -284,6 +283,7 @@
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
 				4BF05D1C126DFD1D002463CE /* Settings.plist */,
+				4BEAD76F1279D49F004D6D19 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -517,10 +517,10 @@
 				4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */,
 				4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */,
 				4B161E59125E363600BFBC95 /* 53-house.png in Resources */,
-				4BC7986B1268E89200504F76 /* Default.png in Resources */,
 				4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */,
 				4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */,
 				4BF10F2D12722AD7001BE003 /* CommonSearchesViewController.xib in Resources */,
+				4BEAD7701279D49F004D6D19 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
