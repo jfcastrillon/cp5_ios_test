@@ -83,7 +83,7 @@ NSString* encodeStringForURL(NSString* str){
 	[parameters setValue:@"json" forKey:@"output"];
 	[parameters setValue:@"0.0.0.0" forKey:@"ip"];
 	[parameters setValue:_publicKey forKey:@"key"];
-	[parameters setValue:@"cp5_ios" forKey:@"client_app"];
+	[parameters setValue:[[[SettingsHelper sharedInstance] settings] objectForKey:@"clientApp"] forKey:@"client_app"];
 	[parameters setValue:[[[SettingsHelper sharedInstance] settings] objectForKey:@"clientVersion"] forKey:@"client_version"];
 	
 	NSString *deviceString = [NSString stringWithFormat:@"%@ (%@ %@)", [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]]; 
