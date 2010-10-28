@@ -51,6 +51,7 @@
 
 - (void)viewDidUnload {
 	self.tableView = nil;
+	self.aboutViewController = nil;
 	
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -86,8 +87,8 @@
 
 - (void) showAboutView {
 	aboutViewController.delegate = self;
-	aboutViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-	[self presentModalViewController: aboutViewController animated:YES];
+	aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self.parentViewController.parentViewController presentModalViewController: aboutViewController animated:YES];
 }
 
 - (void) aboutViewShouldDismiss {
