@@ -73,6 +73,8 @@
 		4BEAD7701279D49F004D6D19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD76F1279D49F004D6D19 /* Default.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
+		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
+		4BEAD7D31279E563004D6D19 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEAD7D01279E563004D6D19 /* AboutViewController.m */; };
 		4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8D12539E37006288DE /* HomeViewController.m */; };
 		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
 		4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF05D1C126DFD1D002463CE /* Settings.plist */; };
@@ -198,6 +200,9 @@
 		4BEAD76F1279D49F004D6D19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		4BEAD7D01279E563004D6D19 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		4BEAD7D11279E563004D6D19 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		4BEB2D8C12539E37006288DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/HomeViewController.h; sourceTree = "<group>"; };
 		4BEB2D8D12539E37006288DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
 		4BEB2D8E12539E37006288DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Classes/HomeViewController.xib; sourceTree = "<group>"; };
@@ -405,6 +410,9 @@
 		40B1839E11717DB300D937B1 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */,
+				4BEAD7D01279E563004D6D19 /* AboutViewController.m */,
+				4BEAD7D11279E563004D6D19 /* AboutViewController.h */,
 				4057AC001166A87B004882F6 /* SearchViewController.h */,
 				4057AC011166A87B004882F6 /* SearchViewController.m */,
 				4057AC021166A87B004882F6 /* SearchViewController.xib */,
@@ -553,6 +561,7 @@
 				4BEAD7701279D49F004D6D19 /* Default.png in Resources */,
 				4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */,
 				4BEAD7AA1279E44C004D6D19 /* about.html in Resources */,
+				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +615,7 @@
 				40150E491270DD2300C3A780 /* CPMCommonSearchParser.m in Sources */,
 				40150E4A1270DD2300C3A780 /* XSCommonSearchListOperation.m in Sources */,
 				4BF10F2C12722AD7001BE003 /* CommonSearchesViewController.m in Sources */,
+				4BEAD7D31279E563004D6D19 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
