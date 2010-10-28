@@ -489,7 +489,7 @@
 		return labelSize.height + 20;
 	} else if ([indexPath section] == locationSectionIndex && [indexPath row] == addressCellIndex) {
 		NSString *cellText = addressText;
-		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:19.0];
+		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:21.0];
 		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 		
