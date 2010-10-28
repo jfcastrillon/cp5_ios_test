@@ -71,6 +71,8 @@
 		4BC7987B1268E8E000504F76 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC7987A1268E8E000504F76 /* Default@2x.png */; };
 		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
 		4BEAD7701279D49F004D6D19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD76F1279D49F004D6D19 /* Default.png */; };
+		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
+		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8D12539E37006288DE /* HomeViewController.m */; };
 		4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEB2D8E12539E37006288DE /* HomeViewController.xib */; };
 		4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF05D1C126DFD1D002463CE /* Settings.plist */; };
@@ -194,6 +196,8 @@
 		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		4BEAD76F1279D49F004D6D19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
+		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEB2D8C12539E37006288DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/HomeViewController.h; sourceTree = "<group>"; };
 		4BEB2D8D12539E37006288DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
 		4BEB2D8E12539E37006288DE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Classes/HomeViewController.xib; sourceTree = "<group>"; };
@@ -268,22 +272,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
+				4BEAD7A61279E426004D6D19 /* About HTML */,
+				4BEAD7AC1279E48D004D6D19 /* Images */,
+				4BEAD7AB1279E458004D6D19 /* App Icons */,
+				4BEAD76F1279D49F004D6D19 /* Default.png */,
 				4BC7987A1268E8E000504F76 /* Default@2x.png */,
-				40B7530E11ECFA3D002EAF40 /* Icon.png */,
-				40B7532611ECFC9C002EAF40 /* Icon@2x.png */,
-				40B752FA11ECFA26002EAF40 /* Icon-72.png */,
-				40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */,
-				40B752FB11ECFA26002EAF40 /* Icon-Small-50.png */,
-				40B752FC11ECFA26002EAF40 /* Icon-Small.png */,
-				40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */,
-				4B161E58125E363600BFBC95 /* 53-house.png */,
-				6D6CB60911D44CDF0050D955 /* handicap.gif */,
-				6D6CB60711D44CDA0050D955 /* bed.gif */,
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
 				4BF05D1C126DFD1D002463CE /* Settings.plist */,
-				4BEAD76F1279D49F004D6D19 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -448,6 +444,40 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		4BEAD7A61279E426004D6D19 /* About HTML */ = {
+			isa = PBXGroup;
+			children = (
+				4BEAD7A71279E44C004D6D19 /* json-framework.html */,
+				4BEAD7A81279E44C004D6D19 /* about.html */,
+			);
+			name = "About HTML";
+			sourceTree = "<group>";
+		};
+		4BEAD7AB1279E458004D6D19 /* App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
+				40B7530E11ECFA3D002EAF40 /* Icon.png */,
+				40B7532611ECFC9C002EAF40 /* Icon@2x.png */,
+				40B752FA11ECFA26002EAF40 /* Icon-72.png */,
+				40B7532511ECFC9C002EAF40 /* Icon-Small@2x.png */,
+				40B752FB11ECFA26002EAF40 /* Icon-Small-50.png */,
+				40B752FC11ECFA26002EAF40 /* Icon-Small.png */,
+			);
+			name = "App Icons";
+			sourceTree = "<group>";
+		};
+		4BEAD7AC1279E48D004D6D19 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */,
+				4B161E58125E363600BFBC95 /* 53-house.png */,
+				6D6CB60911D44CDF0050D955 /* handicap.gif */,
+				6D6CB60711D44CDA0050D955 /* bed.gif */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -521,6 +551,8 @@
 				4BF05D1D126DFD1D002463CE /* Settings.plist in Resources */,
 				4BF10F2D12722AD7001BE003 /* CommonSearchesViewController.xib in Resources */,
 				4BEAD7701279D49F004D6D19 /* Default.png in Resources */,
+				4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */,
+				4BEAD7AA1279E44C004D6D19 /* about.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
