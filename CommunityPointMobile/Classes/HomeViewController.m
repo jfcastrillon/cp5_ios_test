@@ -13,6 +13,7 @@
 @implementation HomeViewController
 
 @synthesize tableView, website, helpVideo;
+@synthesize aboutViewController;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -68,6 +69,7 @@
 	[tableView release];
 	[website release];
 	[helpVideo release];
+	[aboutViewController release];
 	
     [super dealloc];
 }
@@ -80,6 +82,16 @@
 - (IBAction) websiteButtonPressed: (id) sender {
 	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"website"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
+}
+
+- (void) showAboutView {
+	aboutViewController.delegate = self;
+	aboutViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+	[self presentModalViewController: aboutViewController animated:YES];
+}
+
+- (void) aboutViewShouldDismiss {
+	[self dismissModalViewControllerAnimated: YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
