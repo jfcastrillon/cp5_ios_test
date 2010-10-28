@@ -73,7 +73,6 @@
 		4BD6E217127A12F3006BC2B0 /* 211Connects-App-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */; };
 		4BD6E259127A1BA2006BC2B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E258127A1BA2006BC2B0 /* Default@2x.png */; };
 		4BD6E26D127A1BE7006BC2B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E26C127A1BE7006BC2B0 /* Default.png */; };
-		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -202,8 +201,6 @@
 		4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-1.png"; sourceTree = "<group>"; };
 		4BD6E258127A1BA2006BC2B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4BD6E26C127A1BE7006BC2B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
-		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -270,8 +267,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4BE600E812282FE50080FFCD /* TVOutManager.h */,
-				4BE600E912282FE50080FFCD /* TVOutManager.m */,
 				4BF05D1E126E00CC002463CE /* SettingsHelper.h */,
 				4BF05D1F126E00CC002463CE /* SettingsHelper.m */,
 				4068946311C6BC0E0054C494 /* Util.m */,
@@ -618,7 +613,6 @@
 				404CE82611D8FDC100AD5D86 /* LocationManager.m in Sources */,
 				40AC219C11EB8C400058EF23 /* QHTTPOperation.m in Sources */,
 				40AC219D11EB8C400058EF23 /* QWatchedOperationQueue.m in Sources */,
-				4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */,
 				4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */,
 				4BEB2D8F12539E37006288DE /* HomeViewController.m in Sources */,
 				40A798171267B66000F486B4 /* XSQueryParamKeys.m in Sources */,
