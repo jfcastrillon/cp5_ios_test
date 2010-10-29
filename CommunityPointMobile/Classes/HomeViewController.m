@@ -120,7 +120,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	CommonSearchesViewController *commonViewController = [[CommonSearchesViewController alloc] initWithNibName:@"CommonSearchesViewController" bundle:[NSBundle mainBundle]];
-	
+	[commonViewController setLoading:YES];
 	[self.navigationController pushViewController:commonViewController animated:YES];
 	
 	[commonViewController release];
