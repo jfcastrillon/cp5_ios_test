@@ -10,11 +10,20 @@
 #import "CPMCommonSearch.h"
 
 @class XServicesHelper;
-@interface CommonSearchesViewController : UITableViewController {
+@interface CommonSearchesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	XServicesHelper *xsHelper;
 	NSArray* commonSearches;
+	UITableView* tableView;
+	UIActivityIndicatorView *busyIndicator;
+	UIView *dimmingOverlay;
+	BOOL isLoading;
 }
 
 @property (nonatomic, retain) NSArray* commonSearches;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView* busyIndicator;
+@property (nonatomic, retain) IBOutlet UIView* dimmingOverlay;
+
+- (void)setLoading: (BOOL)loading;
 
 @end

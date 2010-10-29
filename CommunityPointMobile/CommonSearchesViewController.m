@@ -6,20 +6,64 @@
 //  Copyright 2010 Bowman Systems, LLC. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "CommonSearchesViewController.h"
 #import "XServicesHelper.h"
 
 @implementation CommonSearchesViewController
 @synthesize commonSearches;
+@synthesize tableView;
+@synthesize busyIndicator;
+@synthesize dimmingOverlay;
+
+- (void) showOverlay {
+	CATransition *animation = [CATransition animation];
+	[animation setType: kCATransitionFade];
+	[animation setDuration: 0.3];
+	[animation setTimingFunction: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+	[[dimmingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
+	dimmingOverlay.hidden = NO;
+	dimmingOverlay.alpha  = 0.7f;
+}
+
+- (void) setLoading: (BOOL)loading {
+	isLoading = loading;
+}
+
+- (void) hideOverlay {
+	CGRect overlayFrame = dimmingOverlay.frame;
+	overlayFrame.origin.y = 0;
+
+	[CATransaction begin];
+	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[dimmingOverlay setFrame: overlayFrame];
+	[CATransaction commit];
+	[CATransaction flush];
+	
+	CATransition *animation = [CATransition animation];
+	[animation setType: kCATransitionFade];
+	[animation setDuration: 0.3];
+	[animation setTimingFunction: [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+	[[dimmingOverlay layer] addAnimation:animation forKey:@"overlayTransition"];
+	dimmingOverlay.hidden = YES;
+	dimmingOverlay.alpha  = 0.0f;
+}
 
 - (void) didReceiveCommonSearches: (NSNotification*) notification {
 	self.commonSearches = [xsHelper commonSearches];
+	[self setLoading:NO];
+	[busyIndicator setHidden:YES];
+	[self hideOverlay];
 	
 	[self.tableView reloadData];
 	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void) commonSearchesRequestFailed: (NSNotification*) notification {
+	[self setLoading:NO];
+	[busyIndicator setHidden: YES];
+	[self hideOverlay];
+
 	UIAlertView *alert;
 	if(![[NetworkManager sharedInstance] isInternetConnectionAvailable]) {
 		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No internet connection available.  A data connection is required to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -54,6 +98,22 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
+	
+	if (isLoading) {
+		[CATransaction begin];
+		[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+		CGRect overlayFrame = dimmingOverlay.frame;
+		overlayFrame.origin.y = 0;
+		
+		dimmingOverlay.frame = overlayFrame;	
+		[CATransaction commit];
+		[CATransaction flush];
+		
+		[self showOverlay];
+		[busyIndicator setHidden:NO];
+		[busyIndicator startAnimating];
+	}
+	
     [super viewWillAppear:animated];
 }
 
@@ -142,12 +202,18 @@
 	// e.g. self.myOutlet = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 
+	self.tableView = nil;
+	self.busyIndicator = nil;
+	self.dimmingOverlay = nil;
 	[super viewDidUnload];
 }
 
 
 - (void)dealloc {
 	[commonSearches release];
+	[tableView release];
+	[busyIndicator release];
+	[dimmingOverlay release];
     [super dealloc];
 }
 
