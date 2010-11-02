@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AboutViewController.h"
+#import "XServicesHelper.h"
 
-@class XServicesHelper;
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	UITableView* tableView;
 	UIButton* helpVideo;

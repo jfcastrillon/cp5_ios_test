@@ -16,6 +16,7 @@
 @property (nonatomic,copy) NSString* query;
 @property (nonatomic,copy) NSDecimalNumber* sort;
 
+- (id) initFromJsonDictionary: (NSDictionary*) dictionary;
 - (NSDictionary*) queryParameters;
 
 @end

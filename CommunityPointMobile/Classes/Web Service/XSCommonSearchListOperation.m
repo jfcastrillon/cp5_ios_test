@@ -12,7 +12,7 @@
 @implementation XSCommonSearchListOperation
 
 - (id) init {
-	if([super init] == nil) return nil;
+	//if([super init] == nil) return nil;
 	
 	// Parser for the response data
 	id parser = [[CPMCommonSearchParser alloc] init];

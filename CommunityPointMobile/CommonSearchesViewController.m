@@ -35,7 +35,7 @@
 	overlayFrame.origin.y = 0;
 
 	[CATransaction begin];
-	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	[dimmingOverlay setFrame: overlayFrame];
 	[CATransaction commit];
 	[CATransaction flush];
@@ -101,7 +101,7 @@
 	
 	if (isLoading) {
 		[CATransaction begin];
-		[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+		[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 		CGRect overlayFrame = dimmingOverlay.frame;
 		overlayFrame.origin.y = 0;
 		
