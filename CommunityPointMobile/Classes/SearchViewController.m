@@ -574,6 +574,7 @@
     UIView *parent = resultsTableView.superview;
     [resultsTableView removeFromSuperview];
 	
+	map.frame = resultsTableView.frame;
     [parent addSubview:map];
 	
     [UIView commitAnimations];	
