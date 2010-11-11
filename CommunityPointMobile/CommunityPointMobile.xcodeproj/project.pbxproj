@@ -642,6 +642,7 @@
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -761,7 +762,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F67B2C8B-F0E4-4B56-B757-12D9BA2161BA";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
