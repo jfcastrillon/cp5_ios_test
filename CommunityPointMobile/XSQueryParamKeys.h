@@ -6,30 +6,30 @@
 //  Copyright 2010 Bowman Systems, LLC. All rights reserved.
 //
 
-static NSString* kXSQueryMaxCount = @"limit";
-static NSString* kXSQueryOffset = @"offset";
+extern NSString* const kXSQueryMaxCount;
+extern NSString* const kXSQueryOffset;
 
-static NSString* kXSQueryNatural = @"query";
-static NSString* kXSQueryNaturalSubQuery = @"subquery";
+extern NSString* const kXSQueryNatural;
+extern NSString* const kXSQueryNaturalSubQuery;
 
-static NSString* kXSQueryPhysicalLocationCity = @"city";
-static NSString* kXSQueryPhysicalLocationCounty = @"county";
-static NSString* kXSQueryPhysicalLocationZIP = @"zipcode";
-static NSString* kXSQueryPhysicalLocationState = @"state";
-static NSString* kXSQueryPhysicalLocationRangeFromZIP = @"range";
+extern NSString* const kXSQueryPhysicalLocationCity;
+extern NSString* const kXSQueryPhysicalLocationCounty;
+extern NSString* const kXSQueryPhysicalLocationZIP;
+extern NSString* const kXSQueryPhysicalLocationState;
+extern NSString* const kXSQueryPhysicalLocationRangeFromZIP;
 
-static NSString* kXSQueryGeoServedCity = @"geo_city";
-static NSString* kXSQueryGeoServedCounty = @"geo_county";
-static NSString* kXSQueryGeoServedZIP = @"geo_zipcode";
-static NSString* kXSQueryGeoServedState = @"geo_state";
+extern NSString* const kXSQueryGeoServedCity;
+extern NSString* const kXSQueryGeoServedCounty;
+extern NSString* const kXSQueryGeoServedZIP;
+extern NSString* const kXSQueryGeoServedState;
 
-static NSString* kXSQueryVolunteerKeywords = @"volunteer_query";
-static NSString* kXSQueryWishlistKeywords = @"wishlist_query";
+extern NSString* const kXSQueryVolunteerKeywords;
+extern NSString* const kXSQueryWishlistKeywords;
 
-static NSString* kXSQuerySearchHistoryId = @"search_history_id";
-static NSString* kXSQueryReferenceLatitude = @"ref_latitude";
-static NSString* kXSQueryReferenceLongitude = @"ref_longitude";
-static NSString* kXSSortByDistance = @"sort_by_distance";
-static NSString* kXSQueryKeywordsAll = @"query_all";
-static NSString* kXSQueryKeywordsAny = @"query_any";
-static NSString* kXSQueryKeywordsNone = @"query_none";
+extern NSString* const kXSQuerySearchHistoryId;
+extern NSString* const kXSQueryReferenceLatitude;
+extern NSString* const kXSQueryReferenceLongitude;
+extern NSString* const kXSSortByDistance;
+extern NSString* const kXSQueryKeywordsAll;
+extern NSString* const kXSQueryKeywordsAny;
+extern NSString* const kXSQueryKeywordsNone;

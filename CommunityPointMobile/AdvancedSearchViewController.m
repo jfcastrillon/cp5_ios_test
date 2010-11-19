@@ -117,7 +117,7 @@
 	NSString* volunteer = [[self textFieldForSection:3 row:0] text];
 	NSString* wishlist = [[self textFieldForSection:4 row:0] text];
 	
-	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary* params = [NSMutableDictionary dictionary];
 	//Required parameters
 	[params setObject:[NSDecimalNumber numberWithInt:10] forKey:kXSQueryMaxCount];
 	[params setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
@@ -191,7 +191,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	if (section == 1) {
-		UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)];
+		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
 		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];
@@ -215,7 +215,7 @@
 		
 		return v;
 	} else if (section == 2) {
-		UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)];
+		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
 		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];

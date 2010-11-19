@@ -54,7 +54,7 @@
 	}
 	
 	[CATransaction begin];
-	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	[dimmingOverlay setFrame: overlayFrame];
 	[CATransaction commit];
 	[CATransaction flush];
@@ -168,7 +168,7 @@
 	[resultsTableView reloadData];
 	if ([xsHelper isSearching]) {
 		[CATransaction begin];
-		[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+		[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 		CGRect overlayFrame = dimmingOverlay.frame;
 		if ([self tableHeaderVisible:resultsTableView]) {
 			overlayFrame.origin.y = 44;
@@ -256,7 +256,7 @@
     annView.canShowCallout = YES;
     annView.calloutOffset = CGPointMake(-5, 5);
 
-    return annView;
+    return [annView autorelease];
 }
 
 - (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
@@ -347,7 +347,7 @@
 	
 
 	if (noResultsFound) {
-		UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+		UITableViewCell* cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		switch (row) {
 			case 0:
@@ -460,7 +460,7 @@
 - (void) beginSearchForQuery: (NSString*) query {
 	
 	[CATransaction begin];
-	[CATransaction setValue:kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	CGRect overlayFrame = dimmingOverlay.frame;
 	overlayFrame.origin.y = 44;
 	
@@ -579,10 +579,10 @@
 	
     [UIView commitAnimations];	
 	
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" 
-																			  style:UIBarButtonItemStylePlain target:self action:@selector(list:)];
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Load More" 
-																			 style:UIBarButtonItemStylePlain target:self action:@selector(mapLoadMore:)];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"List" 
+																			  style:UIBarButtonItemStylePlain target:self action:@selector(list:)] autorelease];
+	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Load More" 
+																			 style:UIBarButtonItemStylePlain target:self action:@selector(mapLoadMore:)] autorelease];
 	
 	// Disable the Load More button if no search has yet been performed
 	if ([xsHelper searchResults] == nil || [[xsHelper searchResults] count] == 0) {

@@ -32,7 +32,7 @@
 }
 
 - (NSString*) buildQueryStringFromAll:(NSString*)all any:(NSString*)any none:(NSString*)none {
-	NSMutableString* fullQuery = [[NSMutableString alloc] init];
+	NSMutableString* fullQuery = [[[NSMutableString alloc] init] autorelease];
 	
 	if(all != nil) {
 		NSArray* parts = [all componentsSeparatedByCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
@@ -61,7 +61,7 @@
 }
 
 - (id) initWithQueryParams: (NSDictionary*) queryParams {
-	if([super init] == nil) return nil;
+	//if([super init] == nil) return nil;
 	
 #define AssertParamSet(key) NSAssert([queryParams objectForKey:(key)] != nil, @"Required parameter key not set.") 
 	

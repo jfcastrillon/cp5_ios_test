@@ -111,6 +111,7 @@
 	[params setObject:[lastSearchResultSet searchHistoryId] forKey:kXSQuerySearchHistoryId];
 	
 	XSResourceSearchOperation *op = [[XSResourceSearchOperation alloc] initWithQueryParams:params];
+	[params release];
 	op.delegate = self;
 	[operationQueue addOperation: op];
 	[op release];
