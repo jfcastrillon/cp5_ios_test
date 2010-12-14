@@ -65,14 +65,11 @@
 		40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */; };
 		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
+		4B1F228712B7DC260012414F /* Appimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F228612B7DC260012414F /* Appimage.png */; };
+		4B1F229612B7DE740012414F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F229512B7DE740012414F /* Default@2x.png */; };
+		4B1F229C12B7E2230012414F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F229B12B7E2230012414F /* Default.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
-		4BD6E0A3127A0AC2006BC2B0 /* 211Connects-App.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E0A2127A0AC2006BC2B0 /* 211Connects-App.png */; };
-		4BD6E215127A12F3006BC2B0 /* 211Connects-App-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E183127A12F3006BC2B0 /* 211Connects-App-3.png */; };
-		4BD6E216127A12F3006BC2B0 /* 211Connects-App-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */; };
-		4BD6E217127A12F3006BC2B0 /* 211Connects-App-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */; };
-		4BD6E259127A1BA2006BC2B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E258127A1BA2006BC2B0 /* Default@2x.png */; };
-		4BD6E26D127A1BE7006BC2B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E26C127A1BE7006BC2B0 /* Default.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -192,15 +189,12 @@
 		40F4B2A211D14A4C005CAE4E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		4B161E58125E363600BFBC95 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		4B1F228612B7DC260012414F /* Appimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Appimage.png; sourceTree = "<group>"; };
+		4B1F229512B7DE740012414F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4B1F229B12B7E2230012414F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
-		4BD6E0A2127A0AC2006BC2B0 /* 211Connects-App.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App.png"; sourceTree = "<group>"; };
-		4BD6E183127A12F3006BC2B0 /* 211Connects-App-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-3.png"; sourceTree = "<group>"; };
-		4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-2.png"; sourceTree = "<group>"; };
-		4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-1.png"; sourceTree = "<group>"; };
-		4BD6E258127A1BA2006BC2B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		4BD6E26C127A1BE7006BC2B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -284,8 +278,8 @@
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
 				4BF05D1C126DFD1D002463CE /* Settings.plist */,
-				4BD6E258127A1BA2006BC2B0 /* Default@2x.png */,
-				4BD6E26C127A1BE7006BC2B0 /* Default.png */,
+				4B1F229512B7DE740012414F /* Default@2x.png */,
+				4B1F229B12B7E2230012414F /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -479,10 +473,7 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4BD6E183127A12F3006BC2B0 /* 211Connects-App-3.png */,
-				4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */,
-				4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */,
-				4BD6E0A2127A0AC2006BC2B0 /* 211Connects-App.png */,
+				4B1F228612B7DC260012414F /* Appimage.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
@@ -563,12 +554,9 @@
 				4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */,
 				4BEAD7AA1279E44C004D6D19 /* about.html in Resources */,
 				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
-				4BD6E0A3127A0AC2006BC2B0 /* 211Connects-App.png in Resources */,
-				4BD6E215127A12F3006BC2B0 /* 211Connects-App-3.png in Resources */,
-				4BD6E216127A12F3006BC2B0 /* 211Connects-App-2.png in Resources */,
-				4BD6E217127A12F3006BC2B0 /* 211Connects-App-1.png in Resources */,
-				4BD6E259127A1BA2006BC2B0 /* Default@2x.png in Resources */,
-				4BD6E26D127A1BE7006BC2B0 /* Default.png in Resources */,
+				4B1F228712B7DC260012414F /* Appimage.png in Resources */,
+				4B1F229612B7DE740012414F /* Default@2x.png in Resources */,
+				4B1F229C12B7E2230012414F /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
