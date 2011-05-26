@@ -10,6 +10,7 @@
 #import "XServicesHelper.h"
 #import "Reachability.h"
 #import "TVOutManager.h"
+#import "CPTabBarDelegate.h"
 
 @implementation CommunityPointMobileAppDelegate
 
