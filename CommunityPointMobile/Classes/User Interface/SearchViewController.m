@@ -471,7 +471,7 @@
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
-	if ([searchBar selectedScopeButtonIndex] == 0)
+	if ([searchBar selectedScopeButtonIndex] == 1) // Moved Relevance button to make Distance the default
 		[xsHelper searchResourcesWithQuery: query];
 	else {
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: locationManager];
@@ -511,7 +511,7 @@
 		[sender setShowsScopeBar:YES];
 	else {
 		[sender setShowsScopeBar: NO];
-		[sender setSelectedScopeButtonIndex: 0]; // Only allow relevancy if the location services are disabled
+		[sender setSelectedScopeButtonIndex: 1]; // Only allow relevancy if the location services are disabled
 	}
 
 	[searchBar sizeToFit];

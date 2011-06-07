@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AboutViewController.h"
 #import "XServicesHelper.h"
+#import "LocationManager.h"
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, AboutViewControllerDelegate> {
 	UITableView* tableView;
@@ -21,10 +22,12 @@
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
 @property (nonatomic, retain) IBOutlet UIButton* helpVideo;
 @property (nonatomic, retain) IBOutlet UIButton* website;
+@property (nonatomic, retain) IBOutlet UIButton* fullResourceList;
 @property (nonatomic, retain) IBOutlet AboutViewController* aboutViewController;
 
 - (IBAction) videoButtonPressed: (id) sender;
 - (IBAction) websiteButtonPressed: (id) sender;
+- (IBAction) fullResourceListButtonPressed: (id) sender;
 - (IBAction) showAboutView;
 
 @end

@@ -62,21 +62,21 @@
 
 	NSDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
 	if(previousParameters != nil){
-		[self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
-		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
-		[self textFieldForSection:0 row:2].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
+        [self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryPhysicalLocationZIP];
+		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCity];
+		[self textFieldForSection:0 row:2].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCounty];
+        
+		[self textFieldForSection:1 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
+		[self textFieldForSection:1 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
+		[self textFieldForSection:1 row:2].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
 		
-		[self textFieldForSection:1 row:0].text = [previousParameters objectForKey:kXSQueryPhysicalLocationZIP];
-		[self textFieldForSection:1 row:1].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCity];
-		[self textFieldForSection:1 row:2].text = [previousParameters objectForKey:kXSQueryPhysicalLocationCounty];
-
-		[self textFieldForSection:2 row:0].text = [previousParameters objectForKey:kXSQueryGeoServedZIP];
-		[self textFieldForSection:2 row:1].text = [previousParameters objectForKey:kXSQueryGeoServedCity];
-		[self textFieldForSection:2 row:2].text = [previousParameters objectForKey:kXSQueryGeoServedCounty];
+        //[self textFieldForSection:2 row:0].text = [previousParameters objectForKey:kXSQueryGeoServedZIP];
+		//[self textFieldForSection:2 row:1].text = [previousParameters objectForKey:kXSQueryGeoServedCity];
+		//[self textFieldForSection:2 row:2].text = [previousParameters objectForKey:kXSQueryGeoServedCounty];
 		
-		[self textFieldForSection:3 row:0].text = [previousParameters objectForKey:kXSQueryVolunteerKeywords];
+		//[self textFieldForSection:3 row:0].text = [previousParameters objectForKey:kXSQueryVolunteerKeywords];
 	
-		[self textFieldForSection:4 row:0].text = [previousParameters objectForKey:kXSQueryWishlistKeywords];
+		//[self textFieldForSection:4 row:0].text = [previousParameters objectForKey:kXSQueryWishlistKeywords];
 
 		
 	}
@@ -101,21 +101,21 @@
 }
 
 - (IBAction) search:(id)sender {
-	
-	NSString* all = [[self textFieldForSection:0 row:0] text];
-	NSString* any = [[self textFieldForSection:0 row:1] text];
-	NSString* none = [[self textFieldForSection:0 row:2] text];
-	
-	NSString* physicalZip = [[self textFieldForSection:1 row:0] text];
-	NSString* physicalCity = [[self textFieldForSection:1 row:1] text];
-	NSString* physicalCounty = [[self textFieldForSection:1 row:2] text];
 
-	NSString* geoZip = [[self textFieldForSection:2 row:0] text];
-	NSString* geoCity = [[self textFieldForSection:2 row:1] text];
-	NSString* geoCounty = [[self textFieldForSection:2 row:2] text];
+	NSString* physicalZip = [[self textFieldForSection:0 row:0] text];
+	NSString* physicalCity = [[self textFieldForSection:0 row:1] text];
+	NSString* physicalCounty = [[self textFieldForSection:0 row:2] text];
+    
+    NSString* all = [[self textFieldForSection:1 row:0] text];
+	NSString* any = [[self textFieldForSection:1 row:1] text];
+	NSString* none = [[self textFieldForSection:1 row:2] text];
+
+	//NSString* geoZip = [[self textFieldForSection:2 row:0] text];
+	//NSString* geoCity = [[self textFieldForSection:2 row:1] text];
+	//NSString* geoCounty = [[self textFieldForSection:2 row:2] text];
 	
-	NSString* volunteer = [[self textFieldForSection:3 row:0] text];
-	NSString* wishlist = [[self textFieldForSection:4 row:0] text];
+	//NSString* volunteer = [[self textFieldForSection:3 row:0] text];
+	//NSString* wishlist = [[self textFieldForSection:4 row:0] text];
 	
 	NSMutableDictionary* params = [NSMutableDictionary dictionary];
 	//Required parameters
@@ -137,7 +137,7 @@
 	if(physicalCounty)
 		[params setObject:physicalCounty forKey:kXSQueryPhysicalLocationCounty];
 	
-	if(geoZip)
+	/*if(geoZip)
 		[params setObject:geoZip forKey:kXSQueryGeoServedZIP];
 	if(geoCity)
 		[params setObject:geoCity forKey:kXSQueryGeoServedCity];
@@ -147,7 +147,7 @@
 	if(volunteer)
 		[params setObject:volunteer forKey:kXSQueryVolunteerKeywords];
 	if(wishlist)
-		[params setObject:wishlist forKey:kXSQueryWishlistKeywords];
+		[params setObject:wishlist forKey:kXSQueryWishlistKeywords];*/
 	
 	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
 	[self.delegate setSearchBarText:@"(Advanced Search)"];
@@ -160,7 +160,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 5;
+	return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -174,13 +174,13 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
     // Return a title or nil as appropriate for the section.
-    if(section == 0) {
+    if(section == 1) {
 		title = @"Keywords";
-    } else if (section == 3) {
+    } /*else if (section == 3) {
 		title = @"Volunteer Opportunities";
 	} else if (section == 4) {
 		title = @"Wishlists";
-	}
+	}*/
 
     return title;
 }
@@ -190,7 +190,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	if (section == 1) {
+	if (section == 0) {
 		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
 		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
@@ -214,7 +214,7 @@
 		[v addSubview:help];
 		
 		return v;
-	} else if (section == 2) {
+	/* } else if (section == 2) {
 		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
 		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
@@ -238,6 +238,7 @@
 		[v addSubview:help];
 		
 		return v;
+     */
 	} else {
 		return nil;
 	}
@@ -250,14 +251,14 @@
 	static NSString *LocationZipCellIdentifier = @"LocationZipCellIdentifier";
 	static NSString *LocationCityCellIdentifier = @"LocationCityCellIdentifier";
 	static NSString *LocationCountyCellIdentifier = @"LocationCountyCellIdentifier";
-	static NSString *ServedZipCellIdentifier = @"ServedZipCellIdentifier";
+	/*static NSString *ServedZipCellIdentifier = @"ServedZipCellIdentifier";
 	static NSString *ServedCityCellIdentifier = @"ServedCityCellIdentifier";
 	static NSString *ServedCountyCellIdentifier = @"ServedCountyCellIdentifier";
 	static NSString *VolunteerCellIdentifier = @"VolunteerCellIdentifier";
-	static NSString *WishListCellIdentifier = @"WishListCellIdentifier";
+	static NSString *WishListCellIdentifier = @"WishListCellIdentifier";*/
 
 	UITableViewCell *cell = nil;
-	if (indexPath.section == 0) {
+	if (indexPath.section == 1) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0){
@@ -309,7 +310,7 @@
 				[txtField release];
 			}
 		}
-	} else if (indexPath.section == 1) {
+	} else if (indexPath.section == 0) {
 		NSUInteger row = [indexPath row];
 
 		if (row == 0){
@@ -358,7 +359,8 @@
 				[txtField release];
 			}
 		}
-	} else if (indexPath.section == 2) {
+    }
+	/* else if (indexPath.section == 2) {
 		NSUInteger row = [indexPath row];
 		
 		if (row == 0){
@@ -447,7 +449,7 @@
 				[txtField release];
 			}
 		}
-	}
+	}*/
 	
 	return cell;
 }

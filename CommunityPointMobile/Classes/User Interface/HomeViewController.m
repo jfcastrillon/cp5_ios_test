@@ -12,7 +12,7 @@
 
 @implementation HomeViewController
 
-@synthesize tableView, website, helpVideo;
+@synthesize tableView, website, helpVideo, fullResourceList;
 @synthesize aboutViewController;
 
 /*
@@ -70,6 +70,7 @@
 	[tableView release];
 	[website release];
 	[helpVideo release];
+    [fullResourceList release];
 	[aboutViewController release];
 	
     [super dealloc];
@@ -84,6 +85,40 @@
 	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"website"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
+
+- (IBAction) fullResourceListButtonPressed:(id)sender {
+    if([[LocationManager sharedInstance] isLocationEnabled]) {
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: [LocationManager sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: [LocationManager sharedInstance]];
+        [[LocationManager sharedInstance] startFindingCurrentLocation];
+    } else {
+        [[XServicesHelper sharedInstance] searchResourcesWithQuery:@""];
+
+    }
+}
+
+// Callbacks for loaction notifications
+- (void) didGetLocation: (NSNotification*) notification {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:[LocationManager sharedInstance]];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object: [LocationManager sharedInstance]];
+	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
+	[[XServicesHelper sharedInstance] searchResourcesWithQuery:@"" forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+    [[self.tabBarController.viewControllers objectAtIndex:1] popToRootViewControllerAnimated:NO];
+	[self.tabBarController setSelectedIndex:1];
+}
+
+- (void) didFailToGetLocation: (NSNotification*) notification {
+	// Stop listening for 
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:[LocationManager sharedInstance]];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:[LocationManager sharedInstance]];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Error" message:@"Could not determine your location.  Using relevancy ranking instead." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+	[xsHelper searchResourcesWithQuery: @""];
+    [[self.tabBarController.viewControllers objectAtIndex:1] popToRootViewControllerAnimated:NO];
+	[self.tabBarController setSelectedIndex:1];
+}
+
 
 - (void) showAboutView {
 	aboutViewController.delegate = self;

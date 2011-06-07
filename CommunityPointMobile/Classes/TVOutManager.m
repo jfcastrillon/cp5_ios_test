@@ -20,8 +20,8 @@
 // you may want to use it for non-app-store builds (i.e. private demo, trade show build, etc.)
 // Just uncomment both lines below.
 //
-#define USE_UIGETSCREENIMAGE
-CGImageRef UIGetScreenImage();
+//#define USE_UIGETSCREENIMAGE
+//CGImageRef UIGetScreenImage();
 
 @implementation TVOutManager
 
