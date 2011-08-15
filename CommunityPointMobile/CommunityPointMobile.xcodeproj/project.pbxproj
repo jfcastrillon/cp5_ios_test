@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -507,10 +507,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = "Bowman Systems, LLC";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CommunityPointMobile" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -627,6 +628,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -643,9 +645,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -658,9 +662,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (In House)";
 		};
@@ -673,9 +676,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (In House)";
 		};
@@ -688,9 +693,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (Tampa)";
 		};
@@ -703,9 +707,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (Tampa)";
 		};
@@ -718,9 +724,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
-				SDKROOT = iphoneos4.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A335224D-CD33-4507-9E7C-A8D33579AF7A";
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (AppStore)";
 		};
@@ -733,9 +738,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A335224D-CD33-4507-9E7C-A8D33579AF7A";
+				SDKROOT = iphoneos;
 			};
 			name = "Distribution (AppStore)";
 		};
@@ -748,7 +755,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F67B2C8B-F0E4-4B56-B757-12D9BA2161BA";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -764,9 +770,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
