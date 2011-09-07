@@ -20,4 +20,8 @@
     }
 }
 
+- (BOOL) tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return viewController != tabBarController.selectedViewController;
+}
+
 @end
