@@ -25,7 +25,10 @@ NSArray* translateCommonSearchArray(NSArray* jsonArray) {
 - (id) parseData:(NSData*) data {
 	id jsonResult = [super parseData: data];
 	
-	NSArray* results = translateCommonSearchArray([[jsonResult objectForKey:@"searches"] allValues]);
+    id searchesObj = [jsonResult objectForKey:@"searches"];
+    if (!searchesObj || [searchesObj count] == 0) return [NSArray array];
+    
+	NSArray* results = translateCommonSearchArray([searchesObj allValues]);
 	
 	NSSortDescriptor *sortDescriptor;
 	sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"sort"
