@@ -132,13 +132,13 @@
 												
 	self.hours = nullFix([dictionary objectForKey:@"hours"]);
 	self.eligibility = nullFix([dictionary objectForKey:@"eligibility"]);
-	self.programFees = nullFix([dictionary objectForKey:@"programFees"]);
+	self.programFees = nullFix([dictionary objectForKey:@"program_fees"]);
 	self.languages = nullFix([dictionary objectForKey:@"languages"]);
 	self.intakeProcedure = nullFix([dictionary objectForKey:@"intake_procedure"]);
 	self.shelterRequirements = nullFix([dictionary objectForKey:@"shelter_requirements"]);
 	
 	self.accessibilityFlag = nullFix([dictionary objectForKey:@"accessibility_flag"]);
-	self.shelterFlag = nullFix([dictionary objectForKey:@"shelter_flag"]);
+	self.shelterFlag = nullFix([dictionary objectForKey:@"is_shelter"]);
 	
 	return self;
 }
