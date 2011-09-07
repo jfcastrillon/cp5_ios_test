@@ -9,6 +9,7 @@
 #import "CommunityPointMobileAppDelegate.h"
 #import "XServicesHelper.h"
 #import "Reachability.h"
+#import "CPTabBarDelegate.h"
 
 @implementation CommunityPointMobileAppDelegate
 
