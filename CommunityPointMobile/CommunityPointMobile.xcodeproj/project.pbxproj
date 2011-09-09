@@ -71,6 +71,7 @@
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
 		4B72C93E127A038800469144 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B72C93D127A038800469144 /* Default@2x.png */; };
 		4B72C943127A03E200469144 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B72C942127A03E200469144 /* Default.png */; };
+		4BCC9943141A757D004DF6FB /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCC9942141A757D004DF6FB /* 53-house@2x.png */; };
 		4BE600EA12282FE50080FFCD /* TVOutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE600E912282FE50080FFCD /* TVOutManager.m */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
@@ -199,6 +200,7 @@
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
 		4B72C93D127A038800469144 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4B72C942127A03E200469144 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4BCC9942141A757D004DF6FB /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BE600E812282FE50080FFCD /* TVOutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOutManager.h; sourceTree = "<group>"; };
 		4BE600E912282FE50080FFCD /* TVOutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVOutManager.m; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4BCC9942141A757D004DF6FB /* 53-house@2x.png */,
 				40B2C38B11EB8841007B2A89 /* Bowman Logo 525 x 150 pixels.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
@@ -571,6 +574,7 @@
 				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
 				4B72C93E127A038800469144 /* Default@2x.png in Resources */,
 				4B72C943127A03E200469144 /* Default.png in Resources */,
+				4BCC9943141A757D004DF6FB /* 53-house@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
