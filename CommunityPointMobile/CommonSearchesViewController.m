@@ -56,7 +56,9 @@
 	[self hideOverlay];
 	
 	[self.tableView reloadData];
-	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    
+    if (self.commonSearches && [self.commonSearches count] > 0)
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void) commonSearchesRequestFailed: (NSNotification*) notification {
