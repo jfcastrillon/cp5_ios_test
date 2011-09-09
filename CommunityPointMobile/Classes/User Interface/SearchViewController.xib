@@ -62,7 +62,6 @@
 						<string key="NSFrame">{{0, 118}, {320, 195}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="906749266">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -288,7 +287,7 @@
 						<int key="objectID">16</int>
 						<reference key="object" ref="91387657"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Image View - Bowman Logo 525 x 150 pixels.png</string>
+						<string key="objectName">Image View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
