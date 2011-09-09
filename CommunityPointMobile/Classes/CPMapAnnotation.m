@@ -11,36 +11,44 @@
 
 @implementation CPMapAnnotation
 
-@synthesize coordinate = _coordinate, title, subtitle;
+@synthesize title, subtitle;
 @synthesize resourceId;
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate {
+- (id) initWithCoordinate:(CLLocationCoordinate2D)_coordinate {
 	[super init];
 	self.coordinate = coordinate;
 	return self;
 }
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title {
+- (id) initWithCoordinate:(CLLocationCoordinate2D)_coordinate andTitle:(NSString *) _title {
 	[super init];
-	self.coordinate = coordinate;
-	self.title = title;
+	self.coordinate = _coordinate;
+	self.title = [_title copy];
 	return self;
 }
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title andSubtitle:(NSString*) subtitle {
+- (id) initWithCoordinate:(CLLocationCoordinate2D)_coordinate andTitle:(NSString *) _title andSubtitle:(NSString*) _subtitle {
 	[super init];
-	self.coordinate = coordinate;
-	self.title = title;
-	self.subtitle = subtitle;
+	self.coordinate = _coordinate;
+	self.title = [_title copy];
+	self.subtitle = _subtitle;
 	return self;
 }
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString *) title andResourceId:(NSDecimalNumber *)resourceId {
+- (id) initWithCoordinate:(CLLocationCoordinate2D)_coordinate andTitle:(NSString *) _title andResourceId:(NSDecimalNumber *)_resourceId {
 	[super init];
-	self.coordinate = coordinate;
-	self.title = title;
-	self.resourceId = resourceId;
+	self.coordinate = _coordinate;
+	self.title = [_title copy];
+	self.resourceId = _resourceId;
 	return self;
+}
+
+- (CLLocationCoordinate2D) coordinate {
+    return coordinate;
+}
+
+- (void) setCoordinate:(CLLocationCoordinate2D)_coordinate {
+    coordinate = _coordinate;
 }
 
 - (void) dealloc {

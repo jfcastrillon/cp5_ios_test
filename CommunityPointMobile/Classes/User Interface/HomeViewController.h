@@ -10,7 +10,7 @@
 #import "AboutViewController.h"
 #import "XServicesHelper.h"
 
-@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, AboutViewControllerDelegate> {
 	UITableView* tableView;
 	UIButton* helpVideo;
 	UIButton* website;

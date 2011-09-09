@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface CPMapAnnotation : NSObject <MKAnnotation> {
-	CLLocationCoordinate2D _coordinate;
+	CLLocationCoordinate2D coordinate;
 	NSString *title;
 	NSString *subtitle;
 	NSDecimalNumber	*resourceId;

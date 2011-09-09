@@ -340,7 +340,7 @@
 }
 
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
+- (UITableViewCell*)tableView:(UITableView*)_tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 	static NSString *ResourceDetailCellIdentifier = @"ResourceDetailCell";
 	static NSString *ResourceLocationCellIdentifier = @"ResourceLocationCell";
 	static NSString *ResourceActionCellIdentifier = @"ResourceActionCell";
@@ -354,7 +354,7 @@
 		NSUInteger row = [indexPath row];
 		
 		if (row == addressCellIndex){
-			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
+			cell = [_tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier] autorelease];
 			}
@@ -373,7 +373,7 @@
 			cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 			return cell;
 		} else if (row == phoneCellIndex) {
-			cell = [tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
+			cell = [_tableView dequeueReusableCellWithIdentifier:ResourceLocationCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceLocationCellIdentifier] autorelease];
 			}
@@ -382,7 +382,7 @@
 			cell.detailTextLabel.text = [displayedResource phone];
 			return cell;
 		} else if (row == urlCellIndex) {
-			cell = [tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
+			cell = [_tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
 			if(cell == nil){
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier] autorelease];
 			}
@@ -399,7 +399,7 @@
 		switch (row) {
 			case 0:
 				{
-					cell = [tableView dequeueReusableCellWithIdentifier:ResourceDetailCellIdentifier];
+					cell = [_tableView dequeueReusableCellWithIdentifier:ResourceDetailCellIdentifier];
 					if(cell == nil){
 						cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceDetailCellIdentifier] autorelease];
 					}
@@ -438,7 +438,7 @@
 	} else if (indexPath.section == generalInfoSectionIndex) {
 		NSUInteger row = [indexPath row];
 		
-		cell = [tableView dequeueReusableCellWithIdentifier:ResourceGeneralCellIdentifier];
+		cell = [_tableView dequeueReusableCellWithIdentifier:ResourceGeneralCellIdentifier];
 		if(cell == nil){
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ResourceGeneralCellIdentifier] autorelease];
 		}
@@ -527,7 +527,7 @@
 	}
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == locationSectionIndex) {
 		if(indexPath.section == locationSectionIndex && indexPath.row == urlCellIndex){
 			NSString *url = [displayedResource url];
@@ -553,7 +553,7 @@
 		}
 	}
 	
-	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	[_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 // Share Resource
