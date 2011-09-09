@@ -93,7 +93,8 @@
         [[LocationManager sharedInstance] startFindingCurrentLocation];
     } else {
         [[XServicesHelper sharedInstance] searchResourcesWithQuery:@""];
-
+        [[self.tabBarController.viewControllers objectAtIndex:1] popToRootViewControllerAnimated:NO];
+        [self.tabBarController setSelectedIndex:1];
     }
 }
 
