@@ -655,14 +655,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Release;
 		};
@@ -696,36 +695,6 @@
 			};
 			name = "Distribution (In House)";
 		};
-		40FEAFAD11F4E26B007314C4 /* Distribution (Tampa) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
-			};
-			name = "Distribution (Tampa)";
-		};
-		40FEAFAE11F4E26B007314C4 /* Distribution (Tampa) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
-				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-			};
-			name = "Distribution (Tampa)";
-		};
 		40FEAFCA11F4EE1E007314C4 /* Distribution (AppStore) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -745,14 +714,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = "Distribution (AppStore)";
 		};
@@ -795,7 +763,6 @@
 				1D6058950D05DD3E006BFB54 /* Release */,
 				402EEB4F11ECE39800527401 /* Distribution (In House) */,
 				40FEAFCB11F4EE1E007314C4 /* Distribution (AppStore) */,
-				40FEAFAE11F4E26B007314C4 /* Distribution (Tampa) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -807,7 +774,6 @@
 				C01FCF5008A954540054247B /* Release */,
 				402EEB4E11ECE39800527401 /* Distribution (In House) */,
 				40FEAFCA11F4EE1E007314C4 /* Distribution (AppStore) */,
-				40FEAFAD11F4E26B007314C4 /* Distribution (Tampa) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
