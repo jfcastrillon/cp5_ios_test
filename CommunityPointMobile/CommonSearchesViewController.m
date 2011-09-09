@@ -185,6 +185,7 @@
 	CPMCommonSearch* cs = [commonSearches objectAtIndex:row];
 	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:[cs queryParameters]];
 
+    [[self.tabBarController.viewControllers objectAtIndex:1] popToRootViewControllerAnimated:NO];
 	[self.tabBarController setSelectedIndex:1];
 }
 
