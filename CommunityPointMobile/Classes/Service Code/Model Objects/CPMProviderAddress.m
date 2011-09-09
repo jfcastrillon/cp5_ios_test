@@ -17,7 +17,7 @@
 	if([super init] == nil) return nil;
 	self.addressId = nullFix([dictionary objectForKey: @"id"]);
 	
-	NSString *typeString = nullFix([dictionary objectForKey: @"provider_id"]);
+	NSString *typeString = nullFix([dictionary objectForKey: @"type"]);
 	if(typeString != nil && [typeString isEqualToString: @"SP5_PHYSICAL_ADDRESS"]) {
 		self.type = CPMPhysicalAddress;
 	} else {
