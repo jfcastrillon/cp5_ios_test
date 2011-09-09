@@ -11,12 +11,13 @@
 #import "LocationManager.h"
 #import "ResourceSearchResultCell.h"
 #import "CPMapAnnotation.h"
+#import "AdvancedSearchViewController.h"
 
 #define kTableViewRowHeight	66
 
 @class XServicesHelper;
 @class ResourceDetailViewController;
-@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate> {
+@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate, AdvancedSearchViewControllerDelegate> {
 	UISearchBar *searchBar;	
 	XServicesHelper *xsHelper;
 	LocationManager *locationManager;

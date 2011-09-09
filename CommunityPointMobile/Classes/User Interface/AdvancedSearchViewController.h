@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "XServicesHelper.h"
 
+@protocol AdvancedSearchViewControllerDelegate <NSObject>
+
+- (void) setSearchBarText: (NSString*) text;
+
+@end
+
 @interface AdvancedSearchViewController : UITableViewController <UITextFieldDelegate> {
 }
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
 
-@property (nonatomic, retain) id delegate;
+@property (nonatomic, retain) id<AdvancedSearchViewControllerDelegate> delegate;
 
 @end

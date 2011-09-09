@@ -268,7 +268,7 @@
 	[detailViewController release];
 	
 	[xsHelper cancelAllOperations];
-	[xsHelper loadResourceDetails: [view.annotation resourceId]];
+	[xsHelper loadResourceDetails: [(CPMapAnnotation*)view.annotation resourceId]];
 }
 
 - (void) didReceiveSearchResults: (NSNotification*) notification {
