@@ -9,6 +9,7 @@
 #import "CommunityPointMobileAppDelegate.h"
 #import "XServicesHelper.h"
 #import "Reachability.h"
+#import "CPTabBarDelegate.h"
 
 @implementation CommunityPointMobileAppDelegate
 
@@ -22,7 +23,6 @@
 	
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
-	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
