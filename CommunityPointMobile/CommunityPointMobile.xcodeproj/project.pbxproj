@@ -68,7 +68,7 @@
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
-		4BCC994F141AB8B6004DF6FB /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCC994E141AB8B6004DF6FB /* 53-house@2x.png */; };
+		4B97D16E1423995B00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D16D1423995B00005509 /* 53-house@2x.png */; };
 		4BD6E216127A12F3006BC2B0 /* 211Connects-App-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */; };
 		4BD6E217127A12F3006BC2B0 /* 211Connects-App-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */; };
 		4BD6E259127A1BA2006BC2B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BD6E258127A1BA2006BC2B0 /* Default@2x.png */; };
@@ -197,7 +197,7 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
-		4BCC994E141AB8B6004DF6FB /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "53-house@2x.png"; path = "../../arizona/CommunityPointMobile/53-house@2x.png"; sourceTree = "<group>"; };
+		4B97D16D1423995B00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-2.png"; sourceTree = "<group>"; };
 		4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211Connects-App-1.png"; sourceTree = "<group>"; };
 		4BD6E258127A1BA2006BC2B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -485,7 +485,7 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4BCC994E141AB8B6004DF6FB /* 53-house@2x.png */,
+				4B97D16D1423995B00005509 /* 53-house@2x.png */,
 				4BD6E184127A12F3006BC2B0 /* 211Connects-App-2.png */,
 				4BD6E185127A12F3006BC2B0 /* 211Connects-App-1.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
@@ -573,7 +573,7 @@
 				4BD6E217127A12F3006BC2B0 /* 211Connects-App-1.png in Resources */,
 				4BD6E259127A1BA2006BC2B0 /* Default@2x.png in Resources */,
 				4BD6E26D127A1BE7006BC2B0 /* Default.png in Resources */,
-				4BCC994F141AB8B6004DF6FB /* 53-house@2x.png in Resources */,
+				4B97D16E1423995B00005509 /* 53-house@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
