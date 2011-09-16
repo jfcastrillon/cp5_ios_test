@@ -71,7 +71,7 @@
 		4B1F228712B7DC260012414F /* Appimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F228612B7DC260012414F /* Appimage.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
-		4BCC9957141ABE76004DF6FB /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCC9956141ABE76004DF6FB /* 53-house@2x.png */; };
+		4B97D163142396F400005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D162142396F400005509 /* 53-house@2x.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -199,7 +199,7 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
-		4BCC9956141ABE76004DF6FB /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "53-house@2x.png"; path = "../../tampabay/CommunityPointMobile/53-house@2x.png"; sourceTree = "<group>"; };
+		4B97D162142396F400005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4BCC9956141ABE76004DF6FB /* 53-house@2x.png */,
+				4B97D162142396F400005509 /* 53-house@2x.png */,
 				4B1F228612B7DC260012414F /* Appimage.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
@@ -569,7 +569,7 @@
 				4B1F228712B7DC260012414F /* Appimage.png in Resources */,
 				4B11419812B81C810029AE55 /* Default@2x.png in Resources */,
 				4B11419C12B81D450029AE55 /* Default.png in Resources */,
-				4BCC9957141ABE76004DF6FB /* 53-house@2x.png in Resources */,
+				4B97D163142396F400005509 /* 53-house@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
