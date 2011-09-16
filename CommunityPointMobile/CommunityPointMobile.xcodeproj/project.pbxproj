@@ -70,9 +70,9 @@
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
+		4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D15B1423951C00005509 /* 53-house@2x.png */; };
 		4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5921411273B00B8B54E /* 211azbottom.png */; };
 		4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5931411273B00B8B54E /* 211aztop.png */; };
-		4BCC9946141A81E1004DF6FB /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCC9945141A81E1004DF6FB /* 53-house@2x.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -199,9 +199,9 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
+		4B97D15B1423951C00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BCAA5921411273B00B8B54E /* 211azbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211azbottom.png; sourceTree = "<group>"; };
 		4BCAA5931411273B00B8B54E /* 211aztop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211aztop.png; sourceTree = "<group>"; };
-		4BCC9945141A81E1004DF6FB /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "53-house@2x.png"; path = "../../summer_breakspot/CommunityPointMobile/53-house@2x.png"; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -485,7 +485,7 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4BCC9945141A81E1004DF6FB /* 53-house@2x.png */,
+				4B97D15B1423951C00005509 /* 53-house@2x.png */,
 				4BCAA5921411273B00B8B54E /* 211azbottom.png */,
 				4BCAA5931411273B00B8B54E /* 211aztop.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
@@ -573,7 +573,7 @@
 				4B11419C12B81D450029AE55 /* Default.png in Resources */,
 				4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */,
 				4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */,
-				4BCC9946141A81E1004DF6FB /* 53-house@2x.png in Resources */,
+				4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
