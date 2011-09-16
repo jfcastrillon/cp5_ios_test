@@ -71,8 +71,8 @@
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
 		4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D15B1423951C00005509 /* 53-house@2x.png */; };
-		4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5921411273B00B8B54E /* 211azbottom.png */; };
-		4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5931411273B00B8B54E /* 211aztop.png */; };
+		4B97D1921423B06C00005509 /* 211pbtcbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D1901423B06C00005509 /* 211pbtcbottom.png */; };
+		4B97D1931423B06C00005509 /* 211pbtctop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D1911423B06C00005509 /* 211pbtctop.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -200,8 +200,8 @@
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
 		4B97D15B1423951C00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
-		4BCAA5921411273B00B8B54E /* 211azbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211azbottom.png; sourceTree = "<group>"; };
-		4BCAA5931411273B00B8B54E /* 211aztop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211aztop.png; sourceTree = "<group>"; };
+		4B97D1901423B06C00005509 /* 211pbtcbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211pbtcbottom.png; sourceTree = "<group>"; };
+		4B97D1911423B06C00005509 /* 211pbtctop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211pbtctop.png; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -485,9 +485,9 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4B97D1901423B06C00005509 /* 211pbtcbottom.png */,
+				4B97D1911423B06C00005509 /* 211pbtctop.png */,
 				4B97D15B1423951C00005509 /* 53-house@2x.png */,
-				4BCAA5921411273B00B8B54E /* 211azbottom.png */,
-				4BCAA5931411273B00B8B54E /* 211aztop.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
@@ -571,9 +571,9 @@
 				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
 				4B11419812B81C810029AE55 /* Default@2x.png in Resources */,
 				4B11419C12B81D450029AE55 /* Default.png in Resources */,
-				4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */,
-				4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */,
 				4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */,
+				4B97D1921423B06C00005509 /* 211pbtcbottom.png in Resources */,
+				4B97D1931423B06C00005509 /* 211pbtctop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,14 +658,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "597622B0-A173-43E2-985B-740AD772CF3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -705,12 +705,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "597622B0-A173-43E2-985B-740AD772CF3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = "Distribution (AppStore)";
@@ -720,14 +720,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "597622B0-A173-43E2-985B-740AD772CF3A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = "Distribution (AppStore)";
@@ -751,12 +751,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
