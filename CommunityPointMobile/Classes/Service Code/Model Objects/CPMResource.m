@@ -30,6 +30,7 @@
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	if([super init] == nil) return nil;
+    //NSLog(@"%@", dictionary);
 	self.resourceId = nullFix([dictionary objectForKey: @"id"]);
 	self.providerId = nullFix([dictionary objectForKey: @"provider_id"]);
 	self.name = nullFix([dictionary objectForKey:@"name"]);

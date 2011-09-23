@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>clientApp</key>
-	<string>cp5_ios 211az</string>
+	<string>cp5_ios 211bb</string>
 	<key>helpVideo</key>
 	<string>http://www.youtube.com/watch?v=JnuDC5A-OgM</string>
 	<key>website</key>
-	<string>http://211Arizona.org/</string>
+	<string>http://www.211bigbend.org</string>
 	<key>publicKey</key>
-	<string>649208C3CB7004F6CF2E6BFA6CA20C23</string>
+	<string>2D2590750EC73B6855EAC6D5F2631B23</string>
 	<key>clientVersion</key>
 	<string>2.0.2</string>
 	<key>baseUrl</key>
