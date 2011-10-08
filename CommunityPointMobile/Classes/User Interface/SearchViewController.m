@@ -290,6 +290,13 @@
 		[self hideOverlayWithSearchBarVisible:YES];
 		[self reloadMapView];
 	}
+
+    NSDictionary* previousParameters = [xsHelper lastQueryParams];
+	if (previousParameters != nil) {
+        if ([previousParameters objectForKey:kXSQueryNatural] == nil) {
+            [self setSearchBarText:@"(Advanced Search)"];
+        }
+    }
 }
 
 - (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
@@ -471,9 +478,18 @@
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
-	if ([searchBar selectedScopeButtonIndex] == 0)
-		[xsHelper searchResourcesWithQuery: query];
-	else {
+	if ([searchBar selectedScopeButtonIndex] == 0) {
+        if ([[searchBar text] isEqualToString:@"(Advanced Search)"]) {
+            NSMutableDictionary* params = [[[XServicesHelper sharedInstance] lastQueryParams] mutableCopy];
+            [params removeObjectForKey:kXSQueryReferenceLatitude];
+            [params removeObjectForKey:kXSQueryReferenceLongitude];
+            [params removeObjectForKey:kXSSortByDistance];
+            [xsHelper searchResourcesWithQueryParams:params];
+            [params release];
+        } else {
+            [xsHelper searchResourcesWithQuery: query];
+        }
+	} else {
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: locationManager];
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: locationManager];
 		[locationManager startFindingCurrentLocation];
@@ -485,7 +501,17 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
-	[xsHelper searchResourcesWithQuery:[searchBar text] forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+    
+    if ([[searchBar text] isEqualToString:@"(Advanced Search)"]) {
+        NSMutableDictionary* params = [[[XServicesHelper sharedInstance] lastQueryParams] mutableCopy];
+        [params setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:kXSQueryReferenceLatitude];
+        [params setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:kXSQueryReferenceLongitude];
+        [params setValue: @"true" forKey:kXSSortByDistance];
+        [xsHelper searchResourcesWithQueryParams:params];
+        [params release];
+    } else {
+        [xsHelper searchResourcesWithQuery:[searchBar text] forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+    }
 }
 
 - (void) didFailToGetLocation: (NSNotification*) notification {
