@@ -648,8 +648,7 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(map:)];
 	
-    NSDictionary* previousParameters = [xsHelper lastQueryParams];
-	if (previousParameters != nil) {
+    if ([xsHelper lastQueryParams]) {
           self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refine" 
 																			 style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
     } else {
