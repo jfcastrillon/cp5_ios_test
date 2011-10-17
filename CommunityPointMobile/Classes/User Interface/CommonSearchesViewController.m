@@ -166,6 +166,7 @@
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
 	CPMCommonSearch* cs = [commonSearches objectAtIndex:row];
