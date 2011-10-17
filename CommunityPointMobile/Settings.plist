@@ -14,5 +14,7 @@
 	<string>0BE0ED1B8F44725D6B3F3BC5F213C643</string>
 	<key>website</key>
 	<string>http://cp5beta.bowmansystems.com/index.php?option=com_cpx</string>
+	<key>irisSite</key>
+	<true/>
 </dict>
 </plist>
