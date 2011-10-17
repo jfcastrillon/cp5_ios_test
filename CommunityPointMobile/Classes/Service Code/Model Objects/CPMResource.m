@@ -25,7 +25,7 @@
 @synthesize longitude;
 @synthesize distanceToRef;
 @synthesize accessibilityFlag;
-@synthesize shelterFlag;
+@synthesize isShelter;
 @synthesize callCenterFlag;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
@@ -55,7 +55,7 @@
 	self.longitude = nullFix([dictionary objectForKey:@"longitude"]);
 	self.distanceToRef = nullFix([dictionary objectForKey:@"distance"]);
 	self.accessibilityFlag = nullFix([dictionary objectForKey:@"handicap_access"]);
-	self.shelterFlag = nullFix([dictionary objectForKey:@"is_shelter"]);
+	self.isShelter = nullFix([dictionary objectForKey:@"is_shelter"]);
 	self.callCenterFlag = nullFix([dictionary objectForKey:@"is_callcenter"]);
 	
 	return self;
@@ -108,8 +108,8 @@
 		[value setObject:longitude forKey:@"longitude"];
 	if (accessibilityFlag)
 		[value setObject:accessibilityFlag forKey:@"handicap_access"];
-	if (shelterFlag)
-		[value setObject:shelterFlag forKey:@"is_shelter"];
+	if (isShelter)
+		[value setObject:isShelter forKey:@"is_shelter"];
 	if (callCenterFlag)
 		[value setObject:callCenterFlag forKey:@"is_callcenter"];
 
