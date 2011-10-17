@@ -17,4 +17,6 @@
 @property (nonatomic, copy) NSString* code;
 @property (nonatomic, copy) NSString* name;
 
+- (id) initFromJsonDictionary: (NSDictionary*) dictionary;
+
 @end

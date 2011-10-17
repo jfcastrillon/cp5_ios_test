@@ -91,6 +91,7 @@ NSString* encodeStringForURL(NSString* str){
 	
 	//Convert the postData to a string
 	NSString* paramString = [parameters urlPostEncoded];
+    //NSLog(@"ParamString: %@", paramString);
 	
 	// Open and return the connection
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: _baseUrl]];
