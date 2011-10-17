@@ -138,7 +138,7 @@
 	self.shelterRequirements = nullFix([dictionary objectForKey:@"shelter_requirements"]);
 	
 	self.accessibilityFlag = nullFix([dictionary objectForKey:@"accessibility_flag"]);
-	self.shelterFlag = nullFix([dictionary objectForKey:@"is_shelter"]);
+	self.isShelter = nullFix([dictionary objectForKey:@"is_shelter"]);
 	
 	return self;
 }
@@ -159,7 +159,7 @@
 	self.intakeProcedure = nil;
 	self.accessibilityFlag = nil;
 	self.shelterRequirements = nil;
-	self.shelterFlag = nil;
+	self.isShelter = nil;
 	[super dealloc];
 }
 

@@ -263,7 +263,12 @@
 	NSDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
 	if(previousParameters != nil){
 		[self textFieldForSection:0 row:0].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
-		[self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
+        
+        if ([previousParameters objectForKey:kXSQueryNatural]) {
+            [self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryNatural];
+        } else {
+            [self textFieldForSection:0 row:1].text = [previousParameters objectForKey:kXSQueryKeywordsAny];
+        }
 		[self textFieldForSection:0 row:2].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
 		
 		[self textFieldForSection:1 row:0].text = [previousParameters objectForKey:kXSQueryPhysicalLocationZIP];
@@ -278,7 +283,7 @@
         
 		[self textFieldForSection:4 row:0].text = [previousParameters objectForKey:kXSQueryWishlistKeywords];
         
-        [self textFieldForSection:5 row:0].text = [previousParameters objectForKey:kXSQueryServiceCodes];
+        [self textFieldForSection:5 row:0].text = [[previousParameters objectForKey:kXSQueryServiceCodes] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
 	
 	[super viewWillAppear:animated];
