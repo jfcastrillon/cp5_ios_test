@@ -11,8 +11,10 @@
 	<key>publicKey</key>
 	<string>B47182694EA9167F4A6320B775636039</string>
 	<key>clientVersion</key>
-	<string>2.1.0</string>
+	<string>2.1.2</string>
 	<key>baseUrl</key>
 	<string>http://xservices.bowmansystems.com/5.3.1/index.php</string>
+	<key>irisSite</key>
+	<false/>
 </dict>
 </plist>
