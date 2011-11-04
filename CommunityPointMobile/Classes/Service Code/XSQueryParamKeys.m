@@ -34,3 +34,5 @@ NSString* const kXSSortByDistance = @"sort_by_distance";
 NSString* const kXSQueryKeywordsAll = @"query_all";
 NSString* const kXSQueryKeywordsAny = @"query_any";
 NSString* const kXSQueryKeywordsNone = @"query_none";
+
+NSString* const kXSQueryServiceCodes = @"code";

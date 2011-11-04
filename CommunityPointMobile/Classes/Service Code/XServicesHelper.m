@@ -117,14 +117,6 @@
 	[op release];
 }
 
-- (void)retrieveProviderCount {
-	//[self createConnectionForMethod:@"accounts.get_info" withParameters:params];
-}
-
-- (void) retrieveResourceDetails:(NSDecimalNumber*)resourceId{
-	//[self createConnectionForMethod:@"resources.pull" withParameters:params];
-}
-
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId{
 #ifdef ENABLE_CACHE
 	CPMResourceDetail* cachedDetail = [detailsCache objectForKey:resourceId];
@@ -173,7 +165,7 @@
 	[dictionary setObject: [resource name] forKey: @"name"];
 	[dictionary setObject: [resource addressString] forKey: @"address"];
 	[dictionary setObject: [resource accessibilityFlag] forKey: @"accessibilityFlag"];
-	[dictionary setObject: [resource shelterFlag] forKey:@"shelterFlag"];
+	[dictionary setObject: [resource isShelter] forKey:@"shelterFlag"];
 	[favorites addObject: dictionary];
 	[dictionary release];
 }
@@ -186,7 +178,7 @@
 	[dictionary setObject: [resource name] forKey: @"name"];
 	[dictionary setObject: [resource addressString] forKey: @"address"];
 	[dictionary setObject: [resource accessibilityFlag] forKey: @"accessibilityFlag"];
-	[dictionary setObject: [resource shelterFlag] forKey:@"shelterFlag"];
+	[dictionary setObject: [resource isShelter] forKey:@"shelterFlag"];
 	
 	for(NSUInteger i = 0; i < [favorites count]; i++){
 		NSDictionary* favorite = [favorites objectAtIndex: i];
