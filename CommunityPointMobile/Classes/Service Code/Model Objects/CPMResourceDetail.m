@@ -9,6 +9,7 @@
 #import "CPMResourceDetail.h"
 #import "CPMResource.h"
 #import "CPMService.h"
+#import "SettingsHelper.h"
 #import "Util.h"
 
 @implementation CPMResourceDetail
@@ -58,29 +59,64 @@
 	}
 	
 	//Extract phone numbers
-	NSDictionary* phoneDict = nullFix([dictionary objectForKey: @"phones"]);
-	if(phoneDict != nil) {
-		NSDictionary* primaryPhoneDict = nullFix([phoneDict objectForKey:@"primary"]);
-		CPMProviderTelephone *tempPrimaryPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: primaryPhoneDict];
-		self.primaryPhone = tempPrimaryPhone;
-		
-		// Copy these fields over to fill in the super class fields
-		self.phone = [tempPrimaryPhone fullNumber];
-		
-		[tempPrimaryPhone release];
-				
-		if(nullFix([phoneDict objectForKey:@"bin"]) != nil){
-			NSArray *phoneBinArray = [[phoneDict objectForKey:@"bin"] allValues];
-			NSMutableArray *phoneBin = [[NSMutableArray alloc] initWithCapacity: [phoneBinArray count]];
-			for(NSDictionary *phoneDict in phoneBinArray) {
-				CPMProviderTelephone *tempPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: phoneDict];
-				[phoneBin addObject: tempPhone];
-				[tempPhone release];
-			}
-			self.phones = phoneBin;
-			[phoneBin release];
-		}
-	}
+    // If this is an IRIS site, the primary phone is stored as a contact
+    if ([[[SettingsHelper sharedInstance] settings] objectForKey:@"irisSite"]) {
+        NSDecimalNumber	*primaryPhoneId = nullFix([dictionary objectForKey:@"primary_phone_id"]);
+        if(primaryPhoneId != nil) {
+            NSDictionary* contactsDict = nullFix([dictionary objectForKey: @"contacts"]);
+            if(contactsDict != nil) {
+                NSDictionary* binDict = nullFix([contactsDict objectForKey: @"bin"]);
+                if(binDict != nil) {
+                    NSDictionary* primaryPhoneDict = nullFix([binDict objectForKey:[NSString stringWithFormat:@"%@", [primaryPhoneId stringValue]]]);
+                    if(primaryPhoneDict != nil) {
+                        CPMProviderTelephone *tempPrimaryPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: primaryPhoneDict];
+                        self.primaryPhone = tempPrimaryPhone;
+                        
+                        // Copy these fields over to fill in the super class fields
+                        self.phone = [tempPrimaryPhone fullNumber];
+                        
+                        [tempPrimaryPhone release];
+
+                        NSArray *phoneBinArray = [binDict allValues];
+                        NSMutableArray *phoneBin = [[NSMutableArray alloc] initWithCapacity: [phoneBinArray count]];
+                        for(NSDictionary *phoneDict in phoneBinArray) {
+                            CPMProviderTelephone *tempPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: phoneDict];
+                            [phoneBin addObject: tempPhone];
+                            [tempPhone release];
+                        }
+                        self.phones = phoneBin;
+                        [phoneBin release];
+                    }
+                }
+            }
+        }
+    }
+    // If this is not an IRIS site, the phones are stored in a 'phones' array.
+    else {
+        NSDictionary* phoneDict = nullFix([dictionary objectForKey: @"phones"]);
+        if(phoneDict != nil) {
+            NSDictionary* primaryPhoneDict = nullFix([phoneDict objectForKey:@"primary"]);
+            CPMProviderTelephone *tempPrimaryPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: primaryPhoneDict];
+            self.primaryPhone = tempPrimaryPhone;
+            
+            // Copy these fields over to fill in the super class fields
+            self.phone = [tempPrimaryPhone fullNumber];
+            
+            [tempPrimaryPhone release];
+            
+            if(nullFix([phoneDict objectForKey:@"bin"]) != nil){
+                NSArray *phoneBinArray = [[phoneDict objectForKey:@"bin"] allValues];
+                NSMutableArray *phoneBin = [[NSMutableArray alloc] initWithCapacity: [phoneBinArray count]];
+                for(NSDictionary *phoneDict in phoneBinArray) {
+                    CPMProviderTelephone *tempPhone = [[CPMProviderTelephone alloc] initFromJsonDictionary: phoneDict];
+                    [phoneBin addObject: tempPhone];
+                    [tempPhone release];
+                }
+                self.phones = phoneBin;
+                [phoneBin release];
+            }
+        }
+    }
 	
 	
 	//Extract services
@@ -138,7 +174,7 @@
 	self.shelterRequirements = nullFix([dictionary objectForKey:@"shelter_requirements"]);
 	
 	self.accessibilityFlag = nullFix([dictionary objectForKey:@"accessibility_flag"]);
-	self.shelterFlag = nullFix([dictionary objectForKey:@"is_shelter"]);
+	self.isShelter = nullFix([dictionary objectForKey:@"is_shelter"]);
 	
 	return self;
 }
@@ -159,7 +195,7 @@
 	self.intakeProcedure = nil;
 	self.accessibilityFlag = nil;
 	self.shelterRequirements = nil;
-	self.shelterFlag = nil;
+	self.isShelter = nil;
 	[super dealloc];
 }
 

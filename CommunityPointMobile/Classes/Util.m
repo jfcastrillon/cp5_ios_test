@@ -125,7 +125,7 @@ NSString* buildEmail(CPMResourceDetail* resource) {
 	}
 	
 	// Shelter?
-	if ([[resource shelterFlag] boolValue]) {
+	if ([[resource isShelter] boolValue]) {
 		[email appendString:@"<tr><td style=\"width: 140px; font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0; margin: 0; color: #333; vertical-align: top;\">Shelter?</td>"];
 		[email appendString:@"<td style=\"font-family: 'Arial', Helvetica, sans-serif; font-size: 0.9em; padding: 0 0 5px 0; margin: 0; color: #333;\">Yes</td></tr>"];
 		

@@ -19,7 +19,9 @@
 }
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
+- (void) createCell:(NSUInteger)section row:(NSUInteger)row;
 
 @property (nonatomic, retain) id<AdvancedSearchViewControllerDelegate> delegate;
+@property (nonatomic, retain) NSMutableDictionary *cellDictionary;
 
 @end

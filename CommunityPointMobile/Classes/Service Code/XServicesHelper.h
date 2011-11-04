@@ -54,7 +54,6 @@
 - (void)loadMoreResults;
 
 - (void)loadCommonSearches;
-- (void)retrieveProviderCount;
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId;
 
