@@ -300,6 +300,9 @@
         [self.navigationItem.leftBarButtonItem setTitle:@"Refine"];
         if ([previousParameters objectForKey:kXSQueryNatural] == nil) {
             [self setSearchBarText:@"(Advanced Search)"];
+            if ([previousParameters objectForKey:kXSSortByDistance] == nil && [searchBar selectedScopeButtonIndex] == 1) {
+                [searchBar setSelectedScopeButtonIndex:0];
+            }
         }
     }
 }
@@ -577,6 +580,9 @@
 }
 
 - (void) searchBar:(UISearchBar *)sender selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    if (sender.text == nil) {
+        sender.text = @"";
+    }
     [self beginSearchForQuery: sender.text];
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
