@@ -322,7 +322,7 @@
 				accessibilityCellIndex = rows;
 				rows++;
 			}
-			if ([[displayedResource shelterFlag] boolValue]) {
+			if ([[displayedResource isShelter] boolValue]) {
 				shelterCellIndex = rows;
 				rows++;
 				

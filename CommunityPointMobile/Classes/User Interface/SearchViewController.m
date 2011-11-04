@@ -33,6 +33,24 @@
 }
 
 - (void) showOverlay {
+    
+    CGRect overlayFrame = dimmingOverlay.frame;
+	if ([self tableHeaderVisible:resultsTableView]) {
+        CGRect visibleRect; 
+        visibleRect.origin = resultsTableView.contentOffset; 
+        visibleRect.size = resultsTableView.contentSize; 
+        CGRect headerRect = resultsTableView.tableHeaderView.frame;
+        overlayFrame.origin.y = headerRect.size.height - visibleRect.origin.y;
+	} else {
+        overlayFrame.origin.y = 0;
+	}
+	
+	[CATransaction begin];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+	[dimmingOverlay setFrame: overlayFrame];
+	[CATransaction commit];
+	[CATransaction flush];
+    
 	CATransition *animation = [CATransition animation];
 	[animation setType: kCATransitionFade];
 	[animation setDuration: 0.3];
@@ -43,10 +61,9 @@
 }
 
 
-- (void) hideOverlayWithSearchBarVisible:(BOOL) searchBarVisible {
+- (void) hideOverlay {
 
 	CGRect overlayFrame = dimmingOverlay.frame;
-	//overlayFrame.origin.y = searchBarVisible ? 44 : 0;
 	if ([self tableHeaderVisible:resultsTableView]) {
 		overlayFrame.origin.y = 44;
 	} else {
@@ -69,16 +86,10 @@
 	
 }
 
-
-- (void) hideOverlay {
-	[self hideOverlayWithSearchBarVisible:YES];
-}
-
 - (IBAction) backgroundTap:(id)sender {
 	if([searchBar isFirstResponder]) {
 		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		[searchBar setShowsCancelButton:NO animated:YES];
-		[searchBar setShowsScopeBar:NO];
 		[searchBar sizeToFit];
 		resultsTableView.allowsSelection = YES;
 		resultsTableView.scrollEnabled = YES;
@@ -163,23 +174,15 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[searchBar setShowsScopeBar:NO];
+    if([locationManager isLocationEnabled])
+		[searchBar setShowsScopeBar:YES];
+	else {
+		[searchBar setShowsScopeBar: NO];
+		[searchBar setSelectedScopeButtonIndex: 0]; // Only allow relevancy if the location services are disabled
+	}
 	[searchBar sizeToFit];
 	[resultsTableView reloadData];
 	if ([xsHelper isSearching]) {
-		[CATransaction begin];
-		[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-		CGRect overlayFrame = dimmingOverlay.frame;
-		if ([self tableHeaderVisible:resultsTableView]) {
-			overlayFrame.origin.y = 44;
-		} else {
-			overlayFrame.origin.y = 0;
-		}
-		
-		dimmingOverlay.frame = overlayFrame;	
-		[CATransaction commit];
-		[CATransaction flush];
-		
 		[self showOverlay];
 		[busyIndicator setHidden:NO];
 		[busyIndicator startAnimating];
@@ -279,7 +282,7 @@
 		noResultsFound = YES;
 		[resultsTableView reloadData];
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-		[self hideOverlayWithSearchBarVisible:NO];
+		[self hideOverlay];
 		[self reloadMapView];
 	} else {
 		noResultsFound = NO;
@@ -287,9 +290,21 @@
 
 		[resultsTableView reloadData];
 		[resultsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-		[self hideOverlayWithSearchBarVisible:YES];
+		[resultsTableView scrollRectToVisible:CGRectMake(0, 44, 1, 1) animated:NO];
+        [self hideOverlay];
 		[self reloadMapView];
 	}
+
+    NSDictionary* previousParameters = [xsHelper lastQueryParams];
+	if (previousParameters != nil) {
+        [self.navigationItem.leftBarButtonItem setTitle:@"Refine"];
+        if ([previousParameters objectForKey:kXSQueryNatural] == nil) {
+            [self setSearchBarText:@"(Advanced Search)"];
+			if ([previousParameters objectForKey:kXSSortByDistance] == nil && [searchBar selectedScopeButtonIndex] == 1) { 
+	            [searchBar setSelectedScopeButtonIndex:0]; 
+	        }
+        }
+    }
 }
 
 - (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
@@ -403,7 +418,7 @@
 				cell.nameLabel.frame = CGRectMake(13, 7, 285, 22);
 			}
 			
-			if ([resource shelterFlag] != nil && [[resource shelterFlag] boolValue]) {
+			if ([resource isShelter] != nil && [[resource isShelter] boolValue]) {
 				[cell.bedImage setHidden:NO];
 			} else {
 				[cell.bedImage setHidden:YES];
@@ -471,9 +486,18 @@
 	[self showOverlay];
 	[busyIndicator setHidden:NO];
 	[busyIndicator startAnimating];
-	if ([searchBar selectedScopeButtonIndex] == 0)
-		[xsHelper searchResourcesWithQuery: query];
-	else {
+	if ([searchBar selectedScopeButtonIndex] == 0) {
+        if ([[searchBar text] isEqualToString:@"(Advanced Search)"]) {
+            NSMutableDictionary* params = [[[XServicesHelper sharedInstance] lastQueryParams] mutableCopy];
+            [params removeObjectForKey:kXSQueryReferenceLatitude];
+            [params removeObjectForKey:kXSQueryReferenceLongitude];
+            [params removeObjectForKey:kXSSortByDistance];
+            [xsHelper searchResourcesWithQueryParams:params];
+            [params release];
+        } else {
+            [xsHelper searchResourcesWithQuery: query];
+        }
+	} else {
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didGetLocation:) name:LocationManagerFoundLocationNotification object: locationManager];
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: locationManager];
 		[locationManager startFindingCurrentLocation];
@@ -485,7 +509,17 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
-	[xsHelper searchResourcesWithQuery:[searchBar text] forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+    
+    if ([[searchBar text] isEqualToString:@"(Advanced Search)"]) {
+        NSMutableDictionary* params = [[[XServicesHelper sharedInstance] lastQueryParams] mutableCopy];
+        [params setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:kXSQueryReferenceLatitude];
+        [params setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:kXSQueryReferenceLongitude];
+        [params setValue: @"true" forKey:kXSSortByDistance];
+        [xsHelper searchResourcesWithQueryParams:params];
+        [params release];
+    } else {
+        [xsHelper searchResourcesWithQuery:[searchBar text] forLatitude: [NSNumber numberWithDouble:location.coordinate.latitude] andLongitude: [NSNumber numberWithDouble:location.coordinate.longitude]];
+    }
 }
 
 - (void) didFailToGetLocation: (NSNotification*) notification {
@@ -527,7 +561,6 @@
 - (void) searchBarCancelButtonClicked:(UISearchBar *)sender {
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
-	[sender setShowsScopeBar:NO];
 	[searchBar sizeToFit];
 	resultsTableView.allowsSelection = YES;
 	resultsTableView.scrollEnabled = YES;
@@ -539,7 +572,20 @@
 	[self beginSearchForQuery: sender.text];
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
-	[sender setShowsScopeBar:NO];
+	[searchBar sizeToFit];
+	
+	resultsTableView.allowsSelection = YES;
+	resultsTableView.scrollEnabled = YES;
+	[sender resignFirstResponder];
+}
+
+- (void) searchBar:(UISearchBar *)sender selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+ 	if (sender.text == nil) { 
+ 	    sender.text = @""; 
+ 	} 
+    [self beginSearchForQuery: sender.text];
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
+	[sender setShowsCancelButton:NO animated:YES];
 	[searchBar sizeToFit];
 	
 	resultsTableView.allowsSelection = YES;
@@ -607,8 +653,14 @@
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(map:)];
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced" 
+	
+    if ([xsHelper lastQueryParams]) {
+          self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refine" 
 																			 style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
+    } else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced" 
+                                                                                 style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
+    }
 }
 
 @end

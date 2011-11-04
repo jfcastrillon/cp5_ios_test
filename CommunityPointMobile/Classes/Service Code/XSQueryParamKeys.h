@@ -33,3 +33,5 @@ extern NSString* const kXSSortByDistance;
 extern NSString* const kXSQueryKeywordsAll;
 extern NSString* const kXSQueryKeywordsAny;
 extern NSString* const kXSQueryKeywordsNone;
+
+extern NSString* const kXSQueryServiceCodes;
