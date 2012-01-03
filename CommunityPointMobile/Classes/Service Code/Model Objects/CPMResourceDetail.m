@@ -60,7 +60,7 @@
 	
 	//Extract phone numbers
     // If this is an IRIS site, the primary phone is stored as a contact
-    if ([[[SettingsHelper sharedInstance] settings] objectForKey:@"irisSite"]) {
+    if ([[[[SettingsHelper sharedInstance] settings] objectForKey:@"irisSite"] boolValue]) {
         NSDecimalNumber	*primaryPhoneId = nullFix([dictionary objectForKey:@"primary_phone_id"]);
         if(primaryPhoneId != nil) {
             NSDictionary* contactsDict = nullFix([dictionary objectForKey: @"contacts"]);
