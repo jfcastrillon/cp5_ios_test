@@ -31,8 +31,8 @@ NSString* const kXSQuerySearchHistoryId = @"search_history_id";
 NSString* const kXSQueryReferenceLatitude = @"ref_latitude";
 NSString* const kXSQueryReferenceLongitude = @"ref_longitude";
 NSString* const kXSSortByDistance = @"sort_by_distance";
-NSString* const kXSQueryKeywordsAll = @"query_all";
-NSString* const kXSQueryKeywordsAny = @"query_any";
-NSString* const kXSQueryKeywordsNone = @"query_none";
+NSString* const kXSQueryKeywordsAll = @"all"; //@"query_all";
+NSString* const kXSQueryKeywordsAny = @"any"; //@"query_any";
+NSString* const kXSQueryKeywordsNone = @"none"; //@"query_none";
 
 NSString* const kXSQueryServiceCodes = @"code";
