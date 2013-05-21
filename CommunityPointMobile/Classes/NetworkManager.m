@@ -8,9 +8,7 @@
 
 #import "NetworkManager.h"
 
-
 @implementation NetworkManager
-
 
 - (id) init {
 	if(!(self = [super init])) return nil;
@@ -123,7 +121,7 @@ static NetworkManager* sharedManagerInstance = nil;
     return UINT_MAX;  //never let this be released;
 }
 
-- (void)release {
+- (oneway void)release {
     //prevent release
 }
 
