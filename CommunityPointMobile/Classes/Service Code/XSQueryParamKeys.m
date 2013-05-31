@@ -35,4 +35,9 @@ NSString* const kXSQueryKeywordsAll = @"all"; //@"query_all";
 NSString* const kXSQueryKeywordsAny = @"any"; //@"query_any";
 NSString* const kXSQueryKeywordsNone = @"none"; //@"query_none";
 
+NSString* const kXSQueryShowOnlyShelters = @"unit_list";
+
 NSString* const kXSQueryServiceCodes = @"code";
+
+NSString* const kXSQueryCommonId = @"common_id";
+NSString* const kXSQueryAdvanced = @"advanced";

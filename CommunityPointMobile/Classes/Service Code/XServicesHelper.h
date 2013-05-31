@@ -11,7 +11,9 @@
 #import "CPMSearchResultSet.h"
 #import "CPMResourceDetail.h"
 #import "NetworkManager.h"
+#import "SettingsHelper.h"
 #import "XSQueryParamKeys.h"
+#import "CPMSettings.h"
 
 @interface XServicesHelper : NSObject {
 	NSOperationQueue *operationQueue;
@@ -53,6 +55,8 @@
 
 - (void) operationDidComplete: (XSResponse*) response;
 - (void) operationDidFailWithError: (NSDictionary*) error;
+
+- (void) loadXsSettings;
 
 - (void) cancelAllOperations;
 

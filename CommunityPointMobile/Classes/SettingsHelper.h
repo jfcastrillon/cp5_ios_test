@@ -10,10 +10,10 @@
 
 
 @interface SettingsHelper : NSObject {
-	NSDictionary* settings;
+	NSMutableDictionary* settings;
 }
 
-@property (nonatomic, readonly) NSDictionary* settings;
+@property (nonatomic, readonly) NSMutableDictionary* settings;
 
 - (id) init;
 
