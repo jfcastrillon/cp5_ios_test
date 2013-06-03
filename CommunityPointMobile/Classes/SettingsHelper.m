@@ -65,7 +65,7 @@ static SettingsHelper* sharedHelperInstance = nil;
     return UINT_MAX;  //never let this be released;
 }
 
-- (void)release {
+- (oneway void)release {
     //prevent release
 }
 
