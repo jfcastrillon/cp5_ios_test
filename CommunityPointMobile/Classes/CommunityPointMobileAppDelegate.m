@@ -25,6 +25,9 @@
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
 	[[TVOutManager sharedInstance] startTVOut];
+    
+    // Load the XServices settings
+    [xsHelper loadXsSettings];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

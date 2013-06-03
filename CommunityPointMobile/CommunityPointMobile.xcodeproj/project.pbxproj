@@ -66,6 +66,9 @@
 		40F4B24811D11B48005CAE4E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B24711D11B48005CAE4E /* Reachability.m */; };
 		40F4B24A11D11E50005CAE4E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */; };
 		40F4B2A411D14A4C005CAE4E /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4B2A311D14A4C005CAE4E /* NetworkManager.m */; };
+		4B10E1D11759349B0003F546 /* CPMUnitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10E1D01759349A0003F546 /* CPMUnitInfo.m */; };
+		4B10E1D6175940F00003F546 /* ResourceUnitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10E1D5175940EF0003F546 /* ResourceUnitsViewController.m */; };
+		4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1D7175946990003F546 /* ResourceUnitsViewController.xib */; };
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
@@ -83,6 +86,9 @@
 		4BF05D20126E00CC002463CE /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF05D1F126E00CC002463CE /* SettingsHelper.m */; };
 		4BF10F2C12722AD7001BE003 /* CommonSearchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF10F2A12722AD7001BE003 /* CommonSearchesViewController.m */; };
 		4BF10F2D12722AD7001BE003 /* CommonSearchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF10F2B12722AD7001BE003 /* CommonSearchesViewController.xib */; };
+		4BFB7D2D174D8B7300EAC71D /* XSSettingsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D2C174D8B7200EAC71D /* XSSettingsOperation.m */; };
+		4BFB7D30174D8D3000EAC71D /* CPMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D2F174D8D2F00EAC71D /* CPMSettings.m */; };
+		4BFB7D33174D8EAF00EAC71D /* CPMSettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D32174D8EAE00EAC71D /* CPMSettingsParser.m */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 /* End PBXBuildFile section */
@@ -194,6 +200,11 @@
 		40F4B24911D11E50005CAE4E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40F4B2A211D14A4C005CAE4E /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = Classes/NetworkManager.h; sourceTree = "<group>"; };
 		40F4B2A311D14A4C005CAE4E /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = Classes/NetworkManager.m; sourceTree = "<group>"; };
+		4B10E1CF1759349A0003F546 /* CPMUnitInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMUnitInfo.h; sourceTree = "<group>"; };
+		4B10E1D01759349A0003F546 /* CPMUnitInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMUnitInfo.m; sourceTree = "<group>"; };
+		4B10E1D4175940EF0003F546 /* ResourceUnitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceUnitsViewController.h; sourceTree = "<group>"; };
+		4B10E1D5175940EF0003F546 /* ResourceUnitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceUnitsViewController.m; sourceTree = "<group>"; };
+		4B10E1D7175946990003F546 /* ResourceUnitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceUnitsViewController.xib; sourceTree = "<group>"; };
 		4B161E58125E363600BFBC95 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
@@ -217,6 +228,12 @@
 		4BF10F2912722AD7001BE003 /* CommonSearchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSearchesViewController.h; sourceTree = "<group>"; };
 		4BF10F2A12722AD7001BE003 /* CommonSearchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSearchesViewController.m; sourceTree = "<group>"; };
 		4BF10F2B12722AD7001BE003 /* CommonSearchesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonSearchesViewController.xib; sourceTree = "<group>"; };
+		4BFB7D2B174D8B7200EAC71D /* XSSettingsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XSSettingsOperation.h; path = Operations/XSSettingsOperation.h; sourceTree = "<group>"; };
+		4BFB7D2C174D8B7200EAC71D /* XSSettingsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XSSettingsOperation.m; path = Operations/XSSettingsOperation.m; sourceTree = "<group>"; };
+		4BFB7D2E174D8D2F00EAC71D /* CPMSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMSettings.h; sourceTree = "<group>"; };
+		4BFB7D2F174D8D2F00EAC71D /* CPMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMSettings.m; sourceTree = "<group>"; };
+		4BFB7D31174D8EAD00EAC71D /* CPMSettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMSettingsParser.h; path = Parsers/CPMSettingsParser.h; sourceTree = "<group>"; };
+		4BFB7D32174D8EAE00EAC71D /* CPMSettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMSettingsParser.m; path = Parsers/CPMSettingsParser.m; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -357,6 +374,10 @@
 				40A35A8B11CC084500B01A49 /* XSResponse.m */,
 				40A35B7E11CC189800B01A49 /* XSResourceDetailsOperation.h */,
 				40A35B7F11CC189800B01A49 /* XSResourceDetailsOperation.m */,
+				4BFB7D2B174D8B7200EAC71D /* XSSettingsOperation.h */,
+				4BFB7D2C174D8B7200EAC71D /* XSSettingsOperation.m */,
+				4BFB7D31174D8EAD00EAC71D /* CPMSettingsParser.h */,
+				4BFB7D32174D8EAE00EAC71D /* CPMSettingsParser.m */,
 			);
 			name = "Web Service";
 			path = "Classes/Web Service";
@@ -397,6 +418,10 @@
 				40CEBC9811CFCB2D00932D73 /* CPMService.m */,
 				40CEBCFD11CFFC1A00932D73 /* CPMProviderTelephone.h */,
 				40CEBCFE11CFFC1A00932D73 /* CPMProviderTelephone.m */,
+				4BFB7D2E174D8D2F00EAC71D /* CPMSettings.h */,
+				4BFB7D2F174D8D2F00EAC71D /* CPMSettings.m */,
+				4B10E1CF1759349A0003F546 /* CPMUnitInfo.h */,
+				4B10E1D01759349A0003F546 /* CPMUnitInfo.m */,
 			);
 			name = "Model Objects";
 			path = "Classes/Service Code/Model Objects";
@@ -429,6 +454,9 @@
 				40547D69116984AD00F608E7 /* ResourceDetailViewController.h */,
 				40547D6A116984AD00F608E7 /* ResourceDetailViewController.m */,
 				40547D6B116984AD00F608E7 /* ResourceDetailViewController.xib */,
+				4B10E1D4175940EF0003F546 /* ResourceUnitsViewController.h */,
+				4B10E1D5175940EF0003F546 /* ResourceUnitsViewController.m */,
+				4B10E1D7175946990003F546 /* ResourceUnitsViewController.xib */,
 				40D289E21172C65F0095F032 /* ResourceMapViewController.h */,
 				40D289E31172C65F0095F032 /* ResourceMapViewController.m */,
 				40D289E41172C65F0095F032 /* ResourceMapViewController.xib */,
@@ -575,6 +603,7 @@
 				4B72C93E127A038800469144 /* Default@2x.png in Resources */,
 				4B72C943127A03E200469144 /* Default.png in Resources */,
 				4BCC9943141A757D004DF6FB /* 53-house@2x.png in Resources */,
+				4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +659,11 @@
 				4BF10F2C12722AD7001BE003 /* CommonSearchesViewController.m in Sources */,
 				4BEAD7D31279E563004D6D19 /* AboutViewController.m in Sources */,
 				4022714D138EB9610008691E /* CPTabBarDelegate.m in Sources */,
+				4BFB7D2D174D8B7300EAC71D /* XSSettingsOperation.m in Sources */,
+				4BFB7D30174D8D3000EAC71D /* CPMSettings.m in Sources */,
+				4BFB7D33174D8EAF00EAC71D /* CPMSettingsParser.m in Sources */,
+				4B10E1D11759349B0003F546 /* CPMUnitInfo.m in Sources */,
+				4B10E1D6175940F00003F546 /* ResourceUnitsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
