@@ -781,6 +781,7 @@
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = CommunityPointMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = "Distribution (AppStore)";
