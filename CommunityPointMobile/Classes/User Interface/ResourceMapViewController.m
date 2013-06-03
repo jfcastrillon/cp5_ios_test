@@ -56,6 +56,7 @@
 	[mapView setRegion:region animated:YES];
 	CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[displayedResource name]];
 	[mapView addAnnotation:annotation];
+    [mapView selectAnnotation:annotation animated:YES];
 	[annotation release];
 	
 	[super viewDidAppear:animated];
@@ -78,7 +79,12 @@
 		[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didFailToGetLocation:) name:LocationManagerFindLocationFailedNotification object: locationManager];
 		[locationManager startFindingCurrentLocation];
 	} else {
-		NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%f,%f", [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+        NSString *versionNum = [[UIDevice currentDevice] systemVersion];
+        NSString *nativeMapScheme = @"maps.apple.com";
+        if ([versionNum compare:@"6.0" options:NSNumericSearch] == NSOrderedAscending) {
+            nativeMapScheme = @"maps.google.com";
+        }
+		NSString *url = [NSString stringWithFormat:@"http://%@/maps?daddr=%f,%f", nativeMapScheme, [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 	}
 }
@@ -89,15 +95,25 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
 	
-	NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f", location.coordinate.latitude, location.coordinate.longitude, [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+    NSString *versionNum = [[UIDevice currentDevice] systemVersion];
+    NSString *nativeMapScheme = @"maps.apple.com";
+    if ([versionNum compare:@"6.0" options:NSNumericSearch] == NSOrderedAscending) {
+        nativeMapScheme = @"maps.google.com";
+    }
+	NSString *url = [NSString stringWithFormat:@"http://%@/maps?saddr=%f,%f&daddr=%f,%f", nativeMapScheme, location.coordinate.latitude, location.coordinate.longitude, [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 
 - (void) didFailToGetLocation: (NSNotification*) notification {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
-	
-	NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%f,%f", [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
+
+    NSString *versionNum = [[UIDevice currentDevice] systemVersion];
+    NSString *nativeMapScheme = @"maps.apple.com";
+    if ([versionNum compare:@"6.0" options:NSNumericSearch] == NSOrderedAscending) {
+        nativeMapScheme = @"maps.google.com";
+    }
+	NSString *url = [NSString stringWithFormat:@"http://%@/maps?daddr=%f,%f", nativeMapScheme, [displayedResource.latitude doubleValue], [displayedResource.longitude doubleValue]];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 

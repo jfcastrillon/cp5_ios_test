@@ -11,8 +11,6 @@
 #import "XSResourceDetailsOperation.h"
 #import "XSCommonSearchListOperation.h"
 #import "CPMResource.h"
-#import "CPMSearchResultSet.h"
-#import "CPMResourceDetail.h"
 
 #define RESULT_PAGE_SIZE 10
 
@@ -30,11 +28,6 @@
 	networkManager = [NetworkManager sharedInstance];
 	
 	searchResults = [[NSMutableArray alloc] init];
-
-#ifdef ENABLE_CACHE
-	detailsCache = [[NSCache alloc] init];
-	[detailsCache setCountLimit: 5];
-#endif
 
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
 	NSString *documentsPath = [paths objectAtIndex:0]; 
@@ -118,25 +111,10 @@
 }
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId{
-#ifdef ENABLE_CACHE
-	CPMResourceDetail* cachedDetail = [detailsCache objectForKey:resourceId];
-
-	if(cachedDetail == nil) {
-#endif
-		XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
-		op.delegate = self;
-		[operationQueue addOperation: op];
-		[op release];
-#ifdef ENABLE_CACHE
-	} else {
-		[currentResource release];
-		currentResource = cachedDetail;
-		[detailsCache setObject:currentResource forKey:[currentResource resourceId]];
-		
-		[currentResource retain];
-		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"ResourceDetailsReceived" object: self]];
-	}
-#endif
+    XSResourceDetailsOperation *op = [[XSResourceDetailsOperation alloc] initWithResourceId: [resourceId intValue]];
+    op.delegate = self;
+    [operationQueue addOperation: op];
+    [op release];
 }
 
 - (void) loadCommonSearches {
@@ -189,7 +167,6 @@
 	}
 	
 	[dictionary release];
-	
 }
 
 - (void) removeResourceFromFavorites:(CPMResource*) resource {
@@ -235,11 +212,7 @@
 	} else if([[response tag] isEqualToString: @"resources.pull"]) {
 		[currentResource release];
 		currentResource = [response result];
-		
-#ifdef ENABLE_CACHE
-		[detailsCache setObject:currentResource forKey:[currentResource resourceId]];
-#endif
-		
+
 		// Update the favorite info while we have fresh data
 		if([self isResourceInFavorites: currentResource])
 			[self updateFavoriteFromResource: currentResource];
@@ -269,23 +242,12 @@
 	}
 }
 
-- (void) emptyCaches {
-#ifdef ENABLE_CACHE
-	[detailsCache removeAllObjects];
-#endif
-}
-
 - (void) dealloc {
 	[operationQueue release], operationQueue = nil;
 	[searchResults release], searchResults = nil;
 	[currentResource release], currentResource = nil;
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
-
-#ifdef ENABLE_CACHE
-	[detailsCache release];
-#endif
-
 	[lastSearchResultSet release], lastSearchResultSet = nil;
 	
 	[super dealloc];
@@ -326,7 +288,7 @@ static XServicesHelper* sharedHelperInstance = nil;
     return UINT_MAX;  //never let this be released;
 }
 
-- (void)release {
+- (oneway void)release {
     //prevent release
 }
 

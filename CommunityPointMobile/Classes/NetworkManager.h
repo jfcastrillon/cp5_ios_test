@@ -13,8 +13,7 @@
 @interface NetworkManager : NSObject {
 	Reachability* serviceReachability;
 	Reachability* connectionReachability;
-	
-	
+
 	NetworkStatus lastKnownServiceStatus;
 	NetworkStatus lastKnownConnectionStatus;
 	NSUInteger networkActivityIndicatorCount;
