@@ -45,16 +45,16 @@
 	if(line2 != nil && [line2 length] > 0)
 		[addressLine appendFormat:@"%@\n", line2];
 	
-	if(city != nil && province != nil)
+	if(city != nil && [city length] > 0 && province != nil && [province length] > 0)
  		[addressLine appendFormat:@"%@, %@ ", city, province];
 	else {
-		if(city != nil)	
+		if(city != nil && [city length] > 0)
 			[addressLine appendFormat:@"%@ ", city];
-		if(province != nil)
+		if(province != nil && [province length] > 0)
 			[addressLine appendFormat:@"%@ ", province];
 	}
 	
-	if(postalcode != nil)	
+	if(postalcode != nil && [postalcode length] > 0)
 		[addressLine appendString: postalcode];
 		
 	[addressLine autorelease];

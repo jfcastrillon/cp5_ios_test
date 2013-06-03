@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "XServicesHelper.h"
+#import "SettingsHelper.h"
 #import "CPMResourceDetail.h"
 
 @interface ResourceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate> {
@@ -24,6 +25,7 @@
 	
 	//Section indexes
 	NSUInteger locationSectionIndex;
+    NSUInteger shelterSectionIndex;
 	NSUInteger detailsSectionIndex;
 	NSUInteger servicesSectionIndex;
 	NSUInteger generalInfoSectionIndex;
