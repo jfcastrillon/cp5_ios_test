@@ -20,7 +20,7 @@
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
-
+ 
     [super viewDidLoad];
 }
 
@@ -41,6 +41,23 @@
 	tableView.backgroundColor = [UIColor clearColor];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
+    if (!setBackground) {
+        UIImage* backgroundImage;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        if ([UIScreen mainScreen].scale == 2.f && screenHeight == 568.0f) {
+            backgroundImage = [UIImage imageNamed:@"Appimage-568h.png"];
+        } else {
+            backgroundImage = [UIImage imageNamed:@"Appimage.png"];
+        }
+        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        backgroundView.frame = self.view.bounds;
+        [[self view] addSubview:backgroundView];
+        [[self view] sendSubviewToBack:backgroundView];
+        
+        [backgroundView release];
+        setBackground = YES;
+    }
+    
 	[super viewWillAppear:animated];
 }
 
@@ -54,7 +71,7 @@
 }
 
 - (IBAction) videoButtonPressed: (id) sender {
-	NSString *url = @"tel://305-631-4211";
+	NSString *url = @"tel://211";
 	//NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
