@@ -8,6 +8,7 @@
 
 #import "CPMCommonSearch.h"
 #import "Util.h"
+#import "XSQueryParamKeys.h"
 
 @implementation CPMCommonSearch
 
@@ -31,8 +32,15 @@
 		NSArray* pair = [part componentsSeparatedByString:@"="];
 		
 		NSString* key = [pair objectAtIndex:0];
-		NSString* value = [pair objectAtIndex:1];
-		
+
+        NSString* value = nil;
+        if ([key isEqualToString:kXSQueryKeywordsAll]
+            || [key isEqualToString:kXSQueryKeywordsAny]
+            || [key isEqualToString:kXSQueryKeywordsNone]) {
+            value = [[[pair objectAtIndex:1] componentsSeparatedByString:@"+"] componentsJoinedByString:@" "];
+        } else {
+            value = [pair objectAtIndex:1];
+        }
 		[result setObject:value forKey:key];
 	}
 	
