@@ -10,7 +10,7 @@
 #import "SettingsHelper.h"
 
 NSString* encodeStringForURL(NSString* str){
-	return [(NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%+#", NULL, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
+	return [(NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) str, (CFStringRef) @"%#", (CFStringRef) @"+-", CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) autorelease];
 }
 
 @implementation NSDictionary(urlPostEncoded)
@@ -81,7 +81,6 @@ NSString* encodeStringForURL(NSString* str){
 	
 	[parameters setValue:action forKey:@"method"];
 	[parameters setValue:@"json" forKey:@"output"];
-	[parameters setValue:@"0.0.0.0" forKey:@"ip"];
 	[parameters setValue:_publicKey forKey:@"key"];
 	[parameters setValue:[[[SettingsHelper sharedInstance] settings] objectForKey:@"clientApp"] forKey:@"client_app"];
 	[parameters setValue:[[[SettingsHelper sharedInstance] settings] objectForKey:@"clientVersion"] forKey:@"client_version"];
@@ -129,8 +128,6 @@ NSString* encodeStringForURL(NSString* str){
 	[delegate performSelectorOnMainThread:@selector(operationDidFailWithError:) withObject:errorInfo waitUntilDone:NO];
 }
 
-
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[super connectionDidFinishLoading:connection];
 	
@@ -143,11 +140,9 @@ NSString* encodeStringForURL(NSString* str){
 		XSResponse *response = [[[XSResponse alloc] init] autorelease];
 		[response setTag: _action];
 		[response setResult: result];
-		//[result release];
+
 	    [delegate performSelectorOnMainThread:@selector(operationDidComplete:) withObject:response waitUntilDone:NO];
 	}
 }
-
-
 
 @end

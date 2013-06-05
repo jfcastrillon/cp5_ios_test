@@ -119,32 +119,12 @@
     [super viewWillAppear:animated];
 }
 
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-
 - (void)viewWillDisappear:(BOOL)animated {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"CommonSearchesReceived" object:xsHelper];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"CommonSearchesRequestFailed" object:xsHelper];
 
     [super viewWillDisappear:animated];
 }
-
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 
 #pragma mark -
 #pragma mark Table view data source
@@ -184,7 +164,7 @@
 	
 	NSUInteger row = [indexPath row];
 	CPMCommonSearch* cs = [commonSearches objectAtIndex:row];
-	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:[cs queryParameters]];
+	[xsHelper searchResourcesWithQueryParams:[cs queryParameters]];
 
     [[self.tabBarController.viewControllers objectAtIndex:1] popToRootViewControllerAnimated:NO];
 	[self.tabBarController setSelectedIndex:1];

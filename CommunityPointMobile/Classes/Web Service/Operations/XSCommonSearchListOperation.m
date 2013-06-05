@@ -1,5 +1,5 @@
 //
-//  XServicesCommonSearchListOperation.m
+//  XSCommonSearchListOperation.m
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 10/21/10.

@@ -1,5 +1,5 @@
 //
-//  Util.c
+//  Util.m
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 6/14/10.

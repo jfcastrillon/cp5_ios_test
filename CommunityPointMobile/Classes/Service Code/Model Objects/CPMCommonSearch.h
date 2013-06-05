@@ -12,6 +12,7 @@
 @interface CPMCommonSearch : NSObject {
 }
 
+@property (nonatomic,copy) NSDecimalNumber* commonId;
 @property (nonatomic,copy) NSString* name;
 @property (nonatomic,copy) NSString* query;
 @property (nonatomic,copy) NSDecimalNumber* sort;

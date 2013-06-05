@@ -71,7 +71,7 @@
 	
 #undef AssertParamSet
 	
-	// Setup method call paramters
+	// Setup method call parameters
 	NSMutableDictionary* params = [queryParams mutableCopy];  // Make a copy
 	
 	NSUInteger maxCount = [[params objectForKey:kXSQueryMaxCount] unsignedIntValue];
@@ -93,6 +93,10 @@
 	
 	// Constructed query is a natural query
 	[params setObject:query forKey:kXSQueryNatural];
+    
+    [params removeObjectForKey:kXSQueryKeywordsAny];
+    [params removeObjectForKey:kXSQueryKeywordsAll];
+    [params removeObjectForKey:kXSQueryKeywordsNone];
 	
 	// Parser for the response data
 	id parser = [[CPMSearchResultsParser alloc] init];
