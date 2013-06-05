@@ -1,5 +1,5 @@
 //
-//  CPMResourceArrayParser.h
+//  CPMSearchResultsParser.h
 //  CommunityPointMobile
 //
 //  Handles parsing the result of a search request.

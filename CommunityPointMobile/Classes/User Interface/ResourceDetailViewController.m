@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ResourceDetailViewController.h"
 #import "ResourceMapViewController.h"
+#import "ResourceUnitsViewController.h"
 #import "CPMResource.h"
 #import "CPMResourceDetail.h"
 #import "CPMService.h"
@@ -17,8 +18,9 @@
 
 #define LOCATION_SECTION 0
 #define DETAILS_SECTION 1
-#define SERVICES_SECTION 2
-#define GENERAL_SECTION 3
+#define SHELTER_SECTION 2
+#define SERVICES_SECTION 3
+#define GENERAL_SECTION 4
 
 #define SHARE_EMAIL_BUTTON 0
 #define SHARE_SMS_BUTTON 1
@@ -122,17 +124,6 @@
 	}
 }
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	xsHelper = [XServicesHelper sharedInstance];
@@ -152,6 +143,7 @@
 	shelterRequirementsCellIndex = UINT_MAX;
 	
 	locationSectionIndex = UINT_MAX;
+    shelterSectionIndex = UINT_MAX;
 	detailsSectionIndex = UINT_MAX;
 	servicesSectionIndex = UINT_MAX;
 	generalInfoSectionIndex = UINT_MAX;
@@ -179,14 +171,6 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"ResourceRequestFailed" object:xsHelper];
 	[super viewWillDisappear:animated];
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -231,6 +215,8 @@
 		NSUInteger count = 0;
 		if([self numberOfRowsInSection:LOCATION_SECTION] > 0)
 			locationSectionIndex = count++;
+        if([self numberOfRowsInSection:SHELTER_SECTION] > 0)
+            shelterSectionIndex = count++;
 		if([self numberOfRowsInSection:DETAILS_SECTION] > 0)
 			detailsSectionIndex = count++;
 		if([self numberOfRowsInSection:SERVICES_SECTION] > 0)
@@ -245,7 +231,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *title = nil;
     // Return a title or nil as appropriate for the section.
-    if(section == locationSectionIndex) {
+    if(section == locationSectionIndex || section == shelterSectionIndex) {
 		// blank
     } else if (section == detailsSectionIndex) {
 		title = @"Description";
@@ -260,6 +246,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == locationSectionIndex) 
 		return [self numberOfRowsInSection:LOCATION_SECTION];
+    else if (section == shelterSectionIndex)
+        return [self numberOfRowsInSection:SHELTER_SECTION];
 	else if (section == detailsSectionIndex)
 		return [self numberOfRowsInSection:DETAILS_SECTION];
 	else if (section == servicesSectionIndex)
@@ -268,8 +256,6 @@
 		return [self numberOfRowsInSection:GENERAL_SECTION];
 	else
 		return 0;
-
-	
 }
 			
 - (NSInteger) numberOfRowsInSection:(NSInteger)section {
@@ -283,6 +269,12 @@
 				phoneCellIndex = rows++;
 			if (displayedResource.url != nil && [displayedResource.url length] > 0)
 				urlCellIndex = rows++;
+            break;
+        case SHELTER_SECTION:
+            if ([[[[SettingsHelper sharedInstance] settings] valueForKey:@"show_shelter_info"] boolValue] == YES
+                && [displayedResource unitInfos] != nil && [[displayedResource unitInfos] count] > 0) {
+                rows = 1;
+            }
             break;
         case DETAILS_SECTION:
             rows = 1;
@@ -349,8 +341,6 @@
 	
 	UITableViewCell *cell = nil;
 	if (indexPath.section == locationSectionIndex) {
-		
-		
 		NSUInteger row = [indexPath row];
 		
 		if (row == addressCellIndex){
@@ -393,7 +383,16 @@
 			return cell;
 		}
 		
-	} else if (indexPath.section == detailsSectionIndex) {
+	} else if (indexPath.section == shelterSectionIndex) {
+        cell = [_tableView dequeueReusableCellWithIdentifier:ResourceActionCellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceActionCellIdentifier] autorelease];
+        }
+        
+        cell.textLabel.text = @"View Shelter Information";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
+    } else if (indexPath.section == detailsSectionIndex) {
 		NSUInteger row = [indexPath row];
 		
 		switch (row) {
@@ -421,19 +420,20 @@
 			// Skip the 'Y' service code tree
 			if (![[service code] hasPrefix:@"Y"]) {
 				if (currentIndex == row) {
-					cell = [tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
+					cell = [_tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
 					if(cell == nil){
 						cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceServiceCellIdentifier] autorelease];
 					}
 					
+                    cell.textLabel.adjustsFontSizeToFitWidth = YES;
 					cell.textLabel.text = [service name];
 					cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
 					cell.selectionStyle = UITableViewCellSelectionStyleNone;
 					
 					break;
 				}
+                currentIndex++;
 			}
-			currentIndex++;
 		}
 	} else if (indexPath.section == generalInfoSectionIndex) {
 		NSUInteger row = [indexPath row];
@@ -470,27 +470,37 @@
 		}
 		
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
-		cell.textLabel.numberOfLines = 0;
-		cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+        cell.textLabel.adjustsLetterSpacingToFitWidth = YES;
+		cell.textLabel.numberOfLines = 2;
 		cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if([indexPath section] == detailsSectionIndex && [indexPath row] == 0){
-		NSString *cellText =[displayedResource description];
+		NSString *cellText = [displayedResource description];
 		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:15.0];
 		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 	
-		return labelSize.height + 20;
+		return MAX(labelSize.height + 20, 44.0f);
 	} else if ([indexPath section] == locationSectionIndex && [indexPath row] == addressCellIndex) {
 		NSString *cellText = addressText;
-		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:21.0];
-		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+        UIFont *cellFont = [UIFont boldSystemFontOfSize:15.0f];
+		//UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:21.0];
+		//CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+        CGSize constraintSize;
+        if ([displayedResource longitude] == nil) {
+            constraintSize = CGSizeMake(207.0f, MAXFLOAT);
+        } else {
+            constraintSize = CGSizeMake(187.0f, MAXFLOAT);
+        }
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 		
 		return labelSize.height + 20;
@@ -513,15 +523,15 @@
 			cellText = @"Yes";
 		} else if (row == shelterCellIndex) {
 			cellText = @"Yes";
-		} else { //if (row == shelterRequirementsCellIndex) {
+		} else {
 			cellText = [displayedResource shelterRequirements];
 		}
 
-		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:19.0];
-		CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+		UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:15.0];
+		CGSize constraintSize = CGSizeMake(207.0f, MAXFLOAT);
 		CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 		
-		return labelSize.height + 20;
+		return MAX(labelSize.height + 20, 44.0f);
     } else {
 		return 44;
 	}
@@ -551,7 +561,14 @@
 				[mapViewController release];
 			}
 		}
-	}
+	} else if (indexPath.section == shelterSectionIndex) {
+        ResourceUnitsViewController *unitViewController = [[ResourceUnitsViewController alloc] initWithNibName:@"ResourceUnitsViewController" bundle:[NSBundle mainBundle]];
+        
+        [self.navigationController pushViewController:unitViewController animated:YES];
+        [unitViewController setDisplayedResource:displayedResource];
+        
+        [unitViewController release];
+    }
 	
 	[_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

@@ -12,10 +12,11 @@
 
 @implementation CPMCommonSearch
 
-@synthesize name, query, sort;
+@synthesize commonId, name, query, sort;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
 	if([super init] == nil) return nil;
+    self.commonId = nullFix([dictionary objectForKey:@"id"]);
 	self.name = nullFix([dictionary objectForKey: @"name"]);
 	self.query = nullFix([dictionary objectForKey: @"query"]);
 	self.sort = nullFix([dictionary objectForKey: @"sort"]);
@@ -24,7 +25,6 @@
 }
 
 - (NSDictionary*) queryParameters {
-
 	NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
 	NSArray* parts = [self.query componentsSeparatedByString:@"&"];
 	
@@ -32,23 +32,18 @@
 		NSArray* pair = [part componentsSeparatedByString:@"="];
 		
 		NSString* key = [pair objectAtIndex:0];
+        NSString* value = [[[[pair objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] componentsSeparatedByString:@"+"] componentsJoinedByString:@" "];
 
-        NSString* value = nil;
-        if ([key isEqualToString:kXSQueryKeywordsAll]
-            || [key isEqualToString:kXSQueryKeywordsAny]
-            || [key isEqualToString:kXSQueryKeywordsNone]) {
-            value = [[[pair objectAtIndex:1] componentsSeparatedByString:@"+"] componentsJoinedByString:@" "];
-        } else {
-            value = [pair objectAtIndex:1];
-        }
-		[result setObject:value forKey:key];
+        [result setObject:value forKey:key];
 	}
+    [result setObject:[commonId stringValue] forKey:kXSQueryCommonId];
 	
 	return [result autorelease];
 }
 
 
 - (void) dealloc {
+    self.commonId = nil;
 	self.name = nil;
 	self.query = nil;
 	self.sort = nil;

@@ -3,7 +3,7 @@
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 6/18/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2010 Bowman Systems, LLC. All rights reserved.
 //
 
 #import "XSResponse.h"
