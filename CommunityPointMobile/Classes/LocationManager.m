@@ -8,7 +8,6 @@
 
 #import "LocationManager.h"
 
-
 NSString* const LocationManagerFoundLocationNotification = @"LocationManagerFoundLocation";
 NSString* const LocationManagerFindLocationFailedNotification = @"LocationManagerFindLocationFailed";
 NSString* const kLocationManagerCurrentLocation = @"LocationManagerCurrentLocation";
@@ -32,7 +31,7 @@ NSString* const kLocationManagerError = @"LocationManagerError";
 }
 
 - (BOOL) isLocationEnabled {
-	return locationManager.locationServicesEnabled;
+	return [CLLocationManager locationServicesEnabled];
 }
 
 - (void) startFindingCurrentLocation {
@@ -83,14 +82,12 @@ static LocationManager* sharedManagerInstance = nil;
     return UINT_MAX;  //never let this be released;
 }
 
-- (void)release {
+- (oneway void)release {
     //prevent release
 }
 
 - (id)autorelease {
     return self;
 }
-
-
 
 @end
