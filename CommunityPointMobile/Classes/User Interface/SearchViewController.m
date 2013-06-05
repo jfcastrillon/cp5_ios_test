@@ -219,6 +219,15 @@
     region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1; // Add a little extra space on the sides
 	
     region = [mapView regionThatFits:region];
+    
+    // Try to protect against new Apple region bug
+    if (region.span.latitudeDelta > 179) {
+        region.span.latitudeDelta = 179;
+    }
+    if (region.span.longitudeDelta > 359) {
+        region.span.longitudeDelta = 359;
+    }
+    
     [mapView setRegion:region animated:YES];
 }
 
