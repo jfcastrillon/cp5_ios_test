@@ -34,4 +34,9 @@ extern NSString* const kXSQueryKeywordsAll;
 extern NSString* const kXSQueryKeywordsAny;
 extern NSString* const kXSQueryKeywordsNone;
 
+extern NSString* const kXSQueryShowOnlyShelters;
+
 extern NSString* const kXSQueryServiceCodes;
+
+extern NSString* const kXSQueryCommonId;
+extern NSString* const kXSQueryAdvanced;

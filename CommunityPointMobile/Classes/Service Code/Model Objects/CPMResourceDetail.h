@@ -10,6 +10,8 @@
 #import "CPMResource.h"
 #import "CPMProviderAddress.h"
 #import "CPMProviderTelephone.h"
+#import "CPMService.h"
+#import "CPMUnitInfo.h"
 
 @interface CPMResourceDetail : CPMResource {
 	NSString		*description;
@@ -19,6 +21,7 @@
 	NSArray			*addresses;
 	CPMProviderTelephone *primaryPhone;
 	NSArray			*phones;
+    NSArray         *unitInfos;
 	
 	NSString* hours;
 	NSString* programFees;
@@ -35,6 +38,7 @@
 @property (nonatomic, copy) NSArray *addresses;
 @property (nonatomic, copy) NSArray *phones;
 @property (nonatomic, retain) CPMProviderTelephone* primaryPhone;
+@property (nonatomic, copy) NSArray *unitInfos;
 
 @property (nonatomic, copy) NSString* hours;
 @property (nonatomic, copy) NSString* programFees;

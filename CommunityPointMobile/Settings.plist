@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>clientApp</key>
-	<string>cp5_ios nc211</string>
+	<string>cp5_ios</string>
 	<key>helpVideo</key>
 	<string>http://www.youtube.com/watch?v=JnuDC5A-OgM</string>
 	<key>website</key>
@@ -11,9 +11,9 @@
 	<key>publicKey</key>
 	<string>B47182694EA9167F4A6320B775636039</string>
 	<key>clientVersion</key>
-	<string>2.1.4</string>
+	<string>2.2.0</string>
 	<key>baseUrl</key>
-	<string>http://xservices.bowmansystems.com/5.3.1/index.php</string>
+	<string>http://xservices.bowmansystems.com/production.php</string>
 	<key>irisSite</key>
 	<false/>
 </dict>

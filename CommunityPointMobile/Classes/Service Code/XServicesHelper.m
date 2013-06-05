@@ -10,6 +10,7 @@
 #import "XSResourceSearchOperation.h"
 #import "XSResourceDetailsOperation.h"
 #import "XSCommonSearchListOperation.h"
+#import "XSSettingsOperation.h"
 #import "CPMResource.h"
 
 #define RESULT_PAGE_SIZE 10
@@ -124,6 +125,13 @@
 	[op release];
 }
 
+- (void) loadXsSettings {
+    XSSettingsOperation *op = [[XSSettingsOperation alloc] init];
+    op.delegate = self;
+    [operationQueue addOperation:op];
+    [op release];
+}
+
 - (void) cancelAllOperations {
 	isSearching = NO;
 	[operationQueue cancelAllOperations];
@@ -224,7 +232,16 @@
 		commonSearches = [response result];
 		[commonSearches retain];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName: @"CommonSearchesReceived" object: self]];
-	}
+	} else if ([[response tag] isEqualToString:@"accounts.get_settings"]) {
+        [[[SettingsHelper sharedInstance] settings] addEntriesFromDictionary:[[response result] settings]];
+        if ([[[[SettingsHelper sharedInstance] settings] valueForKey:@"irisSite"] boolValue] == YES) {
+            [[[SettingsHelper sharedInstance] settings] setValue:[NSNumber numberWithBool:NO] forKey:@"show_shelter_info"];
+            [[[SettingsHelper sharedInstance] settings] setValue:[NSNumber numberWithBool:NO] forKey:@"show_refine_wishlist"];
+        }
+        if ([[[[SettingsHelper sharedInstance] settings] valueForKey:@"show_shelter_info"] boolValue] == NO) {
+            [[[SettingsHelper sharedInstance] settings] setValue:[NSNumber numberWithBool:NO] forKey:@"show_refine_shelters"];
+        }
+    }
 }
 
 - (void) operationDidFailWithError: (NSDictionary*) errorInfo {
@@ -249,7 +266,7 @@
 	[favorites release], favorites = nil;
 	[lastQuery release], lastQuery = nil;
 	[lastSearchResultSet release], lastSearchResultSet = nil;
-	
+
 	[super dealloc];
 }
 
