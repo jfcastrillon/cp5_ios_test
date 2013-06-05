@@ -13,8 +13,6 @@
 #import "NetworkManager.h"
 #import "XSQueryParamKeys.h"
 
-//#define ENABLE_CACHE
-
 @interface XServicesHelper : NSObject {
 	NSOperationQueue *operationQueue;
 	
@@ -25,10 +23,6 @@
 	NSString *lastQuery;
 	NSDictionary* lastQueryParams;
 
-#ifdef ENABLE_CACHE
-	NSCache *detailsCache;
-#endif
-	
 	NetworkManager *networkManager;
 	
 	CPMResourceDetail *currentResource;
@@ -68,8 +62,6 @@
 - (void) removeResourceFromFavorites:(CPMResource*) resource;
 - (void) removeFavoriteAtIndex:(NSUInteger) index;
 - (void) persistFavorites;
-
-- (void) emptyCaches;
 
 + (XServicesHelper*) sharedInstance;
 
