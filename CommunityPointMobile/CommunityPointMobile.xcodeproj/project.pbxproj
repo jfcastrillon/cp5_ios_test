@@ -69,6 +69,7 @@
 		4B10E1D6175940F00003F546 /* ResourceUnitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10E1D5175940EF0003F546 /* ResourceUnitsViewController.m */; };
 		4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1D7175946990003F546 /* ResourceUnitsViewController.xib */; };
 		4B161E59125E363600BFBC95 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B161E58125E363600BFBC95 /* 53-house.png */; };
+		4B2F0F89175FBFD3008503BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2F0F88175FBFD3008503BD /* Default-568h@2x.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
 		4B97D16E1423995B00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D16D1423995B00005509 /* 53-house@2x.png */; };
@@ -205,6 +206,7 @@
 		4B10E1D5175940EF0003F546 /* ResourceUnitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceUnitsViewController.m; sourceTree = "<group>"; };
 		4B10E1D7175946990003F546 /* ResourceUnitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceUnitsViewController.xib; sourceTree = "<group>"; };
 		4B161E58125E363600BFBC95 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		4B2F0F88175FBFD3008503BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
 				4BF05D1C126DFD1D002463CE /* Settings.plist */,
+				4B2F0F88175FBFD3008503BD /* Default-568h@2x.png */,
 				4BD6E258127A1BA2006BC2B0 /* Default@2x.png */,
 				4BD6E26C127A1BE7006BC2B0 /* Default.png */,
 			);
@@ -603,6 +606,7 @@
 				4BD6E26D127A1BE7006BC2B0 /* Default.png in Resources */,
 				4B97D16E1423995B00005509 /* 53-house@2x.png in Resources */,
 				4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */,
+				4B2F0F89175FBFD3008503BD /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +705,7 @@
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
@@ -709,15 +714,12 @@
 		402EEB4E11ECE39800527401 /* Distribution (In House) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
 				SDKROOT = iphoneos;
 			};
@@ -727,12 +729,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
@@ -740,7 +739,7 @@
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = "Distribution (In House)";
@@ -753,7 +752,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A47397BF-ED47-4D27-BDE5-AF7AF5BA1055";
 				SDKROOT = iphoneos;
 			};
@@ -763,32 +762,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Baker (TR6P25RNW2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F3E1641C-6145-4DD5-AEAC-0DA88AC7D7F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = "Distribution (Tampa)";
 		};
 		40FEAFCA11F4EE1E007314C4 /* Distribution (AppStore) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "104E511D-5C26-4F70-9C92-2C7E985F9605";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = "Distribution (AppStore)";
@@ -807,6 +805,7 @@
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = CommunityPointMobile;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = "Distribution (AppStore)";
@@ -814,16 +813,13 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -833,16 +829,13 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
