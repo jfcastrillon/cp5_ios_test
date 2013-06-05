@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XServicesHelper.h"
+#import "SettingsHelper.h"
 
 @protocol AdvancedSearchViewControllerDelegate <NSObject>
 
@@ -16,9 +17,11 @@
 @end
 
 @interface AdvancedSearchViewController : UITableViewController <UITextFieldDelegate> {
+    SettingsHelper* settingsHelper;
 }
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row;
+- (UISegmentedControl*) segmentedControlForSection:(NSUInteger)section row:(NSUInteger)row;
 - (void) createCell:(NSUInteger)section row:(NSUInteger)row;
 
 @property (nonatomic, retain) id<AdvancedSearchViewControllerDelegate> delegate;
