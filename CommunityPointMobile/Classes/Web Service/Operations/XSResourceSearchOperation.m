@@ -119,7 +119,7 @@
 
 	[params setValue: latitude forKey:kXSQueryReferenceLatitude];
 	[params setValue: longitude forKey:kXSQueryReferenceLongitude];
-	[params setValue: @"true" forKey:@"sort_by_distance"];
+	[params setValue: @"true" forKey:kXSSortByDistance];
 	[params setValue: query forKey:kXSQueryNatural];
 	
 	[self initWithQueryParams: params];	
