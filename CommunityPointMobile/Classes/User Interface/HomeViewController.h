@@ -16,6 +16,7 @@
 	UIButton* website;
 	XServicesHelper *xsHelper;
 	AboutViewController *aboutViewController;
+    BOOL setBackground;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView* tableView;

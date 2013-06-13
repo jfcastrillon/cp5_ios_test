@@ -41,6 +41,23 @@
 	tableView.backgroundColor = [UIColor clearColor];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
+    if (!setBackground) {
+        UIImage* backgroundImage;
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        if ([UIScreen mainScreen].scale == 2.f && screenHeight == 568.0f) {
+            backgroundImage = [UIImage imageNamed:@"Appimage-568h.png"];
+        } else {
+            backgroundImage = [UIImage imageNamed:@"Appimage.png"];
+        }
+        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        backgroundView.frame = self.view.bounds;
+        [[self view] addSubview:backgroundView];
+        [[self view] sendSubviewToBack:backgroundView];
+        
+        [backgroundView release];
+        setBackground = YES;
+    }
+    
 	[super viewWillAppear:animated];
 }
 
