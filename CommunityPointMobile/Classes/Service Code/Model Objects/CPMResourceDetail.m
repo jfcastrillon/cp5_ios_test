@@ -7,8 +7,6 @@
 //
 
 #import "CPMResourceDetail.h"
-#import "CPMResource.h"
-#import "CPMService.h"
 #import "SettingsHelper.h"
 #import "Util.h"
 
@@ -18,9 +16,8 @@
 @synthesize services;
 @synthesize primaryAddress;
 @synthesize addresses;
-
 @synthesize phones, primaryPhone;
-
+@synthesize unitInfos;
 @synthesize hours, programFees, languages, eligibility, intakeProcedure, shelterRequirements;
 
 - (id) initFromJsonDictionary: (NSDictionary*) dictionary {
@@ -28,6 +25,19 @@
 	self.description = nullFix([dictionary objectForKey: @"description"]);
 	self.services = nullFix([dictionary objectForKey: @"services"]);
 	
+    // Extract Unit Infos
+    id unitInfosParse = nullFix([dictionary objectForKey:@"unitInfo"]);
+    if (unitInfosParse != nil && [unitInfosParse isKindOfClass:[NSArray class]]) {
+        NSMutableArray *unitInfoBin = [[NSMutableArray alloc] initWithCapacity: [(NSArray *)unitInfosParse count]];
+        for (NSDictionary *unitDict in unitInfosParse) {
+            CPMUnitInfo *unitInfo = [[CPMUnitInfo alloc] initFromJsonDictionary: unitDict];
+            [unitInfoBin addObject: unitInfo];
+            [unitInfo release];
+        }
+        self.unitInfos = unitInfoBin;
+        [unitInfoBin release];
+    }
+    
 	//Extract addresses
 	NSDictionary* addressDict = nullFix([dictionary objectForKey: @"addresses"]);
 	if(addressDict != nil) {
@@ -187,6 +197,7 @@
 	
 	self.phones = nil;
 	self.primaryPhone = nil;
+    self.unitInfos = nil;
 	
 	self.hours = nil;
 	self.programFees = nil;

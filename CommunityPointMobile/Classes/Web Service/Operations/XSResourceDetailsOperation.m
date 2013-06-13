@@ -3,7 +3,7 @@
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 6/18/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2010 Bowman Systems, LLC. All rights reserved.
 //
 
 #import "XSResourceDetailsOperation.h"
@@ -13,9 +13,6 @@
 @implementation XSResourceDetailsOperation
 
 - (id) initWithResourceId: (NSUInteger) resourceId {
-	//if([super init] == nil) return nil;
-	
-	
 	// Setup method call paramters
 	NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
 	[params setValue: [[NSDecimalNumber numberWithUnsignedInt: resourceId] stringValue] forKey:@"id"];

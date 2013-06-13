@@ -1,5 +1,5 @@
 //
-//  CPMResourceArrayParser.m
+//  CPMSearchResultsParser.m
 //  CommunityPointMobile
 //
 //  Created by John Cannon on 6/17/10.

@@ -17,9 +17,8 @@
 	if([super init] == nil) return nil;
 
 	NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:settingsPath];
 	[settings release];
-	settings = dict;
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:settingsPath];
 
 	return self;
 }
