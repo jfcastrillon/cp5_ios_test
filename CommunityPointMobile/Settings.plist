@@ -11,7 +11,7 @@
 	<key>publicKey</key>
 	<string>BBC0806D4C68CEA074D0F9698365CCA9</string>
 	<key>clientVersion</key>
-	<string>2.2.0</string>
+	<string>2.3.0</string>
 	<key>baseUrl</key>
 	<string>http://xservices.bowmansystems.com/production.php</string>
 	<key>irisSite</key>
