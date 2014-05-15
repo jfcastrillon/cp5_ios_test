@@ -50,7 +50,16 @@
             backgroundImage = [UIImage imageNamed:@"Appimage.png"];
         }
         UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.frame = self.view.bounds;
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            CGRect statusBarFrame =  [[UIApplication sharedApplication] statusBarFrame];
+            backgroundView.frame = CGRectMake(0,
+                                             statusBarFrame.size.height,
+                                             self.view.bounds.size.width,
+                                             self.view.bounds.size.height);
+        } else {
+            backgroundView.frame = self.view.bounds;
+        }
         [[self view] addSubview:backgroundView];
         [[self view] sendSubviewToBack:backgroundView];
         
