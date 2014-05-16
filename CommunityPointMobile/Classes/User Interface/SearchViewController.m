@@ -88,6 +88,9 @@
 
 - (IBAction) backgroundTap:(id)sender {
 	if([searchBar isFirstResponder]) {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            self.resultsTableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+        }
 		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		[searchBar setShowsCancelButton:NO animated:YES];
 		[searchBar sizeToFit];
@@ -538,6 +541,9 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.resultsTableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    }
 	[resultsTableView scrollRectToVisible:[[resultsTableView tableHeaderView] bounds] animated:NO];
 	resultsTableView.scrollEnabled = NO;
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -560,6 +566,9 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)sender {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.resultsTableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
 	[searchBar sizeToFit];
@@ -571,6 +580,9 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)sender {
 	[self beginSearchForQuery: sender.text];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.resultsTableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
 	[searchBar sizeToFit];
@@ -583,8 +595,11 @@
 - (void) searchBar:(UISearchBar *)sender selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
     if (sender.text == nil) {
         sender.text = @"";
-    }
+ 	} 
     [self beginSearchForQuery: sender.text];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.resultsTableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[sender setShowsCancelButton:NO animated:YES];
 	[searchBar sizeToFit];
@@ -597,7 +612,7 @@
 - (IBAction) advanced:(id)sender {
 	AdvancedSearchViewController *advancedSearch = [[AdvancedSearchViewController alloc] initWithNibName:@"AdvancedSearchViewController" bundle:nil];
 	UINavigationController *t = [[UINavigationController alloc] initWithRootViewController:advancedSearch];
-	[self presentModalViewController:t animated:YES];
+	[self presentViewController:t animated:YES completion:nil];
 	advancedSearch.delegate = self;
 	[advancedSearch release];
 	[t release];
