@@ -16,7 +16,12 @@
     if (viewController == [[tabBarController viewControllers] objectAtIndex:HOME_VIEW_CONTROLLER_INDEX]) {
         UINavigationController* homeViewNavController = (UINavigationController*) viewController;
         homeViewNavController.navigationBar.hidden = YES;
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+        }
         [homeViewNavController popToRootViewControllerAnimated:NO];
+    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     }
 }
 
