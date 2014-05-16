@@ -175,39 +175,39 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             cell.detailTextLabel.text = @"All";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"All of these words";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == anyRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAnyCellIdentifier];
             cell.detailTextLabel.text = @"Any";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"Any of these words";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == noneRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsNoneCellIdentifier];
             cell.detailTextLabel.text = @"None";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"None of these words";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
 		}
 	} else if (section == physicalSection) {
@@ -216,36 +216,36 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             cell.detailTextLabel.text = @"ZIP";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == physicalCityRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCityCellIdentifier];
             cell.detailTextLabel.text = @"City";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == physicalCountyRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCountyCellIdentifier];
             cell.detailTextLabel.text = @"County";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
 		}
 	} else if (section == areasSection) {
@@ -254,35 +254,36 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             cell.detailTextLabel.text = @"ZIP";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == areasCityRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCityCellIdentifier];
             cell.detailTextLabel.text = @"City";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
+            [txtField release];
         } else if (row == areasCountyRow) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCountyCellIdentifier];
             cell.detailTextLabel.text = @"County";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-86, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+80, cell.frame.origin.y+11, cell.frame.size.width-100, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
 		}
 	} else if (section == volunteerSection) {
@@ -291,13 +292,13 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             cell.detailTextLabel.text = @"Keywords";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, cell.frame.size.width-106, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, cell.frame.size.width-120, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
 		}
 	} else if (section == wishlistSection) {
@@ -306,13 +307,13 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             cell.detailTextLabel.text = @"Keywords";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, cell.frame.size.width-106, 31)];
+            UITextField* txtField = [[UITextField alloc] initWithFrame:CGRectMake(cell.frame.origin.x+100, cell.frame.origin.y+11, cell.frame.size.width-120, 31)];
             txtField.delegate = self;
             [txtField setReturnKeyType:UIReturnKeyDone];
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             
             [txtField release];
 		}
@@ -326,7 +327,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [scField insertSegmentWithTitle:@"Yes" atIndex:0 animated:NO];
             [scField insertSegmentWithTitle:@"No" atIndex:1 animated:NO];
             [scField setSelectedSegmentIndex:1];
-            [cell addSubview:scField];
+            [cell.contentView addSubview:scField];
             [scField release];
         }
     } else if (section == serviceCodesSection) {
@@ -341,7 +342,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [txtField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
             txtField.placeholder = @"";
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            [cell addSubview:txtField];
+            [cell.contentView addSubview:txtField];
             [txtField release];
         }
     }
@@ -424,7 +425,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     NSString *cellId = [NSString stringWithFormat:@"id_%d_%d", section, row];
     UITableViewCell* cell = [cellDictionary objectForKey:cellId];
 
-	for (UIView* view in [cell subviews]) {
+	for (UIView* view in [cell.contentView subviews]) {
 		if([view isKindOfClass:[UITextField class]])
 			return (UITextField*) view;
 	}
@@ -437,7 +438,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     NSString *cellId = [NSString stringWithFormat:@"id_%d_%d", section, row];
     UITableViewCell* cell = [cellDictionary objectForKey:cellId];
     
-	for (UIView* view in [cell subviews]) {
+	for (UIView* view in [cell.contentView subviews]) {
 		if([view isKindOfClass:[UISegmentedControl class]])
 			return (UISegmentedControl*) view;
 	}
@@ -447,7 +448,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 }
 
 - (IBAction) cancel:(id)sender {
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction) search:(id)sender {
@@ -530,7 +531,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 	
 	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
 	[self.delegate setSearchBarText:@"(Advanced Search)"];
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dealloc {
