@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>81B1F478-EB8C-4E6C-8A2D-C77265611C5A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CommunityPointMobile</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6F902582-C0D4-4218-BD9C-05933829353D</key>
+		<string>https://192.168.1.85/cp5_ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>branches/northland/CommunityPointMobile/CommunityPointMobile.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6F902582-C0D4-4218-BD9C-05933829353D</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>6F902582-C0D4-4218-BD9C-05933829353D</key>
+		<string>https://192.168.1.85/cp5_ios</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://192.168.1.85/cp5_ios/branches/northland/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6F902582-C0D4-4218-BD9C-05933829353D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6F902582-C0D4-4218-BD9C-05933829353D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cp5_ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

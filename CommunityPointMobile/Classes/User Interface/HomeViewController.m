@@ -54,7 +54,8 @@
 }
 
 - (IBAction) videoButtonPressed: (id) sender {
-	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
+    NSString *url = @"tel://1-407-949-4001"; 
+	//NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 
@@ -90,6 +91,7 @@
 	}
 
 	cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.textLabel.text = @"Common Searches";
 	
