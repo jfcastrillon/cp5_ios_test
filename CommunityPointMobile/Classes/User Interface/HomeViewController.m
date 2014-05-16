@@ -40,6 +40,9 @@
 	[tableView reloadData];
 	tableView.backgroundColor = [UIColor clearColor];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    }
 
 	[super viewWillAppear:animated];
 }
@@ -54,7 +57,8 @@
 }
 
 - (IBAction) videoButtonPressed: (id) sender {
-	NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
+    NSString *url = @"tel://211";
+	//NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 
@@ -66,11 +70,17 @@
 - (void) showAboutView {
 	aboutViewController.delegate = self;
 	aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    }
 	[self.parentViewController.parentViewController presentModalViewController: aboutViewController animated:YES];
 }
 
 - (void) aboutViewShouldDismiss {
 	[self dismissModalViewControllerAnimated: YES];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,6 +110,9 @@
 	CommonSearchesViewController *commonViewController = [[CommonSearchesViewController alloc] initWithNibName:@"CommonSearchesViewController" bundle:[NSBundle mainBundle]];
 	[commonViewController setLoading:YES];
 	[self.navigationController pushViewController:commonViewController animated:YES];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    }
 	
 	[commonViewController release];
 	
