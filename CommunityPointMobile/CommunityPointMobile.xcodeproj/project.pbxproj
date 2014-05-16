@@ -76,6 +76,10 @@
 		4B2763A2176A3FC500AA39CF /* Appimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2763A0176A3FC500AA39CF /* Appimage.png */; };
 		4B465EBC124A519D0004A2D9 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */; };
 		4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */; };
+		4B6D2CEA1926BFE3007FBCDF /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D2CE81926BFE3007FBCDF /* Icon7@2x.png */; };
+		4B6D2CEB1926BFE3007FBCDF /* Icon-Small7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D2CE91926BFE3007FBCDF /* Icon-Small7@2x.png */; };
+		4B6D2CEE1926C56D007FBCDF /* Default7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D2CEC1926C56D007FBCDF /* Default7@2x.png */; };
+		4B6D2CEF1926C56D007FBCDF /* Default7-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D2CED1926C56D007FBCDF /* Default7-568h@2x.png */; };
 		4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D15B1423951C00005509 /* 53-house@2x.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
@@ -214,6 +218,10 @@
 		4B465EB9124A519D0004A2D9 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		4B465EBA124A519D0004A2D9 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		4B465EBB124A519D0004A2D9 /* AdvancedSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSearchViewController.xib; sourceTree = "<group>"; };
+		4B6D2CE81926BFE3007FBCDF /* Icon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon7@2x.png"; sourceTree = "<group>"; };
+		4B6D2CE91926BFE3007FBCDF /* Icon-Small7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small7@2x.png"; sourceTree = "<group>"; };
+		4B6D2CEC1926C56D007FBCDF /* Default7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default7@2x.png"; sourceTree = "<group>"; };
+		4B6D2CED1926C56D007FBCDF /* Default7-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default7-568h@2x.png"; sourceTree = "<group>"; };
 		4B97D15B1423951C00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -305,6 +313,8 @@
 				8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */,
 				402D7EFC11CFAA8B00E52DA5 /* Favorites.plist */,
 				4BF05D1C126DFD1D002463CE /* Settings.plist */,
+				4B6D2CED1926C56D007FBCDF /* Default7-568h@2x.png */,
+				4B6D2CEC1926C56D007FBCDF /* Default7@2x.png */,
 				4B27639D176A3FB600AA39CF /* Default-568h@2x.png */,
 				4B11419712B81C810029AE55 /* Default@2x.png */,
 				4B11419B12B81D450029AE55 /* Default.png */,
@@ -502,6 +512,8 @@
 		4BEAD7AB1279E458004D6D19 /* App Icons */ = {
 			isa = PBXGroup;
 			children = (
+				4B6D2CE81926BFE3007FBCDF /* Icon7@2x.png */,
+				4B6D2CE91926BFE3007FBCDF /* Icon-Small7@2x.png */,
 				40B7531011ECFA53002EAF40 /* iTunesArtwork */,
 				40B7530E11ECFA3D002EAF40 /* Icon.png */,
 				40B7532611ECFC9C002EAF40 /* Icon@2x.png */,
@@ -552,8 +564,13 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bowman Systems, LLC";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = S82FP8QK9V;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CommunityPointMobile" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -580,10 +597,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				4B6D2CEA1926BFE3007FBCDF /* Icon7@2x.png in Resources */,
 				4057AC041166A87B004882F6 /* SearchViewController.xib in Resources */,
 				4057AC091166A899004882F6 /* FavoritesViewController.xib in Resources */,
 				40547BBA1169337300F608E7 /* ResourceSearchResultCell.xib in Resources */,
+				4B6D2CEF1926C56D007FBCDF /* Default7-568h@2x.png in Resources */,
 				40547D6D116984AD00F608E7 /* ResourceDetailViewController.xib in Resources */,
+				4B6D2CEE1926C56D007FBCDF /* Default7@2x.png in Resources */,
 				40D289E61172C65F0095F032 /* ResourceMapViewController.xib in Resources */,
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
 				6D6CB60811D44CDA0050D955 /* bed.gif in Resources */,
@@ -605,6 +625,7 @@
 				4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */,
 				4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */,
 				4B27639E176A3FB600AA39CF /* Default-568h@2x.png in Resources */,
+				4B6D2CEB1926BFE3007FBCDF /* Icon-Small7@2x.png in Resources */,
 				4B2763A1176A3FC500AA39CF /* Appimage-568h@2x.png in Resources */,
 				4B2763A2176A3FC500AA39CF /* Appimage.png in Resources */,
 			);
@@ -676,8 +697,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -686,10 +707,10 @@
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -697,30 +718,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
 		40FEAFCA11F4EE1E007314C4 /* Distribution (AppStore) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -730,31 +751,32 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = CommunityPointMobile;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = "Distribution (AppStore)";
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -764,14 +786,13 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
