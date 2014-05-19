@@ -77,10 +77,10 @@
 		4B4DBC781926705E00524690 /* Default7-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B4DBC761926705E00524690 /* Default7-568h@2x.png */; };
 		4B4DBC791926705E00524690 /* Default7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B4DBC771926705E00524690 /* Default7@2x.png */; };
 		4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D15B1423951C00005509 /* 53-house@2x.png */; };
+		4BBE431B192A6C6B00E295CA /* home_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE4319192A6C6B00E295CA /* home_top.png */; };
+		4BBE431C192A6C6B00E295CA /* home_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE431A192A6C6B00E295CA /* home_bottom.png */; };
 		4BC10F171925655200EBBCAA /* Icon-Small7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC10F151925655200EBBCAA /* Icon-Small7@2x.png */; };
 		4BC10F181925655200EBBCAA /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC10F161925655200EBBCAA /* Icon7@2x.png */; };
-		4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5921411273B00B8B54E /* 211azbottom.png */; };
-		4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5931411273B00B8B54E /* 211aztop.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -219,10 +219,10 @@
 		4B4DBC761926705E00524690 /* Default7-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default7-568h@2x.png"; sourceTree = "<group>"; };
 		4B4DBC771926705E00524690 /* Default7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default7@2x.png"; sourceTree = "<group>"; };
 		4B97D15B1423951C00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
+		4BBE4319192A6C6B00E295CA /* home_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_top.png; sourceTree = "<group>"; };
+		4BBE431A192A6C6B00E295CA /* home_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_bottom.png; sourceTree = "<group>"; };
 		4BC10F151925655200EBBCAA /* Icon-Small7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small7@2x.png"; sourceTree = "<group>"; };
 		4BC10F161925655200EBBCAA /* Icon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon7@2x.png"; sourceTree = "<group>"; };
-		4BCAA5921411273B00B8B54E /* 211azbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211azbottom.png; sourceTree = "<group>"; };
-		4BCAA5931411273B00B8B54E /* 211aztop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211aztop.png; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -528,9 +528,9 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4BBE4319192A6C6B00E295CA /* home_top.png */,
+				4BBE431A192A6C6B00E295CA /* home_bottom.png */,
 				4B97D15B1423951C00005509 /* 53-house@2x.png */,
-				4BCAA5921411273B00B8B54E /* 211azbottom.png */,
-				4BCAA5931411273B00B8B54E /* 211aztop.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
@@ -610,6 +610,7 @@
 				40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */,
 				4BC10F181925655200EBBCAA /* Icon7@2x.png in Resources */,
 				40B7532711ECFC9C002EAF40 /* Icon-Small@2x.png in Resources */,
+				4BBE431B192A6C6B00E295CA /* home_top.png in Resources */,
 				40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */,
 				4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */,
 				4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */,
@@ -621,9 +622,8 @@
 				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
 				4B11419812B81C810029AE55 /* Default@2x.png in Resources */,
 				4B11419C12B81D450029AE55 /* Default.png in Resources */,
-				4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */,
 				4B4DBC781926705E00524690 /* Default7-568h@2x.png in Resources */,
-				4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */,
+				4BBE431C192A6C6B00E295CA /* home_bottom.png in Resources */,
 				4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */,
 				4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */,
 				4BC10F171925655200EBBCAA /* Icon-Small7@2x.png in Resources */,
@@ -720,7 +720,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bowman Systems, LLC (S82FP8QK9V)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CommunityPointMobile_Prefix.pch;
@@ -728,7 +728,7 @@
 				INFOPLIST_FILE = "CommunityPointMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = CommunityPointMobile;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4781DC30-1E39-43D6-8538-8E7958D551EC";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
