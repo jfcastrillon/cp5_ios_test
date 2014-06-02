@@ -5,32 +5,32 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>17B002DF-6DE0-4067-BB0D-49DF96F77B26</string>
+	<string>014F1CEE-F5AA-4204-B229-947C156351D2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CommunityPointMobile</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F530FC70-602D-4E5C-BD87-F5CE49C8C1CA</key>
-		<string>https://192.168.1.85/cp5_ios</string>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<string>https://svn.bowmansystems.local/cp5_ios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>branches/211az/CommunityPointMobile/CommunityPointMobile.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F530FC70-602D-4E5C-BD87-F5CE49C8C1CA</key>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>F530FC70-602D-4E5C-BD87-F5CE49C8C1CA</key>
-		<string>https://192.168.1.85/cp5_ios</string>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<string>https://svn.bowmansystems.local/cp5_ios</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://192.168.1.85/cp5_ios/branches/211az/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
+	<string>https://svn.bowmansystems.local/cp5_ios/branches/211az/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F530FC70-602D-4E5C-BD87-F5CE49C8C1CA</string>
+	<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -43,7 +43,7 @@
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
 			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F530FC70-602D-4E5C-BD87-F5CE49C8C1CA</string>
+			<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cp5_ios</string>
 		</dict>
