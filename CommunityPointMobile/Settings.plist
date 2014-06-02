@@ -7,14 +7,14 @@
 	<key>helpVideo</key>
 	<string>http://www.youtube.com/watch?v=JnuDC5A-OgM</string>
 	<key>website</key>
-	<string>http://211Arizona.org/</string>
+	<string>http://resources.211.idaho.gov.bowmansystems.com/index.php?option=com_cpx</string>
 	<key>publicKey</key>
-	<string>649208C3CB7004F6CF2E6BFA6CA20C23</string>
+	<string>36C66BCFDF741C3AA069B4C8668B15C3</string>
 	<key>clientVersion</key>
 	<string>2.3.0</string>
 	<key>baseUrl</key>
 	<string>http://xservices.bowmansystems.com/production.php</string>
 	<key>irisSite</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
