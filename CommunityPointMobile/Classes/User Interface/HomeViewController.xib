@@ -30,16 +30,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="211aztop.png" id="26">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="211idahotop.png" id="26">
                     <rect key="frame" x="7" y="-140" width="308" height="437"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="211azbottom.png" id="27">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="211idahobottom.png" id="27">
                     <rect key="frame" x="20" y="221" width="269" height="437"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
                 <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" bouncesZoom="NO" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6">
-                    <rect key="frame" x="0.0" y="317.4999969351926" width="320" height="104.5"/>
+                    <rect key="frame" x="0.0" y="317.49999910678588" width="320" height="104.5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
@@ -47,10 +47,9 @@
                         <outlet property="delegate" destination="-1" id="11"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="20">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="20">
                     <rect key="frame" x="293" y="448" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,14 +85,14 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.031372550870000002" green="0.30980393290000002" blue="0.63137257099999999" alpha="1" colorSpace="deviceRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="211azbottom.png" width="512" height="114"/>
-        <image name="211aztop.png" width="512" height="251"/>
+        <image name="211idahobottom.png" width="512" height="146"/>
+        <image name="211idahotop.png" width="512" height="187"/>
     </resources>
 </document>

@@ -57,7 +57,7 @@
 }
 
 - (IBAction) videoButtonPressed: (id) sender {
-	NSString *url = @"tel://1-877-211-8661";
+	NSString *url = @"tel://1-800-926-2588";
 	//NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }

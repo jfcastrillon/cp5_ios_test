@@ -79,8 +79,6 @@
 		4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B97D15B1423951C00005509 /* 53-house@2x.png */; };
 		4BC10F171925655200EBBCAA /* Icon-Small7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC10F151925655200EBBCAA /* Icon-Small7@2x.png */; };
 		4BC10F181925655200EBBCAA /* Icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC10F161925655200EBBCAA /* Icon7@2x.png */; };
-		4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5921411273B00B8B54E /* 211azbottom.png */; };
-		4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCAA5931411273B00B8B54E /* 211aztop.png */; };
 		4BEAD7A91279E44C004D6D19 /* json-framework.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A71279E44C004D6D19 /* json-framework.html */; };
 		4BEAD7AA1279E44C004D6D19 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7A81279E44C004D6D19 /* about.html */; };
 		4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */; };
@@ -94,6 +92,8 @@
 		4BFB7D2D174D8B7300EAC71D /* XSSettingsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D2C174D8B7200EAC71D /* XSSettingsOperation.m */; };
 		4BFB7D30174D8D3000EAC71D /* CPMSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D2F174D8D2F00EAC71D /* CPMSettings.m */; };
 		4BFB7D33174D8EAF00EAC71D /* CPMSettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB7D32174D8EAE00EAC71D /* CPMSettingsParser.m */; };
+		6A4DB53A193E102F00A1FD5B /* 211idahobottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A4DB538193E102F00A1FD5B /* 211idahobottom.png */; };
+		6A4DB53B193E102F00A1FD5B /* 211idahotop.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A4DB539193E102F00A1FD5B /* 211idahotop.png */; };
 		6D6CB60811D44CDA0050D955 /* bed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60711D44CDA0050D955 /* bed.gif */; };
 		6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6D6CB60911D44CDF0050D955 /* handicap.gif */; };
 /* End PBXBuildFile section */
@@ -221,8 +221,6 @@
 		4B97D15B1423951C00005509 /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
 		4BC10F151925655200EBBCAA /* Icon-Small7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small7@2x.png"; sourceTree = "<group>"; };
 		4BC10F161925655200EBBCAA /* Icon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon7@2x.png"; sourceTree = "<group>"; };
-		4BCAA5921411273B00B8B54E /* 211azbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211azbottom.png; sourceTree = "<group>"; };
-		4BCAA5931411273B00B8B54E /* 211aztop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211aztop.png; sourceTree = "<group>"; };
 		4BEAD7A71279E44C004D6D19 /* json-framework.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "json-framework.html"; sourceTree = "<group>"; };
 		4BEAD7A81279E44C004D6D19 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		4BEAD7CF1279E563004D6D19 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -243,6 +241,8 @@
 		4BFB7D2F174D8D2F00EAC71D /* CPMSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMSettings.m; sourceTree = "<group>"; };
 		4BFB7D31174D8EAD00EAC71D /* CPMSettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMSettingsParser.h; path = Parsers/CPMSettingsParser.h; sourceTree = "<group>"; };
 		4BFB7D32174D8EAE00EAC71D /* CPMSettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMSettingsParser.m; path = Parsers/CPMSettingsParser.m; sourceTree = "<group>"; };
+		6A4DB538193E102F00A1FD5B /* 211idahobottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211idahobottom.png; sourceTree = "<group>"; };
+		6A4DB539193E102F00A1FD5B /* 211idahotop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 211idahotop.png; sourceTree = "<group>"; };
 		6D6CB60711D44CDA0050D955 /* bed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bed.gif; sourceTree = "<group>"; };
 		6D6CB60911D44CDF0050D955 /* handicap.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = handicap.gif; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CommunityPointMobile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CommunityPointMobile-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -528,9 +528,9 @@
 		4BEAD7AC1279E48D004D6D19 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6A4DB538193E102F00A1FD5B /* 211idahobottom.png */,
+				6A4DB539193E102F00A1FD5B /* 211idahotop.png */,
 				4B97D15B1423951C00005509 /* 53-house@2x.png */,
-				4BCAA5921411273B00B8B54E /* 211azbottom.png */,
-				4BCAA5931411273B00B8B54E /* 211aztop.png */,
 				4B161E58125E363600BFBC95 /* 53-house.png */,
 				6D6CB60911D44CDF0050D955 /* handicap.gif */,
 				6D6CB60711D44CDA0050D955 /* bed.gif */,
@@ -605,12 +605,14 @@
 				402D7EFD11CFAA8B00E52DA5 /* Favorites.plist in Resources */,
 				6D6CB60811D44CDA0050D955 /* bed.gif in Resources */,
 				4B4DBC791926705E00524690 /* Default7@2x.png in Resources */,
+				6A4DB53A193E102F00A1FD5B /* 211idahobottom.png in Resources */,
 				6D6CB60A11D44CDF0050D955 /* handicap.gif in Resources */,
 				40B7530F11ECFA3D002EAF40 /* Icon.png in Resources */,
 				40B7531111ECFA53002EAF40 /* iTunesArtwork in Resources */,
 				4BC10F181925655200EBBCAA /* Icon7@2x.png in Resources */,
 				40B7532711ECFC9C002EAF40 /* Icon-Small@2x.png in Resources */,
 				40B7532811ECFC9C002EAF40 /* Icon@2x.png in Resources */,
+				6A4DB53B193E102F00A1FD5B /* 211idahotop.png in Resources */,
 				4B465EBD124A519D0004A2D9 /* AdvancedSearchViewController.xib in Resources */,
 				4BEB2D9012539E37006288DE /* HomeViewController.xib in Resources */,
 				4B161E59125E363600BFBC95 /* 53-house.png in Resources */,
@@ -621,9 +623,7 @@
 				4BEAD7D21279E563004D6D19 /* AboutViewController.xib in Resources */,
 				4B11419812B81C810029AE55 /* Default@2x.png in Resources */,
 				4B11419C12B81D450029AE55 /* Default.png in Resources */,
-				4BCAA5941411273B00B8B54E /* 211azbottom.png in Resources */,
 				4B4DBC781926705E00524690 /* Default7-568h@2x.png in Resources */,
-				4BCAA5951411273B00B8B54E /* 211aztop.png in Resources */,
 				4B97D15C1423951C00005509 /* 53-house@2x.png in Resources */,
 				4B10E1D81759469A0003F546 /* ResourceUnitsViewController.xib in Resources */,
 				4BC10F171925655200EBBCAA /* Icon-Small7@2x.png in Resources */,
