@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>007130DA-73A1-420D-A981-55AD69F38BB2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CommunityPointMobile</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<string>https://svn.bowmansystems.local/cp5_ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>branches/211southfl/CommunityPointMobile/CommunityPointMobile.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<string>https://svn.bowmansystems.local/cp5_ios</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://svn.bowmansystems.local/cp5_ios/branches/211southfl/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cp5_ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
