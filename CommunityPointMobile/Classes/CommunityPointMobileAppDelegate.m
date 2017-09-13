@@ -18,7 +18,8 @@
 @synthesize xsHelper;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	[window addSubview: tabBarController.view];
+	/*[window addSubview: tabBarController.view];*/
+    [self.window setRootViewController:tabBarController];
     [window makeKeyAndVisible];
 	
 	// Get singleton instance of the helper

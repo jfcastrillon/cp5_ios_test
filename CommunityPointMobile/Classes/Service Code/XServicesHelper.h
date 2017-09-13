@@ -52,6 +52,7 @@
 - (void)loadCommonSearches;
 
 - (void)loadResourceDetails: (NSDecimalNumber*) resourceId;
+//- (void)loadResourceDetails: (NSDecimalNumber*) resourceId forSearchHistoryId: (NSDecimalNumber*)searchId;
 
 - (void) operationDidComplete: (XSResponse*) response;
 - (void) operationDidFailWithError: (NSDictionary*) error;

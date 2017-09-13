@@ -5,45 +5,39 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>007130DA-73A1-420D-A981-55AD69F38BB2</string>
+	<string>63B357AB-F544-40E1-95CA-1F4C844503E1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CommunityPointMobile</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
-		<string>https://svn.bowmansystems.local/cp5_ios</string>
+		<key>734BD1A6-AD54-4A3C-AC11-725F1FEA8F7B</key>
+		<string>https://192.168.1.85/cp5_ios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>branches/211southfl/CommunityPointMobile/CommunityPointMobile.xcodeproj/project.xcworkspace</string>
+	<string>branches/211pbtc/CommunityPointMobile/CommunityPointMobile.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
+		<key>734BD1A6-AD54-4A3C-AC11-725F1FEA8F7B</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>5CBB4B30-85E5-4599-AE25-25238D79AE3D</key>
-		<string>https://svn.bowmansystems.local/cp5_ios</string>
+		<key>734BD1A6-AD54-4A3C-AC11-725F1FEA8F7B</key>
+		<string>https://192.168.1.85/cp5_ios</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://svn.bowmansystems.local/cp5_ios/branches/211southfl/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
+	<string>https://192.168.1.85/cp5_ios/branches/211pbtc/CommunityPointMobile/CommunityPointMobile.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
+	<string>734BD1A6-AD54-4A3C-AC11-725F1FEA8F7B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5CBB4B30-85E5-4599-AE25-25238D79AE3D</string>
+			<string>734BD1A6-AD54-4A3C-AC11-725F1FEA8F7B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cp5_ios</string>
 		</dict>

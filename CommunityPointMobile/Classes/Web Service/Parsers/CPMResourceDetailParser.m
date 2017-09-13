@@ -14,9 +14,13 @@
 
 - (id) parseData:(NSData*) data {
 	id jsonResult = [super parseData: data];
-	
+    	
 	CPMResourceDetail *result = [[CPMResourceDetail alloc] initFromJsonDictionary:[jsonResult objectForKey: @"resource"]];
-	
+    
+    /*NSString *jsonString = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+    NSLog(@"Response JSON=%@", jsonString);
+    */
 	return [result autorelease];
 }
 

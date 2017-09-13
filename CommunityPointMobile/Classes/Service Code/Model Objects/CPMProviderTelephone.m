@@ -1,4 +1,3 @@
-//
 //  CPMProviderTelephone.m
 //  CommunityPointMobile
 //

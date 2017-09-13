@@ -17,19 +17,20 @@
 
 @class XServicesHelper;
 @class ResourceDetailViewController;
-@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate, AdvancedSearchViewControllerDelegate> {
-	UISearchBar *searchBar;	
-	XServicesHelper *xsHelper;
-	LocationManager *locationManager;
-	NSArray* searchResults;
-	UITableView* resultsTableView;
-	UIActivityIndicatorView *busyIndicator;
-	UIView *dimmingOverlay;
-	ResourceSearchResultCell *loadMoreCell;
-	BOOL isLoadingMore;
-	BOOL isLoading;
-	BOOL noResultsFound;
-	MKMapView *mapView;
+@interface SearchViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate, AdvancedSearchViewControllerDelegate, CLLocationManagerDelegate> {
+    UISearchBar *searchBar;
+    XServicesHelper *xsHelper;
+    LocationManager *locationManager;
+    NSArray* searchResults;
+    UITableView* resultsTableView;
+    UIActivityIndicatorView *busyIndicator;
+    UIView *dimmingOverlay;
+    ResourceSearchResultCell *loadMoreCell;
+    BOOL isLoadingMore;
+    BOOL isLoading;
+    BOOL noResultsFound;
+    MKMapView *mapView;
+    CLGeocoder *geoCoder;
 }
 
 @property (nonatomic, retain) IBOutlet UISearchBar* searchBar;
@@ -39,6 +40,8 @@
 @property (nonatomic, retain) NSArray* searchResults;
 @property (nonatomic, retain) ResourceSearchResultCell* loadMoreCell;
 @property (nonatomic, retain) MKMapView* mapView;
+@property (nonatomic, retain) CLGeocoder* geoCoder;
+@property (nonatomic, retain) CLLocationManager* isSetLocationManager;
 
 - (IBAction) backgroundTap:(id)sender;
 - (BOOL)tableHeaderVisible:(UITableView *)tableView;

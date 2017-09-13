@@ -25,11 +25,13 @@
 @synthesize searchResults;
 @synthesize loadMoreCell;
 @synthesize mapView;
+@synthesize geoCoder;
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
 	
 	noResultsFound = NO;
+    
 }
 
 - (void) showOverlay {
@@ -105,11 +107,31 @@
 
 - (void)viewDidLoad {
 	// Get singleton instance of the helper
+    
 	xsHelper = [XServicesHelper sharedInstance];
 	self.searchResults = [xsHelper searchResults];
 	locationManager = [LocationManager sharedInstance];
-
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced" 
+    
+    _isSetLocationManager = [[CLLocationManager alloc] init];
+    
+    if ([_isSetLocationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [_isSetLocationManager requestWhenInUseAuthorization];
+    }
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
+        NSString *title;
+        title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings.";
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+        [alertView show];
+        
+    }
+    else if (status == kCLAuthorizationStatusNotDetermined) {
+        [_isSetLocationManager requestAlwaysAuthorization];
+    }
+    
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Advanced"
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(advanced:)];
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
@@ -117,13 +139,15 @@
 
 	mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	mapView.delegate = self;
-
+   
 	// Observe the notifications for completed search results
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveSearchResults:) name:@"SearchResultsReceived" object: xsHelper];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(didReceiveMoreSearchResults:) name:@"SearchResultsAppended" object: xsHelper];
 	[[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(searchRequestFailed:) name:@"SearchRequestFailed" object: xsHelper];
-		
+      
     [super viewDidLoad];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -235,21 +259,39 @@
 }
 
 - (void) reloadMapView {
-	[mapView removeAnnotations:mapView.annotations];
-	for (int i = 0; i < [searchResults count]; i++) {
-		CPMResource* resource = [searchResults objectAtIndex:i];
-		if ([resource longitude] != nil) {
-			CLLocationCoordinate2D location;
-			
-			location.latitude=[resource.latitude doubleValue];
-			location.longitude=[resource.longitude doubleValue];
-			
-			CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:location andTitle:[resource name] andResourceId:[resource resourceId]];
-			[mapView addAnnotation:annotation];
-			[annotation release];
-		}
-	}
-	[self zoomToFitMapAnnotations];
+    [mapView removeAnnotations:mapView.annotations];
+    for (int i = 0; i < [searchResults count]; i++) {
+        CPMResource* resource = [searchResults objectAtIndex:i];
+        if ([resource address1] != nil) {
+            NSString *address = [NSString stringWithFormat:@"%@ %@ %@ %@", resource.address1,resource.city,resource.state,resource.zipcode];
+            
+            
+            CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+            [geocoder geocodeAddressString:address completionHandler:^(NSArray* placemarks, NSError* error)
+            {
+                if ([placemarks count] > 0)
+                {
+                    CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                    CLLocation *location = placemark.location;
+                    CLLocationCoordinate2D coordinate = location.coordinate;
+                    
+                  /*  UIAlertView *alert;
+                    alert = [[UIAlertView alloc] initWithTitle:@"Message" message:[NSString stringWithFormat:@"%f", coordinate.latitude]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    
+                    [alert show];
+                    [alert release];
+                    */
+                    CPMapAnnotation *annotation = [[CPMapAnnotation alloc] initWithCoordinate:coordinate andTitle:[resource name] andResourceId:[resource resourceId]];
+                    [mapView addAnnotation:annotation];
+                    [annotation release];
+                    
+                }
+		[self zoomToFitMapAnnotations];
+          }];
+            
+            
+        }
+    }
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation {
@@ -312,6 +354,7 @@
 }
 
 - (void) mapViewWillStartLoadingMap:(MKMapView *)mapView {
+    
 	[[NetworkManager sharedInstance]showNetworkActivityIndicator];
 	isLoading = YES;
 	
@@ -435,6 +478,7 @@
 			}
 			
 			cell.addressLabel.text = [resource addressString];
+            
 			cell.nameLabel.textColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 		}
 		return cell;
@@ -472,7 +516,8 @@
 		[detailViewController release];
 		
 		[xsHelper cancelAllOperations];
-		[xsHelper loadResourceDetails: [resource resourceId]];
+        [xsHelper loadResourceDetails: [resource resourceId]];
+        
 	}
 }
 
@@ -510,6 +555,7 @@
 
 // Callbacks for loaction notifications
 - (void) didGetLocation: (NSNotification*) notification {
+    
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFindLocationFailedNotification object:locationManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:LocationManagerFoundLocationNotification object:locationManager];
 	CLLocation* location = [[notification userInfo] objectForKey:kLocationManagerCurrentLocation];
@@ -627,7 +673,7 @@
 
 - (IBAction) map:(id)sender {
 	UIView *map = mapView;
-	
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.3];
     [UIView setAnimationBeginsFromCurrentState:NO];
@@ -645,6 +691,7 @@
 																			  style:UIBarButtonItemStylePlain target:self action:@selector(list:)] autorelease];
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Load More" 
 																			 style:UIBarButtonItemStylePlain target:self action:@selector(mapLoadMore:)] autorelease];
+    
 	
 	// Disable the Load More button if no search has yet been performed
 	if ([xsHelper searchResults] == nil || [[xsHelper searchResults] count] == 0) {

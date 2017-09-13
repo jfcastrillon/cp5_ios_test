@@ -11,6 +11,7 @@
 
 @interface CPMResource : NSObject {
 	NSDecimalNumber	*resourceId;
+    //NSDecimalNumber	*searchId;
 	NSDecimalNumber	*providerId;
 	NSString		*name;
 	NSString		*address1;
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic, copy) NSDecimalNumber *resourceId;
+//@property (nonatomic, copy) NSDecimalNumber *searchId;
 @property (nonatomic, copy) NSDecimalNumber *providerId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *address1;

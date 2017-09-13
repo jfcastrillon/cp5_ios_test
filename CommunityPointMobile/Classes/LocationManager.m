@@ -20,7 +20,8 @@ NSString* const kLocationManagerError = @"LocationManagerError";
 	if(self == nil) return nil;
 	
 	locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = self;
+    
+    locationManager.delegate = self;
 	
 	return self;
 }

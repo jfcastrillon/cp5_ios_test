@@ -37,7 +37,7 @@
 	self.address2 = nullFix([dictionary objectForKey:@"address2"]);
 	self.city = nullFix([dictionary objectForKey:@"city"]);
 	self.state = nullFix([dictionary objectForKey:@"state"]);
-	
+    
 	// XServices returns ZIP as an integer for some reason
 	NSObject* tmpZip = nullFix([dictionary objectForKey:@"zipcode"]);
 	if(tmpZip != nil) {
@@ -47,7 +47,6 @@
 			self.zipcode = (NSString*) tmpZip;
 		}
 	}
-	
 	
 	self.url = nullFix([dictionary objectForKey:@"url"]);
 	self.phone = nullFix([dictionary objectForKey:@"phone"]);

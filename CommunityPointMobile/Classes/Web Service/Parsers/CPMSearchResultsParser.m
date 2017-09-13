@@ -35,6 +35,7 @@ NSArray* translateResourceArray(NSArray* jsonArray) {
 	NSString* refLonStr = nullFix([[jsonResult objectForKey: @"resources"] objectForKey: @"ref_longitude"]);
 	result.refLatitude = (refLatStr == nil) ? nil : [NSNumber numberWithFloat: [refLatStr floatValue]];
 	result.refLongitude = (refLonStr == nil) ? nil : [NSNumber numberWithFloat: [refLonStr floatValue]];
+    
 	
 	NSArray* results = translateResourceArray([[jsonResult objectForKey: @"resources"] objectForKey: @"results"]);
 	result.results = results;

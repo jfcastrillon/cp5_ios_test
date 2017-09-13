@@ -90,7 +90,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 	// Get singleton instance of the helper
 	xsHelper = [XServicesHelper sharedInstance];
 	

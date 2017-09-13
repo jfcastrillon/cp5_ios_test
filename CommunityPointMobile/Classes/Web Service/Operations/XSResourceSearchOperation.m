@@ -23,6 +23,8 @@
 	[params setValue: [NSDecimalNumber numberWithUnsignedInt: maxCount] forKey:kXSQueryMaxCount];	
 	[params setValue: [NSDecimalNumber numberWithUnsignedInt: offset] forKey:kXSQueryOffset];	
 	[params setValue: query forKey:kXSQueryNatural];
+    
+    
 	
 	[self initWithQueryParams:params];
 	

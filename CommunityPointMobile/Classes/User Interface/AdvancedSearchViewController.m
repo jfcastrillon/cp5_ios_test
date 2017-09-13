@@ -19,6 +19,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    
     settingsHelper = [SettingsHelper sharedInstance];
     
     cellDictionary = [[NSMutableDictionary alloc] init];
@@ -42,7 +43,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         [self createCell:section row:row];
         row++;
     }
-
+    
     if (row > 0) {
         section++;
     }
@@ -65,7 +66,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         [self createCell:section row:row];
         row++;
     }
-
+    
     if (row > 0) {
         section++;
     }
@@ -88,7 +89,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         [self createCell:section row:row];
         row++;
     }
-
+    
     if (row > 0) {
         section++;
     }
@@ -132,12 +133,20 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         [self createCell:section row:row];
         row++;
     }
-
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
-																			 style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
-	self.title = @"Advanced Search";
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Search" 
-																			  style:UIBarButtonItemStylePlain target:self action:@selector(search:)];	
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                             style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
+    //self.title = @"Advanced Search";
+    
+    
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithTitle:@"       Search"
+                                                                     style:UIBarButtonItemStylePlain target:self action:@selector(search:)];
+    
+    UIBarButtonItem *clearFiltersButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear Filters "
+                                                                           style:UIBarButtonItemStylePlain target:self action:@selector(clearFilters:)];
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:searchButton,clearFiltersButton, nil];
+    
     
     [super viewDidLoad];
 }
@@ -148,30 +157,50 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 }
 
 - (void)viewDidUnload {
-	self.tableView = nil;
-	
+    self.tableView = nil;
+    
     [super viewDidUnload];
+}
+- (IBAction) clearFilters:(id)sender {
+    [self textFieldForSection:keywordsSection row:allRow].text = @"";
+    [self textFieldForSection:keywordsSection row:anyRow].text = @"";
+    [self textFieldForSection:keywordsSection row:noneRow].text = @"";
+    
+    [self textFieldForSection:physicalSection row:physicalZipRow].text = @"";
+    [self textFieldForSection:physicalSection row:physicalCityRow].text = @"";
+    [self textFieldForSection:physicalSection row:physicalCountyRow].text = @"";
+    
+    [self textFieldForSection:areasSection row:areasZipRow].text = @"";
+    [self textFieldForSection:areasSection row:areasCityRow].text = @"";
+    [self textFieldForSection:areasSection row:areasCountyRow].text = @"";
+    
+    [self textFieldForSection:volunteerSection row:0].text = @"";
+    [self textFieldForSection:wishlistSection row:0].text = @"";
+    
+    [self textFieldForSection:sheltersSection row:0].text = @"";
+    
+    [self textFieldForSection:serviceCodesSection row:0].text = @"";
 }
 
 - (void) createCell:(NSUInteger)section row:(NSUInteger)row {
     static NSString *KeywordsAllCellIdentifier = @"KeywordsAllCellIdentifier";
-	static NSString *KeywordsAnyCellIdentifier = @"KeywordsAnyCellIdentifier";
-	static NSString *KeywordsNoneCellIdentifier = @"KeywordsNoneCellIdentifier";
-	static NSString *LocationZipCellIdentifier = @"LocationZipCellIdentifier";
-	static NSString *LocationCityCellIdentifier = @"LocationCityCellIdentifier";
-	static NSString *LocationCountyCellIdentifier = @"LocationCountyCellIdentifier";
-	static NSString *ServedZipCellIdentifier = @"ServedZipCellIdentifier";
-	static NSString *ServedCityCellIdentifier = @"ServedCityCellIdentifier";
-	static NSString *ServedCountyCellIdentifier = @"ServedCountyCellIdentifier";
-	static NSString *VolunteerCellIdentifier = @"VolunteerCellIdentifier";
-	static NSString *WishListCellIdentifier = @"WishListCellIdentifier";
+    static NSString *KeywordsAnyCellIdentifier = @"KeywordsAnyCellIdentifier";
+    static NSString *KeywordsNoneCellIdentifier = @"KeywordsNoneCellIdentifier";
+    static NSString *LocationZipCellIdentifier = @"LocationZipCellIdentifier";
+    static NSString *LocationCityCellIdentifier = @"LocationCityCellIdentifier";
+    static NSString *LocationCountyCellIdentifier = @"LocationCountyCellIdentifier";
+    static NSString *ServedZipCellIdentifier = @"ServedZipCellIdentifier";
+    static NSString *ServedCityCellIdentifier = @"ServedCityCellIdentifier";
+    static NSString *ServedCountyCellIdentifier = @"ServedCountyCellIdentifier";
+    static NSString *VolunteerCellIdentifier = @"VolunteerCellIdentifier";
+    static NSString *WishListCellIdentifier = @"WishListCellIdentifier";
     static NSString *SheltersCellIdentifier = @"SheltersCellIdentifier";
     static NSString *ServiceCodesCellIdentifier = @"ServiceCodesCellIdentifier";
     
-	UITableViewCell *cell = nil;
-	if (section == keywordsSection) {
-		if (row == allRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAllCellIdentifier];
+    UITableViewCell *cell = nil;
+    if (section == keywordsSection) {
+        if (row == allRow) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAllCellIdentifier];
             cell.detailTextLabel.text = @"All";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -184,7 +213,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == anyRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAnyCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsAnyCellIdentifier];
             cell.detailTextLabel.text = @"Any";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -197,7 +226,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == noneRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsNoneCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:KeywordsNoneCellIdentifier];
             cell.detailTextLabel.text = @"None";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -209,10 +238,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
             [cell.contentView addSubview:txtField];
             [txtField release];
-		}
-	} else if (section == physicalSection) {
-		if (row == physicalZipRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationZipCellIdentifier];
+        }
+    } else if (section == physicalSection) {
+        if (row == physicalZipRow) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationZipCellIdentifier];
             cell.detailTextLabel.text = @"ZIP";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -224,7 +253,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == physicalCityRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCityCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCityCellIdentifier];
             cell.detailTextLabel.text = @"City";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -236,7 +265,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == physicalCountyRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCountyCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:LocationCountyCellIdentifier];
             cell.detailTextLabel.text = @"County";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -247,10 +276,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
             [cell.contentView addSubview:txtField];
             [txtField release];
-		}
-	} else if (section == areasSection) {
-		if (row == areasZipRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedZipCellIdentifier];
+        }
+    } else if (section == areasSection) {
+        if (row == areasZipRow) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedZipCellIdentifier];
             cell.detailTextLabel.text = @"ZIP";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -262,7 +291,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == areasCityRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCityCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCityCellIdentifier];
             cell.detailTextLabel.text = @"City";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -274,7 +303,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             [txtField release];
         } else if (row == areasCountyRow) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCountyCellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:ServedCountyCellIdentifier];
             cell.detailTextLabel.text = @"County";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -285,10 +314,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
             [cell.contentView addSubview:txtField];
             [txtField release];
-		}
-	} else if (section == volunteerSection) {
-		if (row == 0) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:VolunteerCellIdentifier];
+        }
+    } else if (section == volunteerSection) {
+        if (row == 0) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:VolunteerCellIdentifier];
             cell.detailTextLabel.text = @"Keywords";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -300,10 +329,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             txtField.clearButtonMode = UITextFieldViewModeWhileEditing;
             [cell.contentView addSubview:txtField];
             [txtField release];
-		}
-	} else if (section == wishlistSection) {
-		if (row == 0) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:WishListCellIdentifier];
+        }
+    } else if (section == wishlistSection) {
+        if (row == 0) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:WishListCellIdentifier];
             cell.detailTextLabel.text = @"Keywords";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -316,8 +345,8 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
             [cell.contentView addSubview:txtField];
             
             [txtField release];
-		}
-	} else if (section == sheltersSection) {
+        }
+    } else if (section == sheltersSection) {
         if (row == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:SheltersCellIdentifier];
             cell.detailTextLabel.text = @"Show Only Shelters";
@@ -354,10 +383,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[self.tableView reloadData];
+    [self.tableView reloadData];
     
-	NSDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
-	if(previousParameters != nil){
+    NSDictionary* previousParameters = [[XServicesHelper sharedInstance] lastQueryParams];
+    if(previousParameters != nil){
         if ([[[settingsHelper settings] valueForKey:@"show_refine_keywords_all"] boolValue] == YES) {
             [self textFieldForSection:keywordsSection row:allRow].text = [previousParameters objectForKey:kXSQueryKeywordsAll];
         }
@@ -371,7 +400,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         if ([[[settingsHelper settings] valueForKey:@"show_refine_keywords_none"] boolValue] == YES) {
             [self textFieldForSection:keywordsSection row:noneRow].text = [previousParameters objectForKey:kXSQueryKeywordsNone];
         }
-
+        
         if ([[[settingsHelper settings] valueForKey:@"show_refine_location_zip"] boolValue] == YES) {
             [self textFieldForSection:physicalSection row:physicalZipRow].text = [previousParameters objectForKey:kXSQueryPhysicalLocationZIP];
         }
@@ -391,15 +420,15 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         if ([[[settingsHelper settings] valueForKey:@"show_refine_area_county"] boolValue] == YES) {
             [self textFieldForSection:areasSection row:areasCountyRow].text = [previousParameters objectForKey:kXSQueryGeoServedCounty];
         }
-
-		if ([[[settingsHelper settings] valueForKey:@"show_refine_volunteer_op"] boolValue] == YES) {
+        
+        if ([[[settingsHelper settings] valueForKey:@"show_refine_volunteer_op"] boolValue] == YES) {
             [self textFieldForSection:volunteerSection row:0].text = [previousParameters objectForKey:kXSQueryVolunteerKeywords];
         }
-
+        
         if ([[[settingsHelper settings] valueForKey:@"show_refine_wishlist"] boolValue] == YES) {
             [self textFieldForSection:wishlistSection row:0].text = [previousParameters objectForKey:kXSQueryWishlistKeywords];
         }
-
+        
         if ([[[settingsHelper settings] valueForKey:@"show_refine_shelters"] boolValue] == YES) {
             BOOL showOnlyShelters = NO;
             if ([previousParameters objectForKey:kXSQueryShowOnlyShelters] != nil
@@ -412,61 +441,61 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
                 [self segmentedControlForSection:sheltersSection row:0].selectedSegmentIndex = 1;
             }
         }
-
+        
         if ([[[settingsHelper settings] valueForKey:@"show_refine_services"] boolValue] == YES) {
             [self textFieldForSection:serviceCodesSection row:0].text = [[previousParameters objectForKey:kXSQueryServiceCodes] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
     }
-	
-	[super viewWillAppear:animated];
+    
+    [super viewWillAppear:animated];
 }
 
 - (UITextField*) textFieldForSection:(NSUInteger)section row:(NSUInteger)row {
     NSString *cellId = [NSString stringWithFormat:@"id_%d_%d", section, row];
     UITableViewCell* cell = [cellDictionary objectForKey:cellId];
-
-	for (UIView* view in [cell.contentView subviews]) {
-		if([view isKindOfClass:[UITextField class]])
-			return (UITextField*) view;
-	}
-	
-	// Should never happen...
-	return nil;
+    
+    for (UIView* view in [cell.contentView subviews]) {
+        if([view isKindOfClass:[UITextField class]])
+            return (UITextField*) view;
+    }
+    
+    // Should never happen...
+    return nil;
 }
 
 - (UISegmentedControl*) segmentedControlForSection:(NSUInteger)section row:(NSUInteger)row {
     NSString *cellId = [NSString stringWithFormat:@"id_%d_%d", section, row];
     UITableViewCell* cell = [cellDictionary objectForKey:cellId];
     
-	for (UIView* view in [cell.contentView subviews]) {
-		if([view isKindOfClass:[UISegmentedControl class]])
-			return (UISegmentedControl*) view;
-	}
-	
-	// Should never happen...
-	return nil;
+    for (UIView* view in [cell.contentView subviews]) {
+        if([view isKindOfClass:[UISegmentedControl class]])
+            return (UISegmentedControl*) view;
+    }
+    
+    // Should never happen...
+    return nil;
 }
 
 - (IBAction) cancel:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction) search:(id)sender {
-	NSString* all = [[self textFieldForSection:keywordsSection row:allRow] text];
-	NSString* any = [[self textFieldForSection:keywordsSection row:anyRow] text];
-	NSString* none = [[self textFieldForSection:keywordsSection row:noneRow] text];
-	
-	NSString* physicalZip = [[self textFieldForSection:physicalSection row:physicalZipRow] text];
-	NSString* physicalCity = [[self textFieldForSection:physicalSection row:physicalCityRow] text];
-	NSString* physicalCounty = [[self textFieldForSection:physicalSection row:physicalCountyRow] text];
+    NSString* all = [[self textFieldForSection:keywordsSection row:allRow] text];
+    NSString* any = [[self textFieldForSection:keywordsSection row:anyRow] text];
+    NSString* none = [[self textFieldForSection:keywordsSection row:noneRow] text];
     
-	NSString* geoZip = [[self textFieldForSection:areasSection row:areasZipRow] text];
-	NSString* geoCity = [[self textFieldForSection:areasSection row:areasCityRow] text];
-	NSString* geoCounty = [[self textFieldForSection:areasSection row:areasCountyRow] text];
-	
-	NSString* volunteer = [[self textFieldForSection:volunteerSection row:0] text];
-	NSString* wishlist = [[self textFieldForSection:wishlistSection row:0] text];
-
+    NSString* physicalZip = [[self textFieldForSection:physicalSection row:physicalZipRow] text];
+    NSString* physicalCity = [[self textFieldForSection:physicalSection row:physicalCityRow] text];
+    NSString* physicalCounty = [[self textFieldForSection:physicalSection row:physicalCountyRow] text];
+    
+    NSString* geoZip = [[self textFieldForSection:areasSection row:areasZipRow] text];
+    NSString* geoCity = [[self textFieldForSection:areasSection row:areasCityRow] text];
+    NSString* geoCounty = [[self textFieldForSection:areasSection row:areasCountyRow] text];
+    
+    NSString* volunteer = [[self textFieldForSection:volunteerSection row:0] text];
+    NSString* wishlist = [[self textFieldForSection:wishlistSection row:0] text];
+    
     NSString* shelters;
     if ([[[settingsHelper settings] valueForKey:@"show_refine_shelters"] boolValue] == YES) {
         if([self segmentedControlForSection:sheltersSection row:0].selectedSegmentIndex == 1) {
@@ -477,10 +506,10 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     } else {
         shelters = nil;
     }
-
+    
     NSString* codes = [[self textFieldForSection:serviceCodesSection row:0] text];
-
-	NSMutableDictionary* params;
+    
+    NSMutableDictionary* params;
     if ([[XServicesHelper sharedInstance] lastQueryParams]) {
         params = [[[XServicesHelper sharedInstance] lastQueryParams] mutableCopy];
         [params removeObjectForKey:kXSQueryNatural];
@@ -490,59 +519,59 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     }
     [params setObject:@"true" forKey:kXSQueryAdvanced];
     
-	//Required parameters
-	[params setObject:[NSDecimalNumber numberWithInt:10] forKey:kXSQueryMaxCount];
-	[params setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
-	[params setObject:[NSDecimalNumber numberWithInt:-1] forKey:kXSQuerySearchHistoryId];
-	
-	if(all)
-		[params setObject:all forKey:kXSQueryKeywordsAll];
-	if(any)
-		[params setObject:any forKey:kXSQueryKeywordsAny];
-	if(none)
-		[params setObject:none forKey:kXSQueryKeywordsNone];
-	
-	if(physicalZip)
-		[params setObject:physicalZip forKey:kXSQueryPhysicalLocationZIP];
-	if(physicalCity)
-		[params setObject:physicalCity forKey:kXSQueryPhysicalLocationCity];
-	if(physicalCounty)
-		[params setObject:physicalCounty forKey:kXSQueryPhysicalLocationCounty];
-	
-	if(geoZip)
-		[params setObject:geoZip forKey:kXSQueryGeoServedZIP];
-	if(geoCity)
-		[params setObject:geoCity forKey:kXSQueryGeoServedCity];
-	if(geoCounty)
-		[params setObject:geoCounty forKey:kXSQueryGeoServedCounty];
-	
-	if(volunteer)
-		[params setObject:volunteer forKey:kXSQueryVolunteerKeywords];
-	if(wishlist)
-		[params setObject:wishlist forKey:kXSQueryWishlistKeywords];
+    //Required parameters
+    [params setObject:[NSDecimalNumber numberWithInt:10] forKey:kXSQueryMaxCount];
+    [params setObject:[NSDecimalNumber numberWithInt:0] forKey:kXSQueryOffset];
+    [params setObject:[NSDecimalNumber numberWithInt:-1] forKey:kXSQuerySearchHistoryId];
+    
+    if(all)
+        [params setObject:all forKey:kXSQueryKeywordsAll];
+    if(any)
+        [params setObject:any forKey:kXSQueryKeywordsAny];
+    if(none)
+        [params setObject:none forKey:kXSQueryKeywordsNone];
+    
+    if(physicalZip)
+        [params setObject:physicalZip forKey:kXSQueryPhysicalLocationZIP];
+    if(physicalCity)
+        [params setObject:physicalCity forKey:kXSQueryPhysicalLocationCity];
+    if(physicalCounty)
+        [params setObject:physicalCounty forKey:kXSQueryPhysicalLocationCounty];
+    
+    if(geoZip)
+        [params setObject:geoZip forKey:kXSQueryGeoServedZIP];
+    if(geoCity)
+        [params setObject:geoCity forKey:kXSQueryGeoServedCity];
+    if(geoCounty)
+        [params setObject:geoCounty forKey:kXSQueryGeoServedCounty];
+    
+    if(volunteer)
+        [params setObject:volunteer forKey:kXSQueryVolunteerKeywords];
+    if(wishlist)
+        [params setObject:wishlist forKey:kXSQueryWishlistKeywords];
     
     if(shelters)
         [params setObject:shelters forKey:kXSQueryShowOnlyShelters];
     else
         [params removeObjectForKey:kXSQueryShowOnlyShelters];
-
+    
     if(codes)
         [params setObject:codes forKey:kXSQueryServiceCodes];
-	
-	[[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
-	[self.delegate setSearchBarText:@"(Advanced Search)"];
-	[self dismissViewControllerAnimated:YES completion:nil];
+    
+    [[XServicesHelper sharedInstance] searchResourcesWithQueryParams:params];
+    [self.delegate setSearchBarText:@"(Advanced Search)"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dealloc {
     [cellDictionary release];
-	[delegate release];
+    [delegate release];
     [super dealloc];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     int sections = 0;
-
+    
     if ([[[settingsHelper settings] valueForKey:@"show_refine_keywords_all"] boolValue] == YES
         || [[[settingsHelper settings] valueForKey:@"show_refine_keywords_any"] boolValue] == YES
         || [[[settingsHelper settings] valueForKey:@"show_refine_keywords_none"] boolValue] == YES) {
@@ -560,7 +589,7 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
         || [[[settingsHelper settings] valueForKey:@"show_refine_area_county"] boolValue] == YES) {
         sections++;
     }
-
+    
     if ([[[settingsHelper settings] valueForKey:@"show_refine_volunteer_op"] boolValue] == YES) {
         sections++;
     }
@@ -576,12 +605,12 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     if ([[[settingsHelper settings] valueForKey:@"show_refine_services"] boolValue] == YES) {
         sections++;
     }
-
+    
     return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	int currentSection = -1, row = 0;
+    int currentSection = -1, row = 0;
     
     if ([[[settingsHelper settings] valueForKey:@"show_refine_keywords_all"] boolValue] == YES) {
         row++;
@@ -640,12 +669,12 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
     NSString *title = nil;
     // Return a title or nil as appropriate for the section.
     if(section == keywordsSection) {
-		title = @"Keywords";
+        title = @"Keywords";
     } else if (section == volunteerSection) {
-		title = @"Volunteer Opportunities";
-	} else if (section == wishlistSection) {
-		title = @"Wishlists";
-	} else if (section == sheltersSection) {
+        title = @"Volunteer Opportunities";
+    } else if (section == wishlistSection) {
+        title = @"Wishlists";
+    } else if (section == sheltersSection) {
         title = @"Shelters";
     } else if (section == serviceCodesSection) {
         title = @"Services";
@@ -655,86 +684,86 @@ int allRow = 50, anyRow = 50, noneRow = 50, physicalZipRow = 50, physicalCityRow
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return 36;
+    return 36;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	if (section == physicalSection) {
-		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
-		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];
-		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		label.backgroundColor = [UIColor clearColor];
-		label.font = [UIFont boldSystemFontOfSize:17.0];
-		label.textColor = [UIColor colorWithRed: 76/255.0 green: 86/255.0 blue: 108/255.0 alpha:1.0];
-		label.shadowColor = [UIColor whiteColor];
-		label.shadowOffset = CGSizeMake(0, 1);
-		[label setText:@"Physical Location"];
+    if (section == physicalSection) {
+        UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
+        v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
-		[v addSubview:label];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:17.0];
+        label.textColor = [UIColor colorWithRed: 76/255.0 green: 86/255.0 blue: 108/255.0 alpha:1.0];
+        label.shadowColor = [UIColor whiteColor];
+        label.shadowOffset = CGSizeMake(0, 1);
+        [label setText:@"Physical Location"];
         
-		[label release];
+        [v addSubview:label];
         
-		UIButton *help = [UIButton buttonWithType:UIButtonTypeInfoDark];
-		[help addTarget:self action:@selector(locationHelp:) forControlEvents:UIControlEventTouchUpInside];
-		[help setFrame:CGRectMake(265, -5, 50, 50)];
+        [label release];
         
-		[v addSubview:help];
-		
-		return v;
-	} else if (section == areasSection) {
-		UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
-		v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];
-		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		label.backgroundColor = [UIColor clearColor];
-		label.font = [UIFont boldSystemFontOfSize:17.0];
-		label.textColor = [UIColor colorWithRed: 76/255.0 green: 86/255.0 blue: 108/255.0 alpha:1.0];
-		label.shadowColor = [UIColor whiteColor];
-		label.shadowOffset = CGSizeMake(0, 1);		
-		[label setText:@"Areas Served"];
-		
-		[v addSubview:label];
-		
-		[label release];
-		
-		UIButton *help = [UIButton buttonWithType:UIButtonTypeInfoDark];
-		[help addTarget:self action:@selector(servedHelp:) forControlEvents:UIControlEventTouchUpInside];
-		[help setFrame:CGRectMake(265, -5, 50, 50)];
-		
-		[v addSubview:help];
-		
-		return v;
-	} else {
-		return nil;
-	}
+        UIButton *help = [UIButton buttonWithType:UIButtonTypeInfoDark];
+        [help addTarget:self action:@selector(locationHelp:) forControlEvents:UIControlEventTouchUpInside];
+        [help setFrame:CGRectMake(265, -5, 50, 50)];
+        
+        [v addSubview:help];
+        
+        return v;
+    } else if (section == areasSection) {
+        UIView *v = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 36)] autorelease];
+        v.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,0,150,36)];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:17.0];
+        label.textColor = [UIColor colorWithRed: 76/255.0 green: 86/255.0 blue: 108/255.0 alpha:1.0];
+        label.shadowColor = [UIColor whiteColor];
+        label.shadowOffset = CGSizeMake(0, 1);
+        [label setText:@"Areas Served"];
+        
+        [v addSubview:label];
+        
+        [label release];
+        
+        UIButton *help = [UIButton buttonWithType:UIButtonTypeInfoDark];
+        [help addTarget:self action:@selector(servedHelp:) forControlEvents:UIControlEventTouchUpInside];
+        [help setFrame:CGRectMake(265, -5, 50, 50)];
+        
+        [v addSubview:help];
+        
+        return v;
+    } else {
+        return nil;
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
     NSString *cellId = [NSString stringWithFormat:@"id_%d_%d", indexPath.section, indexPath.row];
     UITableViewCell* cell = [cellDictionary objectForKey:cellId];
-	
-	return cell;
+    
+    return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[textField resignFirstResponder];
-	return NO;
+    [textField resignFirstResponder];
+    return NO;
 }
 
 - (void)locationHelp:(id)sender {
-	UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Physical Location" message:@"Find Resources based on the physical location of each site that offers services." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Physical Location" message:@"Find Resources based on the physical location of each site that offers services." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 
 - (void)servedHelp:(id)sender {
-	UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Areas Served" message:@"Find resources that serve a specific geographic region, which may vary from a resource's physical location. Searching by \"Areas Served\" will return resources that serve at least part of the ZIP, City, or County used in the search. Resources may not serve the ENTIRE area searched." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Areas Served" message:@"Find resources that serve a specific geographic region, which may vary from a resource's physical location. Searching by \"Areas Served\" will return resources that serve at least part of the ZIP, City, or County used in the search. Resources may not serve the ENTIRE area searched." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease];
     [alert show];
 }
 

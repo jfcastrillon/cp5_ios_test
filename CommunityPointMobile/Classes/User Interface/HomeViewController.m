@@ -12,7 +12,7 @@
 
 @implementation HomeViewController
 
-@synthesize tableView, website, helpVideo;
+@synthesize tableView, website, helpVideo, commonSearches;
 @synthesize aboutViewController;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -40,9 +40,6 @@
 	[tableView reloadData];
 	tableView.backgroundColor = [UIColor clearColor];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    }
 
 	[super viewWillAppear:animated];
 }
@@ -51,13 +48,15 @@
 	[tableView release];
 	[website release];
 	[helpVideo release];
+    [commonSearches release];
 	[aboutViewController release];
 	
+    [commonSearches release];
     [super dealloc];
 }
 
 - (IBAction) videoButtonPressed: (id) sender {
-	NSString *url = @"tel://555-555-5555";
+    NSString *url = @"tel://1-407-949-4001"; 
 	//NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"helpVideo"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
@@ -67,20 +66,27 @@
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];
 }
 
+- (IBAction) commonSearchesButtonPressed: (id) sender {
+    /*NSString *url = [[[SettingsHelper sharedInstance] settings] objectForKey:@"website"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: url]];*/
+    CommonSearchesViewController *commonViewController = [[CommonSearchesViewController alloc] initWithNibName:@"CommonSearchesViewController" bundle:[NSBundle mainBundle]];
+    [commonViewController setLoading:YES];
+    [self.navigationController pushViewController:commonViewController animated:YES];
+    
+    [commonViewController release];
+    
+    [xsHelper cancelAllOperations];
+    [xsHelper loadCommonSearches];
+}
+
 - (void) showAboutView {
 	aboutViewController.delegate = self;
 	aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-    }
 	[self.parentViewController.parentViewController presentModalViewController: aboutViewController animated:YES];
 }
 
 - (void) aboutViewShouldDismiss {
 	[self dismissModalViewControllerAnimated: YES];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -98,26 +104,24 @@
 	if(cell == nil){
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-
+/*
 	cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.textLabel.text = @"Common Searches";
-	
+*/	
 	return cell;
 }
-
+/*
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	CommonSearchesViewController *commonViewController = [[CommonSearchesViewController alloc] initWithNibName:@"CommonSearchesViewController" bundle:[NSBundle mainBundle]];
 	[commonViewController setLoading:YES];
 	[self.navigationController pushViewController:commonViewController animated:YES];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-    }
 	
 	[commonViewController release];
 	
 	[xsHelper cancelAllOperations];
 	[xsHelper loadCommonSearches];
 }
-
+*/
 @end

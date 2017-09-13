@@ -16,6 +16,7 @@
 @interface CPMResourceDetail : CPMResource {
 	NSString		*description;
 	NSDictionary	*services;
+    NSDictionary	*serviceDetails;
 	
 	CPMProviderAddress *primaryAddress;
 	NSArray			*addresses;
@@ -33,6 +34,7 @@
 
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSDictionary *services;
+@property (nonatomic, copy) NSDictionary *serviceDetails;
 
 @property (nonatomic, retain) CPMProviderAddress *primaryAddress;
 @property (nonatomic, copy) NSArray *addresses;

@@ -22,19 +22,19 @@
 	UITableView* tableView;
 	NSString *addressText;
 	XServicesHelper* xsHelper;
-	
+
 	//Section indexes
 	NSUInteger locationSectionIndex;
     NSUInteger shelterSectionIndex;
 	NSUInteger detailsSectionIndex;
 	NSUInteger servicesSectionIndex;
 	NSUInteger generalInfoSectionIndex;
-	
+
 	//Location
 	NSUInteger addressCellIndex;
 	NSUInteger phoneCellIndex;
 	NSUInteger urlCellIndex;
-	
+
 	// General Information
 	NSUInteger hoursCellIndex;
 	NSUInteger programFeesCellIndex;
@@ -44,8 +44,10 @@
 	NSUInteger accessibilityCellIndex;
 	NSUInteger shelterCellIndex;
 	NSUInteger shelterRequirementsCellIndex;
-}
 
+	BOOL showServiceHeader;
+}
+@property (strong, nonatomic) NSIndexPath *expandedIndexPath;
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;
 @property (nonatomic, retain) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, retain) IBOutlet UIButton *shareButton;
@@ -53,6 +55,12 @@
 @property (nonatomic, retain) IBOutlet UIView *buttonContainer;
 @property (nonatomic, retain) IBOutlet UIView *loadingOverlay;
 @property (nonatomic, retain) IBOutlet UITableView* tableView;
+
+@property (nonatomic, strong) NSMutableArray* data;
+@property (nonatomic, strong) NSMutableArray* headers;
+@property (nonatomic, retain) NSMutableDictionary* shouldShowServices;
+@property (nonatomic, retain) NSIndexPath* selectedIndexPath;
+
 
 - (IBAction) shareButtonPressed: (id) sender;
 - (IBAction) favoriteButtonPressed: (id) sender;

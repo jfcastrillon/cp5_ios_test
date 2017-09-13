@@ -14,6 +14,8 @@
 
 @synthesize description;
 @synthesize services;
+@synthesize serviceDetails;
+
 @synthesize primaryAddress;
 @synthesize addresses;
 @synthesize phones, primaryPhone;
@@ -24,7 +26,8 @@
 	[super initFromJsonDictionary: dictionary];
 	self.description = nullFix([dictionary objectForKey: @"description"]);
 	self.services = nullFix([dictionary objectForKey: @"services"]);
-	
+    self.serviceDetails = nullFix([dictionary objectForKey:@"details"]);
+   	
     // Extract Unit Infos
     id unitInfosParse = nullFix([dictionary objectForKey:@"unitInfo"]);
     if (unitInfosParse != nil && [unitInfosParse isKindOfClass:[NSArray class]]) {
@@ -135,8 +138,8 @@
 	NSMutableArray *primaryArray = [[NSMutableArray alloc] init];
 	NSMutableArray *secondaryArray = [[NSMutableArray alloc] init];
 	NSMutableArray *occasionalArray = [[NSMutableArray alloc] init];
-	
-	[servicesDict setObject:primaryArray forKey:@"primary"];
+    
+    [servicesDict setObject:primaryArray forKey:@"primary"];
 	[servicesDict setObject:secondaryArray forKey:@"secondary"];
 	[servicesDict setObject:occasionalArray forKey:@"occasional"];
 	
@@ -171,12 +174,12 @@
 			}
 		}
 	}
-	
-	[primaryArray release], primaryArray = nil;
-	[secondaryArray release], secondaryArray = nil;
-	[occasionalArray release], occasionalArray = nil;
-												
-	self.hours = nullFix([dictionary objectForKey:@"hours"]);
+    
+    [primaryArray release], primaryArray = nil;
+    [secondaryArray release], secondaryArray = nil;
+    [occasionalArray release], occasionalArray = nil;
+    
+    self.hours = nullFix([dictionary objectForKey:@"hours"]);
 	self.eligibility = nullFix([dictionary objectForKey:@"eligibility"]);
 	self.programFees = nullFix([dictionary objectForKey:@"program_fees"]);
 	self.languages = nullFix([dictionary objectForKey:@"languages"]);
@@ -192,6 +195,7 @@
 - (void) dealloc {
 	self.description = nil;
 	self.services = nil;
+    self.serviceDetails = nil;
 	self.primaryAddress = nil;
 	self.addresses = nil;
 	
