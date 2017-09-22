@@ -27,7 +27,7 @@
 @implementation ResourceDetailViewController
 
 
-@synthesize nameLabel, buttonContainer, loadingOverlay, favoriteButton, shareButton, tableView, shouldShowServices;
+@synthesize nameLabel, buttonContainer, loadingOverlay, favoriteButton, shareButton, tableView;
 
 @dynamic displayedResource;
 
@@ -45,6 +45,14 @@
             [addressText retain];
         }
 
+        // Zach
+        if (!showServices) {
+            showServices = [[NSMutableDictionary alloc] init];
+        }
+        for (CPMService* service in [[displayedResource services] objectForKey:@"primary"]) {
+            [showServices setObject:[NSNumber numberWithBool:false] forKey:[service name]];
+        }
+        
         [displayedResource retain];
         [self updateDisplay];
     }
@@ -146,8 +154,6 @@
     detailsSectionIndex = UINT_MAX;
     servicesSectionIndex = UINT_MAX;
     generalInfoSectionIndex = UINT_MAX;
-    
-    self.shouldShowServices = [NSMutableDictionary dictionary];
 
     if(displayedResource == nil) {
         [loadingOverlay setHidden: NO];
@@ -199,6 +205,7 @@
 
 
 - (void)dealloc {
+    [showServices release]; //Zach code
     [displayedResource release];
     [addressText release];
     [nameLabel release];
@@ -504,25 +511,11 @@
         for (CPMService* service in [[displayedResource services] objectForKey:@"primary"]) {
             // Skip the 'Y' service code tree
             if (![[service code] hasPrefix:@"Y"]) {
-                NSIndexPath* indexPathSelected = self.selectedIndexPath;
-                if ( nil == indexPathSelected || [indexPathSelected compare: indexPath] != NSOrderedSame )
-                {
-                    cell = [_tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
-                    if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1] autorelease];
-                    }
-                    
-                    cell.textLabel.text = [NSString stringWithFormat: @"cell %d", indexPath.row];
-                }
-                
-                
                 if (currentIndex == row) {
                     cell = [_tableView dequeueReusableCellWithIdentifier:ResourceServiceCellIdentifier];
                     if(cell == nil){
                         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ResourceServiceCellIdentifier] autorelease];
                     }
-                    [self.shouldShowServices setObject:[NSNumber numberWithBool:YES] forKey:[service name]];
-                    
                     
                     cell.textLabel.adjustsFontSizeToFitWidth = YES;
                     cell.textLabel.text = [service name];
@@ -1056,18 +1049,16 @@
                 // index path variable. If the two match, return a height of 100 points, otherwise return
                 // a height of 44 points.
 
-                // (add BOOL showServiceHeader; to interface)
-                                if ( [[self.shouldShowServices objectForKey:service.name ] boolValue]) {
-                    
-                  //return SOME_CALCULATED_HEIGHT; // or if it's always the same, 44 + whatever
-                    if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
-                        return UITableViewAutomaticDimension; // Expanded height
-                    } else {
-                        return 44.0; // Normal height
-                    }
-                } else {
-                return 44.0; // Normal height
+                // Zach
+                if ([indexPath section] == servicesSectionIndex && [[showServices objectForKey: [service name]] boolValue]) {
+                    return 44; // or if it's always the same, 44 + whatever
                 }
+                
+                if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
+                    return UITableViewAutomaticDimension; // Expanded height
+                }
+                return 44.0; // Normal height
+
             }
         }
     } else if ([indexPath section] == generalInfoSectionIndex) {
@@ -1115,11 +1106,12 @@
 }
 
 // set up tapping service header to this action
-- (IBAction)toggleServiceHeaderAction:(id)sender {
-    showServiceHeader = !showServiceHeader; // Might have to be before beginUpdates, but try it here first because the intent ir clear
-  [tableView beginUpdates]; // Not sure if the project supports the newer block method, this will work though.
-  
-  [tableView endUpdates];
+- (void)toggleHeaderForService:(CPMService *)service {
+    BOOL currentState = [[showServices objectForKey:service.name] boolValue];
+    
+    [tableView beginUpdates]; // Not sure if the project supports the newer block method, this will work though.
+    [showServices setObject:[NSNumber numberWithBool:!currentState] forKey:service.name];
+    [tableView endUpdates];
 }
 
 - (void) tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1148,25 +1140,30 @@
             //}
         }
     } else if (indexPath.section == servicesSectionIndex) {
-       UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        self.selectedRowIndex = [indexPath retain];
-        NSLog(@"Response showService=%@", cell);
-
-         [tableView beginUpdates]; // tell the table you're about to start making changes
-
+        // Zach
+        NSArray *allServices = [[displayedResource services] objectForKey:@"primary"];
+        // not 100% sure this is correct; may  have to filter out the Y codes and use that for the target of objectAtIndex
+        // something like uncommenting the 2 lines below (predicate may not be exact, best guess :P)
+        
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"!(code beginsWith %@) AND !(name == nil) AND (name.length > 0)", @"Y"];
+         allServices = [allServices filteredArrayUsingPredicate:pred];
+        CPMService *service = [allServices objectAtIndex:indexPath.row];
+        [self toggleHeaderForService:service];
+        ////////////////////////////////////
+        
+        [tableView beginUpdates]; // tell the table you're about to start making changes
+        
         // If the index path of the currently expanded cell is the same as the index that
         // has just been tapped set the expanded index to nil so that there aren't any
         // expanded cells, otherwise, set the expanded index to the index that has just
         // been selected.
-        
-        if (self.expandedIndexPath && [indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
+        if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
             self.expandedIndexPath = nil;
         } else {
             self.expandedIndexPath = indexPath;
         }
-        [tableView endUpdates]; // tell the table you're done making your changes
         
-    } else if (indexPath.section == shelterSectionIndex) {
+        [tableView endUpdates]; // tell the table you're done making your changes    } else if (indexPath.section == shelterSectionIndex) {
         ResourceUnitsViewController *unitViewController = [[ResourceUnitsViewController alloc] initWithNibName:@"ResourceUnitsViewController" bundle:[NSBundle mainBundle]];
 
         [self.navigationController pushViewController:unitViewController animated:YES];

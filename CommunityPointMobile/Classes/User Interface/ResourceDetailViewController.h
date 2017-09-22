@@ -45,7 +45,7 @@
 	NSUInteger shelterCellIndex;
 	NSUInteger shelterRequirementsCellIndex;
 
-	BOOL showServiceHeader;
+    NSMutableDictionary *showServices;
 }
 @property (strong, nonatomic) NSIndexPath *expandedIndexPath;
 @property (nonatomic, retain) CPMResourceDetail *displayedResource;
@@ -58,9 +58,6 @@
 
 @property (nonatomic, strong) NSMutableArray* data;
 @property (nonatomic, strong) NSMutableArray* headers;
-@property (nonatomic, retain) NSMutableDictionary* shouldShowServices;
-@property (nonatomic, retain) NSIndexPath* selectedIndexPath;
-
 
 - (IBAction) shareButtonPressed: (id) sender;
 - (IBAction) favoriteButtonPressed: (id) sender;
