@@ -523,7 +523,10 @@
                     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0 ];
                     cell.textLabel.textColor = [UIColor blueColor];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.tag = indexPath.row + 1;
                     break;
+                } else {
+                    cell.tag = 0;
                 }
 
                 currentIndex++;
@@ -1050,8 +1053,14 @@
                 // a height of 44 points.
 
                 // Zach
-                if ([indexPath section] == servicesSectionIndex && [[showServices objectForKey: [service name]] boolValue]) {
-                    return 44; // or if it's always the same, 44 + whatever
+                UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+                if ([indexPath section] == servicesSectionIndex && cell.tag != 0) {
+                    NSLog(@"NAME: %@", [service name]);
+                    if ([[showServices objectForKey:[@(cell.tag) stringValue]] boolValue]) {
+                        return 90; // or if it's always the same, 44 + whatever
+                    } else {
+                        return 44;
+                    }
                 }
                 
                 if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
@@ -1106,11 +1115,11 @@
 }
 
 // set up tapping service header to this action
-- (void)toggleHeaderForService:(CPMService *)service {
-    BOOL currentState = [[showServices objectForKey:service.name] boolValue];
+- (void)toggleHeaderForTag:(NSInteger)tag {
+    BOOL currentState = [[showServices objectForKey:[@(tag) stringValue]] boolValue];
     
     [tableView beginUpdates]; // Not sure if the project supports the newer block method, this will work though.
-    [showServices setObject:[NSNumber numberWithBool:!currentState] forKey:service.name];
+    [showServices setObject:[NSNumber numberWithBool:!currentState] forKey:[@(tag) stringValue]];
     [tableView endUpdates];
 }
 
@@ -1141,15 +1150,19 @@
         }
     } else if (indexPath.section == servicesSectionIndex) {
         // Zach
-        NSArray *allServices = [[displayedResource services] objectForKey:@"primary"];
-        // not 100% sure this is correct; may  have to filter out the Y codes and use that for the target of objectAtIndex
-        // something like uncommenting the 2 lines below (predicate may not be exact, best guess :P)
+        NSInteger tag = [tableView cellForRowAtIndexPath:indexPath].tag;
+        if (tag != 0) {
+            NSArray *allServices = [[displayedResource services] objectForKey:@"primary"];
+            // not 100% sure this is correct; may  have to filter out the Y codes and use that for the target of objectAtIndex
+            // something like uncommenting the 2 lines below (predicate may not be exact, best guess :P)
+            
+//            NSPredicate *pred = [NSPredicate predicateWithFormat:@"!(code beginsWith %@) AND !(name == nil) AND (name.length > 0)", @"Y"];
+//            allServices = [allServices filteredArrayUsingPredicate:pred];
+//            CPMService *service = [allServices objectAtIndex:indexPath.row];
+            [self toggleHeaderForTag:tag];
+            ////////////////////////////////////
+        } else {
         
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"!(code beginsWith %@) AND !(name == nil) AND (name.length > 0)", @"Y"];
-         allServices = [allServices filteredArrayUsingPredicate:pred];
-        CPMService *service = [allServices objectAtIndex:indexPath.row];
-        [self toggleHeaderForService:service];
-        ////////////////////////////////////
         
         [tableView beginUpdates]; // tell the table you're about to start making changes
         
@@ -1170,6 +1183,7 @@
         [unitViewController setDisplayedResource:displayedResource];
 
         [unitViewController release];
+        }
     }
 
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
